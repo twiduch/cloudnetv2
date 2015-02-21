@@ -1,0 +1,650 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/transactions.json?page=1&per_page=30
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 21 Feb 2015 18:33:13 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Total:
+      - '281'
+      X-Limit:
+      - '30'
+      X-Page:
+      - '1'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"d962318dbfcf294ad08a9dbc2fed396d"'
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 32424800b106c8138cff6f77d67e3a35
+      X-Runtime:
+      - '0.120573'
+      X-Rack-Cache:
+      - miss
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=66c1137cd5c382be0224324915021bc3; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '[{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T11:03:40-07:00","dependent_transaction_id":null,"id":281,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (281)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 101\nCreate
+        disk hourly stat: 102\nCreate cpu hourly stat: 51\nCreate net hourly stat:
+        51\nGenerating billing statistics for stat time: 2015-02-21 18:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":500,"data_written":19972,"disk_id":312,"reads_completed":25,"stat_time":"2015-02-21T18:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":3125},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T18:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":1625,"data_sent":3438,"network_interface_id":157,"stat_time":"2015-02-21T18:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":1,"stat_time":"2015-02-21T18:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424541630,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T11:03:40-07:00","started_at":"2015-02-21T11:03:40-07:00","status":"complete","updated_at":"2015-02-21T11:03:41-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T11:02:15-07:00","dependent_transaction_id":null,"id":280,"identifier":"j6yl9ylj7dq2vv","log_output":"Handling
+        notification `updated.resources.connect` within transaction (280)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424541612,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T11:02:15-07:00","started_at":"2015-02-21T11:02:15-07:00","status":"complete","updated_at":"2015-02-21T11:02:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T11:00:17-07:00","dependent_transaction_id":null,"id":279,"identifier":"l9u30jrwjwx57k","log_output":"Handling
+        notification `notification.template.connect` within transaction (279)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424541608,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T11:00:17-07:00","started_at":"2015-02-21T11:00:18-07:00","status":"complete","updated_at":"2015-02-21T11:00:18-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T10:03:40-07:00","dependent_transaction_id":null,"id":278,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (278)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 99\nCreate
+        disk hourly stat: 100\nCreate cpu hourly stat: 50\nCreate net hourly stat:
+        50\nGenerating billing statistics for stat time: 2015-02-21 17:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":0,"data_written":20560,"disk_id":312,"reads_completed":0,"stat_time":"2015-02-21T17:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":3245},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T17:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":1657,"data_sent":3535,"network_interface_id":157,"stat_time":"2015-02-21T17:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":1,"stat_time":"2015-02-21T17:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424538027,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T10:03:40-07:00","started_at":"2015-02-21T10:03:40-07:00","status":"complete","updated_at":"2015-02-21T10:03:40-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T10:00:15-07:00","dependent_transaction_id":null,"id":277,"identifier":"ihfdouhqhoj9nw","log_output":"Handling
+        notification `notification.template.connect` within transaction (277)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424538007,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T10:00:15-07:00","started_at":"2015-02-21T10:00:15-07:00","status":"complete","updated_at":"2015-02-21T10:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T10:00:15-07:00","dependent_transaction_id":null,"id":276,"identifier":"len59nqjpl3hey","log_output":"Handling
+        notification `updated.resources.connect` within transaction (276)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424538009,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T10:00:15-07:00","started_at":"2015-02-21T10:00:15-07:00","status":"complete","updated_at":"2015-02-21T10:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T09:03:45-07:00","dependent_transaction_id":null,"id":275,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (275)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 97\nCreate
+        disk hourly stat: 98\nCreate cpu hourly stat: 49\nCreate net hourly stat:
+        49\nGenerating billing statistics for stat time: 2015-02-21 16:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":16,"data_written":12880,"disk_id":312,"reads_completed":4,"stat_time":"2015-02-21T16:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":2005},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T16:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":1093,"data_sent":2226,"network_interface_id":157,"stat_time":"2015-02-21T16:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":1,"stat_time":"2015-02-21T16:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424534425,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T09:03:45-07:00","started_at":"2015-02-21T09:03:45-07:00","status":"complete","updated_at":"2015-02-21T09:03:45-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T09:00:16-07:00","dependent_transaction_id":null,"id":274,"identifier":"s1g10f6d8lsq2v","log_output":"Handling
+        notification `updated.resources.connect` within transaction (274)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424534409,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T09:00:16-07:00","started_at":"2015-02-21T09:00:16-07:00","status":"complete","updated_at":"2015-02-21T09:00:16-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T09:00:16-07:00","dependent_transaction_id":null,"id":273,"identifier":"fbr1l8g8chc4mo","log_output":"Handling
+        notification `notification.template.connect` within transaction (273)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424534406,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T09:00:16-07:00","started_at":"2015-02-21T09:00:16-07:00","status":"complete","updated_at":"2015-02-21T09:00:16-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T08:03:41-07:00","dependent_transaction_id":null,"id":272,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (272)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 95\nCreate
+        disk hourly stat: 96\nCreate cpu hourly stat: 48\nCreate net hourly stat:
+        48\nGenerating billing statistics for stat time: 2015-02-21 15:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":0,"data_written":2088,"disk_id":312,"reads_completed":0,"stat_time":"2015-02-21T15:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":363},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T15:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":192,"data_sent":200,"network_interface_id":157,"stat_time":"2015-02-21T15:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T15:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424530824,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T08:03:41-07:00","started_at":"2015-02-21T08:03:41-07:00","status":"complete","updated_at":"2015-02-21T08:03:41-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T08:00:15-07:00","dependent_transaction_id":null,"id":271,"identifier":"cpjvl9oqsmvkw0","log_output":"Handling
+        notification `updated.resources.connect` within transaction (271)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424530809,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T08:00:15-07:00","started_at":"2015-02-21T08:00:15-07:00","status":"complete","updated_at":"2015-02-21T08:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T08:00:15-07:00","dependent_transaction_id":null,"id":270,"identifier":"nm4wx2vc6jnxff","log_output":"Handling
+        notification `notification.template.connect` within transaction (270)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424530807,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T08:00:15-07:00","started_at":"2015-02-21T08:00:15-07:00","status":"complete","updated_at":"2015-02-21T08:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T07:03:37-07:00","dependent_transaction_id":null,"id":269,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (269)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 93\nCreate
+        disk hourly stat: 94\nCreate cpu hourly stat: 47\nCreate net hourly stat:
+        47\nGenerating billing statistics for stat time: 2015-02-21 14:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":0,"data_written":3100,"disk_id":312,"reads_completed":0,"stat_time":"2015-02-21T14:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":545},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T14:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":265,"data_sent":314,"network_interface_id":157,"stat_time":"2015-02-21T14:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T14:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424527230,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T07:03:37-07:00","started_at":"2015-02-21T07:03:37-07:00","status":"complete","updated_at":"2015-02-21T07:03:37-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T07:03:35-07:00","dependent_transaction_id":null,"id":268,"identifier":"byprafmk0xjnl5","log_output":"Handling
+        notification `updated.resources.connect` within transaction (268)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424527215,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T07:03:35-07:00","started_at":"2015-02-21T07:03:35-07:00","status":"complete","updated_at":"2015-02-21T07:03:35-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T07:00:15-07:00","dependent_transaction_id":null,"id":267,"identifier":"b7rhihfrzpfx2h","log_output":"Handling
+        notification `notification.template.connect` within transaction (267)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424527207,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T07:00:15-07:00","started_at":"2015-02-21T07:00:15-07:00","status":"complete","updated_at":"2015-02-21T07:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T06:03:39-07:00","dependent_transaction_id":null,"id":266,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (266)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 91\nCreate
+        disk hourly stat: 92\nCreate cpu hourly stat: 46\nCreate net hourly stat:
+        46\nGenerating billing statistics for stat time: 2015-02-21 13:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":4,"data_written":3092,"disk_id":312,"reads_completed":1,"stat_time":"2015-02-21T13:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":547},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T13:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":256,"data_sent":300,"network_interface_id":157,"stat_time":"2015-02-21T13:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T13:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424523623,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T06:03:39-07:00","started_at":"2015-02-21T06:03:39-07:00","status":"complete","updated_at":"2015-02-21T06:03:40-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T06:00:17-07:00","dependent_transaction_id":null,"id":265,"identifier":"tlrdzffy0xbwlt","log_output":"Handling
+        notification `notification.template.connect` within transaction (265)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424523607,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T06:00:17-07:00","started_at":"2015-02-21T06:00:17-07:00","status":"complete","updated_at":"2015-02-21T06:00:17-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T06:00:16-07:00","dependent_transaction_id":null,"id":264,"identifier":"aye796swixo548","log_output":"Handling
+        notification `updated.resources.connect` within transaction (264)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424523610,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T06:00:16-07:00","started_at":"2015-02-21T06:00:16-07:00","status":"complete","updated_at":"2015-02-21T06:00:16-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T05:03:42-07:00","dependent_transaction_id":null,"id":263,"identifier":"jwuvsk5xpt8bn1","log_output":"Handling
+        notification `updated.resources.connect` within transaction (263)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424520010,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T05:03:42-07:00","started_at":"2015-02-21T05:03:42-07:00","status":"complete","updated_at":"2015-02-21T05:03:42-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T05:03:41-07:00","dependent_transaction_id":null,"id":262,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (262)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 89\nCreate
+        disk hourly stat: 90\nCreate cpu hourly stat: 45\nCreate net hourly stat:
+        45\nGenerating billing statistics for stat time: 2015-02-21 12:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":8,"data_written":7696,"disk_id":312,"reads_completed":2,"stat_time":"2015-02-21T12:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":1350},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T12:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":584,"data_sent":818,"network_interface_id":157,"stat_time":"2015-02-21T12:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T12:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424520025,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T05:03:41-07:00","started_at":"2015-02-21T05:03:41-07:00","status":"complete","updated_at":"2015-02-21T05:03:42-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T05:00:15-07:00","dependent_transaction_id":null,"id":261,"identifier":"b0ego6penraa7i","log_output":"Handling
+        notification `notification.template.connect` within transaction (261)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424520007,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T05:00:15-07:00","started_at":"2015-02-21T05:00:15-07:00","status":"complete","updated_at":"2015-02-21T05:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T04:03:38-07:00","dependent_transaction_id":null,"id":260,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (260)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 87\nCreate
+        disk hourly stat: 88\nCreate cpu hourly stat: 44\nCreate net hourly stat:
+        44\nGenerating billing statistics for stat time: 2015-02-21 11:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":0,"data_written":2880,"disk_id":312,"reads_completed":0,"stat_time":"2015-02-21T11:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":507},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T11:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":250,"data_sent":308,"network_interface_id":157,"stat_time":"2015-02-21T11:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T11:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424516428,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T04:03:38-07:00","started_at":"2015-02-21T04:03:38-07:00","status":"complete","updated_at":"2015-02-21T04:03:38-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T04:03:36-07:00","dependent_transaction_id":null,"id":259,"identifier":"mhovugl6yx1rpg","log_output":"Handling
+        notification `updated.resources.connect` within transaction (259)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424516414,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T04:03:36-07:00","started_at":"2015-02-21T04:03:36-07:00","status":"complete","updated_at":"2015-02-21T04:03:36-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T04:00:16-07:00","dependent_transaction_id":null,"id":258,"identifier":"wfpwwcxg9o6shc","log_output":"Handling
+        notification `notification.template.connect` within transaction (258)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424516406,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T04:00:16-07:00","started_at":"2015-02-21T04:00:16-07:00","status":"complete","updated_at":"2015-02-21T04:00:16-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T03:03:37-07:00","dependent_transaction_id":null,"id":257,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (257)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 85\nCreate
+        disk hourly stat: 86\nCreate cpu hourly stat: 43\nCreate net hourly stat:
+        43\nGenerating billing statistics for stat time: 2015-02-21 10:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":4,"data_written":3008,"disk_id":312,"reads_completed":1,"stat_time":"2015-02-21T10:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":526},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T10:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":278,"data_sent":316,"network_interface_id":157,"stat_time":"2015-02-21T10:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T10:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424512827,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T03:03:37-07:00","started_at":"2015-02-21T03:03:37-07:00","status":"complete","updated_at":"2015-02-21T03:03:37-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T03:00:15-07:00","dependent_transaction_id":null,"id":256,"identifier":"d75g76q5geiz5m","log_output":"Handling
+        notification `updated.resources.connect` within transaction (256)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424512809,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T03:00:15-07:00","started_at":"2015-02-21T03:00:15-07:00","status":"complete","updated_at":"2015-02-21T03:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T03:00:15-07:00","dependent_transaction_id":null,"id":255,"identifier":"amaq4mz02wksk7","log_output":"Handling
+        notification `notification.template.connect` within transaction (255)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424512806,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T03:00:15-07:00","started_at":"2015-02-21T03:00:15-07:00","status":"complete","updated_at":"2015-02-21T03:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T02:03:42-07:00","dependent_transaction_id":null,"id":254,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (254)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 83\nCreate
+        disk hourly stat: 84\nCreate cpu hourly stat: 42\nCreate net hourly stat:
+        42\nGenerating billing statistics for stat time: 2015-02-21 09:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":0,"data_written":3096,"disk_id":312,"reads_completed":0,"stat_time":"2015-02-21T09:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":538},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T09:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":274,"data_sent":304,"network_interface_id":157,"stat_time":"2015-02-21T09:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T09:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424509225,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T02:03:42-07:00","started_at":"2015-02-21T02:03:42-07:00","status":"complete","updated_at":"2015-02-21T02:03:42-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T02:03:41-07:00","dependent_transaction_id":null,"id":253,"identifier":"vodwnjc45lr1wg","log_output":"Handling
+        notification `updated.resources.connect` within transaction (253)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424509221,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T02:03:41-07:00","started_at":"2015-02-21T02:03:41-07:00","status":"complete","updated_at":"2015-02-21T02:03:41-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T02:00:17-07:00","dependent_transaction_id":null,"id":252,"identifier":"nm69gl1nq0c248","log_output":"Handling
+        notification `notification.template.connect` within transaction (252)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424509207,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T02:00:17-07:00","started_at":"2015-02-21T02:00:17-07:00","status":"complete","updated_at":"2015-02-21T02:00:17-07:00","user_id":null}}]'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 18:32:09 GMT
+- request:
+    method: get
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/transactions.json?page=1&per_page=5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 21 Feb 2015 18:33:14 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Total:
+      - '281'
+      X-Limit:
+      - '5'
+      X-Page:
+      - '1'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"6ef2a5d49142e4ac74c87b290b1c9798"'
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      X-Request-Id:
+      - a9bde917884fb0875d9a462e61e4afd0
+      X-Runtime:
+      - '0.062533'
+      X-Rack-Cache:
+      - miss
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=396f6afdece37c3a655cb9479b956ffd; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '[{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T11:03:40-07:00","dependent_transaction_id":null,"id":281,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (281)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 101\nCreate
+        disk hourly stat: 102\nCreate cpu hourly stat: 51\nCreate net hourly stat:
+        51\nGenerating billing statistics for stat time: 2015-02-21 18:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":500,"data_written":19972,"disk_id":312,"reads_completed":25,"stat_time":"2015-02-21T18:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":3125},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T18:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":1625,"data_sent":3438,"network_interface_id":157,"stat_time":"2015-02-21T18:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":1,"stat_time":"2015-02-21T18:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424541630,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T11:03:40-07:00","started_at":"2015-02-21T11:03:40-07:00","status":"complete","updated_at":"2015-02-21T11:03:41-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T11:02:15-07:00","dependent_transaction_id":null,"id":280,"identifier":"j6yl9ylj7dq2vv","log_output":"Handling
+        notification `updated.resources.connect` within transaction (280)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424541612,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T11:02:15-07:00","started_at":"2015-02-21T11:02:15-07:00","status":"complete","updated_at":"2015-02-21T11:02:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T11:00:17-07:00","dependent_transaction_id":null,"id":279,"identifier":"l9u30jrwjwx57k","log_output":"Handling
+        notification `notification.template.connect` within transaction (279)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424541608,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T11:00:17-07:00","started_at":"2015-02-21T11:00:18-07:00","status":"complete","updated_at":"2015-02-21T11:00:18-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T10:03:40-07:00","dependent_transaction_id":null,"id":278,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (278)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 99\nCreate
+        disk hourly stat: 100\nCreate cpu hourly stat: 50\nCreate net hourly stat:
+        50\nGenerating billing statistics for stat time: 2015-02-21 17:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":0,"data_written":20560,"disk_id":312,"reads_completed":0,"stat_time":"2015-02-21T17:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":3245},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T17:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":1657,"data_sent":3535,"network_interface_id":157,"stat_time":"2015-02-21T17:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":1,"stat_time":"2015-02-21T17:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424538027,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T10:03:40-07:00","started_at":"2015-02-21T10:03:40-07:00","status":"complete","updated_at":"2015-02-21T10:03:40-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T10:00:15-07:00","dependent_transaction_id":null,"id":277,"identifier":"ihfdouhqhoj9nw","log_output":"Handling
+        notification `notification.template.connect` within transaction (277)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424538007,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T10:00:15-07:00","started_at":"2015-02-21T10:00:15-07:00","status":"complete","updated_at":"2015-02-21T10:00:15-07:00","user_id":null}}]'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 18:32:09 GMT
+- request:
+    method: get
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/transactions.json?page=2&per_page=5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 21 Feb 2015 18:33:14 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Total:
+      - '281'
+      X-Limit:
+      - '5'
+      X-Page:
+      - '2'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"2aee92f424c453b95a0d297c56b2126a"'
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 5a403b4e51121f09d0c5393b363e8ab8
+      X-Runtime:
+      - '0.064904'
+      X-Rack-Cache:
+      - miss
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=c4122780e63f029c8733b06ae5abd78c; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '[{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T10:00:15-07:00","dependent_transaction_id":null,"id":276,"identifier":"len59nqjpl3hey","log_output":"Handling
+        notification `updated.resources.connect` within transaction (276)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424538009,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T10:00:15-07:00","started_at":"2015-02-21T10:00:15-07:00","status":"complete","updated_at":"2015-02-21T10:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T09:03:45-07:00","dependent_transaction_id":null,"id":275,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (275)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 97\nCreate
+        disk hourly stat: 98\nCreate cpu hourly stat: 49\nCreate net hourly stat:
+        49\nGenerating billing statistics for stat time: 2015-02-21 16:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":16,"data_written":12880,"disk_id":312,"reads_completed":4,"stat_time":"2015-02-21T16:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":2005},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T16:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":1093,"data_sent":2226,"network_interface_id":157,"stat_time":"2015-02-21T16:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":1,"stat_time":"2015-02-21T16:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424534425,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T09:03:45-07:00","started_at":"2015-02-21T09:03:45-07:00","status":"complete","updated_at":"2015-02-21T09:03:45-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T09:00:16-07:00","dependent_transaction_id":null,"id":274,"identifier":"s1g10f6d8lsq2v","log_output":"Handling
+        notification `updated.resources.connect` within transaction (274)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424534409,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T09:00:16-07:00","started_at":"2015-02-21T09:00:16-07:00","status":"complete","updated_at":"2015-02-21T09:00:16-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T09:00:16-07:00","dependent_transaction_id":null,"id":273,"identifier":"fbr1l8g8chc4mo","log_output":"Handling
+        notification `notification.template.connect` within transaction (273)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424534406,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T09:00:16-07:00","started_at":"2015-02-21T09:00:16-07:00","status":"complete","updated_at":"2015-02-21T09:00:16-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T08:03:41-07:00","dependent_transaction_id":null,"id":272,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (272)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 95\nCreate
+        disk hourly stat: 96\nCreate cpu hourly stat: 48\nCreate net hourly stat:
+        48\nGenerating billing statistics for stat time: 2015-02-21 15:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":0,"data_written":2088,"disk_id":312,"reads_completed":0,"stat_time":"2015-02-21T15:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":363},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T15:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":192,"data_sent":200,"network_interface_id":157,"stat_time":"2015-02-21T15:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T15:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424530824,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T08:03:41-07:00","started_at":"2015-02-21T08:03:41-07:00","status":"complete","updated_at":"2015-02-21T08:03:41-07:00","user_id":1}}]'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 18:32:09 GMT
+- request:
+    method: get
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/transactions.json?page=3&per_page=5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 21 Feb 2015 18:33:14 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Total:
+      - '281'
+      X-Limit:
+      - '5'
+      X-Page:
+      - '3'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"9e6fd11117d3d867e745a40ef3f08480"'
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 2df34bbaaa482b40a93270656ba04d74
+      X-Runtime:
+      - '0.061110'
+      X-Rack-Cache:
+      - miss
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=a007b7d67950a0f24ffc8903e2fd34a5; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '[{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T08:00:15-07:00","dependent_transaction_id":null,"id":271,"identifier":"cpjvl9oqsmvkw0","log_output":"Handling
+        notification `updated.resources.connect` within transaction (271)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424530809,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T08:00:15-07:00","started_at":"2015-02-21T08:00:15-07:00","status":"complete","updated_at":"2015-02-21T08:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T08:00:15-07:00","dependent_transaction_id":null,"id":270,"identifier":"nm4wx2vc6jnxff","log_output":"Handling
+        notification `notification.template.connect` within transaction (270)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424530807,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T08:00:15-07:00","started_at":"2015-02-21T08:00:15-07:00","status":"complete","updated_at":"2015-02-21T08:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T07:03:37-07:00","dependent_transaction_id":null,"id":269,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (269)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 93\nCreate
+        disk hourly stat: 94\nCreate cpu hourly stat: 47\nCreate net hourly stat:
+        47\nGenerating billing statistics for stat time: 2015-02-21 14:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":0,"data_written":3100,"disk_id":312,"reads_completed":0,"stat_time":"2015-02-21T14:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":545},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T14:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":265,"data_sent":314,"network_interface_id":157,"stat_time":"2015-02-21T14:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T14:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424527230,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T07:03:37-07:00","started_at":"2015-02-21T07:03:37-07:00","status":"complete","updated_at":"2015-02-21T07:03:37-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T07:03:35-07:00","dependent_transaction_id":null,"id":268,"identifier":"byprafmk0xjnl5","log_output":"Handling
+        notification `updated.resources.connect` within transaction (268)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424527215,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T07:03:35-07:00","started_at":"2015-02-21T07:03:35-07:00","status":"complete","updated_at":"2015-02-21T07:03:35-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T07:00:15-07:00","dependent_transaction_id":null,"id":267,"identifier":"b7rhihfrzpfx2h","log_output":"Handling
+        notification `notification.template.connect` within transaction (267)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424527207,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T07:00:15-07:00","started_at":"2015-02-21T07:00:15-07:00","status":"complete","updated_at":"2015-02-21T07:00:15-07:00","user_id":null}}]'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 18:32:10 GMT
+- request:
+    method: get
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/transactions.json?page=4&per_page=5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 21 Feb 2015 18:33:14 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Total:
+      - '281'
+      X-Limit:
+      - '5'
+      X-Page:
+      - '4'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"6a35081f5d9aed6e3db33d997d7fba65"'
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 20cdde1c59a6e3e3871a4cee7be1ad71
+      X-Runtime:
+      - '0.071734'
+      X-Rack-Cache:
+      - miss
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=c6f4b486ec5f60defa4f67d42b68740f; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '[{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T06:03:39-07:00","dependent_transaction_id":null,"id":266,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (266)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 91\nCreate
+        disk hourly stat: 92\nCreate cpu hourly stat: 46\nCreate net hourly stat:
+        46\nGenerating billing statistics for stat time: 2015-02-21 13:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":4,"data_written":3092,"disk_id":312,"reads_completed":1,"stat_time":"2015-02-21T13:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":547},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T13:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":256,"data_sent":300,"network_interface_id":157,"stat_time":"2015-02-21T13:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T13:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424523623,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T06:03:39-07:00","started_at":"2015-02-21T06:03:39-07:00","status":"complete","updated_at":"2015-02-21T06:03:40-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T06:00:17-07:00","dependent_transaction_id":null,"id":265,"identifier":"tlrdzffy0xbwlt","log_output":"Handling
+        notification `notification.template.connect` within transaction (265)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424523607,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T06:00:17-07:00","started_at":"2015-02-21T06:00:17-07:00","status":"complete","updated_at":"2015-02-21T06:00:17-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T06:00:16-07:00","dependent_transaction_id":null,"id":264,"identifier":"aye796swixo548","log_output":"Handling
+        notification `updated.resources.connect` within transaction (264)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424523610,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T06:00:16-07:00","started_at":"2015-02-21T06:00:16-07:00","status":"complete","updated_at":"2015-02-21T06:00:16-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T05:03:42-07:00","dependent_transaction_id":null,"id":263,"identifier":"jwuvsk5xpt8bn1","log_output":"Handling
+        notification `updated.resources.connect` within transaction (263)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424520010,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T05:03:42-07:00","started_at":"2015-02-21T05:03:42-07:00","status":"complete","updated_at":"2015-02-21T05:03:42-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T05:03:41-07:00","dependent_transaction_id":null,"id":262,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (262)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 89\nCreate
+        disk hourly stat: 90\nCreate cpu hourly stat: 45\nCreate net hourly stat:
+        45\nGenerating billing statistics for stat time: 2015-02-21 12:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":8,"data_written":7696,"disk_id":312,"reads_completed":2,"stat_time":"2015-02-21T12:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":1350},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T12:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":584,"data_sent":818,"network_interface_id":157,"stat_time":"2015-02-21T12:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T12:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424520025,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T05:03:41-07:00","started_at":"2015-02-21T05:03:41-07:00","status":"complete","updated_at":"2015-02-21T05:03:42-07:00","user_id":1}}]'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 18:32:10 GMT
+- request:
+    method: get
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/transactions.json?page=5&per_page=5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 21 Feb 2015 18:33:15 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Total:
+      - '281'
+      X-Limit:
+      - '5'
+      X-Page:
+      - '5'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"165f0266701e293ed9a5a57e4c2c100d"'
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 111955c6eb5b7424619d37ff693307cf
+      X-Runtime:
+      - '0.059815'
+      X-Rack-Cache:
+      - miss
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=92e8c8d866dbc0f3d779ef54011d3bbb; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '[{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T05:00:15-07:00","dependent_transaction_id":null,"id":261,"identifier":"b0ego6penraa7i","log_output":"Handling
+        notification `notification.template.connect` within transaction (261)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424520007,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T05:00:15-07:00","started_at":"2015-02-21T05:00:15-07:00","status":"complete","updated_at":"2015-02-21T05:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T04:03:38-07:00","dependent_transaction_id":null,"id":260,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (260)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 87\nCreate
+        disk hourly stat: 88\nCreate cpu hourly stat: 44\nCreate net hourly stat:
+        44\nGenerating billing statistics for stat time: 2015-02-21 11:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":0,"data_written":2880,"disk_id":312,"reads_completed":0,"stat_time":"2015-02-21T11:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":507},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T11:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":250,"data_sent":308,"network_interface_id":157,"stat_time":"2015-02-21T11:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T11:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424516428,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T04:03:38-07:00","started_at":"2015-02-21T04:03:38-07:00","status":"complete","updated_at":"2015-02-21T04:03:38-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T04:03:36-07:00","dependent_transaction_id":null,"id":259,"identifier":"mhovugl6yx1rpg","log_output":"Handling
+        notification `updated.resources.connect` within transaction (259)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424516414,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T04:03:36-07:00","started_at":"2015-02-21T04:03:36-07:00","status":"complete","updated_at":"2015-02-21T04:03:36-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T04:00:16-07:00","dependent_transaction_id":null,"id":258,"identifier":"wfpwwcxg9o6shc","log_output":"Handling
+        notification `notification.template.connect` within transaction (258)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424516406,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T04:00:16-07:00","started_at":"2015-02-21T04:00:16-07:00","status":"complete","updated_at":"2015-02-21T04:00:16-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T03:03:37-07:00","dependent_transaction_id":null,"id":257,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (257)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 85\nCreate
+        disk hourly stat: 86\nCreate cpu hourly stat: 43\nCreate net hourly stat:
+        43\nGenerating billing statistics for stat time: 2015-02-21 10:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":4,"data_written":3008,"disk_id":312,"reads_completed":1,"stat_time":"2015-02-21T10:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":526},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T10:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":278,"data_sent":316,"network_interface_id":157,"stat_time":"2015-02-21T10:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T10:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424512827,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T03:03:37-07:00","started_at":"2015-02-21T03:03:37-07:00","status":"complete","updated_at":"2015-02-21T03:03:37-07:00","user_id":1}}]'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 18:32:10 GMT
+- request:
+    method: get
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/transactions.json?page=6&per_page=5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 21 Feb 2015 18:33:41 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Total:
+      - '281'
+      X-Limit:
+      - '5'
+      X-Page:
+      - '6'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"09d88aea4fcdf795810ad33d487e6ccd"'
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 6a3acdfca0c5f962945d4a18cf5fa5b5
+      X-Runtime:
+      - '0.060235'
+      X-Rack-Cache:
+      - miss
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=75d9106f57dd0e959fe36a7fc267937d; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '[{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T03:00:15-07:00","dependent_transaction_id":null,"id":256,"identifier":"d75g76q5geiz5m","log_output":"Handling
+        notification `updated.resources.connect` within transaction (256)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424512809,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T03:00:15-07:00","started_at":"2015-02-21T03:00:15-07:00","status":"complete","updated_at":"2015-02-21T03:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T03:00:15-07:00","dependent_transaction_id":null,"id":255,"identifier":"amaq4mz02wksk7","log_output":"Handling
+        notification `notification.template.connect` within transaction (255)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424512806,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T03:00:15-07:00","started_at":"2015-02-21T03:00:15-07:00","status":"complete","updated_at":"2015-02-21T03:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T02:03:42-07:00","dependent_transaction_id":null,"id":254,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (254)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 83\nCreate
+        disk hourly stat: 84\nCreate cpu hourly stat: 42\nCreate net hourly stat:
+        42\nGenerating billing statistics for stat time: 2015-02-21 09:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":0,"data_written":3096,"disk_id":312,"reads_completed":0,"stat_time":"2015-02-21T09:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":538},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T09:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":274,"data_sent":304,"network_interface_id":157,"stat_time":"2015-02-21T09:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T09:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424509225,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T02:03:42-07:00","started_at":"2015-02-21T02:03:42-07:00","status":"complete","updated_at":"2015-02-21T02:03:42-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T02:03:41-07:00","dependent_transaction_id":null,"id":253,"identifier":"vodwnjc45lr1wg","log_output":"Handling
+        notification `updated.resources.connect` within transaction (253)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424509221,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T02:03:41-07:00","started_at":"2015-02-21T02:03:41-07:00","status":"complete","updated_at":"2015-02-21T02:03:41-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T02:00:17-07:00","dependent_transaction_id":null,"id":252,"identifier":"nm69gl1nq0c248","log_output":"Handling
+        notification `notification.template.connect` within transaction (252)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424509207,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T02:00:17-07:00","started_at":"2015-02-21T02:00:17-07:00","status":"complete","updated_at":"2015-02-21T02:00:17-07:00","user_id":null}}]'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 18:32:37 GMT
+- request:
+    method: get
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/transactions.json?page=6&per_page=5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 21 Feb 2015 18:33:41 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Total:
+      - '281'
+      X-Limit:
+      - '5'
+      X-Page:
+      - '6'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"09d88aea4fcdf795810ad33d487e6ccd"'
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      X-Request-Id:
+      - dd071fa524c35b6148f9ad07e363be29
+      X-Runtime:
+      - '0.072880'
+      X-Rack-Cache:
+      - miss
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=846848fcb258ce1361336543b4431c1e; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '[{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T03:00:15-07:00","dependent_transaction_id":null,"id":256,"identifier":"d75g76q5geiz5m","log_output":"Handling
+        notification `updated.resources.connect` within transaction (256)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424512809,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T03:00:15-07:00","started_at":"2015-02-21T03:00:15-07:00","status":"complete","updated_at":"2015-02-21T03:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T03:00:15-07:00","dependent_transaction_id":null,"id":255,"identifier":"amaq4mz02wksk7","log_output":"Handling
+        notification `notification.template.connect` within transaction (255)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424512806,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T03:00:15-07:00","started_at":"2015-02-21T03:00:15-07:00","status":"complete","updated_at":"2015-02-21T03:00:15-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":3,"associated_object_type":"VirtualMachine","created_at":"2015-02-21T02:03:42-07:00","dependent_transaction_id":null,"id":254,"identifier":"rga5uro36pezqj","log_output":"Handling
+        notification `generated.statistics.connect` within transaction (254)\nReceived
+        notification about generated statistics\nCreate disk hourly stat: 83\nCreate
+        disk hourly stat: 84\nCreate cpu hourly stat: 42\nCreate net hourly stat:
+        42\nGenerating billing statistics for stat time: 2015-02-21 09:00:00 UTC\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_type":"generated.statistics.connect","event_data":{"disk_hourly_stats":[{"data_read":0,"data_written":3096,"disk_id":312,"reads_completed":0,"stat_time":"2015-02-21T09:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":538},{"data_read":0,"data_written":0,"disk_id":313,"reads_completed":0,"stat_time":"2015-02-21T09:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","writes_completed":0}],"net_hourly_stats":[{"data_received":274,"data_sent":304,"network_interface_id":157,"stat_time":"2015-02-21T09:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"cpu_hourly_stats":[{"cpu_time":0,"stat_time":"2015-02-21T09:00:00Z","virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"}],"virtual_machine_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE"},"instance_id":"instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE","sent_timestamp":1424509225,"actor":"trader","object_class":"Federation::Trader::VirtualMachine","object_id":3},"parent_id":3,"parent_type":"VirtualMachine","pid":15197,"priority":10,"start_after":"2015-02-21T02:03:42-07:00","started_at":"2015-02-21T02:03:42-07:00","status":"complete","updated_at":"2015-02-21T02:03:42-07:00","user_id":1}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T02:03:41-07:00","dependent_transaction_id":null,"id":253,"identifier":"vodwnjc45lr1wg","log_output":"Handling
+        notification `updated.resources.connect` within transaction (253)\nHandling
+        of the notification was successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","event_data":{"cpus":24,"free_memory":216059,"free_data_store_size":3639},"sent_timestamp":1424509221,"event_type":"updated.resources.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T02:03:41-07:00","started_at":"2015-02-21T02:03:41-07:00","status":"complete","updated_at":"2015-02-21T02:03:41-07:00","user_id":null}},{"transaction":{"action":"receive_notification_from_market","actor":"trader","allowed_cancel":true,"associated_object_id":null,"associated_object_type":null,"created_at":"2015-02-21T02:00:17-07:00","dependent_transaction_id":null,"id":252,"identifier":"nm69gl1nq0c248","log_output":"Handling
+        notification `notification.template.connect` within transaction (252)\nReceived
+        notification about changes in templates\nHandling of the notification was
+        successful\n\n","params":{"resource_id":"resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg","added":null,"removed":null,"changed":null,"sent_timestamp":1424509207,"event_type":"notification.template.connect","actor":"trader","object_class":"HypervisorGroup","object_id":4,"event_data":{"added":null,"removed":null,"changed":null}},"parent_id":4,"parent_type":"Pack","pid":15197,"priority":10,"start_after":"2015-02-21T02:00:17-07:00","started_at":"2015-02-21T02:00:17-07:00","status":"complete","updated_at":"2015-02-21T02:00:17-07:00","user_id":null}}]'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 18:32:37 GMT
+recorded_with: VCR 2.9.3

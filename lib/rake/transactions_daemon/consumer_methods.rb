@@ -17,7 +17,6 @@ module Transactions
 
     # Usage stats for CPU, disk and bandwidth
     def generated__statistics
-      nil
     end
 
     def created__transaction
@@ -25,5 +24,6 @@ module Transactions
 
     def removed__virtual_machine
     end
+
   end
 end

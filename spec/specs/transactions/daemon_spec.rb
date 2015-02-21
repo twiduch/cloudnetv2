@@ -24,20 +24,22 @@ describe Transactions do
     # The size of the page we'd like to consume for the first ever query of the live transactions log
     @first_consumption = 30
     # Page size for normal queries
-    @standard_consumption = 2
+    @standard_consumption = 5
 
     syncer = Transactions::Sync.new
     VCR.use_cassette 'transactions_log' do
       syncer.fetch_page 1, @first_consumption
       @first_batch = syncer.batch
       @first_batch.reject! { |i| syncer.ignore_transaction? i }
-      syncer.fetch_page 1, @standard_consumption
+      5.times do |page|
+        syncer.fetch_page page + 1, @standard_consumption
+      end
     end
     # Because we can't easily dictate what the Onapp API's logs are we just have to work with
     # whatever VCR records at the time. The only condition is that there's more transactions than
     # the @standard_consumption per pag. Testing the tests!
     if @first_batch.length <= @standard_consumption
-      fail 'No transactions found, tests need at least 1 transaction'
+      fail 'No transactions found, tests need at least a page of transactions'
     end
   end
 
@@ -64,7 +66,7 @@ describe Transactions do
 
   it 'should make a note of the latest consumed transaction' do
     run_daemon
-    latest_id = @first_batch.last.id
+    latest_id = @first_batch.last['id']
     latest_marker = System.get(:transactions_marker)
     expect(latest_marker).to eq latest_id
   end
@@ -103,14 +105,17 @@ describe Transactions do
       run_daemon
     end
 
+    it 'should call a specific consumer method' do
+      # Reset the mock so it acts as normal
+      allow(Transactions::Consumer).to receive(:new).and_call_original
+      event = Transactions::Consumer.event_to_method @first_batch.last
+      expect_any_instance_of(Transactions::Consumer).to receive(event[:method]).at_least(:once)
+      run_daemon
+    end
+
     it 'should stop the daemon if even a single consumption fails' do
       allow(@consumer).to receive(:consume).and_raise StandardError
       expect { run_daemon }.to raise_exception
-    end
-  end
-
-  describe Transactions::ConsumerMethods do
-    it 'should consume updated__transaction' do
     end
   end
 end

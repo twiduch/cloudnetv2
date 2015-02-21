@@ -14,18 +14,25 @@ module Transactions
       known_transactions.include? action
     end
 
+    # Convert something like 'updated.transaction.connect' to 'updated__transaction'
+    def self.event_to_method(transaction)
+      raw = transaction.params.event_type
+      {
+        raw: raw,
+        method: raw.gsub('.connect', '').gsub('.', '__')
+      }
+    end
+
     def consume(transaction)
       @transaction = transaction
-      # Convert something like 'updated.transaction.connect' to 'updated__transaction'
-      event_type_raw = @transaction.params.event_type
-      event_type = event_type_raw.gsub('.connect', '').gsub('.', '__')
-      if known_transaction? event_type
-        @debug = [event_type_raw, @transaction.identifier, @transaction.status]
-        send event_type
+      event = self.class.event_to_method(@transaction)
+      if known_transaction? event[:method]
+        @debug = [event[:raw], @transaction.identifier, @transaction.status]
+        send event[:method]
         # The consumer methods can add to @debug
         logger.debug @debug
       else
-        logger.info "Unknown transaction type: #{event_type_raw}"
+        logger.info "Unknown transaction type: #{event[:raw]}"
       end
     end
   end

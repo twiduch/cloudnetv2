@@ -35,10 +35,7 @@ module Transactions
 
     def run
       # This is a daemon, so loop forever
-      loop do
-        fetch_batch
-        iterate
-      end
+      loop { fetch_batch }
     end
 
     # If the previous loop is just doing the same as the current loop then the dameon is in stasis
@@ -53,25 +50,37 @@ module Transactions
       if @marker == 0
         # This is the FIRST EVER consumption of the logs!
         # Gotta start somewhere so might as well go back as far as we sensibly can
+        logger.debug "Fetching page 1 (#{FIRST_CONSUMPTION} per page) of transactions log"
         fetch_page 1, FIRST_CONSUMPTION
+        iterate
       else
-        find_most_recent
+        page = find_page_to_start_consuming_from
+        consume_from_page page
       end
     end
 
-    # Go through all the paginated pages until we find the last transaction marked as consumed
-    def find_most_recent
+    def find_page_to_start_consuming_from
       page = 1
-      # When we find the marker, we consume everything in that page that's new. But we rely on the
-      # loop in initialise to carry on looking for any newer pages that we loop through here.
       loop do
+        logger.debug "Searching page #{page} (#{STANDARD_CONSUMPTION} per page) " \
+          "of transactions log for marker ID #{@marker}"
         fetch_page page
         break if end_reached?
-        @previous_batch_id = @batch.last.id
         page += 1
       end
-      # Only keep those transactions with an ID greater than our stored marker
-      @batch.select! { |i| i.id > @marker }
+      logger.debug "End of transactions found at page #{page}"
+      page
+    end
+
+    def consume_from_page(starting_page)
+      starting_page.downto(1) do |page|
+        logger.debug "Fetching page #{page} (#{STANDARD_CONSUMPTION} per page) of transactions log"
+        fetch_page page
+        # The page containing the marker is likely to have some already-consumed transactions in it
+        # so ignore them.
+        @batch.select! { |i| i.id > @marker } if page == starting_page
+        iterate
+      end
     end
 
     # Figure out if we've reached as far as we can get in the logs. There are 2 situations in which
@@ -85,12 +94,12 @@ module Transactions
       # is the same as the current page's first ID.
       @previous_batch_id ||= nil
       return true if @batch.last.id == @previous_batch_id
+      @previous_batch_id = @batch.last.id
 
       false
     end
 
     def fetch_page(page = 1, per_page = STANDARD_CONSUMPTION)
-      logger.debug "Searching page #{page} (#{per_page} per page) for unconsumed transactions"
       @batch = @api.transactions.get(params: { per_page: per_page, page: page })
       fail 'No transactions found!' if @batch.length == 0
       @batch.map!(&:transaction)
@@ -101,20 +110,26 @@ module Transactions
     end
 
     def ignore_transaction?(transaction)
-      # We're currently only interested in VMs, but DNS will be consumed in the future too
-      return false if transaction.parent_type == 'VirtualMachine'
+      [
+        # We're currently only interested in VMs, but DNS will be consumed in the future too
+        transaction.parent_type != 'VirtualMachine',
 
-      # It would appear that there is some duplication of transactions when dealing with VMs
-      # created on the Federation. When viewing the transaction logs for a VM in the Control Panel
-      # GUI the 'ReceiveNotificationFromMarket' seem like noise and its more intuitive to view the
-      # various 'StartupVirtualServer', 'ConfigureOperatingSystem', etc. But for the purposes of
-      # syncing the DB here, the 'ReceiveNotificationFromMarket' transactions offer advantages.
-      # Firstly they are slightly more verbose, including the booting, building and locked states.
-      # Secondly these transactions also contain the CPU, disk and network usage stats, so it makes
-      # the code here a bit cleaner if we just completely ignore every other kind of transaction.
-      return false if transaction.action == 'receive_notification_from_market'
+        # It would appear that there is some duplication of transactions when dealing with VMs
+        # created on the Federation. When viewing the transaction logs for a VM in the Control Panel
+        # GUI the 'ReceiveNotificationFromMarket' seem like noise and its more intuitive to view the
+        # various 'StartupVirtualServer', 'ConfigureOperatingSystem', etc. But for the purposes of
+        # syncing the DB here, the 'ReceiveNotificationFromMarket' transactions offer advantages.
+        # Firstly they are slightly more verbose, including the booting, building and locked states.
+        # Secondly these transactions also contain the CPU, disk and network usage stats, so it makes
+        # the code here a bit cleaner if we just completely ignore every other kind of transaction.
+        transaction.action != 'receive_notification_from_market',
 
-      true
+        # There are some market events that don't have much interesting about them
+        [
+          'updated.resources.connect'
+        ].include?(transaction.params.event_type)
+
+      ].any?
     end
 
     # Sort and save any useful data from the transactions log. Typically we'll be finding out about
@@ -129,6 +144,7 @@ module Transactions
     end
 
     def consume(transaction)
+      logger.debug "Consuming transaction #{transaction.id}"
       @consumer.consume(transaction)
     rescue
       # This is bad news. We can't skip a transaction because there's the potential for the state
