@@ -1,0 +1,21 @@
+default_hosts: &default_host
+  hosts:
+    - localhost:27017
+
+production:
+  sessions:
+    default:
+      database: cloudnet_api
+      <<: *default_host
+
+development:
+  sessions:
+    default:
+      database: cloudnet_api_dev
+      <<: *default_host
+
+test:
+  sessions:
+    default:
+      database: cloudnet_api_test
+      <<: *default_host

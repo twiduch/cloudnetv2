@@ -1,0 +1,109 @@
+require 'spec_helper'
+
+describe Transactions do
+  # Run the daemon. Need to run in a thread because it loops forever and killing the thread is the
+  # best way of stopping it.
+  def run_daemon
+    @syncer = Transactions::Sync.new
+    @thread = Thread.new do
+      @syncer.run
+    end
+    @thread.abort_on_exception = true
+    microsleep until @syncer.end_reached
+  end
+
+  def microsleep
+    sleep 0.05
+  end
+
+  # Just to make sure we have already recorded all the HTTP requests we need. Otherwise certain
+  # tests duplicate the recording of HTTP requests, because VCR doesn't replay a request until it
+  # has been recorded.
+  before :all do
+    # Try and reduce the size of the VCR cassette
+    # The size of the page we'd like to consume for the first ever query of the live transactions log
+    @first_consumption = 30
+    # Page size for normal queries
+    @standard_consumption = 2
+
+    syncer = Transactions::Sync.new
+    VCR.use_cassette 'transactions_log' do
+      syncer.fetch_page 1, @first_consumption
+      syncer.filter_batch
+      @first_batch = syncer.batch
+      syncer.fetch_page 1, @standard_consumption
+    end
+    # Because we can't easily dictate what the Onapp API's logs are we just have to work with
+    # whatever VCR records at the time. The only condition is that there's more transactions than
+    # the @standard_consumption per pag. Testing the tests!
+    if @first_batch.length <= @standard_consumption
+      fail 'No transactions found, tests need at least 1 transaction'
+    end
+  end
+
+  around do |example|
+    VCR.use_cassette 'transactions_log' do
+      example.run
+    end
+  end
+
+  before :each do
+    stub_const('Transactions::Sync::FIRST_CONSUMPTION', @first_consumption)
+    stub_const('Transactions::Sync::STANDARD_CONSUMPTION', @standard_consumption)
+    @consumer = instance_double Transactions::Consumer
+    allow(Transactions::Consumer).to receive(:new).and_return(@consumer)
+    allow(@consumer).to receive(:consume)
+  end
+
+  after :each do
+    @thread.kill if @thread
+  end
+
+  it 'should make a note of the latest consumed transaction' do
+    run_daemon
+    latest_id = @first_batch.last.id
+    latest_marker = System.get(:transactions_marker)
+    expect(latest_marker).to eq latest_id
+  end
+
+  it 'should loop, watching for new transactions, then consume if a new transaction appears' do
+    run_daemon
+    expect(@syncer.end_reached)
+
+    # Simulate a new transaction by reverting the marker to an older one
+    newest_transaction = @first_batch.last
+    second_newest_transaction = @first_batch[-2]
+    expect(@consumer).to receive(:consume).exactly(:once).with(newest_transaction)
+    System.set(:transactions_marker, second_newest_transaction.id)
+    microsleep until System.get(:transactions_marker) == newest_transaction.id
+  end
+
+  it 'should dig through multiple pages to find the oldest consumed transaction' do
+    run_daemon
+    expect(@syncer.end_reached)
+
+    # Simulate new transactions by reverting the marker to an older one
+    newest_transaction = @first_batch.last
+    back = @standard_consumption * 2 # at least 2 pages back
+    transaction_in_deep_page = @first_batch[-back]
+    expect(@consumer).to receive(:consume).exactly(back).times
+    System.set(:transactions_marker, transaction_in_deep_page.id)
+    microsleep until System.get(:transactions_marker) == newest_transaction.id
+  end
+
+  describe Transactions::Consumer do
+    it 'should be called the same number of times as there are valid transactions' do
+      calls = @first_batch.length
+      expect(@consumer).to receive(:consume).exactly(calls).times
+      run_daemon
+    end
+
+    it 'should stop the daemon if even a single consumption fails' do
+    end
+  end
+
+  describe Transactions::ConsumerMethods do
+    it 'should consume updated__transaction' do
+    end
+  end
+end
