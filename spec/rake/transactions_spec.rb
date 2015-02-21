@@ -9,7 +9,7 @@ describe Transactions do
       @syncer.run
     end
     @thread.abort_on_exception = true
-    microsleep until @syncer.end_reached
+    microsleep until @syncer.stasis
   end
 
   def microsleep
@@ -29,8 +29,8 @@ describe Transactions do
     syncer = Transactions::Sync.new
     VCR.use_cassette 'transactions_log' do
       syncer.fetch_page 1, @first_consumption
-      syncer.filter_batch
       @first_batch = syncer.batch
+      @first_batch.reject! { |i| syncer.ignore_transaction? i }
       syncer.fetch_page 1, @standard_consumption
     end
     # Because we can't easily dictate what the Onapp API's logs are we just have to work with
@@ -43,7 +43,10 @@ describe Transactions do
 
   around do |example|
     VCR.use_cassette 'transactions_log' do
-      example.run
+      # When dealing with a daemon, it's best to have a safety measure to break out of the loop
+      Timeout.timeout(5) do
+        example.run
+      end
     end
   end
 
@@ -68,7 +71,7 @@ describe Transactions do
 
   it 'should loop, watching for new transactions, then consume if a new transaction appears' do
     run_daemon
-    expect(@syncer.end_reached)
+    expect(@syncer.stasis)
 
     # Simulate a new transaction by reverting the marker to an older one
     newest_transaction = @first_batch.last
@@ -80,13 +83,15 @@ describe Transactions do
 
   it 'should dig through multiple pages to find the oldest consumed transaction' do
     run_daemon
-    expect(@syncer.end_reached)
+    expect(@syncer.stasis)
 
     # Simulate new transactions by reverting the marker to an older one
     newest_transaction = @first_batch.last
     back = @standard_consumption * 2 # at least 2 pages back
     transaction_in_deep_page = @first_batch[-back]
-    expect(@consumer).to receive(:consume).exactly(back).times
+    # `count` is 1 less than `back` because ruby's array[-1] is effectively 1-indexed, not 0-indexed
+    count = back - 1
+    expect(@consumer).to receive(:consume).exactly(count).times
     System.set(:transactions_marker, transaction_in_deep_page.id)
     microsleep until System.get(:transactions_marker) == newest_transaction.id
   end
@@ -99,6 +104,8 @@ describe Transactions do
     end
 
     it 'should stop the daemon if even a single consumption fails' do
+      allow(@consumer).to receive(:consume).and_raise StandardError
+      expect { run_daemon }.to raise_exception
     end
   end
 

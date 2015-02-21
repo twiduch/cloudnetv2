@@ -10,9 +10,12 @@ module Transactions
   class Sync
     include Cloudnet::Logger
 
-    attr_accessor :batch, :end_reached
-
     class EndReached < StandardError; end
+
+    # The current batch of transactions being dealt with. Not guaranteed to be filtered
+    attr_accessor :batch
+    # Whether the daemon has exhausted all the tranasactions it can for now
+    attr_accessor :stasis
 
     # Page size of the first time the transactions log is ever consumed.
     FIRST_CONSUMPTION = 500
@@ -27,21 +30,20 @@ module Transactions
     def initialize
       @api = OnappAPI.admin_connection
       @consumer = Consumer.new
-      @end_reached = false
+      @stasis = false
     end
 
     def run
       # This is a daemon, so loop forever
       loop do
-        begin
-          fetch_batch
-        rescue EndReached
-          @end_reached = true
-          next
-        end
-        @end_reached = false
+        fetch_batch
         iterate
       end
+    end
+
+    # If the previous loop is just doing the same as the current loop then the dameon is in stasis
+    def set_stasis_state
+      @stasis = @marker == @batch.last.id
     end
 
     # Retrieve a batch of transactions to consume
@@ -63,47 +65,44 @@ module Transactions
       # When we find the marker, we consume everything in that page that's new. But we rely on the
       # loop in initialise to carry on looking for any newer pages that we loop through here.
       loop do
-        @previous_batch_id = nil
         fetch_page page
-        break_if_end_reached
-        @previous_batch_id = @batch.last.id if @batch.length > 0
-        # Only keep those transactions with an ID greater than our stored marker
-        @batch.select! { |i| i.id.to_i > @marker }
-        break if @batch.length > 0
+        break if end_reached?
+        @previous_batch_id = @batch.last.id
         page += 1
       end
+      # Only keep those transactions with an ID greater than our stored marker
+      @batch.select! { |i| i.id > @marker }
     end
 
     # Figure out if we've reached as far as we can get in the logs. There are 2 situations in which
     # this could happen, see 1. and 2.
-    # Raises `EndReached` error if it finds that we are at the end. Whilst not strictly an error,
-    # it's good to be explicit as the error bubbles up through *all* the various loops, forcing it
-    # to be dealt with correctly.
-    # Note that `@end_reached` needs to be set as it's in `attr_accessor`.
-    def break_if_end_reached
-      return unless @batch.length > 0 # This happens the first time run loop calls fetch_batch
-
-      # 1. If the loop is in stasis because it can't get beyond the @marker ID.
-      fail EndReached if @batch.first.id.to_i == @marker
+    def end_reached?
+      # 1. If we reach where we last got to.
+      return true if @batch.map(&:id).include? @marker
 
       # 2. Curiously the Onapp API displays the oldest page when you ask for a non-existent page
       # number. So to check that we've reached the end we can see if the last page's first ID
       # is the same as the current page's first ID.
-      fail EndReached if @batch.last.id == @previous_batch_id
+      @previous_batch_id ||= nil
+      return true if @batch.last.id == @previous_batch_id
+
+      false
     end
 
     def fetch_page(page = 1, per_page = STANDARD_CONSUMPTION)
       logger.debug "Searching page #{page} (#{per_page} per page) for unconsumed transactions"
       @batch = @api.transactions.get(params: { per_page: per_page, page: page })
+      fail 'No transactions found!' if @batch.length == 0
       @batch.map!(&:transaction)
-      filter_batch
       # Reversing means that we always consume the oldest first
       @batch.reverse!
+      # Are there new transactions to be consumed?
+      set_stasis_state
     end
 
-    def filter_batch
+    def ignore_transaction?(transaction)
       # We're currently only interested in VMs, but DNS will be consumed in the future too
-      @batch.select! { |i| i.parent_type == 'VirtualMachine' }
+      return false if transaction.parent_type == 'VirtualMachine'
 
       # It would appear that there is some duplication of transactions when dealing with VMs
       # created on the Federation. When viewing the transaction logs for a VM in the Control Panel
@@ -113,24 +112,29 @@ module Transactions
       # Firstly they are slightly more verbose, including the booting, building and locked states.
       # Secondly these transactions also contain the CPU, disk and network usage stats, so it makes
       # the code here a bit cleaner if we just completely ignore every other kind of transaction.
-      @batch.select! { |i| i.action == 'receive_notification_from_market' }
+      return false if transaction.action == 'receive_notification_from_market'
+
+      true
     end
 
     # Sort and save any useful data from the transactions log. Typically we'll be finding out about
     # servers booting, updating, shutting down etc.
     def iterate
       @batch.each do |transaction|
-        begin
-          @consumer.consume(transaction)
-        rescue
-          # This is bad news. We can't skip a transaction because there's the potential for the state
-          # of a resource to become permanently out of sync.
-          logger.error transaction.to_yaml
-          raise
-        end
-        # Keep track of where we've got up to in the transactions log, so we don't re-consume
+        consume transaction unless ignore_transaction? transaction
+        # Keep track of where we've got up to in the transactions log, so we don't re-consume.
+        # Note that we take into account ignored transactions with the marker.
         System.set(:transactions_marker, transaction.id)
       end
+    end
+
+    def consume(transaction)
+      @consumer.consume(transaction)
+    rescue
+      # This is bad news. We can't skip a transaction because there's the potential for the state
+      # of a resource to become permanently out of sync.
+      logger.error transaction.to_yaml
+      raise
     end
   end
 end

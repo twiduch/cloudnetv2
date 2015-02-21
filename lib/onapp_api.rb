@@ -44,6 +44,17 @@ module OnappAPI
     # Get some user's info...
     # `user = github.users('inf0rmer').get`
     def connection(user)
+      Blanket.wrap(
+        ENV['ONAPP_URI'],
+        extension: :json, # Always appends '.json' to the end of the request URL
+        headers: {
+          'Authorization' => "Basic #{auth_sig(user)}"
+        }
+      )
+    end
+
+    # Create the base64 encoded string for the Basic Auth header
+    def auth_sig(user)
       if user.is_a? User
         username = user.email
         password = user.password
@@ -51,14 +62,7 @@ module OnappAPI
         username = ENV['ONAPP_USER']
         password = ENV['ONAPP_PASS']
       end
-      auth = Base64.encode64("#{username}:#{password}").delete("\r\n")
-      Blanket.wrap(
-        ENV['ONAPP_URI'],
-        extension: :json, # Always appends '.json' to the end of the request URL
-        headers: {
-          'Authorization' => "Basic #{auth}"
-        }
-      )
+      Base64.encode64("#{username}:#{password}").delete("\r\n")
     end
 
     # Just a means to make it clear that you're getting and *admin* connection
