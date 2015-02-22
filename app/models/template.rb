@@ -21,6 +21,6 @@ class Template
   field :min_memory_size
   field :min_disk_size
 
-  # Used for licensed Oss like Windows
+  # Used for licensed OSs like Windows
   field :price
 end
