@@ -31,3 +31,8 @@ desc "Migrate Jager's SQL DB to our DB"
 task migrate_from_jager: :boot do
   MigrateFromJager.run
 end
+
+desc 'Query the Federation for the latest available datacentres and templates'
+task update_federation_resources: :boot do
+  UpdateFederationResources.run
+end

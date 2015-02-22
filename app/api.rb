@@ -1,14 +1,16 @@
 # Base Grape class
 class API < Grape::API
-  version :v1
+  version :v1, using: :accept_version_header
   format :json
 
-  helpers {}
+  helpers do
+    def authenticate!(level)
+    end
+  end
 
-  # mount Routes::Datacentre
-  # mount Routes::Server
-  # mount Routes::Template
-  # mount Routes::User
+  mount Routes::Datacentres
+  mount Routes::Servers
+  mount Routes::Users
 
   add_swagger_documentation
 end

@@ -17,3 +17,8 @@ $LOAD_PATH.unshift(Cloudnet.root)
 
 Dir["#{Cloudnet.root}/lib/**/*.rb"].each { |f| require f }
 Dir["#{Cloudnet.root}/app/**/*.rb"].each { |f| require f }
+
+# Seed the DB with the available datacentres. Cloudnet is useless otherwise!
+if Cloudnet.environment != 'test' && Datacentre.all.count == 0
+  UpdateFederationResources.run
+end

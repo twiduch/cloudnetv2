@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'dotenv'
 
+gem 'puma'
 gem 'mongoid'
 gem 'grape'
 gem 'grape-swagger' # Auto-generate API documentation
@@ -10,7 +11,15 @@ gem 'sidekiq'
 gem 'blanket_wrapper', require: 'blanket'
 
 gem 'pry'
+gem 'pry-byebug'
 gem 'rake'
+
+group :development do
+  gem 'guard'
+  gem 'guard-bundler'
+  gem 'guard-puma'
+  gem 'rb-inotify', require: false
+end
 
 group :test do
   gem 'rspec'
@@ -19,6 +28,5 @@ group :test do
   gem 'webmock'
   gem 'vcr'
   gem 'rubocop'
-  gem 'fabrication'
   gem 'codeclimate-test-reporter', require: nil
 end
