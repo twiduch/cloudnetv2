@@ -6,7 +6,7 @@ class UpdateFederationResources
   }
 
   def self.run
-    self.new.run
+    new.run
   end
 
   def initialize

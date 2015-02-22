@@ -11,4 +11,13 @@ class Datacentre
 
   # [lat, long] for the datacentre's position on the planet
   field :coords, type: Array
+
+  def entity
+    Entity.new(self)
+  end
+
+  # How to present the object when requested through the API
+  class Entity < Grape::Entity
+    expose :_id, :label, :coords, :templates
+  end
 end

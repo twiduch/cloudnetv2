@@ -17,7 +17,7 @@ class Template
   # Eg; 'archlinux'
   field :os_distro
 
-  # Minimum resurces required for server to handle the template
+  # Minimum resources required for server to handle the template
   field :min_memory_size
   field :min_disk_size
 

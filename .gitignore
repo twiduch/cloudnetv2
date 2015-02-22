@@ -1,1 +1,6 @@
 .env
+
+.sass-cache
+
+public/js
+public/css

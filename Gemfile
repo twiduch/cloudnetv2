@@ -2,9 +2,11 @@ source 'https://rubygems.org'
 
 gem 'dotenv'
 
+gem 'rack-cors', require: 'rack/cors'
 gem 'puma'
 gem 'mongoid'
 gem 'grape'
+gem 'grape-entity'
 gem 'grape-swagger' # Auto-generate API documentation
 gem 'sidekiq'
 # General purpose API wrapper. Used to communicate with Onapp API
@@ -18,7 +20,10 @@ group :development do
   gem 'guard'
   gem 'guard-bundler'
   gem 'guard-puma'
+  gem 'guard-coffeescript'
+  gem 'guard-sass', require: false
   gem 'rb-inotify', require: false
+  gem 'foreman'
 end
 
 group :test do

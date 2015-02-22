@@ -1,27 +1,10 @@
-# A sample Guardfile
-# More info at https://github.com/guard/guard#readme
+require_relative 'contrib/guard_procfile'
 
 ## Uncomment and set this to only include directories you want to watch
 # directories %w(app lib config test spec features)
 
 ## Uncomment to clear the screen before every task
 # clearing :on
-
-## Guard internally checks for changes in the Guardfile and exits.
-## If you want Guard to automatically start up again, run guard in a
-## shell loop, e.g.:
-##
-##  $ while bundle exec guard; do echo "Restarting Guard..."; done
-##
-## Note: if you are using the `directories` clause above and you are not
-## watching the project directory ('.'), then you will want to move
-## the Guardfile to a watched dir and symlink it back, e.g.
-#
-#  $ mkdir config
-#  $ mv Guardfile config/
-#  $ ln -s config/Guardfile .
-#
-# and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
 guard :bundler do
   require 'guard/bundler'
@@ -35,11 +18,32 @@ guard :bundler do
   files.each { |file| watch(helper.real_path(file)) }
 end
 
-guard 'puma' do
+guard 'procfile_api' do
   watch('Gemfile.lock')
-  watch(%r{^config|lib|app/.*})
+  watch(%r{^(config|lib|app)/.*})
 end
+
+guard 'procfile_frontend'
+
+# guard 'procfile_transaction_daemon'
 
 guard 'bundler' do
   watch('Gemfile')
+end
+
+guard(
+  'sass',
+  input: 'frontend/css',
+  output: 'public/css',
+  all_on_start: true
+)
+
+coffeescript_options = {
+  input: 'frontend/js',
+  output: 'public/js',
+  patterns: [%r{^frontend/js/(.+\.(?:coffee|coffee\.md|litcoffee))$}],
+  all_on_start: true
+}
+guard 'coffeescript', coffeescript_options do
+  coffeescript_options[:patterns].each { |pattern| watch(pattern) }
 end

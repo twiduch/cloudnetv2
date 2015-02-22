@@ -4,7 +4,7 @@ module Routes
     resource :datacentres do
       desc 'List all datacentres'
       get do
-        Datacentre.includes(:templates).map(&:templates)
+        present Datacentre.all
       end
     end
   end
