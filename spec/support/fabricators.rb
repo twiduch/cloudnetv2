@@ -1,0 +1,2 @@
+Fabricator :server do
+end

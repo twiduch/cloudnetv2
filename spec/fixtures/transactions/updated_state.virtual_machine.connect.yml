@@ -1,0 +1,55 @@
+--- !ruby/object:RecursiveOpenStruct
+recurse_over_arrays: true
+table:
+  :action: receive_notification_from_market
+  :actor: trader
+  :allowed_cancel: true
+  :associated_object_id: 3
+  :associated_object_type: VirtualMachine
+  :created_at: '2015-02-19T08:03:43-07:00'
+  :dependent_transaction_id: 126
+  :id: 127
+  :identifier: rga5uro36pezqj
+  :log_output: |+
+    Handling notification `updated_state.virtual_machine.connect` within transaction (127)
+    Received notification about virtual machine being updated
+    Updating virtual machine:
+    built -> true
+    booted -> true
+    Handling of the notification was successful
+
+  :params:
+    resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
+    event_type: updated_state.virtual_machine.connect
+    event_data: &1
+      virtual_machine:
+        built: true
+        booted: true
+        identifier: instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE
+    instance_id: instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE
+    sent_timestamp: 1424358042
+    actor: trader
+    object_class: Federation::Trader::VirtualMachine
+    object_id: 3
+  :parent_id: 3
+  :parent_type: VirtualMachine
+  :pid: 15197
+  :priority: 10
+  :start_after: '2015-02-19T08:03:43-07:00'
+  :started_at: '2015-02-19T08:03:44-07:00'
+  :status: complete
+  :updated_at: '2015-02-19T08:03:44-07:00'
+  :user_id: 1
+sub_elements:
+  :params: !ruby/object:RecursiveOpenStruct
+    recurse_over_arrays: true
+    table:
+      :resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
+      :event_type: updated_state.virtual_machine.connect
+      :event_data: *1
+      :instance_id: instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE
+      :sent_timestamp: 1424358042
+      :actor: trader
+      :object_class: Federation::Trader::VirtualMachine
+      :object_id: 3
+    sub_elements: {}

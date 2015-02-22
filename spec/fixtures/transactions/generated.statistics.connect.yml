@@ -1,0 +1,79 @@
+--- !ruby/object:RecursiveOpenStruct
+recurse_over_arrays: true
+table:
+  :action: receive_notification_from_market
+  :actor: trader
+  :allowed_cancel: true
+  :associated_object_id: 3
+  :associated_object_type: VirtualMachine
+  :created_at: '2015-02-21T16:03:49-07:00'
+  :dependent_transaction_id: 
+  :id: 296
+  :identifier: rga5uro36pezqj
+  :log_output: |+
+    Handling notification `generated.statistics.connect` within transaction (296)
+    Received notification about generated statistics
+    Create disk hourly stat: 111
+    Create disk hourly stat: 112
+    Create cpu hourly stat: 56
+    Create net hourly stat: 56
+    Generating billing statistics for stat time: 2015-02-21 23:00:00 UTC
+    Handling of the notification was successful
+
+  :params:
+    resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
+    event_type: generated.statistics.connect
+    event_data: &1
+      disk_hourly_stats:
+      - data_read: 0
+        data_written: 13296
+        disk_id: 312
+        reads_completed: 0
+        stat_time: '2015-02-21T23:00:00Z'
+        virtual_machine_id: instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE
+        writes_completed: 2319
+      - data_read: 0
+        data_written: 0
+        disk_id: 313
+        reads_completed: 0
+        stat_time: '2015-02-21T23:00:00Z'
+        virtual_machine_id: instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE
+        writes_completed: 0
+      net_hourly_stats:
+      - data_received: 1057
+        data_sent: 1534
+        network_interface_id: 157
+        stat_time: '2015-02-21T23:00:00Z'
+        virtual_machine_id: instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE
+      cpu_hourly_stats:
+      - cpu_time: 0
+        stat_time: '2015-02-21T23:00:00Z'
+        virtual_machine_id: instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE
+      virtual_machine_id: instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE
+    instance_id: instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE
+    sent_timestamp: 1424559624
+    actor: trader
+    object_class: Federation::Trader::VirtualMachine
+    object_id: 3
+  :parent_id: 3
+  :parent_type: VirtualMachine
+  :pid: 15197
+  :priority: 10
+  :start_after: '2015-02-21T16:03:49-07:00'
+  :started_at: '2015-02-21T16:03:49-07:00'
+  :status: complete
+  :updated_at: '2015-02-21T16:03:49-07:00'
+  :user_id: 1
+sub_elements:
+  :params: !ruby/object:RecursiveOpenStruct
+    recurse_over_arrays: true
+    table:
+      :resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
+      :event_type: generated.statistics.connect
+      :event_data: *1
+      :instance_id: instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE
+      :sent_timestamp: 1424559624
+      :actor: trader
+      :object_class: Federation::Trader::VirtualMachine
+      :object_id: 3
+    sub_elements: {}

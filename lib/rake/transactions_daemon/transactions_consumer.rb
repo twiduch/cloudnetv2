@@ -23,16 +23,30 @@ module Transactions
       }
     end
 
+    def resource_present_in_cloudnet?
+      case @transaction.parent_type
+      when 'VirtualMachine'
+        @server = Server.find(@transaction.identifier)
+      end
+    rescue Mongoid::Errors::DocumentNotFound
+      false
+    end
+
     def consume(transaction)
       @transaction = transaction
       event = self.class.event_to_method(@transaction)
+      return unless resource_present_in_cloudnet?
+      call_event_as_method(event)
+    end
+
+    def call_event_as_method(event)
       if known_transaction? event[:method]
         @debug = [event[:raw], @transaction.identifier, @transaction.status]
         send event[:method]
         # The consumer methods can add to @debug
         logger.debug @debug
       else
-        logger.info "Unknown transaction type: #{event[:raw]}"
+        logger.warning "Unknown transaction type: #{event[:raw]}"
       end
     end
   end

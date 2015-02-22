@@ -1,0 +1,74 @@
+--- !ruby/object:RecursiveOpenStruct
+recurse_over_arrays: true
+table:
+  :action: receive_notification_from_market
+  :actor: trader
+  :allowed_cancel: true
+  :associated_object_id: 2
+  :associated_object_type: VirtualMachine
+  :created_at: '2015-02-18T09:51:29-07:00'
+  :dependent_transaction_id: 
+  :id: 60
+  :identifier: pceosb4xh2o3us
+  :log_output: |+
+    Handling notification `created.transaction.connect` within transaction (60)
+    Received notification about created transaction
+    Created a local copy of transaction: destroy_virtual_machine (61)
+    Handling of the notification was successful
+
+  :params:
+    resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
+    event_type: created.transaction.connect
+    event_data: &1
+      transaction:
+        action: destroy_virtual_machine
+        actor: 
+        allowed_cancel: true
+        associated_object_id: 155
+        associated_object_type: VirtualMachine
+        created_at: '2015-02-18T16:51:28Z'
+        dependent_transaction_id: 
+        id: 103802
+        identifier: bcj72wp8kqnlwu
+        log_output: 
+        params:
+          remote_ip: 89.238.158.158
+          user_id: 2
+          destroy_msg: Destroy from API request
+        parent_id: 155
+        parent_type: VirtualMachine
+        pid: 30700
+        priority: 10
+        start_after: '2015-02-18T16:51:28Z'
+        started_at: '2015-02-18T16:51:28Z'
+        status: running
+        updated_at: '2015-02-18T16:51:28Z'
+        user_id: 2
+      identifier: instance:vm:onapp-8kpFZkaKwZinW9O6c1bLlyniXfo
+    instance_id: instance:vm:onapp-8kpFZkaKwZinW9O6c1bLlyniXfo
+    sent_timestamp: 1424278289
+    actor: trader
+    object_class: Federation::Trader::VirtualMachine
+    object_id: 2
+  :parent_id: 2
+  :parent_type: VirtualMachine
+  :pid: 15197
+  :priority: 10
+  :start_after: '2015-02-18T09:51:29-07:00'
+  :started_at: '2015-02-18T09:51:29-07:00'
+  :status: complete
+  :updated_at: '2015-02-18T09:51:29-07:00'
+  :user_id: 1
+sub_elements:
+  :params: !ruby/object:RecursiveOpenStruct
+    recurse_over_arrays: true
+    table:
+      :resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
+      :event_type: created.transaction.connect
+      :event_data: *1
+      :instance_id: instance:vm:onapp-8kpFZkaKwZinW9O6c1bLlyniXfo
+      :sent_timestamp: 1424278289
+      :actor: trader
+      :object_class: Federation::Trader::VirtualMachine
+      :object_id: 2
+    sub_elements: {}

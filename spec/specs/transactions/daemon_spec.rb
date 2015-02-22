@@ -109,6 +109,8 @@ describe Transactions do
       # Reset the mock so it acts as normal
       allow(Transactions::Consumer).to receive(:new).and_call_original
       event = Transactions::Consumer.event_to_method @first_batch.last
+      # Create the associated server, otherwise the daemon will ignore the transaction
+      Fabricate :server, _id: @first_batch.last.identifier
       expect_any_instance_of(Transactions::Consumer).to receive(event[:method]).at_least(:once)
       run_daemon
     end

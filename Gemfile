@@ -19,5 +19,6 @@ group :test do
   gem 'webmock'
   gem 'vcr'
   gem 'rubocop'
+  gem 'fabrication'
   gem 'codeclimate-test-reporter', require: nil
 end
