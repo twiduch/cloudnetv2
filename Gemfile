@@ -20,10 +20,7 @@ group :development do
   gem 'guard'
   gem 'guard-bundler'
   gem 'guard-puma'
-  gem 'guard-coffeescript'
-  gem 'guard-sass', require: false
   gem 'rb-inotify', require: false
-  gem 'foreman'
 end
 
 group :test do

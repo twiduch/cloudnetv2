@@ -30,20 +30,3 @@ guard 'procfile_frontend'
 guard 'bundler' do
   watch('Gemfile')
 end
-
-guard(
-  'sass',
-  input: 'frontend/css',
-  output: 'public/css',
-  all_on_start: true
-)
-
-coffeescript_options = {
-  input: 'frontend/js',
-  output: 'public/js',
-  patterns: [%r{^frontend/js/(.+\.(?:coffee|coffee\.md|litcoffee))$}],
-  all_on_start: true
-}
-guard 'coffeescript', coffeescript_options do
-  coffeescript_options[:patterns].each { |pattern| watch(pattern) }
-end
