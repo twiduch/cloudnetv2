@@ -8,6 +8,16 @@ class API < Grape::API
     end
   end
 
+  desc 'About the API'
+  get '/' do
+    { 'Cloudnet API' => Cloudnet::VERSION }
+  end
+
+  desc 'API version'
+  get '/version' do
+    { 'version' => Cloudnet::VERSION }
+  end
+
   mount Routes::Datacentres
   mount Routes::Servers
   mount Routes::Users
