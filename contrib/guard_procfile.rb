@@ -44,7 +44,7 @@ module Guard
       true
     end
 
-    def run_on_changes
+    def run_on_changes(_arg)
       reload
     end
   end
