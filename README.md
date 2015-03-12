@@ -16,6 +16,10 @@ It follows [Twelve-Factor App](http://12factor.net/) practices. See `Procfile` f
 
 Requires Ruby 2.x, MongoDB and Redis
 
+## Seed data
+To get the currently available datacentres and their OS templates
+`rake update_federation_resources`
+
 # Main components
 
 ## User/Server CRUD
@@ -25,7 +29,7 @@ Cloud.net are reflected on Onapp. Creating a user on Cloud.net must also create 
 Though not the other way around: creating an Onapp user needn't mean an equivalent Cloud.net user
 should exist. The same can be said for Servers and DNS.
 
-However datacentres and templates are created on and retrieved from Onapp, they are not made
+However, datacentres and templates are created on, and retrieved from, Onapp, they are not made
 on Cloud.net. We simply keep a copy locally for caching and the convenience of DB queries.
 
 ## Syncing resource state - Transactions Daemon

@@ -23,8 +23,6 @@ guard 'procfile_api' do
   watch(%r{^(config|lib|app)/.*})
 end
 
-guard 'procfile_frontend'
-
 # guard 'procfile_transaction_daemon'
 
 guard 'bundler' do

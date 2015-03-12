@@ -1,9 +1,7 @@
 .env
+npm-debug.log
 
-.sass-cache
-
-public/js
-public/css
-
-node_modules
-npm-debug.js
+frontend/build
+frontend/node_modules
+frontend/npm-debug.js
+frontend/build
