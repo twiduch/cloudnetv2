@@ -1,9 +1,9 @@
 m = require 'mithril'
-api = require 'api'
+api = require 'lib/api'
 
 class Datacentres
   @all: ->
-    api.req '/datacentres'
+    api.get 'datacentres'
 
 
 module.exports = Datacentres

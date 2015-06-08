@@ -1,4 +1,4 @@
-![Cloud.net logo](https://cloud.net/img/logo.png)
+![Cloud.net logo](https://jager.cloud.net/assets/cloudnet.png)
 
 Cloud.net v2: API and Frontend
 ------------------------------

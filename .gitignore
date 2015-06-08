@@ -1,5 +1,6 @@
 .env
 npm-debug.log
+coverage
 
 frontend/build
 frontend/node_modules

@@ -10,6 +10,10 @@ I18n.enforce_available_locales = false
 
 require_relative './settings'
 
+unless File.exist? Cloudnet.root + '.env'
+  fail 'Preventing boot because of missing .env file'
+end
+
 Mongoid.load!(Cloudnet.root + '/config/mongoid.yml')
 
 # Add the project path to Ruby's library path for easy require()'ing
