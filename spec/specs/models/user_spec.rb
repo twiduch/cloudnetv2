@@ -8,10 +8,7 @@ describe User do
 
     after do
       api = OnappAPI.admin_connection
-      api.delete "users/#{@user.id}"
-      # TODO: Run the exact same deletion request again, to *completely* delete the user.
-      # Currently the OnApp will not honour the second deletion until all the transactions have
-      # completed from the first deletion.
+      api.delete "users/#{@user.id}", body: { force: 1 }
     end
 
     it 'should create an onapp user along with a local cloud.net user', :vcr do

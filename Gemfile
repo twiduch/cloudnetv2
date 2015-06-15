@@ -12,6 +12,11 @@ gem 'sidekiq'
 # General purpose API wrapper. Used to communicate with Onapp API
 gem 'blanket_wrapper', require: 'blanket'
 
+# Only used for Active Admin
+gem 'rails', require: false
+gem 'devise', require: false
+gem 'activeadmin', github: 'Zhomart/active_admin', branch: 'mongoid-old', require: false
+
 gem 'pry'
 gem 'pry-byebug'
 gem 'rake'
