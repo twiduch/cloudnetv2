@@ -5,7 +5,7 @@ gem 'dotenv'
 gem 'rack-cors', require: 'rack/cors'
 gem 'puma'
 gem 'mongoid'
-gem 'grape'
+gem 'grape', github: 'intridea/grape'
 gem 'grape-entity'
 gem 'grape-swagger' # Auto-generate API documentation
 gem 'sidekiq'

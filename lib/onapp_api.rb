@@ -8,12 +8,12 @@ module OnappAPI
   # Map basic CRUD methods
   class OnappAPIConnection
     # `object` An instance of a cloud.net model
-    def intialize(object)
+    def initialize(object)
       # Always create a user-specific connection to the Onapp API. This way we make use of Onapp's
       # user isolation. See: http://onapp.com/cloud/features/security/
       @object = object
       @onapp_resource_name = translate_resource_name(@object.class)
-      @api = OnappAPI.connection(@object.user)
+      @api = OnappAPI.connection(user)
       endpoint
     end
 
@@ -87,6 +87,7 @@ module OnappAPI
     end
   end
 
+  # The magical method that allows things like `server.onapp.post(ram: 100000000000000)`
   def onapp
     OnappAPIConnection.new self
   end

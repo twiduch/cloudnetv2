@@ -21,7 +21,8 @@ describe Transactions do
   # has been recorded.
   before :all do
     # Try and reduce the size of the VCR cassette
-    # The size of the page we'd like to consume for the first ever query of the live transactions log
+    # The size of the page we'd like to consume for the first ever query of the live transactions
+    # log
     @first_consumption = 30
     # Page size for normal queries
     @standard_consumption = 5

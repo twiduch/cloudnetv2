@@ -36,3 +36,19 @@ desc 'Query the Federation for the latest available datacentres and templates'
 task update_federation_resources: :boot do
   UpdateFederationResources.run
 end
+
+desc 'Create the non-privelged OnApp user role that all cloud.net users use to interact with OnApp'
+task create_onapp_role: :boot do
+  role_id = User.create_onapp_role
+  puts "Role created. ID is #{role_id}, set this value to the ONAPP_ROLE key in .env"
+end
+
+desc 'Show the role IDs of the current OnApp user role'
+task show_onapp_role: :boot do
+  response = OnappAPI.admin_connection.get "roles/#{Cloudnet.onapp_cloudnet_role}"
+  list = response.role.permissions.map do |perm|
+    "#{perm['permission']['id']}: " \
+    "(#{perm['permission']['identifier'].upcase}) '#{perm['permission']['label']}'"
+  end
+  puts list.join("\n")
+end

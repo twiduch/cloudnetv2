@@ -3,24 +3,26 @@ require 'vcr'
 # Use the .env file to compile the list of sensitive data that should not be recorded in
 # cassettes
 def sensitive_strings
-  dotenv_path = "#{Cloudnet.root}/.env"
-  # It's not a big deal if there isn't a .env file when playing back cassettes, it's only when
-  # recording that it would be annoying. As you'd get a lot of noise as VCR would think that *all*
-  # the computer's ENV vars were confidential, eg; ENV['HOME'] etc
-  unless File.exist? dotenv_path
-    puts 'Warning: using ENV global instead of `.env` file to populate sensitive credentials.'
-    return ENV
-  end
-  contents = File.read dotenv_path
+  contents = File.read "#{Cloudnet.root}/.env"
   words = contents.split(/\s+/)
+  words = filter_env_keys words
+  # Turn the key/value pairs into an actual hash
+  Hash[words]
+end
+
+def filter_env_keys(words)
   # Only interested in words with an '=' in them
   words.reject! { |w| !w.include? '=' }
   # Create a list of key/value pairs
   words.map! { |w| w.split('=') }
-  # Ignore empty values
-  words.delete_if { |w| w[1].blank? }
-  # Turn the key/value pairs into an actual hash
-  Hash[words]
+  # Ignore empty values and keys marked as safe
+  words.delete_if { |w| w[1].blank? || safe_env_keys.include?(w[0]) }
+end
+
+def safe_env_keys
+  [
+    'ONAPP_CLOUDNET_ROLE'
+  ]
 end
 
 # Because some API requests prepend URIs with http://`user:pass`@domain.com then domain matching
@@ -63,8 +65,26 @@ VCR.configure do |c|
     end
   end
 
+  # When recording a new cassette, we have the opportunity to query the live Onapp API to find out
+  # what version it is. So raise an error if there is a version mismatch.
+  c.before_http_request(:recordable?) do
+    onapp_api_version = OnappAPI.admin_connection.get(
+      :version,
+      # Add a signature to be super specific that it is *only* this request we want VCR to ignore
+      params: { vcr_ignore: true }
+    ).version
+    if onapp_api_version != Cloudnet::ONAPP_API_VERSION
+      fail '`Cloudnet::ONAPP_API_VERSION` must match live Onapp API version being tested.'
+    end
+  end
+
+  # Prevent the above HTTP request to check the OnApp API version from generating a useless cassette
+  c.ignore_request do |request|
+    URI(request.uri).query == 'vcr_ignore=true'
+  end
+
   c.default_cassette_options = {
-    record: :new_episodes,
+    record: :once,
     erb: :true,
     allow_playback_repeats: true
   }

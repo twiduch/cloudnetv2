@@ -14,8 +14,11 @@ RSpec.configure do |c|
   c.expect_with :rspec
   c.color = true
 
-  # Emtpy the DB
   c.before(:each) do
     Mongoid.default_session.drop
+  end
+
+  c.before(:each) do
+    Sidekiq::Worker.clear_all
   end
 end

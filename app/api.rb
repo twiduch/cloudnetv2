@@ -3,8 +3,16 @@ class API < Grape::API
   version :v1, using: :accept_version_header
   format :json
 
+  logger Cloudnet.logger
+
+  rescue_from RuntimeError do |e|
+    # TODO: Manually send to Sentry
+    Cloudnet.logger.error e
+    error! 'Internal Server Error. This has been logged.'
+  end
+
   helpers do
-    def authenticate!(level)
+    def authenticate!(_level)
     end
   end
 
