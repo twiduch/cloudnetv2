@@ -16,7 +16,7 @@ module Transactions
 
     # Convert something like 'updated.transaction.connect' to 'updated__transaction'
     def self.event_to_method(transaction)
-      raw = transaction.params.event_type
+      raw = transaction.params['event_type']
       {
         raw: raw,
         method: raw.gsub('.connect', '').gsub('.', '__')

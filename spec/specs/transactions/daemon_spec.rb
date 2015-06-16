@@ -118,7 +118,7 @@ describe Transactions do
 
     it 'should stop the daemon if even a single consumption fails' do
       allow(@consumer).to receive(:consume).and_raise StandardError
-      expect { run_daemon }.to raise_exception
+      expect { run_daemon }.to raise_exception StandardError
     end
   end
 end

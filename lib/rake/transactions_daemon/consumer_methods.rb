@@ -14,7 +14,7 @@ module Transactions
         resource: :server,
         identifier: @transaction.identifier,
         type: :event,
-        details: @transaction.params.event_data.transaction.action
+        details: @transaction.params['event_data']['transaction']['action']
       )
     end
 
@@ -29,9 +29,9 @@ module Transactions
     # The VM is transitioning between states such as built, booted, etc
     # May provide duplicated info that is more readily provided by other transactions
     def updated_state__virtual_machine
-      vm = @transaction.params.event_data.virtual_machine
-      @server.built = vm.built
-      if vm.booted
+      vm = @transaction.params['event_data']['virtual_machine']
+      @server.built = vm['built']
+      if vm['booted']
         @server.state = :on
         @server.locked = false
       end
@@ -45,7 +45,7 @@ module Transactions
     # Usage stats for CPU, disk and bandwidth
     # TODO: Consider using the :stat_time field to save as the created_at field
     def generated__statistics
-      cleaned_hash = @transaction.params.event_data.to_hash.deep_reject_key! :virtual_machine_id
+      cleaned_hash = @transaction.params['event_data'].to_hash.deep_reject_key! 'virtual_machine_id'
       Transaction.create!(
         resource: :server,
         identifier: @transaction.identifier,

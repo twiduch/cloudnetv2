@@ -65,12 +65,12 @@ describe Transactions::ConsumerMethods do
   it 'should consume <updated.transaction.connect>' do
     consume
     persisted = Transaction.find_by(identifier: @transaction.identifier)
-    expect(persisted.details).to eq @transaction.params.event_data.transaction.action
+    expect(persisted.details).to eq @transaction.params['event_data']['transaction']['action']
   end
 
   it 'should consume <updated_state.virtual_machine.connect>' do
     consume
-    expect(@server.built).to eq @transaction.params.event_data.virtual_machine.built
+    expect(@server.built).to eq @transaction.params['event_data']['virtual_machine']['built']
   end
 
   it 'should consume <build_scheduled.virtual_machine.connect>' do

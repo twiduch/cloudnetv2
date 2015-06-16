@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ModelProxy do
-  let(:user) { Fabricate.create :user }
+  let(:user) { Fabricate.create :user, id: 1 }
 
   # Add a fake method
   class User

@@ -4,8 +4,8 @@ module Transactions
   # A daemon to constantly poll Onapp for new transactions. This enables the synchronisation of
   # Onapp resource (servers, disks, etc) states with cloud.net resource states.
   #
-  # As described in the Onapp docs, "[Transactions] represents all the operations happening in your cloud,
-  # such as VS provisioning, OS configuring, VS start up, operations with disks, and so on."
+  # As described in the Onapp docs, "[Transactions] represents all the operations happening in your
+  # cloud, such as VS provisioning, OS configuring, VS start up, operations with disks, and so on."
   # See: https://docs.onapp.com/display/34API/Transactions
   class Sync
     include Cloudnet::Logger
@@ -120,14 +120,15 @@ module Transactions
         # various 'StartupVirtualServer', 'ConfigureOperatingSystem', etc. But for the purposes of
         # syncing the DB here, the 'ReceiveNotificationFromMarket' transactions offer advantages.
         # Firstly they are slightly more verbose, including the booting, building and locked states.
-        # Secondly these transactions also contain the CPU, disk and network usage stats, so it makes
-        # the code here a bit cleaner if we just completely ignore every other kind of transaction.
+        # Secondly these transactions also contain the CPU, disk and network usage stats, so it
+        # makes the code here a bit cleaner if we just completely ignore every other kind of
+        # transaction.
         transaction.action != 'receive_notification_from_market',
 
         # There are some market events that don't have much interesting about them
         [
           'updated.resources.connect'
-        ].include?(transaction.params.event_type)
+        ].include?(transaction.params['event_type'])
 
       ].any?
     end

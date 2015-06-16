@@ -15,6 +15,7 @@ RSpec.configure do |c|
   c.color = true
 
   c.before(:each) do
+    Mongoid.disconnect_sessions
     Mongoid.default_session.drop
   end
 
