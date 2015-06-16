@@ -21,6 +21,20 @@ module Cloudnet
   ]
 
   class << self
+    def init
+      # Add project root to require's default paths
+      $LOAD_PATH.unshift(root)
+      [
+        'config/initialisers',
+        'lib',
+        'app'
+      ].each { |path| recursive_require path }
+    end
+
+    def recursive_require(path)
+      Dir["#{root}/#{path}/**/*.rb"].each { |f| require f }
+    end
+
     # Alias for ROOT_PATH
     def root
       ROOT_PATH

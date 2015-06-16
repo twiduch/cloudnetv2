@@ -7,14 +7,17 @@ gem 'puma'
 gem 'mongoid'
 gem 'grape', github: 'intridea/grape'
 gem 'grape-entity'
-gem 'grape-swagger' # Auto-generate API documentation
+# Auto-generate API documentation
+gem 'grape-swagger'
 gem 'sidekiq'
 # General purpose API wrapper. Used to communicate with Onapp API
 gem 'blanket_wrapper', require: 'blanket'
+gem 'mail'
 
 # Only used for Active Admin
 gem 'rails', require: false
 gem 'devise', require: false
+# Watch https://github.com/activeadmin/activeadmin/issues/2714
 gem 'activeadmin', github: 'Zhomart/active_admin', branch: 'mongoid-old', require: false
 
 gem 'pry'

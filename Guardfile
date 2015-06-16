@@ -24,7 +24,3 @@ guard 'procfile_api' do
 end
 
 # guard 'procfile_transaction_daemon'
-
-guard 'bundler' do
-  watch('Gemfile')
-end

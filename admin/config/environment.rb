@@ -13,10 +13,7 @@ Kaminari::Hooks.init
 
 # Cloud.net boot
 require_relative '../../config/settings'
-$LOAD_PATH.unshift(Cloudnet.root)
-
-Dir["#{Cloudnet.root}/lib/**/*.rb"].each { |f| require f }
-Dir["#{Cloudnet.root}/app/**/*.rb"].each { |f| require f }
+Cloudnet.init
 
 # Initialize the Rails application.
 Rails.application.initialize!

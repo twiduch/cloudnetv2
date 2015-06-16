@@ -7,7 +7,11 @@ require 'rack/test'
 require 'webmock/rspec'
 require 'sidekiq/testing'
 
-Dir["#{Cloudnet.root}/spec/support/**/*.rb"].each { |f| require f }
+Cloudnet.recursive_require 'spec/support'
+
+Mail.defaults do
+  delivery_method :test
+end
 
 RSpec.configure do |c|
   c.mock_with :rspec
@@ -17,6 +21,7 @@ RSpec.configure do |c|
   c.before(:each) do
     Mongoid.disconnect_sessions
     Mongoid.default_session.drop
+    Mail::TestMailer.deliveries.clear
   end
 
   c.before(:each) do

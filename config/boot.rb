@@ -16,11 +16,7 @@ end
 
 Mongoid.load!(Cloudnet.root + '/config/mongoid.yml')
 
-# Add the project path to Ruby's library path for easy require()'ing
-$LOAD_PATH.unshift(Cloudnet.root)
-
-Dir["#{Cloudnet.root}/lib/**/*.rb"].each { |f| require f }
-Dir["#{Cloudnet.root}/app/**/*.rb"].each { |f| require f }
+Cloudnet.init
 
 # Check for API version mismatch.
 # Version mismatch is checked differently during testing.

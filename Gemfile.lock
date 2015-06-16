@@ -359,6 +359,7 @@ DEPENDENCIES
   guard
   guard-bundler
   guard-puma
+  mail
   mongoid
   pry
   pry-byebug
