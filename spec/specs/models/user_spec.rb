@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe User do
+  let(:user) { Fabricate :user }
+
   describe 'OnApp API interaction' do
     before do
+      # Don't persist the user, just instantiate one
       @user_details = Fabricate.build(:user).attributes
     end
 
@@ -21,6 +24,9 @@ describe User do
         @user = User.find_by @user_details[:email]
         expect(@user.id.class).to be Fixnum
         expect(@user.onapp_api_key.empty?).to be false
+        expect(@user.status).to be :pending
+        expect(@user.encrypted_confirmation_token.empty?).to be false
+        expect(Mail::TestMailer.deliveries.length).to eq 1
       end
     end
   end
@@ -29,5 +35,29 @@ describe User do
     expect do
       User.create_with_synced_onapp_user email: nil
     end.to raise_error Mongoid::Errors::Validations
+  end
+
+  describe 'Confirmation' do
+    it 'should generate a confirmation token that can activate their account' do
+      user.generate_encrypted_confirmation_token
+      confirmed = User.confirm_from_token user.confirmation_token, 'abcd1234'
+      user.reload
+      expect(confirmed).not_to be false
+      expect(user.status).to be :active
+    end
+
+    it 'should not confirm an account with an invalid confirmation token' do
+      confirmed = User.confirm_from_token 'invalid t0k3n', 'abcd1234'
+      user.reload
+      expect(confirmed).to be false
+      expect(user.status).to be :pending
+    end
+
+    it 'should include the confirmation token in the welcome email' do
+      user.generate_encrypted_confirmation_token
+      Email.welcome(user).deliver!
+      email = Mail::TestMailer.deliveries.first
+      expect(email.body.raw_source).to match(/#{user.confirmation_token}/)
+    end
   end
 end

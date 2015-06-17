@@ -49,6 +49,11 @@ module Cloudnet
       ENV['DEBUG'] || false
     end
 
+    # The base domain for the HTTP frontend
+    def hostname
+      ENV['DOMAIN'] || 'localhost'
+    end
+
     def logger
       output = Cloudnet.environment == 'test' ? '/dev/null' : STDOUT
       output = STDOUT if Cloudnet.debug?

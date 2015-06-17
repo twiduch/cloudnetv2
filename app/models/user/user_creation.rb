@@ -5,6 +5,8 @@
 # it harder for malicious users to access the networks of other users.
 # See http://onapp.com/cloud/features/security/ for more info.
 module UserCreation
+  extend ActiveSupport::Concern
+
   USERNAME_SIZE = 10
   PASSWORD_SIZE = 16
 
@@ -13,13 +15,19 @@ module UserCreation
   # Future interaction with the API occurs through their own unique API key.
   def create_onapp_user_and_save
     @api = OnappAPI.admin_connection
+    create_onapp_user
+    generate_encrypted_onapp_api_key
+    generate_encrypted_confirmation_token
+    # Send confirmation email
+    Email.welcome(self).deliver
+  end
+
+  def create_onapp_user
     credentials = generate_onapp_user_credentials
-    response = @api.post(:users, body: credentials).user
-    key = generate_onapp_api_key response.id
+    onapp_user = @api.post(:users, body: credentials).user
     update_attributes!(
-      id: response.id,
-      onapp_api_key: key,
-      status: :active
+      id: onapp_user.id,
+      status: :pending
     )
   end
 
@@ -35,8 +43,9 @@ module UserCreation
     }
   end
 
-  def generate_onapp_api_key(onapp_user_id)
-    @api.post("users/#{onapp_user_id}/make_new_api_key").user.api_key
+  def generate_encrypted_onapp_api_key
+    api_key = @api.post("users/#{id}/make_new_api_key").user.api_key
+    update_attributes! encrypted_onapp_api_key: SymmetricEncryption.encrypt(api_key)
   end
 
   def find_unique_onapp_username
@@ -64,5 +73,33 @@ module UserCreation
     # Fill the rest of the password with random samplings from the all groups
     fill = (0...PASSWORD_SIZE - 4).map { all.sample }
     (required + fill).shuffle.join
+  end
+
+  # Generate a confirmation token for a URL that a user can click to confirm their account
+  def generate_encrypted_confirmation_token
+    token = SecureRandom.hex(10)
+    update_attributes! encrypted_confirmation_token: SymmetricEncryption.encrypt(token)
+  end
+
+  # Unique link which a user receives in their email and clicking it confirms their account
+  def confirmation_url
+    fail 'User already confirmed.' if status == :active
+    "#{Cloudnet.hostname}/auth/confirm?token=#{confirmation_token}"
+  end
+
+  class_methods do
+    # Confirm a user based on confirmation token
+    def confirm_from_token(token, password)
+      encrypted_token = SymmetricEncryption.encrypt token
+      begin
+        user = User.find_by encrypted_confirmation_token: encrypted_token
+        user.password = password # BCrypt's the password
+        user.status = :active
+        user.confirmation_token = nil
+        user.save!
+      rescue Mongoid::Errors::DocumentNotFound
+        false
+      end
+    end
   end
 end

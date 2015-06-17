@@ -4,12 +4,18 @@ gem 'dotenv'
 
 gem 'rack-cors', require: 'rack/cors'
 gem 'puma'
+
 gem 'mongoid'
+gem 'bcrypt'
+gem 'symmetric-encryption'
+
 gem 'grape', github: 'intridea/grape'
 gem 'grape-entity'
 # Auto-generate API documentation
 gem 'grape-swagger'
+
 gem 'sidekiq'
+
 # General purpose API wrapper. Used to communicate with Onapp API
 gem 'blanket_wrapper', require: 'blanket'
 gem 'mail'

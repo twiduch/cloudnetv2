@@ -11,6 +11,11 @@ class API < Grape::API
     error! 'Internal Server Error. This has been logged.'
   end
 
+  rescue_from Mongoid::Errors::Validations do |e|
+    Cloudnet.logger.info e
+    error!({ error: e.document.errors }, 400)
+  end
+
   helpers do
     def authenticate!(_level)
     end
@@ -28,7 +33,7 @@ class API < Grape::API
 
   mount Routes::Datacentres
   mount Routes::Servers
-  mount Routes::Users
+  mount Routes::Auth
 
   add_swagger_documentation
 end
