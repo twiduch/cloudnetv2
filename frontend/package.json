@@ -3,7 +3,7 @@
   "description": "The Global Cloud Hosting Marketplace",
   "repository": "https://github.com/OnApp/cloudnetv2",
   "scripts": {
-    "test": "NODE_PATH=./app/scripts/ ./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine-node -- --coffee --captureExceptions spec"
+    "test": "NODE_PATH=./app/scripts/:./spec ./node_modules/.bin/mocha --opts spec/mocha.opts $(find spec -name '*_spec.coffee')"
   },
   "browserify": {
     "transform": [
@@ -24,6 +24,7 @@
     "browser-sync": "~2.7.1",
     "browserify": "^10.2.0",
     "browserify-shim": "^3.8.6",
+    "chai": "^3.0.0",
     "codeclimate-test-reporter": "0.0.4",
     "coffee-script": "^1.9.2",
     "coffeeify": "~1.1.0",
@@ -42,12 +43,13 @@
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.4",
     "istanbul": "^0.3.14",
-    "jasmine-node": "^1.14.5",
     "lodash": "^3.8.0",
-    "mithril-query": "^0.7.3",
+    "mithril-query": "tombh/mithril-query#use-mock-window-and-ajax",
+    "mocha": "^2.2.5",
     "pretty-hrtime": "~1.0.0",
     "require-dir": "^0.3.0",
     "require-globify": "^1.2.1",
+    "sinon": "^1.15.3",
     "vinyl-source-stream": "~1.1.0",
     "watchify": "^3.2.1"
   }

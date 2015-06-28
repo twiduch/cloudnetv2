@@ -85,5 +85,19 @@ class User
         }
       ).role.id
     end
+
+    # Check the incoming API request headers for a valid authentication credential
+    def authorize(auth_header)
+      type = auth_header.split[0].strip
+      credential = auth_header.split[1].strip
+      case type
+      when 'TOKEN'
+        User.find_by encrypted_login_token: SymmetricEncryption.encrypt(credential)
+      when 'APIKEY'
+        User.find_by encrypted_cloudnet_api_key: SymmetricEncryption.encrypt(credential)
+      else
+        false
+      end
+    end
   end
 end

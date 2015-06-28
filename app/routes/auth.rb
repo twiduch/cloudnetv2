@@ -18,7 +18,11 @@ module Routes
       desc 'Confirm a user with the token received through registration'
       params do
         requires :token, allow_blank: false
-        requires :password, regexp: /^(?=.*\d)(?=.*[a-zA-Z]).{8,20}$/
+        requires(
+          :password,
+          regexp: /^.{8,}$$/,
+          desc: 'Password must be 8 or more characters'
+        )
       end
       put :confirm do
         if User.confirm_from_token params[:token], params[:password]
@@ -37,7 +41,16 @@ module Routes
         user = User.find_by email: params[:email]
         return error!('User is not active', 403) unless user.status == :active
         return error!('Invalid password', 403) unless user.password == params[:password]
-        { token: user.generate_new_login_token }
+        {
+          token: user.generate_new_login_token,
+          user: user
+        }
+      end
+
+      desc 'Verify an existing user based on their token or API key'
+      get :verify do
+        authenticate!
+        { user: current_user }
       end
     end
   end

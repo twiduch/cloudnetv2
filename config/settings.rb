@@ -56,7 +56,6 @@ module Cloudnet
 
     def logger
       output = Cloudnet.environment == 'test' ? '/dev/null' : STDOUT
-      output = STDOUT if Cloudnet.debug?
       @logger ||= ::Logger.new output
     end
 

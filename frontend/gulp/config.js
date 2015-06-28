@@ -1,11 +1,14 @@
 var src = './app';
 var dest = "./build";
+var historyApiFallback = require('connect-history-api-fallback');
 
 module.exports = {
   browserSync: {
     server: {
       // Serve up our build folder
-      baseDir: dest
+      baseDir: dest,
+      // Serve all requests through index.html. Useful for SPA pushState apps
+      middleware: [ historyApiFallback() ]
     }
   },
   sass: {

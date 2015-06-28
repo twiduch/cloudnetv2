@@ -31,7 +31,7 @@ describe API do
 
         expect(last_response.status).to eq 400
         response = JSON.parse(last_response.body)
-        expect(response['error']['email'].first).to match(/is already taken/)
+        expect(response['message']['error']['email'].first).to match(/is already taken/)
       end
 
       it 'should notice invalid params' do
@@ -43,7 +43,7 @@ describe API do
 
         expect(last_response.status).to eq 400
         response = JSON.parse(last_response.body)
-        expect(response['error']).to match(/email is invalid/)
+        expect(response['message']['error'][0]['messages'][0]).to match(/is invalid/)
       end
     end
 

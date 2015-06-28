@@ -8,16 +8,31 @@ class API < Grape::API
   rescue_from RuntimeError do |e|
     # TODO: Manually send to Sentry
     Cloudnet.logger.error e
-    error! 'Internal Server Error. This has been logged.'
+    error!({ message: { error: 'Internal Server Error. This has been logged.' } }, 500)
   end
 
   rescue_from Mongoid::Errors::Validations do |e|
     Cloudnet.logger.info e
-    error!({ error: e.document.errors }, 400)
+    error!({ message: { error: e.document.errors } }, 400)
+  end
+
+  rescue_from Mongoid::Errors::DocumentNotFound do |e|
+    Cloudnet.logger.info e
+    error!({ message: { error: 'Resource not found' } }, 404)
+  end
+
+  rescue_from Grape::Exceptions::ValidationErrors do |e|
+    Cloudnet.logger.info e
+    error!({ message: { error: e } }, 400)
   end
 
   helpers do
-    def authenticate!(_level)
+    def current_user
+      @current_user ||= User.authorize(headers['Authorization'])
+    end
+
+    def authenticate!
+      error!('401 Unauthorized', 401) unless current_user
     end
   end
 
