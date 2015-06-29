@@ -8,16 +8,16 @@ class AJAX
 
   success: (result) ->
     @message 'Connected'
-    Logger.info "AJAX success", result
+    Logger.info 'AJAX success', result
     result
 
   error: (result) ->
     # If auth error, redirect
     if result.status == 401
       # @originalRoute = m.route()
-      Logger.error "Unauthorised AJAX request", result.message.error
+      Logger.error 'Unauthorised AJAX request', result.message.error
       m.route '/login'
-    Logger.error "AJAX error", result.message.error
+    Logger.error 'AJAX error', result.message.error
     result
 
   # Central wrapper around Mithril's request method
@@ -42,9 +42,9 @@ class AJAX
   request: (options) ->
     if typeof options is 'string'
       options = { method: 'GET', url: options }
-    oldConfig = options.config || ->
+    oldConfig = options.config || -> undefined
     options.config = (xhr) =>
-      xhr.setRequestHeader "Authorization", "TOKEN " + @token()
+      xhr.setRequestHeader 'Authorization', 'TOKEN ' + @token()
       oldConfig xhr
 
     @ajax options

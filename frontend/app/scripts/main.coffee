@@ -4,7 +4,7 @@ layout = require 'views/layout/layout'
 Logger = require 'lib/logger'
 api = require 'lib/api'
 
-global.env ||= 'DEV' if document.location.hostname == "localhost"
+global.env ||= 'DEV' if document.location.hostname == 'localhost'
 
 Logger.level = Logger.DEBUG if global.env == 'DEV'
 

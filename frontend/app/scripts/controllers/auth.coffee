@@ -53,7 +53,7 @@ class AuthController extends ApplicationController
     @api.login(@user.email(), @user.password()).then(
       (result) =>
         unless result
-          @form.feedback "There was a problem logging in"
+          @form.feedback 'There was a problem logging in'
         else
           @form.successfullySubmitted true
     )

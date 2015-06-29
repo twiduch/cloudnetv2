@@ -32,7 +32,7 @@ module.exports = (controller, formSettings) ->
           [
             m 'label', input.label
             m "input.#{className}", helpers.extend {
-              oninput: m.withAttr("value", input.setter),
+              oninput: m.withAttr('value', input.setter),
             }, input?.attributes
           ]
         if controller.form.submissionInProgress()
