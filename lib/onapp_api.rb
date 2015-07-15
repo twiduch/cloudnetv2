@@ -1,3 +1,6 @@
+require 'httparty'
+require 'blanket'
+
 # Adds some syntactic sugar to models, so that you can interact with cloud.net's representation
 # of the object on Onapp. Eg;
 # `user = User.find 1`

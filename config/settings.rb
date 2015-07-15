@@ -22,17 +22,25 @@ module Cloudnet
 
   class << self
     def init
-      # Add project root to require's default paths
+      add_requirable_paths
+      check_version
+      ensure_db_seeded
+      log_active_sidekiq_ps
+      log_time_since_last_transactions_sync
+    end
+
+    def recursive_require(path)
+      Dir["#{root}/#{path}/**/*.rb"].each { |f| require f }
+    end
+
+    # So you can just use `require 'project/file'`
+    def add_requirable_paths
       $LOAD_PATH.unshift(root)
       [
         'config/initialisers',
         'lib',
         'app'
       ].each { |path| recursive_require path }
-    end
-
-    def recursive_require(path)
-      Dir["#{root}/#{path}/**/*.rb"].each { |f| require f }
     end
 
     # Alias for ROOT_PATH
@@ -65,6 +73,43 @@ module Cloudnet
       role = ENV['ONAPP_CLOUDNET_ROLE']
       fail "Invalid OnApp role ID: #{role}" if role.nil? || (role.to_i < 1)
       role
+    end
+
+    # Check for API version mismatch.
+    def check_version
+      # Version mismatch is checked differently during testing.
+      return if Cloudnet.environment == 'test'
+      Cloudnet.logger.info 'Checking OnApp version...'
+      onapp_api_version = OnappAPI.admin_connection.get(:version).version
+      return if onapp_api_version == Cloudnet::ONAPP_API_VERSION
+      Cloudnet.logger.warn "OnApp API version (#{onapp_api_version}) differs from version that " \
+                           "cloud.net is tested against (#{Cloudnet::ONAPP_API_VERSION})"
+    end
+
+    # Ensure DB is seeded/updated with the available datacentres. Cloudnet is useless otherwise!
+    def ensure_db_seeded
+      return unless Cloudnet.environment != 'test' && Datacentre.all.count == 0
+      UpdateFederationResources.run
+    end
+
+    def log_active_sidekiq_ps
+      ps = Sidekiq::ProcessSet.new
+      logger.info "#{ps.size} active Sidekiq process(es)"
+    end
+
+    def time_since_last_transactions_sync
+      last_sync = System.get(:transactions_last_sync_attempt)
+      return :never_synced if last_sync == ''
+      Time.now.to_i - last_sync.to_i
+    end
+
+    def log_time_since_last_transactions_sync
+      seconds = time_since_last_transactions_sync
+      if seconds
+        logger.info "#{seconds} seconds since last transaction sync"
+      else
+        logger.warn 'The Transactions Daemon has never been run'
+      end
     end
   end
 

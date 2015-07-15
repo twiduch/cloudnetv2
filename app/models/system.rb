@@ -12,12 +12,12 @@ class System
   validates_presence_of :key, :value
   validates_uniqueness_of :key
 
-  def self.get(key)
+  def self.get(key, default: '')
     key = key.to_s
     find_by(key: key).value
   rescue Mongoid::Errors::DocumentNotFound
     # See if setting is in DEFAULTS otherwise return ''
-    DEFAULTS.fetch key, ''
+    DEFAULTS.fetch key, default
   end
 
   def self.set(key, value)

@@ -1,3 +1,4 @@
+require 'bcrypt'
 require 'app/models/user/user_creation'
 
 # A cloud.net user. Should map and sync to an Onapp user

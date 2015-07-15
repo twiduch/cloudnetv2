@@ -1,3 +1,4 @@
+require 'rack/cors'
 require_relative 'config/boot'
 
 use Rack::Cors do

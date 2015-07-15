@@ -1,10 +1,10 @@
 require_relative 'transactions_consumer'
 
 module Transactions
-  # A daemon to constantly poll Onapp for new transactions. This enables the synchronisation of
-  # Onapp resource (servers, disks, etc) states with cloud.net resource states.
+  # A daemon to constantly poll OnApp for new transactions. This enables the synchronisation of
+  # OnApp resource (servers, disks, etc) states with cloud.net resource states.
   #
-  # As described in the Onapp docs, "[Transactions] represents all the operations happening in your
+  # As described in the OnApp docs, "[Transactions] represents all the operations happening in your
   # cloud, such as VS provisioning, OS configuring, VS start up, operations with disks, and so on."
   # See: https://docs.onapp.com/display/34API/Transactions
   class Sync
@@ -20,7 +20,7 @@ module Transactions
     # Page size of the first time the transactions log is ever consumed.
     FIRST_CONSUMPTION = 500
     # Page size normally. say if the daemon loops every second, there's likely not going to be
-    # many new transactions, so need to fetch too many.
+    # many new transactions, so no need to fetch too many.
     STANDARD_CONSUMPTION = 100
 
     def self.run
@@ -43,10 +43,18 @@ module Transactions
       @stasis = @marker == @batch.last.id
     end
 
-    # Retrieve a batch of transactions to consume
-    def fetch_batch
+    # Things to be done before fetching a batch of transactions
+    def pre_fetch_chores
       @batch = []
       @marker = System.get(:transactions_marker).to_i
+      # Note each attempt to sync so we can have some idea of whether the daemon is up and
+      # running.
+      System.set(:transactions_last_sync_attempt, Time.now)
+    end
+
+    # Retrieve a batch of transactions to consume
+    def fetch_batch
+      pre_fetch_chores
       if @marker == 0
         # This is the FIRST EVER consumption of the logs!
         # Gotta start somewhere so might as well go back as far as we sensibly can
@@ -89,7 +97,7 @@ module Transactions
       # 1. If we reach where we last got to.
       return true if @batch.map(&:id).include? @marker
 
-      # 2. Curiously the Onapp API displays the oldest page when you ask for a non-existent page
+      # 2. Curiously the OnApp API displays the oldest page when you ask for a non-existent page
       # number. So to check that we've reached the end we can see if the last page's first ID
       # is the same as the current page's first ID.
       @previous_batch_id ||= nil

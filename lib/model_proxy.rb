@@ -11,6 +11,8 @@ module ModelProxy
 
   # Just a clean class within which we can safely use `method_missing`
   class WorkerManager
+    include Cloudnet::Logger
+
     def initialize(model_instance)
       @instance = model_instance
     end
@@ -39,11 +41,16 @@ module ModelProxy
         # to its ID and the worker can load it itself.
         identifier = @instance.id
       end
+
       ModelWorker.perform_async @instance.class, identifier, method, *args, &block
+
+      return if Cloudnet.environment == 'test'
+      ps = Sidekiq::ProcessSet.new
+      loggger.warn 'Job queued without any active Sidekiq processes running' if ps.size == 0
     end
   end
 
-  # The actual Sidekiq invocation. Which will likely run a completely different server somewhere!
+  # The actual Sidekiq invocation. Which will likely run on a completely different server somewhere!
   # Here we run exactly the same call made in the model instance, except without the `.worker()`
   # part. So that something like; `instance.worker.long_running_thing(1, 2, 3)`,  becomes;
   # `instance.long_running_thing(1, 2, 3)`.

@@ -38,7 +38,15 @@ class API < Grape::API
 
   desc 'About the API'
   get '/' do
-    { 'Cloudnet API' => Cloudnet::VERSION }
+    {
+      'Cloudnet API' => Cloudnet::VERSION,
+      status: {
+        worker: { processes: Sidekiq::ProcessSet.new.size },
+        transactions_daemon: {
+          time_since_last_sync: Cloudnet.time_since_last_transactions_sync
+        }
+      }
+    }
   end
 
   desc 'API version'

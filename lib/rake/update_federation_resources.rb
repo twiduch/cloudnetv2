@@ -1,5 +1,7 @@
 # Fetch the available datacentres and templates currently on the Federation
 class UpdateFederationResources
+  include Cloudnet::Logger
+
   # GP coords [lat, long] for
   COORDS_FOR_DATACENTRES = {
     'Cloud.net Budget US Dallas Zone' => [32.7767, 96.7970]
@@ -14,6 +16,7 @@ class UpdateFederationResources
   end
 
   def run
+    logger.info 'Running update to get meta data from datacentres'
     @store = @api.template_store.get
     loop_through_datacentres
   end
@@ -50,6 +53,7 @@ class UpdateFederationResources
     ).upsert
   end
 
+  # rubocop:disable Metrics/MethodLength
   def upsert_template(template, datacentre)
     details = template['image_template']
     Template.new(
