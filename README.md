@@ -24,17 +24,17 @@ To get the currently available datacentres and their OS templates
 
 ## User/Server CRUD
 
-Cloud.net is essentially an aesthetic wrapper around the Onapp API, so most of the entities in
-Cloud.net are reflected on Onapp. Creating a user on Cloud.net must also create a user on Onapp.
-Though not the other way around: creating an Onapp user needn't mean an equivalent Cloud.net user
+Cloud.net is essentially an aesthetic wrapper around the OnApp API, so most of the entities in
+Cloud.net are reflected on OnApp. Creating a user on Cloud.net must also create a user on OnApp.
+Though not the other way around: creating an OnApp user needn't mean an equivalent Cloud.net user
 should exist. The same can be said for Servers and DNS.
 
-However, datacentres and templates are created on, and retrieved from, Onapp, they are not made
+However, datacentres and templates are created on, and retrieved from, OnApp, they are not made
 on Cloud.net. We simply keep a copy locally for caching and the convenience of DB queries.
 
 ## Syncing resource state - Transactions Daemon
 
-As far as possible Cloud.net keeps in sync with the state of Onapp resources through the transaction
+As far as possible Cloud.net keeps in sync with the state of OnApp resources through the transaction
 log. Any failure in the Transaction Sync daemon stops the daemon. When this happens server states
 and usages will not be updated.
 
@@ -51,9 +51,58 @@ It has its own test suite.
 
 # Glossary
 
-  * 'Onapp': The company behind the Onapp Hypervisor software
-  * 'Federation': Onapp's hub through which individual installations of Onapp can harness resources
-    from other datacentres that have Onapp installed
+  * 'OnApp': The company behind the OnApp Hypervisor software
+  * 'Federation': OnApp's hub through which individual installations of OnApp can harness resources
+    from other datacentres that have OnApp installed
+
+# Architecture
+
+## Federation
+
+```
++--------------+      +----------------+                      
+| DC in Europe |      | DC in Asia     |                      
++------+-------+      +------+---------+                      
+       |                     |                                
+       |                     |                                
+       |               +----------+        +-----------------+
+       +---------------|FEDERATION|--------+ DC in Australia |
+                       +----------+        +-----------------+
++------------------+      |    |                               
+| DC in N. America +------+    |                               
++------------------+           |      +-----------------+      
+                               |      | Dedicated OnApp |      
+                               +------+   Installtion   |      
+                                      |  (without DC)   |      
+                                      +--------+--------+      
+                                               |               
+                                               |               
+                                          +----+----+          
+                                          |cloud.net|          
+                                          +---------+          
+```
+
+Where "DC" is a datacentre with OnApp installed.
+
+## Cloud.net
+
+```
++-----------+                              
+|Transaction|     +--------+       +------+
+|   Sync    +-----+Database+-------+Worker|
+|  Daemon   |     +---+----+       |Queue |
++-----------+         |            +------+
+                      |                    
+                      |                    
+               +------+-----+              
+         +-----+API Endpoint+-----+        
+         |     +------------+     |        
+         |                        |        
+         |                        |        
+    +----+------+            +----+----+   
+    |Frontend UI|            |Admin UI |   
+    +-----------+            +---------+   
+```
 
 # Contributing
 
@@ -61,4 +110,4 @@ TBC
 
 # License
 
-TBC
+Apache v2.0
