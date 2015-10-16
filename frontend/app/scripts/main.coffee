@@ -8,6 +8,7 @@ global.env ||= 'DEV' if document.location.hostname == 'localhost'
 
 Logger.level = Logger.DEBUG if global.env == 'DEV'
 
+
 # Convert something like { a: {b: 'value'}} to {'a/b': 'value'}
 # Provides compatibility with the `require-globify` syntax
 deepHashToSlashes = (hash, newHash, newKeyParts) ->
@@ -54,8 +55,11 @@ route = (name) ->
 
 api.verifyToken()
 
+# Kind of a hacky way to provide the ability of programatically loading a route during testing
+defaultRoute = global.windowPath || '/'
+
 m.route.mode = 'pathname'
-m.route(document.body, '/', {
+m.route(document.body, defaultRoute, {
   '/': route('front'),
   '/dashboard': route('dashboard'),
   '/auth/register': route('auth/register'),

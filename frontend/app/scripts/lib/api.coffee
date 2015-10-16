@@ -31,7 +31,6 @@ class API
     @currentUser false
     m.route '/'
 
-  # Ensure token is valid
   verifyToken: ->
     if localStorage.token
       @get('/auth/verify').then @setUser.bind(this)

@@ -17,7 +17,7 @@ module.exports = (controller, formSettings) ->
         e.preventDefault()
         controller.form.feedback ''
         controller.form.submissionInProgress true
-        # It's assumed that formSettings.submit involves AJAX. In which redraw is blocked
+        # It's assumed that formSettings.submit involves AJAX. In which case redraw is blocked
         # until completion, so force a redraw now.
         m.redraw()
         formSettings.submit.bind(controller)(e).then ->
@@ -44,6 +44,6 @@ module.exports = (controller, formSettings) ->
 
     # Feedback of success or validation errors
     if controller.form.feedback()
-      m 'p', controller.form.feedback()
+      m 'p.form-feedback', controller.form.feedback()
 
   ]

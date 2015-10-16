@@ -1,4 +1,5 @@
 m = require 'mithril'
+jsdom = require 'jsdom'
 
 module.exports = (content) ->
   (controller) ->

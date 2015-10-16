@@ -1,3 +1,7 @@
+require 'app/routes/auth'
+require 'app/routes/datacentre'
+require 'app/routes/server'
+
 # Base Grape class
 class API < Grape::API
   version :v1, using: :accept_version_header

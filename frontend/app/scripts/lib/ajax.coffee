@@ -35,7 +35,6 @@ class AJAX
         error: "Server Error: #{xhr.status} #{xhr.statusText} (#{res})"
       }
       { message: message }
-
     m.request(options).then(@success.bind(this), @error)
 
   # Make an authenticated request

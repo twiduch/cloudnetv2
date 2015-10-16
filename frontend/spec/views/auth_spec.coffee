@@ -1,78 +1,64 @@
-dom = require 'view_helper'
-api = require 'lib/api'
+dom = require 'dom_helper'
 
 describe 'Auth views', ->
 
   # TODO: test for validation
 
-  beforeEach ->
-    sandbox.spy(api, 'request')
+  it 'should register a user', (done) ->
+    dom.load '/auth/register', ->
+      $('.fullname-input').val 'Tester'
+      $('.email-input').val 'test@email.com'
+      $('.login-form').submit()
+      dom.xhrResponseFor '/auth/register', {
+        json: {
+          message: 'success'
+        }
+      }
+      expect($('.form-feedback').text()).to.eq 'Thanks for registering. An email will be sent shortly.'
+      done()
 
-  it 'should register a user', ->
-    dom.gotoPath '/auth/register'
-    dom.setValue('.fullname-input', 'Tester')
-    dom.setValue('.email-input', 'test@email.com')
-    dom.submit('.login-form')
-    dom.ajaxStub({
-      message: true
-    })
-    expect(
-      api.request.calledWith(
-        'POST',
-        '/auth/register',
-        { full_name: 'Tester', email: 'test@email.com' }
-      )
-    ).to.be.ok
-    dom.should.contain 'Thanks for registering'
-
-  it 'should confirm a user', ->
-    dom.gotoPath '/auth/confirm?token=123'
-    dom.setValue('.password-input', 'pass123')
-    dom.setValue('.passwordconfirm-input', 'pass123')
-    dom.submit('.login-form')
-    dom.ajaxStub({
-      message: true
-    })
-    expect(
-      api.request.calledWith(
-        'PUT',
-        '/auth/confirm',
-        { token: '123', password: 'pass123' }
-      )
-    ).to.be.ok
-    dom.should.contain 'Your account has been confirmed'
+  it 'should confirm a user', (done) ->
+    dom.load '/auth/confirm', ->
+      $('.password-input').val 'pass123'
+      $('.passwordconfirm-input').val 'pass123'
+      $('.login-form').submit()
+      dom.xhrResponseFor '/auth/confirm', {
+        json: {
+          message: 'success'
+        }
+      }
+      expect($('.form-feedback').text()).to.eq 'Your account has been confirmed, please login'
+      done()
 
   describe 'Logging in', ->
-    it 'should login a user with the correct credentials', ->
-      dom.gotoPath '/auth/login'
-      dom.setValue('.email-input', 'test@email.com')
-      dom.setValue('.password-input', 'pass123')
-      dom.submit('.login-form')
-      dom.ajaxStub({
-        token: 'token123'
-      })
-      expect(
-        api.request.calledWith(
-          'GET',
-          '/auth/token',
-          { email: 'test@email.com', password: 'pass123' }
-        )
-      ).to.be.ok
-      expect(localStorage.token).to.eq 'token123'
-      expect(window.location.pathname).to.eq '/dashboard'
-      dom.should.contain 'Dashboard'
 
-    it 'should not login a user with incorrect credentials', ->
-      dom.gotoPath '/auth/login'
-      dom.setValue('.password-input', 'pass123')
-      dom.setValue('.email-input', 'test@email.com')
-      dom.submit('.login-form')
-      dom.ajaxStub({
-        message: {
-          error: true
+    before ->
+      @m = require 'mithril'
+
+    it 'should login a user with the correct credentials', (done) ->
+      dom.load '/auth/login', =>
+        $('.email-input').val 'test@email.com'
+        $('.password-input').val 'pass123'
+        $('.login-form').submit()
+        dom.xhrResponseFor '/auth/token', {
+          json: {
+            token: 'token123'
+          }
         }
-      })
-      expect(localStorage.token).to.not.eq 'token123'
-      expect(window.location.pathname).to.eq '/auth/login'
-      dom.should.contain 'problem'
-      dom.should.not.contain 'Dashboard'
+        expect(localStorage.token).to.eq 'token123'
+        expect(@m.route()).to.eq '/dashboard'
+        done()
+
+    it 'should not login a user with incorrect credentials', (done) ->
+      dom.load '/auth/login', =>
+        $('.email-input').val 'test@email.com'
+        $('.password-input').val 'pass123'
+        $('.login-form').submit()
+        dom.xhrResponseFor '/auth/token', {
+          json: {
+            error: 'bad'
+          }
+        }
+        expect(localStorage.token).to.not.eq 'token123'
+        expect(@m.route()).to.eq '/auth/login'
+        done()

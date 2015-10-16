@@ -47,7 +47,11 @@ TBC
 The frontend is completely decoupled from the API. It is pure JS and can, or perhaps should, be
 hosted on a CDN.
 
-It has its own test suite.
+Install with `npm install`
+
+Run in development with: `.node_modules/.bin/gulp`
+
+It has its own test suite: `npm test`
 
 # Glossary
 
