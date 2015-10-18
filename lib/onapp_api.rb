@@ -4,30 +4,36 @@ require 'blanket'
 # Adds some syntactic sugar to models, so that you can interact with cloud.net's representation
 # of the object on Onapp. Eg;
 # `user = User.find 1`
-# `u.onapp.show`
-# Will query the Onapp API for the user whose cloud.net ID is 1 (even though their Onapp ID will
-# be different)
+# `u.onapp.get`
 module OnappAPI
   # Map basic CRUD methods
   class OnappAPIConnection
+    attr_reader :api
+
     # `object` An instance of a cloud.net model
     def initialize(object)
       # Always create a user-specific connection to the Onapp API. This way we make use of Onapp's
       # user isolation. See: http://onapp.com/cloud/features/security/
       @object = object
-      @onapp_resource_name = translate_resource_name(@object.class)
-      @api = OnappAPI.connection(user)
-      endpoint
+      @onapp_resource_name = translate_resource_name(object.class.to_s)
+      @api = OnappAPI.connection(object.user)
+      @api = endpoint
     end
 
     private
 
     # Represents the API call's base URL. Eg; `https://api.onapp.com/user/123`
     def endpoint
-      if new_record?
+      if @object.new_record?
         @api.send(@onapp_resource_name)
       else
-        @api.send(@onapp_resource_name, @object.onapp_identifier)
+        # Not all onapp models can use the OnApp ID as the primary key, eg; servers
+        if @object.respond_to? :onapp_identifier
+          onapp_id = @object.onapp_identifier
+        else
+          onapp_id = @object.id
+        end
+        @api.send(@onapp_resource_name, onapp_id)
       end
     end
 
@@ -92,6 +98,6 @@ module OnappAPI
 
   # The magical method that allows things like `server.onapp.post(ram: 100000000000000)`
   def onapp
-    OnappAPIConnection.new self
+    OnappAPIConnection.new(self).api
   end
 end
