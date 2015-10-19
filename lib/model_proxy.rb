@@ -4,7 +4,7 @@
 # We take advantage of the fact that it is easy to instantiate a basic model instance with eg;
 # `instance = ModelName.find instance.id`. This means that the instance can be easily serialised
 # and sent to the worker process.
-module ModelProxy
+module ModelWorkerSugar
   def worker
     WorkerManager.new self
   end
@@ -31,22 +31,22 @@ module ModelProxy
 
     # Serialise and send the requested method to the Sidekiq queue
     def send_to_worker(method, *args, &block)
-      if @instance.new_record?
+      if @instance.persisted?
+        # When the instance already exists in the DB all we need to do to reference it is point
+        # to its ID and the worker can load it itself.
+        identifier = @instance.id.to_s
+      else
         # If the the instance hasn't yet been persisted to the DB then the worker will not be
         # able to load the instances attributes from the DB. In which we just serialise them as a
         # hash and send them directly over the wire to the worker queue ourselves.
         identifier = @instance.attributes
-      else
-        # When the instance already exists in the DB all we need to do to reference it is point
-        # to its ID and the worker can load it itself.
-        identifier = @instance.id
       end
 
       ModelWorker.perform_async @instance.class, identifier, method, *args, &block
 
       return if Cloudnet.environment == 'test'
       ps = Sidekiq::ProcessSet.new
-      loggger.warn 'Job queued without any active Sidekiq processes running' if ps.size == 0
+      logger.warn 'Job queued without any active Sidekiq processes running' if ps.size == 0
     end
   end
 

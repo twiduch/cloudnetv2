@@ -16,18 +16,16 @@ describe User do
 
     it 'should create an onapp user along with a local cloud.net user', :vcr do
       expect(@user_details).not_to have_key :id
-      expect(@user_details).not_to have_key :onapp_api_key
-      Sidekiq::Testing.inline! do
-        expect(User.count).to eq 0
-        User.create_with_synced_onapp_user @user_details
-        expect(User.count).to eq 1
-        @user = User.find_by @user_details[:email]
-        expect(@user.id.class).to be Fixnum
-        expect(@user.onapp_api_key.empty?).to be false
-        expect(@user.status).to be :pending
-        expect(@user.encrypted_confirmation_token.empty?).to be false
-        expect(Mail::TestMailer.deliveries.length).to eq 1
-      end
+      expect(User.count).to eq 0
+      User.create_with_synced_onapp_user @user_details
+      expect(User.count).to eq 1
+      @user = User.find_by @user_details[:email]
+      expect(@user.id.class).to be Fixnum
+      expect(@user.onapp_username.empty?).to be false
+      expect(@user.encrypted_onapp_password.empty?).to be false
+      expect(@user.status).to be :pending
+      expect(@user.encrypted_confirmation_token.empty?).to be false
+      expect(Mail::TestMailer.deliveries.length).to eq 1
     end
   end
 
@@ -39,7 +37,7 @@ describe User do
 
   describe 'Confirmation' do
     it 'should generate a confirmation token that can activate their account' do
-      user.generate_encrypted_confirmation_token
+      user.generate_token_for :confirmation_token
       confirmed = User.confirm_from_token user.confirmation_token, 'abcd1234'
       user.reload
       expect(confirmed).not_to be false
@@ -54,7 +52,7 @@ describe User do
     end
 
     it 'should include the confirmation token in the welcome email' do
-      user.generate_encrypted_confirmation_token
+      user.generate_token_for :confirmation_token
       Email.welcome(user).deliver!
       email = Mail::TestMailer.deliveries.first
       expect(email.body.raw_source).to match(/#{user.confirmation_token}/)

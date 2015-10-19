@@ -8,7 +8,20 @@ module Routes
 
       desc 'List all servers'
       get do
-        Server.all
+        current_user.servers
+      end
+
+      desc 'Create a server'
+      params do
+        requires :template, type: Integer, desc: "ID of template taken from 'GET /templates'"
+        optional :name, type: String, desc: 'Human-readable name for server'
+        optional :hostname, type: String, desc: 'OS-compatible hostname'
+        optional :memory, type: Integer, desc: 'Amount of memory in MBs'
+        optional :disk_size, type: Integer, desc: 'Size of primary disk in GBs'
+      end
+      post do
+        server = current_user.create_server params
+        present server, with: ServerRepresenter
       end
     end
   end

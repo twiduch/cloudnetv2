@@ -21,7 +21,7 @@ describe API do
         response = JSON.parse(last_response.body)
         expect(
           response['status']['worker']['processes']
-        ).to eq 0
+        ).to eq Sidekiq::ProcessSet.new.size
         expect(
           response['status']['transactions_daemon']['time_since_last_sync']
         ).to eq 10

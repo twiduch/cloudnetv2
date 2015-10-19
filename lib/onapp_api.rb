@@ -71,8 +71,8 @@ module OnappAPI
     # Create the base64 encoded string for the Basic Auth header
     def auth_sig(user)
       if user.is_a? User
-        username = user.email
-        password = user.password
+        username = user.onapp_username
+        password = user.onapp_password
       elsif user == :admin
         username = API_USER
         password = API_PASS
@@ -80,7 +80,7 @@ module OnappAPI
       Base64.encode64("#{username}:#{password}").delete("\r\n")
     end
 
-    # Just a means to make it clear that you're getting and *admin* connection
+    # Just a means to make it clear that you're getting an *admin* connection
     def admin_connection
       connection(:admin)
     end

@@ -4,7 +4,7 @@ require 'webmock/rspec'
 describe OnappAPI do
   before do
     VCR.turn_off!
-    # Annoying that VCR.turn_off! doesn't turn off this request from the config
+    # Annoying that VCR.turn_off! doesn't turn off this request from the config...
     stub_request(
       :get, /version.json/
     ).to_return(status: 200, body: '{"version": "' + Cloudnet::ONAPP_API_VERSION + '"}')
@@ -20,7 +20,7 @@ describe OnappAPI do
     stub_request(:post, /virtual_machines/)
     server.onapp.post
     regex = Regexp.new(
-      "https://#{CGI.escape(server.user.email)}:.*@#{@host}/virtual_machines.json"
+      "https://#{CGI.escape(server.user.onapp_username)}:.*@#{@host}/virtual_machines.json"
     )
     expect(
       a_request(:post, regex)

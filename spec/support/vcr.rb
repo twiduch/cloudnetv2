@@ -33,16 +33,6 @@ rescue
   string
 end
 
-RSpec.configure do |c|
-  c.before(:example, :vcr) do
-    # Run Sidekiq tests straight away without queuing on Redis
-    Sidekiq::Testing.inline!
-  end
-  c.after(:example, :vcr) do
-    Sidekiq::Testing.fake!
-  end
-end
-
 VCR.configure do |c|
   c.hook_into :webmock
   c.cassette_library_dir = 'spec/fixtures/cassettes'
@@ -86,6 +76,7 @@ VCR.configure do |c|
   c.default_cassette_options = {
     record: :once,
     erb: :true,
-    allow_playback_repeats: true
+    allow_playback_repeats: true,
+    match_requests_on: [:method, :path]
   }
 end

@@ -16,8 +16,8 @@ module UserCreation
   def create_onapp_user_and_save
     @api = OnappAPI.admin_connection
     create_onapp_user
-    generate_encrypted_onapp_api_key
-    generate_encrypted_confirmation_token
+    generate_token_for :confirmation_token
+    generate_token_for :cloudnet_api_key
     # Send confirmation email
     Email.welcome(self).deliver
   end
@@ -27,6 +27,8 @@ module UserCreation
     onapp_user = @api.post(:users, body: credentials).user
     update_attributes!(
       id: onapp_user.id,
+      onapp_password: credentials[:user][:password],
+      onapp_username: credentials[:user][:login],
       status: :pending
     )
   end
@@ -43,14 +45,9 @@ module UserCreation
     }
   end
 
-  def generate_encrypted_onapp_api_key
-    api_key = @api.post("users/#{id}/make_new_api_key").user.api_key
-    update_attributes! encrypted_onapp_api_key: SymmetricEncryption.encrypt(api_key)
-  end
-
   def find_unique_onapp_username
     10.times do
-      cut_name = full_name.gsub(' ', '-').downcase.tr('^a-z\-', '')[0..USERNAME_SIZE]
+      cut_name = full_name.tr(' ', '-').downcase.tr('^a-z\-', '')[0..USERNAME_SIZE]
       username = "#{cut_name}_#{SecureRandom.hex(3)}"
       # Check in case this username already exists on OnApp
       response = @api.post 'users/validate_login', body: { login: username }
@@ -76,9 +73,9 @@ module UserCreation
   end
 
   # Generate a confirmation token for a URL that a user can click to confirm their account
-  def generate_encrypted_confirmation_token
-    token = SecureRandom.hex(10)
-    update_attributes! encrypted_confirmation_token: SymmetricEncryption.encrypt(token)
+  def generate_token_for(attribute)
+    token = SecureRandom.urlsafe_base64
+    update_attributes! attribute => token
   end
 
   # Unique link which a user receives in their email and clicking it confirms their account

@@ -9,6 +9,10 @@ describe API do
 
   describe Routes::Auth do
     describe 'Registration' do
+      before :each do
+        Sidekiq::Testing.fake!
+      end
+
       it 'should register a new user' do
         options = {
           full_name: 'Tester',
@@ -49,8 +53,7 @@ describe API do
 
     describe 'Confirmation' do
       it 'should confirm a registered user' do
-        token = SymmetricEncryption.encrypt 'token'
-        user = Fabricate :user, encrypted_confirmation_token: token
+        user = Fabricate :user, confirmation_token: 'token'
 
         options = {
           token: 'token',
@@ -66,8 +69,7 @@ describe API do
       end
 
       it 'should not confirm a registered user with an invalid token' do
-        token = SymmetricEncryption.encrypt 'abc123'
-        user = Fabricate :user, encrypted_confirmation_token: token
+        user = Fabricate :user, confirmation_token: 'abc123'
 
         options = {
           token: 'wrong token',
@@ -98,8 +100,7 @@ describe API do
       end
 
       it 'should return a new login token replacing the an old token' do
-        encrypted = SymmetricEncryption.encrypt 'old_token'
-        user = Fabricate :user, status: :active, encrypted_login_token: encrypted
+        user = Fabricate :user, status: :active, login_token: 'old_token'
         old_token = user.login_token
         options = {
           email: user.email,

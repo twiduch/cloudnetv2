@@ -47,7 +47,7 @@ class UpdateFederationResources
 
   def upsert_datacentre(datacentre)
     Datacentre.new(
-      _id: datacentre['hypervisor_group_id'],
+      id: datacentre['hypervisor_group_id'],
       label: datacentre['label'],
       coords: COORDS_FOR_DATACENTRES[datacentre['label']]
     ).upsert
@@ -57,7 +57,7 @@ class UpdateFederationResources
   def upsert_template(template, datacentre)
     details = template['image_template']
     Template.new(
-      _id: template['id'],
+      id: template['template_id'],
       datacentre: datacentre['hypervisor_group_id'],
       label: details['label'],
       os: details['operating_system'],

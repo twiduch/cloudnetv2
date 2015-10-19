@@ -1,19 +1,28 @@
 source 'https://rubygems.org'
 
+# Load ENV from .env file
 gem 'dotenv'
 
+# Allow cross-origin incoming HTTP requests
 gem 'rack-cors', require: 'rack/cors'
+# Web server
 gem 'puma'
 
+# Mongo ORM
 gem 'mongoid'
-gem 'bcrypt'
+# Soft delete records
+gem 'mongoid_paranoia'
+gem 'bcrypt' # Requirement of Mongoid, but why?
 gem 'symmetric-encryption'
 
+# API
 gem 'grape', github: 'intridea/grape'
-gem 'grape-entity'
+# For presenting lovely serialised API responses of objects
+gem 'grape-roar'
 # Auto-generate API documentation
 gem 'grape-swagger'
 
+# Worker jobs
 gem 'sidekiq'
 
 # General purpose API wrapper. Used to communicate with Onapp API
@@ -26,8 +35,10 @@ gem 'devise', require: false
 # Watch https://github.com/activeadmin/activeadmin/issues/2714
 gem 'activeadmin', github: 'Zhomart/active_admin', branch: 'mongoid-old', require: false
 
+# Fancy console
 gem 'pry'
 gem 'pry-byebug'
+
 gem 'rake'
 
 group :development do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe ModelProxy do
-  let(:user) { Fabricate.create :user, id: 1 }
+describe ModelWorkerSugar do
+  let(:user) { Fabricate.create :user, id: '1' }
 
   # Add a fake method
   class User
@@ -9,13 +9,14 @@ describe ModelProxy do
   end
 
   it 'should proxy a method call to Sidekiq' do
+    Sidekiq::Testing.fake!
     expect do
       user.worker.long_running_thing
-    end.to change(ModelProxy::ModelWorker.jobs, :size).by(1)
+    end.to change(ModelWorkerSugar::ModelWorker.jobs, :size).by(1)
   end
 
   it 'should pass the correct method and args' do
-    expect(ModelProxy::ModelWorker).to(
+    expect(ModelWorkerSugar::ModelWorker).to(
       receive(:perform_async).with(User, user.id, :long_running_thing, 1, 'a', Object)
     )
     user.worker.long_running_thing 1, 'a', Object
@@ -37,7 +38,7 @@ describe ModelProxy do
         receive(:long_running_thing).with(1, 'a', Object)
       )
       user.worker.long_running_thing 1, 'a', Object
-      ModelProxy::ModelWorker.drain
+      ModelWorkerSugar::ModelWorker.drain
     end
 
     it 'should do so for instances *not* yet persisted to the DB' do
@@ -52,7 +53,7 @@ describe ModelProxy do
         receive(:long_running_thing).with(1, 'a', Object)
       )
       unsaved_user.worker.long_running_thing 1, 'a', Object
-      ModelProxy::ModelWorker.drain
+      ModelWorkerSugar::ModelWorker.drain
     end
   end
 end

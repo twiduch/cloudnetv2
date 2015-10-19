@@ -1,13 +1,16 @@
 require 'bcrypt'
 require 'app/models/user/user_creation'
+require 'app/models/user/resource_creation'
 
 # A cloud.net user. Should map and sync to an Onapp user
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
-  include ModelProxy
+  include Mongoid::Paranoia
+  include ModelWorkerSugar
   include OnappAPI
   include UserCreation
+  include ResourceCreation
 
   has_many :servers
 
@@ -25,6 +28,7 @@ class User
 
   field :email
   field :full_name
+  field :onapp_username
   field :admin, type: Boolean, default: false
   field :status, type: Symbol, default: :pending
   field :resource_limits, default: DEFAULT_LIMITS
@@ -33,7 +37,7 @@ class User
 
   # SYMMETRICALLY ENCRYPTED (because they need to be retrieved/queried)
   # For connecting to the user's own OnApp API account
-  field :encrypted_onapp_api_key, encrypted: true
+  field :encrypted_onapp_password, encrypted: true
   # Short-lived login token for use with the HTML frontend
   field :encrypted_login_token, encrypted: true
   # More permanent API key
@@ -58,7 +62,7 @@ class User
 
   def generate_new_login_token
     token = SecureRandom.hex(10)
-    update_attributes! encrypted_login_token: SymmetricEncryption.encrypt(token)
+    update_attributes! login_token: token
     token
   end
 
@@ -67,6 +71,7 @@ class User
     # users for testing purposes, in which case using factories is fine.
     def create_with_synced_onapp_user(attributes)
       user = User.new attributes
+      # We want to hear about validation errros now! Not from digging through worker error logs
       unless user.valid?
         fail Mongoid::Errors::Validations.new(user), 'User validation failed'
       end
@@ -88,7 +93,7 @@ class User
     end
 
     # Check the incoming API request headers for a valid authentication credential
-    def authorize(auth_header)
+    def authourize(auth_header)
       type = auth_header.split[0].strip
       credential = auth_header.split[1].strip
       case type

@@ -4,7 +4,7 @@ module Cloudnet
   VERSION = '2.0.0'
 
   # The version of OnApp's API which this code is currently tested against
-  ONAPP_API_VERSION = '3.4.0'
+  ONAPP_API_VERSION = '4.1.0'
 
   # Root path of the project on the host filesystem
   ROOT_PATH = File.join(File.dirname(__FILE__), '../')
@@ -22,25 +22,31 @@ module Cloudnet
 
   class << self
     def init
-      add_requirable_paths
+      # So you can just use `require 'project/file'`
+      $LOAD_PATH.unshift(root)
+      require_app
       check_version
       ensure_db_seeded
       log_active_sidekiq_ps
       log_time_since_last_transactions_sync
     end
 
-    def recursive_require(path)
-      Dir["#{root}/#{path}/**/*.rb"].each { |f| require f }
+    def recursive_require(path, use_load: false)
+      Dir["#{root}/#{path}/**/*.rb"].each do |file|
+        if use_load
+          load file
+        else
+          require file
+        end
+      end
     end
 
-    # So you can just use `require 'project/file'`
-    def add_requirable_paths
-      $LOAD_PATH.unshift(root)
+    def require_app(use_load: false)
       [
         'config/initialisers',
         'lib',
         'app'
-      ].each { |path| recursive_require path }
+      ].each { |path| recursive_require path, use_load: use_load }
     end
 
     # Alias for ROOT_PATH
@@ -78,7 +84,7 @@ module Cloudnet
     # Check for API version mismatch.
     def check_version
       # Version mismatch is checked differently during testing.
-      return if Cloudnet.environment == 'test'
+      return if Cloudnet.environment == 'test' || ENV['SKIP_ONAPP_API_CHECK']
       Cloudnet.logger.info 'Checking OnApp version...'
       onapp_api_version = OnappAPI.admin_connection.get(:version).version
       return if onapp_api_version == Cloudnet::ONAPP_API_VERSION

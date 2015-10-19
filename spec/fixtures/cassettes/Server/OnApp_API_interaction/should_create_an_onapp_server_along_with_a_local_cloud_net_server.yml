@@ -1,0 +1,462 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/users/validate_login.json
+    body:
+      encoding: UTF-8
+      string: login=rspec-test-_9aadf6
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 19 Oct 2015 13:33:19 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"f76301e7df63edc7ff87897393244b47"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 8cef91a8800e7287ae5e07f61ebdab74
+      X-Runtime:
+      - '0.087118'
+      X-Rack-Cache:
+      - invalidate, pass
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=5af4dfe5a46da1ed51ce84ba819f86d8; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"valid":true,"message":"Username is available"}'
+    http_version: 
+  recorded_at: Mon, 19 Oct 2015 13:33:09 GMT
+- request:
+    method: post
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/users.json
+    body:
+      encoding: UTF-8
+      string: user[login]=rspec-test-_9aadf6&user[email]=rspec-test-_9aadf6%40cloud.net&user[password]=%2AC%29Aeuc47zPNqw4L&user[role_ids][]=2
+    headers: {}
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Mon, 19 Oct 2015 13:33:20 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"fbfdce697420331fe1031a1e2ccdf923"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 72b324860b79d7c3d79658013158be16
+      X-Runtime:
+      - '0.456870'
+      X-Rack-Cache:
+      - invalidate, pass
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=95f230b092f6379f101ce4bc3c5dc839; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Location:
+      - https://<%= extract_domain ENV["ONAPP_URI"] %>/users/361
+      Status:
+      - 201 Created
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"user":{"activated_at":"2015-10-19T13:33:20+00:00","avatar":null,"billing_plan_id":1,"cdn_account_status":"ACTIVE","cdn_status":"INACTIVE","created_at":"2015-10-19T13:33:20+00:00","deleted_at":null,"email":"rspec-test-_9aadf6@cloud.net","firewall_id":null,"first_name":"","group_id":null,"id":361,"identifier":"xj0iusehoybd53","image_template_group_id":null,"infoboxes":{"display_infoboxes":true,"hidden_infoboxes":[]},"last_name":"","locale":"en","login":"rspec-test-_9aadf6","password_changed_at":"2015-10-19T13:33:20+00:00","status":"active","supplied":false,"suspend_at":null,"system_theme":null,"time_zone":null,"total_amount":0.0,"updated_at":"2015-10-19T13:33:20+00:00","use_gravatar":null,"user_group_id":null,"outstanding_amount":"0.0","payment_amount":"0.0","roles":[{"role":{"created_at":"2015-03-12T13:24:37+00:00","id":2,"identifier":"user","label":"User","updated_at":"2015-03-12T13:24:37+00:00","permissions":[{"permission":{"created_at":"2015-03-12T13:24:37+00:00","id":7,"identifier":"activity_logs.read.own","label":"See
+        details of own activity log","updated_at":"2015-03-12T13:24:37+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":32,"identifier":"backups.convert.own","label":"Convert
+        own backup to template","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":34,"identifier":"backups.create.own","label":"Create
+        an own backup","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":36,"identifier":"backups.delete.own","label":"Destroy
+        own backup","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":38,"identifier":"backups.read.own","label":"See
+        own backups","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":40,"identifier":"backups.update.own","label":"Update
+        own backup","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":46,"identifier":"base_resources.read.own","label":"See
+        own base resources","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":53,"identifier":"billing_plans.read.own","label":"See
+        own billing plan","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":87,"identifier":"cdn_resources.create","label":"Create
+        a new CDN resource","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":89,"identifier":"cdn_resources.delete.own","label":"Destroy
+        own CDN resource","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":91,"identifier":"cdn_resources.read.own","label":"See
+        own CDN resources","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":93,"identifier":"cdn_resources.update.own","label":"Update
+        own CDN resource","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":96,"identifier":"cdn_usage_stats.read.own","label":"User
+        can see own CDN usage statistics","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":105,"identifier":"customer_networks.create.own","label":"Create
+        own customer networks","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":106,"identifier":"customer_networks.delete.own","label":"Delete
+        own customer networks","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":107,"identifier":"customer_networks.read.own","label":"See
+        own customer networks","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":117,"identifier":"dashboard.show_cloud_dashboard","label":"Show
+        cloud dashboard","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":130,"identifier":"data_stores.read","label":"See
+        all data_stores","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":134,"identifier":"disks.autobackup.own","label":"Autobackup
+        for own disk","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":135,"identifier":"disks.create","label":"Create
+        a new disk","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":137,"identifier":"disks.delete.own","label":"Destroy
+        own disk","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":139,"identifier":"disks.read.own","label":"See
+        own disks","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":140,"identifier":"disks.unlock","label":"Unlock
+        any disk","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":142,"identifier":"disks.update.own","label":"Update
+        own disk","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":144,"identifier":"dns_zone.create","label":"Create
+        a new DNS zone","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":146,"identifier":"dns_zone.delete.own","label":"Destroy
+        own DNS zone","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":148,"identifier":"dns_zone.read.own","label":"See
+        own DNS zones","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":149,"identifier":"dns_zone.record_create","label":"Create
+        a new DNS record","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":153,"identifier":"dns_zone.record_read.own","label":"See
+        own DNS records","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":155,"identifier":"dns_zone.record_update.own","label":"Update
+        own DNS records","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":160,"identifier":"edge_groups.read","label":"See
+        all edge groups","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":190,"identifier":"firewall_rules.create.own","label":"Add
+        own Firewall Rules","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":192,"identifier":"firewall_rules.delete.own","label":"Destroy
+        own Firewall Rules","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":194,"identifier":"firewall_rules.read.own","label":"See
+        own Firewall Rules","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":196,"identifier":"firewall_rules.update.own","label":"Update
+        own Firewall Rules","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":201,"identifier":"groups.read","label":"See
+        all groups","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":221,"identifier":"hypervisors.read","label":"See
+        all hypervisors","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":222,"identifier":"hypervisors.read_vm_creation","label":"Show
+        Hypervisors on VirtualMachine creation.","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":237,"identifier":"image_template_groups.read","label":"See
+        details of any template group","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":244,"identifier":"io_stats.read.own","label":"See
+        own IO Statistics","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":247,"identifier":"ip_address_joins.create.own","label":"Add
+        IP address to own virtual machine","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":249,"identifier":"ip_address_joins.delete.own","label":"Remove
+        IP address from own virtual machine","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":250,"identifier":"ip_address_joins.read","label":"See
+        IP addresses assigned to any virtual machines","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":260,"identifier":"ip_addresses.read","label":"See
+        all ip addresses","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":276,"identifier":"isos.manage.own","label":"Create
+        and Manage ISOs","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":288,"identifier":"load_balancers.migrate.own","label":"Migrate
+        own load balancer","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":291,"identifier":"load_balancing_clusters.create","label":"Create
+        a new relation load_balancing","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":293,"identifier":"load_balancing_clusters.delete.own","label":"Delete
+        own load_balancing","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":295,"identifier":"load_balancing_clusters.read.own","label":"See
+        details of own load_balancing","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":297,"identifier":"load_balancing_clusters.update.own","label":"Change
+        own load_balancing","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":305,"identifier":"log_items.delete.own","label":"Delete
+        own log item","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":307,"identifier":"log_items.list.own","label":"See
+        list of own log items","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":309,"identifier":"log_items.read.own","label":"See
+        details of own log item","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":314,"identifier":"monthly_bills.read.own","label":"See
+        own Monthly Bills Statistics","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":318,"identifier":"nameservers.read","label":"See
+        all nameservers","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":329,"identifier":"networks.read","label":"See
+        all networks","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":337,"identifier":"payments.read","label":"See
+        all payments","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":338,"identifier":"payments.read.own","label":"See
+        own payments","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":348,"identifier":"recipe_group_relations.list","label":"See
+        list of recipe group relations","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":349,"identifier":"recipe_group_relations.read","label":"Read
+        recipe group relations","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":354,"identifier":"recipe_groups.list","label":"See
+        list of recipe groups","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":355,"identifier":"recipe_groups.read","label":"Read
+        recipe groups","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":358,"identifier":"recipes.create","label":"Create
+        recipes","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":360,"identifier":"recipes.delete.own","label":"Delete
+        own recipes","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":362,"identifier":"recipes.edit.own","label":"Edit
+        own recipes","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":364,"identifier":"recipes.read.own","label":"Read
+        own recipes","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":376,"identifier":"roles.read","label":"See
+        all Roles","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":437,"identifier":"templates.manage.own","label":"Manage
+        Own Templates","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":442,"identifier":"templates.read.public","label":"See
+        all public templates","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:39+00:00","id":461,"identifier":"transactions.delete.own","label":"Delete
+        own transactions from logs","updated_at":"2015-03-12T13:24:39+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":463,"identifier":"transactions.list.own","label":"See
+        list of own transactions","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":465,"identifier":"transactions.read.own","label":"See
+        details of own transaction","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":489,"identifier":"users.change_password.own","label":"Change
+        own password","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":495,"identifier":"users.read.own","label":"See
+        own users","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":497,"identifier":"users.read_prices.backups_templates","label":"See
+        User Backups/Templates prices","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":498,"identifier":"users.read_prices.billing_plan","label":"See
+        User billing plan","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":499,"identifier":"users.read_prices.hourly_price","label":"See
+        User hourly prices","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":500,"identifier":"users.read_prices.monthly_price","label":"See
+        User monthly prices","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":501,"identifier":"users.read_prices.outstanding_amount","label":"See
+        User outstanding amount","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":502,"identifier":"users.read_prices.summary_payments","label":"See
+        User summary payments","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":504,"identifier":"users.read_prices.vm_prices","label":"See
+        User Virtual Machine prices","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":508,"identifier":"users.update.own","label":"Update
+        own user","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":510,"identifier":"users.update_api_key.own","label":"Generate
+        Own API key","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":512,"identifier":"virtual_machine_snapshots.create.own","label":"Create/Restore
+        own virtual machine snapshots","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":513,"identifier":"virtual_machine_snapshots.delete.own","label":"Delete
+        own virtual machine snapshots","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":514,"identifier":"virtual_machine_snapshots.read.own","label":"See
+        own virtual machine snapshots","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":517,"identifier":"virtual_machines.build.own","label":"Build/rebuild
+        user''s own virtual server","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":520,"identifier":"virtual_machines.console.own","label":"Console
+        to own virtual machine","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":522,"identifier":"virtual_machines.create","label":"Create
+        a new virtual machine","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":524,"identifier":"virtual_machines.delete.own","label":"Destroy
+        own virtual machine","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":525,"identifier":"virtual_machines.manage_publications","label":"Manage
+        publications for all virtual servers","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":528,"identifier":"virtual_machines.migrate.own","label":"Migrate
+        own virtual machine","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":530,"identifier":"virtual_machines.power.own","label":"Any
+        power action on own virtual machines","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":532,"identifier":"virtual_machines.read.own","label":"See
+        own virtual machines","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":533,"identifier":"virtual_machines.read_root_password","label":"Read
+        Virtual Machine''s root password","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":537,"identifier":"virtual_machines.rebuild_network.own","label":"Rebuild
+        Network to own virtual machine","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":539,"identifier":"virtual_machines.recipe_manage.own","label":"Manage
+        recipes joins for own virtual servers","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":541,"identifier":"virtual_machines.reset_root_password.own","label":"Reset
+        root password to own virtual machine","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":547,"identifier":"virtual_machines.update.own","label":"Update
+        own virtual machine","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":550,"identifier":"vm_stats.read.own","label":"See
+        Own Virtual Machine Statistics","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-06-24T14:37:54+00:00","id":569,"identifier":"cdn_ssl_certificates.create","label":"Create
+        a new CDN SSL Certificate","updated_at":"2015-06-24T14:37:54+00:00"}},{"permission":{"created_at":"2015-06-24T14:37:54+00:00","id":573,"identifier":"cdn_ssl_certificates.delete.own","label":"Destroy
+        own CDN SSL Certificates","updated_at":"2015-06-24T14:37:54+00:00"}},{"permission":{"created_at":"2015-06-24T14:37:54+00:00","id":574,"identifier":"cdn_ssl_certificates.read.own","label":"See
+        own CDN SSL Certificates","updated_at":"2015-06-24T14:37:54+00:00"}},{"permission":{"created_at":"2015-06-24T14:37:54+00:00","id":575,"identifier":"cdn_ssl_certificates.update.own","label":"Update
+        own CDN SSL Certificates","updated_at":"2015-06-24T14:37:54+00:00"}},{"permission":{"created_at":"2015-09-10T18:45:32+00:00","id":636,"identifier":"virtual_machines.select_resources_manually_on_creation","label":"Select
+        resources manually on Virtual Server creation","updated_at":"2015-09-10T18:45:32+00:00"}}]}}],"used_cpus":0,"used_memory":0,"used_cpu_shares":0,"used_disk_size":0,"used_ip_addresses":[],"memory_available":118506,"disk_space_available":1347,"additional_fields":[]}}'
+    http_version: 
+  recorded_at: Mon, 19 Oct 2015 13:33:10 GMT
+- request:
+    method: get
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/template_store.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 19 Oct 2015 13:33:21 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"8bddd14bb2206ca6397766848447322e"'
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      X-Request-Id:
+      - a60ac47552ab3bc3eb0e1d36dbbc0b8a
+      X-Runtime:
+      - '0.387290'
+      X-Rack-Cache:
+      - miss
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=96aaf131ce9765178cd46b7e699f0bfb; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '[{"id":6,"label":"CDN","parent_id":null,"lft":11,"rgt":12,"depth":0,"mak":true,"own":null,"kms":null,"kms_server_label":null,"kms_host":null,"kms_port":null,"created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","system_group":true,"hypervisor_group_id":null,"user_id":null,"children":[],"relations":[{"id":11,"template_id":11,"image_template_group_id":6,"price":"0.0","created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","image_template":{"id":11,"label":"OnApp
+        CDN Appliance","created_at":"2015-03-12T14:26:02+00:00","updated_at":"2015-09-12T22:13:21+00:00","version":"1.20","file_name":"debian-7.0-x64-1.20-xen.kvm.kvm_virtio.tar.gz","operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":"a7e023a771761ef099577c51beff64f1","allow_resize_without_reboot":true,"min_disk_size":20,"user_id":null,"template_size":234572,"allowed_hot_migrate":true,"operating_system_arch":"x64","operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio","min_memory_size":2048,"disk_target_device":"---\nxen:
+        sda\nkvm: hd\n","cdn":true,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":null,"manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}}]},{"id":8,"label":"Cloud.net
+        Budget US Dallas Zone","parent_id":null,"lft":13,"rgt":14,"depth":0,"mak":true,"own":null,"kms":null,"kms_server_label":null,"kms_host":null,"kms_port":null,"created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","system_group":false,"hypervisor_group_id":7,"user_id":null,"children":[],"relations":[{"id":56,"template_id":19,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","image_template":{"id":19,"label":"Arch
+        Linux 2012.08 x86","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","version":"1.1","file_name":null,"operating_system":"linux","operating_system_distro":"archlinux","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":128,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:16","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":58,"template_id":21,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","image_template":{"id":21,"label":"Arch
+        Linux 2012.12 x64","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","version":"1.1","file_name":null,"operating_system":"linux","operating_system_distro":"archlinux","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":128,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:15","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":57,"template_id":20,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","image_template":{"id":20,"label":"CentOS
+        5.11 x64","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","version":"1.1","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":256,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:41","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":65,"template_id":28,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":28,"label":"CentOS
+        5.9 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.2","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":256,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:1","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":64,"template_id":27,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":27,"label":"CentOS
+        5.9 x86","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.1","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":256,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:21","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":60,"template_id":23,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":23,"label":"CentOS
+        6.4 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.5","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:18","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":81,"template_id":44,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":44,"label":"CentOS
+        6.4 x64 LAMP","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.0","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:19","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":51,"template_id":14,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","image_template":{"id":14,"label":"CentOS
+        6.5 x64","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","version":"1.4","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:2","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":67,"template_id":30,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":30,"label":"CentOS
+        6.5 x86","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.0","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:20","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":87,"template_id":51,"image_template_group_id":8,"price":"0.0","created_at":"2015-10-14T19:00:13+00:00","updated_at":"2015-10-14T19:00:13+00:00","image_template":{"id":51,"label":"CentOS
+        6.7 x64 McMyAdmin2","created_at":"2015-10-14T19:00:12+00:00","updated_at":"2015-10-14T19:00:12+00:00","version":"1.0","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:69","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":86,"template_id":49,"image_template_group_id":8,"price":"0.0","created_at":"2015-09-09T19:00:08+00:00","updated_at":"2015-09-09T19:00:08+00:00","image_template":{"id":49,"label":"CentOS
+        6.7 x64 OnApp 4.1.0","created_at":"2015-09-09T19:00:08+00:00","updated_at":"2015-10-03T04:00:10+00:00","version":"1.2","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:63","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":63,"template_id":26,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":26,"label":"CentOS
+        7.0 x64 ","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.6","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:17","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":66,"template_id":29,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":29,"label":"Debian
+        6.0 x64 LAMP","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.7","file_name":null,"operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,remote","min_memory_size":128,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:22","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":77,"template_id":40,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":40,"label":"Debian
+        7.0 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.10","file_name":null,"operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":128,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:3","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":55,"template_id":18,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","image_template":{"id":18,"label":"Debian
+        7.0 x86","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","version":"1.1","file_name":null,"operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":128,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:23","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":73,"template_id":36,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":36,"label":"Fedora
+        18 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.5","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":256,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:24","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":82,"template_id":45,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":45,"label":"Fedora
+        19 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.5","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":128,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:4","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":76,"template_id":39,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":39,"label":"FreeBSD
+        10.0 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.1","file_name":null,"operating_system":"freebsd","operating_system_distro":"freebsd","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":256,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:25","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":53,"template_id":16,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","image_template":{"id":16,"label":"FreeBSD
+        10.0 x86","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","version":"1.0","file_name":null,"operating_system":"freebsd","operating_system_distro":"freebsd","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":256,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:26","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":75,"template_id":38,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":38,"label":"FreeBSD
+        9.2 x86","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.0","file_name":null,"operating_system":"freebsd","operating_system_distro":"freebsd","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":256,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:27","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":85,"template_id":48,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":48,"label":"Gentoo
+        12.0 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.7","file_name":null,"operating_system":"linux","operating_system_distro":"gentoo","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":256,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:28","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":70,"template_id":33,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":33,"label":"Gentoo
+        12.1 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.8","file_name":null,"operating_system":"linux","operating_system_distro":"gentoo","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":256,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:5","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":52,"template_id":15,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","image_template":{"id":15,"label":"openSUSE
+        12.1 x64","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","version":"1.6","file_name":null,"operating_system":"linux","operating_system_distro":"suse","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":128,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:30","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":80,"template_id":43,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":43,"label":"openSUSE
+        12.1 x86","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.5","file_name":null,"operating_system":"linux","operating_system_distro":"suse","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":128,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:29","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":69,"template_id":32,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":32,"label":"Red
+        Hat Enterprise Linux 5.9 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.3","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":6,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":256,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:6","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":50,"template_id":13,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","image_template":{"id":13,"label":"Red
+        Hat Enterprise Linux 6.3 x64","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","version":"1.3","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":6,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:35","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":71,"template_id":34,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":34,"label":"Red
+        Hat Enterprise Linux 6.3 x86","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.1","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":6,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:34","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":72,"template_id":35,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":35,"label":"Red
+        Hat Enterprise Linux 6.4 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.3","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":6,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:32","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":62,"template_id":25,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":25,"label":"Red
+        Hat Enterprise Linux 6.4 x64 LAMP","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.2","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":6,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:33","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":61,"template_id":24,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":24,"label":"Red
+        Hat Enterprise Linux 6.5 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.2","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":6,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:7","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":74,"template_id":37,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":37,"label":"Red
+        Hat Enterprise Linux 7.0 x64 ","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-10-03T04:00:10+00:00","version":"1.9","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":6,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:31","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":84,"template_id":47,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":47,"label":"Ubuntu
+        12.04 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.10","file_name":null,"operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":128,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:37","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":59,"template_id":22,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","image_template":{"id":22,"label":"Ubuntu
+        12.04 x64 LAMP","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","version":"1.3","file_name":null,"operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":128,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:38","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":79,"template_id":42,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":42,"label":"Ubuntu
+        13.04 x64 ","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.4","file_name":null,"operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":256,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:40","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":54,"template_id":17,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","image_template":{"id":17,"label":"Ubuntu
+        13.04 x64 LAMP","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","version":"1.1","file_name":null,"operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":256,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:36","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":78,"template_id":41,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":41,"label":"Ubuntu
+        13.10 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-10-03T04:00:10+00:00","version":"1.3","file_name":null,"operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":128,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:9","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":68,"template_id":31,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":31,"label":"Ubuntu
+        14.04 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.6","file_name":null,"operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":256,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:8","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":83,"template_id":46,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":46,"label":"Ubuntu
+        14.04 x86 ","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.3","file_name":null,"operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":256,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:39","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}}]},{"id":1,"label":"Linux","parent_id":null,"lft":1,"rgt":8,"depth":0,"mak":true,"own":null,"kms":null,"kms_server_label":null,"kms_host":null,"kms_port":null,"created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","system_group":false,"hypervisor_group_id":null,"user_id":null,"children":[{"id":4,"label":"Gentoo","parent_id":1,"lft":6,"rgt":7,"depth":1,"mak":true,"own":null,"kms":null,"kms_server_label":null,"kms_host":null,"kms_port":null,"created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","system_group":false,"hypervisor_group_id":null,"user_id":null,"children":[],"relations":[{"id":9,"template_id":5,"image_template_group_id":4,"price":"0.0","created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","image_template":{"id":5,"label":"Gentoo
+        13.0 x64","created_at":"2015-03-12T14:26:02+00:00","updated_at":null,"version":"1.2","file_name":"gentoo-13.0-x64-1.2-xen.kvm.kvm_virtio.tar.gz","operating_system":"linux","operating_system_distro":"gentoo","allowed_swap":true,"state":"active","checksum":"f40d30a0a35103b938b5d50776e0f506","allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":338796,"allowed_hot_migrate":true,"operating_system_arch":"x64","operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio","min_memory_size":256,"disk_target_device":"---\nxen:
+        sda\nkvm: hd\n","cdn":false,"backup_server_id":null,"ext4":true,"smart_server":true,"baremetal_server":true,"initial_password":null,"initial_username":null,"remote_id":null,"manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}}]},{"id":2,"label":"RHEL","parent_id":1,"lft":2,"rgt":3,"depth":1,"mak":true,"own":null,"kms":null,"kms_server_label":null,"kms_host":null,"kms_port":null,"created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","system_group":false,"hypervisor_group_id":null,"user_id":null,"children":[],"relations":[{"id":1,"template_id":1,"image_template_group_id":2,"price":"0.0","created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","image_template":{"id":1,"label":"CentOS
+        5.11 x64","created_at":"2015-03-12T14:26:02+00:00","updated_at":null,"version":"1.1","file_name":"centos-5.11-x64-1.1-xen.kvm.kvm_virtio.tar.gz","operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":"f3ea0b39051d9c5fef3f7661c6318caf","allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":323924,"allowed_hot_migrate":true,"operating_system_arch":"x64","operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio","min_memory_size":256,"disk_target_device":"---\nxen:
+        sda\nkvm: hd\n","cdn":false,"backup_server_id":null,"ext4":false,"smart_server":true,"baremetal_server":true,"initial_password":null,"initial_username":null,"remote_id":null,"manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":2,"template_id":2,"image_template_group_id":2,"price":"0.0","created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","image_template":{"id":2,"label":"CentOS
+        6.6 x64","created_at":"2015-03-12T14:26:02+00:00","updated_at":null,"version":"1.1","file_name":"centos-6.6-x64-1.1-xen.kvm.kvm_virtio.tar.gz","operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":"b4458837c9adc1acdc4699e8505a918c","allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":284928,"allowed_hot_migrate":true,"operating_system_arch":"x64","operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio","min_memory_size":384,"disk_target_device":"---\nxen:
+        xvda\nkvm: hd\n","cdn":false,"backup_server_id":null,"ext4":true,"smart_server":true,"baremetal_server":true,"initial_password":null,"initial_username":null,"remote_id":null,"manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":3,"template_id":4,"image_template_group_id":2,"price":"0.0","created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","image_template":{"id":4,"label":"Fedora
+        21 x64","created_at":"2015-03-12T14:26:02+00:00","updated_at":null,"version":"1.2","file_name":"fedora-21-x64-1.2-xen.kvm.kvm_virtio.tar.gz","operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":"658f8e352621833f624cbed764cbf459","allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":422548,"allowed_hot_migrate":true,"operating_system_arch":"x64","operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio","min_memory_size":128,"disk_target_device":"---\nxen:
+        sda\nkvm: hd\n","cdn":false,"backup_server_id":null,"ext4":true,"smart_server":true,"baremetal_server":true,"initial_password":null,"initial_username":null,"remote_id":null,"manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":4,"template_id":6,"image_template_group_id":2,"price":"0.0","created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","image_template":{"id":6,"label":"Red
+        Hat Enterprise Linux 5.11 x64","created_at":"2015-03-12T14:26:02+00:00","updated_at":null,"version":"1.2","file_name":"rhel-5.11-x64-1.2-xen.kvm.kvm_virtio.tar.gz","operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":"afa1ab2077160faac1740d76066d584d","allow_resize_without_reboot":true,"min_disk_size":6,"user_id":null,"template_size":481444,"allowed_hot_migrate":true,"operating_system_arch":"x64","operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio","min_memory_size":256,"disk_target_device":"---\nxen:
+        sda\nkvm: hd\n","cdn":false,"backup_server_id":null,"ext4":false,"smart_server":true,"baremetal_server":true,"initial_password":null,"initial_username":null,"remote_id":null,"manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":5,"template_id":7,"image_template_group_id":2,"price":"0.0","created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","image_template":{"id":7,"label":"Red
+        Hat Enterprise Linux 6.6 x64","created_at":"2015-03-12T14:26:02+00:00","updated_at":null,"version":"1.3","file_name":"rhel-6.6-x64-1.3-xen.kvm.kvm_virtio.tar.gz","operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":"6f568ef3e0b80d4cf16660faffd49372","allow_resize_without_reboot":true,"min_disk_size":6,"user_id":null,"template_size":316180,"allowed_hot_migrate":true,"operating_system_arch":"x64","operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio","min_memory_size":384,"disk_target_device":"---\nxen:
+        xvda\nkvm: hd\n","cdn":false,"backup_server_id":null,"ext4":true,"smart_server":true,"baremetal_server":true,"initial_password":null,"initial_username":null,"remote_id":null,"manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}}]},{"id":3,"label":"Ubuntu","parent_id":1,"lft":4,"rgt":5,"depth":1,"mak":true,"own":null,"kms":null,"kms_server_label":null,"kms_host":null,"kms_port":null,"created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","system_group":false,"hypervisor_group_id":null,"user_id":null,"children":[],"relations":[{"id":6,"template_id":3,"image_template_group_id":3,"price":"0.0","created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","image_template":{"id":3,"label":"Debian
+        7.0 x64","created_at":"2015-03-12T14:26:02+00:00","updated_at":null,"version":"1.9","file_name":"debian-7.0-x64-1.9-xen.kvm.kvm_virtio.tar.gz","operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":"e0835d348b2c5f8f1e1661b86bb3521d","allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":234384,"allowed_hot_migrate":true,"operating_system_arch":"x64","operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio","min_memory_size":128,"disk_target_device":"---\nxen:
+        sda\nkvm: hd\n","cdn":false,"backup_server_id":null,"ext4":true,"smart_server":true,"baremetal_server":true,"initial_password":null,"initial_username":null,"remote_id":null,"manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":7,"template_id":8,"image_template_group_id":3,"price":"0.0","created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","image_template":{"id":8,"label":"Ubuntu
+        14.04 x64","created_at":"2015-03-12T14:26:02+00:00","updated_at":null,"version":"1.5","file_name":"ubuntu-14.04-x64-1.5-xen.kvm.kvm_virtio.tar.gz","operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":"8de78c703b6f53cdff9efaf8c678f3ef","allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":310388,"allowed_hot_migrate":true,"operating_system_arch":"x64","operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio","min_memory_size":256,"disk_target_device":"---\nxen:
+        sda\nkvm: hd\n","cdn":false,"backup_server_id":null,"ext4":true,"smart_server":true,"baremetal_server":true,"initial_password":null,"initial_username":null,"remote_id":null,"manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":8,"template_id":9,"image_template_group_id":3,"price":"0.0","created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","image_template":{"id":9,"label":"Ubuntu
+        14.10 x64","created_at":"2015-03-12T14:26:02+00:00","updated_at":null,"version":"1.1","file_name":"ubuntu-14.10-x64-1.1-xen.kvm.kvm_virtio.tar.gz","operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":"5ccdeca188b249a0eb85f3041ea4c4f3","allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":389612,"allowed_hot_migrate":true,"operating_system_arch":"x64","operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio","min_memory_size":256,"disk_target_device":"---\nxen:
+        sda\nkvm: hd\n","cdn":false,"backup_server_id":null,"ext4":true,"smart_server":true,"baremetal_server":true,"initial_password":null,"initial_username":null,"remote_id":null,"manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}}]}],"relations":[]},{"id":5,"label":"Load
+        Balancers","parent_id":null,"lft":9,"rgt":10,"depth":0,"mak":true,"own":null,"kms":null,"kms_server_label":null,"kms_host":null,"kms_port":null,"created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","system_group":true,"hypervisor_group_id":null,"user_id":null,"children":[],"relations":[{"id":10,"template_id":10,"image_template_group_id":5,"price":"0.0","created_at":"2015-03-12T13:26:17+00:00","updated_at":"2015-03-12T13:26:17+00:00","image_template":{"id":10,"label":"Load
+        Balancer Virtual Appliance","created_at":"2015-03-12T14:26:02+00:00","updated_at":"2015-09-12T22:13:21+00:00","version":"1.9","file_name":"centos-5.3-lbva_6.11-x64-1.9.tar.gz","operating_system":"linux","operating_system_distro":"lbva","allowed_swap":true,"state":"active","checksum":"3a5bc442a326a7d575a724b6ca93e83e","allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":762648,"allowed_hot_migrate":true,"operating_system_arch":"x64","operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm","min_memory_size":512,"disk_target_device":"---\nxen:
+        sda\nkvm: hd\n","cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":null,"manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}}]}]'
+    http_version: 
+  recorded_at: Mon, 19 Oct 2015 13:33:11 GMT
+- request:
+    method: post
+    uri: https://rspec-test-_9aadf6:%2AC%29Aeuc47zPNqw4L@<%= extract_domain ENV["ONAPP_URI"]
+      %>/virtual_machines.json?virtual_machine%5Bcpu_shares%5D=100&virtual_machine%5Bcpus%5D=1&virtual_machine%5Bhostname%5D=rspec-test-user-s-server-1&virtual_machine%5Bhypervisor_group_id%5D=7&virtual_machine%5Blabel%5D=Rspec%20Test%20User%27s%20Server%201&virtual_machine%5Bmemory%5D=512.0&virtual_machine%5Bnote%5D=Created%20with%20Cloud.net&virtual_machine%5Bprimary_disk_size%5D=19.0&virtual_machine%5Brequired_ip_address_assignment%5D=1&virtual_machine%5Brequired_virtual_machine_build%5D=1&virtual_machine%5Brequired_virtual_machine_startup%5D=1&virtual_machine%5Bswap_disk_size%5D=1.0&virtual_machine%5Btemplate_id%5D=29
+    body:
+      encoding: UTF-8
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Mon, 19 Oct 2015 13:33:22 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"1c465c6ca7d7655a09789e40802a1ff4"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 20f1d066e32dbdf29c0d8479ff8eca67
+      X-Runtime:
+      - '2.735444'
+      X-Rack-Cache:
+      - invalidate, pass
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=af9d733459518ca164bbdb3315b9506a; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Location:
+      - https://<%= extract_domain ENV["ONAPP_URI"] %>/virtual_machines/pns3me7sp7lyy6
+      Status:
+      - 201 Created
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"virtual_machine":{"add_to_marketplace":null,"<%= ENV["ONAPP_USER"]
+        %>_note":null,"allowed_hot_migrate":false,"allowed_swap":true,"booted":false,"built":false,"cores_per_socket":0,"cpu_shares":100,"cpu_sockets":null,"cpu_threads":null,"cpu_units":null,"cpus":1,"created_at":"2015-10-19T13:33:25+00:00","customer_network_id":null,"deleted_at":null,"edge_server_type":null,"enable_autoscale":false,"enable_monitis":false,"firewall_notrack":false,"hostname":"rspec-test-user-s-server-1","hot_add_cpu":null,"hot_add_memory":null,"hypervisor_id":2,"id":106,"identifier":"pns3me7sp7lyy6","initial_root_password_encrypted":false,"instance_type_id":null,"iso_id":null,"label":"Rspec
+        Test User''s Server 1","local_remote_access_ip_address":null,"local_remote_access_port":null,"locked":false,"memory":512,"min_disk_size":5,"note":"Created
+        with Cloud.net","operating_system":"linux","operating_system_distro":"ubuntu","preferred_hvs":[],"recovery_mode":null,"remote_access_password":null,"service_password":null,"state":"new","storage_server_type":null,"strict_virtual_machine_id":null,"suspended":false,"template_id":29,"template_label":"Debian
+        6.0 x64 LAMP","time_zone":null,"updated_at":"2015-10-19T13:33:25+00:00","user_id":361,"vip":null,"xen_id":null,"ip_addresses":[],"monthly_bandwidth_used":"0","total_disk_size":0,"price_per_hour":"0.0","price_per_hour_powered_off":"0.0","support_incremental_backups":true,"cpu_priority":100}}'
+    http_version: 
+  recorded_at: Mon, 19 Oct 2015 13:33:15 GMT
+- request:
+    method: delete
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/users/361.json
+    body:
+      encoding: UTF-8
+      string: force=1
+    headers: {}
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Mon, 19 Oct 2015 13:33:25 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 8feedd9e02824372964c38124e3d2856
+      X-Runtime:
+      - '0.186954'
+      X-Rack-Cache:
+      - invalidate, pass
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=985b6878f4f5d4c09d441545f084eb5c; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Status:
+      - 204 No Content
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Content-Type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 19 Oct 2015 13:33:15 GMT
+- request:
+    method: delete
+    uri: https://rspec-test-_9aadf6:%2AC%29Aeuc47zPNqw4L@<%= extract_domain ENV["ONAPP_URI"]
+      %>/virtual_machines/pns3me7sp7lyy6.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Mon, 19 Oct 2015 13:33:26 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - e35b37d81f4e4068b299d6d7af2dc00b
+      X-Runtime:
+      - '0.111666'
+      X-Rack-Cache:
+      - invalidate, pass
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=78cfc839092f2e38c23a13aca80675a4; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Status:
+      - 204 No Content
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Content-Type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 19 Oct 2015 13:33:16 GMT
+recorded_with: VCR 2.9.3

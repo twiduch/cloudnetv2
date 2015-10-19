@@ -7,6 +7,7 @@ require 'rack/test'
 require 'webmock/rspec'
 require 'sidekiq/testing'
 
+
 Cloudnet.recursive_require 'spec/support'
 
 Mail.defaults do
@@ -22,6 +23,8 @@ RSpec.configure do |c|
     Mongoid.disconnect_sessions
     Mongoid.default_session.drop
     Mail::TestMailer.deliveries.clear
+    # Make sure all worker jobs are processed immediately, unless told otherwise
+    Sidekiq::Testing.inline!
   end
 
   c.before(:each) do

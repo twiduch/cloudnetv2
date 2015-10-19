@@ -7,9 +7,14 @@ require 'bundler/setup'
 # Manually require gems, rather than use `Bundler.require` to save startup time
 require 'sidekiq/api'
 require 'mongoid'
+require 'mongoid-paranoia'
 require 'grape'
-require 'grape-entity'
+require 'grape-roar'
 require 'grape-swagger'
+require 'roar/representer'
+require 'roar/coercion'
+require 'roar/json'
+require 'roar/json/hal'
 
 I18n.enforce_available_locales = false
 
