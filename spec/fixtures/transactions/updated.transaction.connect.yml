@@ -1,222 +1,135 @@
 --- !ruby/object:RecursiveOpenStruct
 recurse_over_arrays: true
+deep_dup: !ruby/object:RecursiveOpenStruct::DeepDup
+  recurse_over_arrays: true
 table:
-  :action: receive_notification_from_market
-  :actor: trader
-  :allowed_cancel: true
-  :associated_object_id: 3
-  :associated_object_type: VirtualMachine
-  :created_at: '2015-02-19T08:03:43-07:00'
-  :dependent_transaction_id: 127
-  :id: 128
-  :identifier: rga5uro36pezqj
-  :log_output: "Handling notification `updated.transaction.connect` within transaction
-    (128)\nReceived notification about transaction being updated\nUpdating transaction:\nlog_output
-    -> Remote Server: 10.62.31.134\nRunning: iptables -D FORWARD -m physdev --physdev-in
-    'wh781s95u141ym' --physdev-out 'eth5' -s '69.168.236.46' -j ACCEPT\niptables:
-    Bad rule (does a matching rule exist in that chain?).\r\nRunning: iptables -D
-    FORWARD -m physdev --physdev-in 'wh781s95u141ym' -s '69.168.236.46' -j ACCEPT\niptables:
-    Bad rule (does a matching rule exist in that chain?).\r\nRunning: iptables -D
-    FORWARD -m physdev --physdev-out 'wh781s95u141ym' -d '69.168.236.46' -j wh781s95u141ym\niptables
-    v1.4.7: Couldn't load target `wh781s95u141ym':/lib64/xtables/libipt_wh781s95u141ym.so:
-    cannot open shared object file: No such file or directory\r\n\r\nTry `iptables
-    -h' or 'iptables --help' for more information.\r\nRunning: iptables -D FORWARD
-    -m physdev --physdev-is-bridged --physdev-in 'wh781s95u141ym' --physdev-out 'eth5'
-    -s '69.168.236.46' -j ACCEPT\niptables: Bad rule (does a matching rule exist in
-    that chain?).\r\nRunning: iptables -D FORWARD -m physdev --physdev-is-bridged
-    --physdev-in 'wh781s95u141ym' -s '69.168.236.46' -j ACCEPT\niptables: Bad rule
-    (does a matching rule exist in that chain?).\r\nRunning: iptables -D FORWARD -m
-    physdev --physdev-is-bridged --physdev-out 'wh781s95u141ym' -d '69.168.236.46'
-    -j wh781s95u141ym\niptables v1.4.7: Couldn't load target `wh781s95u141ym':/lib64/xtables/libipt_wh781s95u141ym.so:
-    cannot open shared object file: No such file or directory\r\n\r\nTry `iptables
-    -h' or 'iptables --help' for more information.\r\nRunning: iptables -F wh781s95u141ym\niptables:
-    No chain/target/match by that name.\r\nRunning: arptables -V\narptables v0.0.8\r\nRunning:
-    arptables -D FORWARD --arpop 2 --in-interface 'wh781s95u141ym' --source '69.168.236.46'
-    -j ACCEPT\narptables: arptc_commit() failed: Bad rule (does a matching rule exist
-    in that chain?)\r\nRunning: tc qdisc del dev wh781s95u141ym root\nCannot find
-    device \"wh781s95u141ym\"\r\nRunning: iptables -D FORWARD -t mangle -m physdev
-    --physdev-in 'wh781s95u141ym' -j MARK --set-mark \niptables v1.4.7: option `--set-mark'
-    requires an argument\r\nTry `iptables -h' or 'iptables --help' for more information.\r\nRunning:
-    iptables -D FORWARD -t mangle -m physdev --physdev-is-bridged --physdev-in 'wh781s95u141ym'
-    -j MARK --set-mark \niptables v1.4.7: option `--set-mark' requires an argument\r\nTry
-    `iptables -h' or 'iptables --help' for more information.\r\nRunning: tc class
-    \ del dev eth5 parent 1: classid 1: htb rate 1Mbit ceil 1Mbit burst 1mb cburst
-    1mb mtu 33000\nRTNETLINK answers: No such file or directory\r\nRunning: tc filter
-    del dev eth5 protocol ip parent 1:0 prio 1 handle  fw flowid 1:\nUnknown filter
-    \"flowid\", hence option \"1:\" is unparsable\r\nRemote Server: 10.62.31.134\nRunning:
-    brctl show\nbridge name\tbridge id\t\tSTP enabled\tinterfaces\r\nl0tdilzdb57rys\t\t8000.0e5489de3c4e\tno\t\tdummy0\r\nq4p7l49kv0jaxp\t\t8000.002590963495\tno\t\ta2wxsigzfzu31n\r\n\t\t\t\t\t\t\tajzrzsf16motby\r\n\t\t\t\t\t\t\tbinmmw73v8620c\r\n\t\t\t\t\t\t\tbzjc3hvx7uadej\r\n\t\t\t\t\t\t\teth5\r\n\t\t\t\t\t\t\tf7tq9q1f37gvoo\r\n\t\t\t\t\t\t\tg4itouxfjjt2q8\r\n\t\t\t\t\t\t\thl6m05gpgwexyc\r\n\t\t\t\t\t\t\thsx8fcyz6dv6go\r\n\t\t\t\t\t\t\tifj813marp5oyy\r\n\t\t\t\t\t\t\tj9fip5pxdis72p\r\n\t\t\t\t\t\t\tjg9s1jx1icywog\r\n\t\t\t\t\t\t\tjsojfysqajcrhy\r\n\t\t\t\t\t\t\tkn3dzzt9gtziyb\r\n\t\t\t\t\t\t\tnchbdy8do6p9ya\r\n\t\t\t\t\t\t\tnp3iu249j48cea\r\n\t\t\t\t\t\t\tp4yfpawgt3az1t\r\n\t\t\t\t\t\t\tpgqg3fehuhm5zi\r\n\t\t\t\t\t\t\tqhf63vhut0jmlq\r\n\t\t\t\t\t\t\tqp19loso2bmfos\r\n\t\t\t\t\t\t\tqwo71xmjq0c0nf\r\n\t\t\t\t\t\t\tr5p81zl79lm3im\r\n\t\t\t\t\t\t\tr653p9ka2iax7w\r\n\t\t\t\t\t\t\trylen6op5mlazt\r\n\t\t\t\t\t\t\tskqmruyqcl3e2q\r\n\t\t\t\t\t\t\tsvywrk3dleqze7\r\n\t\t\t\t\t\t\tt6f2yn6koymdjc\r\n\t\t\t\t\t\t\ttxafab4ugsrhno\r\n\t\t\t\t\t\t\turyaq93ywvjlw0\r\n\t\t\t\t\t\t\tw6emo08ynz5mc3\r\n\t\t\t\t\t\t\twfc4fx30vcfnuy\r\n\t\t\t\t\t\t\twgyhiy9pbpzfd0\r\n\t\t\t\t\t\t\txfk53quxto2mth\r\n\t\t\t\t\t\t\txgzkj9rk3tah6x\r\n\t\t\t\t\t\t\txn9bymj0u14ynn\r\n\t\t\t\t\t\t\txq6og1snefryuj\r\n\t\t\t\t\t\t\ty98rp44jcgupsf\r\n\t\t\t\t\t\t\tyr1fo17am6roof\r\n\t\t\t\t\t\t\tyxc202tybq07u4\r\nRemote
-    Server: 10.62.31.134\nRunning: Storage API Call: PUT 10.62.31.134:8080/lvm/Datastore/onapp-rcvtkr2mv4rsj1/VDisk/rjkdyuhr1c90a3
-    \"{\\\"state\\\":3}\"\n{\"result\"=>\"SUCCESS\"}\nRemote Server: 10.62.31.134\nRunning:
-    Storage API Call: PUT 10.62.31.134:8080/lvm/Datastore/onapp-rcvtkr2mv4rsj1/VDisk/wwf9da74mlv91u
-    \"{\\\"state\\\":3}\"\n{\"result\"=>\"SUCCESS\"}\nRemote Server: 10.62.31.134\nRemote
-    Server: 10.62.31.134\nRunning: create_domain_xml\nOptions: \"<?xml version=\\\"1.0\\\"
-    encoding=\\\"UTF-8\\\"?>\\n<domain type=\\\"kvm\\\">\\n  <name>pyppv3ny98q34c</name>\\n
-    \ <description>test</description>\\n  <memory>262144</memory>\\n  <currentMemory>262144</currentMemory>\\n
-    \ <vcpu current=\\\"1\\\">24</vcpu>\\n  <cputune>\\n    <shares>1</shares>\\n
-    \ </cputune>\\n  <features>\\n    <pae/>\\n    <acpi/>\\n    <apic/>\\n  </features>\\n
-    \ <os>\\n    <type arch=\\\"x86_64\\\" machine=\\\"pc\\\">hvm</type>\\n    <boot
-    dev=\\\"fd\\\"/>\\n    <boot dev=\\\"hd\\\"/>\\n  </os>\\n  <devices>\\n    <emulator>/usr/libexec/qemu-kvm</emulator>\\n
-    \   <disk type=\\\"file\\\" device=\\\"floppy\\\">\\n      <source file=\\\"/onapp/tools/grub.img\\\"/>\\n
-    \     <target dev=\\\"fda\\\"/>\\n      <readonly/>\\n    </disk>\\n    <disk
-    type=\\\"block\\\" device=\\\"disk\\\">\\n      <source dev=\\\"/dev/onapp-rcvtkr2mv4rsj1/rjkdyuhr1c90a3\\\"/>\\n
-    \     <target dev=\\\"vda\\\" bus=\\\"virtio\\\"/>\\n      <driver type=\\\"raw\\\"
-    name=\\\"qemu\\\" cache=\\\"none\\\"/>\\n    </disk>\\n    <disk type=\\\"block\\\"
-    device=\\\"disk\\\">\\n      <source dev=\\\"/dev/onapp-rcvtkr2mv4rsj1/wwf9da74mlv91u\\\"/>\\n
-    \     <target dev=\\\"vdb\\\" bus=\\\"virtio\\\"/>\\n      <driver type=\\\"raw\\\"
-    name=\\\"qemu\\\" cache=\\\"none\\\"/>\\n    </disk>\\n    <interface type=\\\"bridge\\\">\\n
-    \     <source bridge=\\\"q4p7l49kv0jaxp\\\"/>\\n      <mac address=\\\"00:16:3e:6b:a4:42\\\"/>\\n
-    \     <ip address=\\\"69.168.236.46\\\"/>\\n      <target dev=\\\"wh781s95u141ym\\\"/>\\n
-    \     <alias name=\\\"nic-wh781s95u141ym\\\"/>\\n      <model type=\\\"virtio\\\"/>\\n
-    \   </interface>\\n    <graphics type=\\\"vnc\\\" listen=\\\"0.0.0.0\\\" passwd=\\\"J=.+qGc8c%_e\\\"/>\\n
-    \   <input type=\\\"tablet\\\" bus=\\\"usb\\\"/>\\n  </devices>\\n</domain>\\n\"\nRemote
-    Server: 10.62.31.134\nRunning: iptables -N wh781s95u141ym\n\nRunning: iptables
-    -A FORWARD -m physdev --physdev-is-bridged --physdev-in 'wh781s95u141ym' --physdev-out
-    'eth5' -s '69.168.236.46' -j ACCEPT\n\nRunning: iptables -A FORWARD -m physdev
-    --physdev-is-bridged --physdev-out 'wh781s95u141ym' -d '69.168.236.46' -j wh781s95u141ym\n\nRunning:
-    arptables -V\narptables v0.0.8\r\nRunning: arptables -A FORWARD --arpop 2 --in-interface
-    'wh781s95u141ym' --source '69.168.236.46' -j ACCEPT\n\nRunning: tc qdisc add dev
-    wh781s95u141ym root tbf rate 1mbit latency 50ms burst 1mb mtu 33000\n\nRunning:
-    iptables -A FORWARD -t mangle -m physdev --physdev-is-bridged --physdev-in 'wh781s95u141ym'
-    -j MARK --set-mark 218\n\nRunning: tc qdisc  add dev eth5 root handle 1 htb\nRTNETLINK
-    answers: File exists\r\nRunning: tc class  add dev eth5 parent 1: classid 1:218
-    htb rate 1Mbit ceil 1Mbit burst 1mb cburst 1mb mtu 33000\n\nRunning: tc filter
-    add dev eth5 protocol ip parent 1:0 prio 1 handle 218 fw flowid 1:218\n\nRemote
-    Server: 10.62.31.134\nRunning: iptables -F wh781s95u141ym\n\nRunning: ip6tables
-    -F wh781s95u141ym\nip6tables: No chain/target/match by that name.\r\nRunning:
-    ip6tables -N wh781s95u141ym\n\nRunning: iptables -A wh781s95u141ym -m state --state
-    RELATED,ESTABLISHED -j ACCEPT\n\nRunning: ip6tables -A wh781s95u141ym -m state
-    --state RELATED,ESTABLISHED -j ACCEPT\n\nRunning: iptables -A wh781s95u141ym -j
-    ACCEPT\n\nRunning: ip6tables -A wh781s95u141ym -j ACCEPT\n\nstatus -> complete\nHandling
-    of the notification was successful\n\n"
-  :params:
+  action: receive_notification_from_market
+  actor: trader
+  allowed_cancel: true
+  associated_object_id: 106
+  associated_object_type: VirtualMachine
+  created_at: '2015-10-19T13:34:18+00:00'
+  dependent_transaction_id: 43686
+  id: 43687
+  identifier: pns3me7sp7lyy6
+  params: &1
     resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
     event_type: updated.transaction.connect
-    event_data: &1
+    event_data:
       transaction:
         action: startup_virtual_machine
         actor: 
         allowed_cancel: true
-        associated_object_id: 157
+        associated_object_id: 490
         associated_object_type: VirtualMachine
-        created_at: '2015-02-19T14:57:13Z'
-        dependent_transaction_id: 104775
-        id: 104776
-        identifier: pyppv3ny98q34c
+        created_at: '2015-10-19T13:33:24Z'
+        dependent_transaction_id: 459331
+        id: 459332
+        identifier: j0rpbflqzhj7hn
         log_output: "Remote Server: 10.62.31.134\nRunning: iptables -D FORWARD -m
-          physdev --physdev-in 'wh781s95u141ym' --physdev-out 'eth5' -s '69.168.236.46'
-          -j ACCEPT\niptables: Bad rule (does a matching rule exist in that chain?).\r\nRunning:
-          iptables -D FORWARD -m physdev --physdev-in 'wh781s95u141ym' -s '69.168.236.46'
-          -j ACCEPT\niptables: Bad rule (does a matching rule exist in that chain?).\r\nRunning:
-          iptables -D FORWARD -m physdev --physdev-out 'wh781s95u141ym' -d '69.168.236.46'
-          -j wh781s95u141ym\niptables v1.4.7: Couldn't load target `wh781s95u141ym':/lib64/xtables/libipt_wh781s95u141ym.so:
-          cannot open shared object file: No such file or directory\r\n\r\nTry `iptables
-          -h' or 'iptables --help' for more information.\r\nRunning: iptables -D FORWARD
-          -m physdev --physdev-is-bridged --physdev-in 'wh781s95u141ym' --physdev-out
-          'eth5' -s '69.168.236.46' -j ACCEPT\niptables: Bad rule (does a matching
+          physdev --physdev-is-bridged --physdev-in 'rmg5588w1k6jvi' --physdev-out
+          'eth5' -s '69.168.236.123' -j ACCEPT\niptables: Bad rule (does a matching
           rule exist in that chain?).\r\nRunning: iptables -D FORWARD -m physdev --physdev-is-bridged
-          --physdev-in 'wh781s95u141ym' -s '69.168.236.46' -j ACCEPT\niptables: Bad
+          --physdev-in 'rmg5588w1k6jvi' -s '69.168.236.123' -j ACCEPT\niptables: Bad
           rule (does a matching rule exist in that chain?).\r\nRunning: iptables -D
-          FORWARD -m physdev --physdev-is-bridged --physdev-out 'wh781s95u141ym' -d
-          '69.168.236.46' -j wh781s95u141ym\niptables v1.4.7: Couldn't load target
-          `wh781s95u141ym':/lib64/xtables/libipt_wh781s95u141ym.so: cannot open shared
+          FORWARD -m physdev --physdev-is-bridged --physdev-out 'rmg5588w1k6jvi' -d
+          '69.168.236.123' -j rmg5588w1k6jvi\niptables v1.4.7: Couldn't load target
+          `rmg5588w1k6jvi':/lib64/xtables/libipt_rmg5588w1k6jvi.so: cannot open shared
           object file: No such file or directory\r\n\r\nTry `iptables -h' or 'iptables
-          --help' for more information.\r\nRunning: iptables -F wh781s95u141ym\niptables:
+          --help' for more information.\r\nRunning: iptables -F rmg5588w1k6jvi\niptables:
           No chain/target/match by that name.\r\nRunning: arptables -V\narptables
-          v0.0.8\r\nRunning: arptables -D FORWARD --arpop 2 --in-interface 'wh781s95u141ym'
-          --source '69.168.236.46' -j ACCEPT\narptables: arptc_commit() failed: Bad
-          rule (does a matching rule exist in that chain?)\r\nRunning: tc qdisc del
-          dev wh781s95u141ym root\nCannot find device \"wh781s95u141ym\"\r\nRunning:
-          iptables -D FORWARD -t mangle -m physdev --physdev-in 'wh781s95u141ym' -j
-          MARK --set-mark \niptables v1.4.7: option `--set-mark' requires an argument\r\nTry
-          `iptables -h' or 'iptables --help' for more information.\r\nRunning: iptables
-          -D FORWARD -t mangle -m physdev --physdev-is-bridged --physdev-in 'wh781s95u141ym'
-          -j MARK --set-mark \niptables v1.4.7: option `--set-mark' requires an argument\r\nTry
-          `iptables -h' or 'iptables --help' for more information.\r\nRunning: tc
-          class  del dev eth5 parent 1: classid 1: htb rate 1Mbit ceil 1Mbit burst
-          1mb cburst 1mb mtu 33000\nRTNETLINK answers: No such file or directory\r\nRunning:
+          v0.0.8\r\nRunning: arptables -D FORWARD --arpop 2 --in-interface 'rmg5588w1k6jvi'
+          --source '69.168.236.123' -j ACCEPT\narptables: arptc_commit() failed: Bad
+          rule (does a matching rule exist in that chain?)\r\nRemote Server: 10.62.31.134\nRunning:
           tc filter del dev eth5 protocol ip parent 1:0 prio 1 handle  fw flowid 1:\nUnknown
-          filter \"flowid\", hence option \"1:\" is unparsable\r\nRemote Server: 10.62.31.134\nRunning:
-          brctl show\nbridge name\tbridge id\t\tSTP enabled\tinterfaces\r\nl0tdilzdb57rys\t\t8000.0e5489de3c4e\tno\t\tdummy0\r\nq4p7l49kv0jaxp\t\t8000.002590963495\tno\t\ta2wxsigzfzu31n\r\n\t\t\t\t\t\t\tajzrzsf16motby\r\n\t\t\t\t\t\t\tbinmmw73v8620c\r\n\t\t\t\t\t\t\tbzjc3hvx7uadej\r\n\t\t\t\t\t\t\teth5\r\n\t\t\t\t\t\t\tf7tq9q1f37gvoo\r\n\t\t\t\t\t\t\tg4itouxfjjt2q8\r\n\t\t\t\t\t\t\thl6m05gpgwexyc\r\n\t\t\t\t\t\t\thsx8fcyz6dv6go\r\n\t\t\t\t\t\t\tifj813marp5oyy\r\n\t\t\t\t\t\t\tj9fip5pxdis72p\r\n\t\t\t\t\t\t\tjg9s1jx1icywog\r\n\t\t\t\t\t\t\tjsojfysqajcrhy\r\n\t\t\t\t\t\t\tkn3dzzt9gtziyb\r\n\t\t\t\t\t\t\tnchbdy8do6p9ya\r\n\t\t\t\t\t\t\tnp3iu249j48cea\r\n\t\t\t\t\t\t\tp4yfpawgt3az1t\r\n\t\t\t\t\t\t\tpgqg3fehuhm5zi\r\n\t\t\t\t\t\t\tqhf63vhut0jmlq\r\n\t\t\t\t\t\t\tqp19loso2bmfos\r\n\t\t\t\t\t\t\tqwo71xmjq0c0nf\r\n\t\t\t\t\t\t\tr5p81zl79lm3im\r\n\t\t\t\t\t\t\tr653p9ka2iax7w\r\n\t\t\t\t\t\t\trylen6op5mlazt\r\n\t\t\t\t\t\t\tskqmruyqcl3e2q\r\n\t\t\t\t\t\t\tsvywrk3dleqze7\r\n\t\t\t\t\t\t\tt6f2yn6koymdjc\r\n\t\t\t\t\t\t\ttxafab4ugsrhno\r\n\t\t\t\t\t\t\turyaq93ywvjlw0\r\n\t\t\t\t\t\t\tw6emo08ynz5mc3\r\n\t\t\t\t\t\t\twfc4fx30vcfnuy\r\n\t\t\t\t\t\t\twgyhiy9pbpzfd0\r\n\t\t\t\t\t\t\txfk53quxto2mth\r\n\t\t\t\t\t\t\txgzkj9rk3tah6x\r\n\t\t\t\t\t\t\txn9bymj0u14ynn\r\n\t\t\t\t\t\t\txq6og1snefryuj\r\n\t\t\t\t\t\t\ty98rp44jcgupsf\r\n\t\t\t\t\t\t\tyr1fo17am6roof\r\n\t\t\t\t\t\t\tyxc202tybq07u4\r\nRemote
-          Server: 10.62.31.134\nRunning: Storage API Call: PUT 10.62.31.134:8080/lvm/Datastore/onapp-rcvtkr2mv4rsj1/VDisk/rjkdyuhr1c90a3
+          filter \"flowid\", hence option \"1:\" is unparsable\r\nRunning: tc class
+          del dev eth5 parent 1: classid 1: htb rate 1Mbit ceil 1Mbit burst 1mb cburst
+          1mb mtu 33000\nRTNETLINK answers: No such file or directory\r\nRunning:
+          ip6tables -D FORWARD -t mangle -m physdev --physdev-in 'rmg5588w1k6jvi'
+          -j MARK --set-mark \nip6tables v1.4.7: option `--set-mark' requires an argument\r\nTry
+          `ip6tables -h' or 'ip6tables --help' for more information.\r\nRunning: iptables
+          -D FORWARD -t mangle -m physdev --physdev-in 'rmg5588w1k6jvi' -j MARK --set-mark
+          \niptables v1.4.7: option `--set-mark' requires an argument\r\nTry `iptables
+          -h' or 'iptables --help' for more information.\r\nRunning: tc qdisc del
+          dev rmg5588w1k6jvi root tbf rate 1mbit latency 50ms burst 1mb mtu 33000\nCannot
+          find device \"rmg5588w1k6jvi\"\r\nRemote Server: 10.62.31.134\nRunning:
+          brctl show\nbridge name\tbridge id\t\tSTP enabled\tinterfaces\r\nl0tdilzdb57rys\t\t8000.0e5489de3c4e\tno\t\tdummy0\r\nq4p7l49kv0jaxp\t\t8000.002590963495\tno\t\ta2lajkkiokpgue\r\n\t\t\t\t\t\t\ta5t51xy3hoxr0s\r\n\t\t\t\t\t\t\tb7r27tc7c8oruw\r\n\t\t\t\t\t\t\tbinmmw73v8620c\r\n\t\t\t\t\t\t\tbokmf2sv8uugz2\r\n\t\t\t\t\t\t\tbpa4k8hqvezbqk\r\n\t\t\t\t\t\t\tc4kap2kl6pxkd8\r\n\t\t\t\t\t\t\tcleuh5m72b6r41\r\n\t\t\t\t\t\t\td36w87scmki38g\r\n\t\t\t\t\t\t\td3unrxx81lb9mx\r\n\t\t\t\t\t\t\td4gsrxuudhddsp\r\n\t\t\t\t\t\t\tdd1lt2zmuel1ap\r\n\t\t\t\t\t\t\tdf1pr9qfifw8td\r\n\t\t\t\t\t\t\tdh39w6xdm5uewa\r\n\t\t\t\t\t\t\tdsl3f3rmc93y6o\r\n\t\t\t\t\t\t\tei6kc86frxyjhy\r\n\t\t\t\t\t\t\tem5j8n7hzdsv9k\r\n\t\t\t\t\t\t\temr1rjql0p515b\r\n\t\t\t\t\t\t\teth5\r\n\t\t\t\t\t\t\texdpl4pxspeghv\r\n\t\t\t\t\t\t\tf27vlxpvtggu0k\r\n\t\t\t\t\t\t\tft7xfack8efmx4\r\n\t\t\t\t\t\t\tfwffelbqbar8tj\r\n\t\t\t\t\t\t\tg4itouxfjjt2q8\r\n\t\t\t\t\t\t\tgfam0mhvazrxuv\r\n\t\t\t\t\t\t\tgokoxkcfubmqgs\r\n\t\t\t\t\t\t\tgzgiwilyzaxq0v\r\n\t\t\t\t\t\t\th7yu1bphom8826\r\n\t\t\t\t\t\t\thd0e57ugm3ehrt\r\n\t\t\t\t\t\t\thfremji9d7edal\r\n\t\t\t\t\t\t\thl6m05gpgwexyc\r\n\t\t\t\t\t\t\thn8q2nmy2lmdb4\r\n\t\t\t\t\t\t\thpddvkc5vuguhy\r\n\t\t\t\t\t\t\thsx8fcyz6dv6go\r\n\t\t\t\t\t\t\thxpwygni57u8gv\r\n\t\t\t\t\t\t\ti2gbcha7momgsi\r\n\t\t\t\t\t\t\ti6lpindtwj2b6e\r\n\t\t\t\t\t\t\tir6tn21zdpuh8t\r\n\t\t\t\t\t\t\tiuk7ja1rh703ts\r\n\t\t\t\t\t\t\tjee6xyj1yv1awc\r\n\t\t\t\t\t\t\tjg9s1jx1icywog\r\n\t\t\t\t\t\t\tjkq0rqqyixd3dw\r\n\t\t\t\t\t\t\tjl8l14w2nr4svy\r\n\t\t\t\t\t\t\tjm6wgc0ipzdwrv\r\n\t\t\t\t\t\t\tjsojfysqajcrhy\r\n\t\t\t\t\t\t\tjuk6ljsx4lmbxb\r\n\t\t\t\t\t\t\tk1i2p9vyyk1iwg\r\n\t\t\t\t\t\t\tkckzz56dgwzswp\r\n\t\t\t\t\t\t\tkd12oaw3st0gzf\r\n\t\t\t\t\t\t\tkuhotm6bxrhc60\r\n\t\t\t\t\t\t\tkuz3acowl3pkn0\r\n\t\t\t\t\t\t\tl3yuisvo96lkwr\r\n\t\t\t\t\t\t\tl4beaeql9s7hqd\r\n\t\t\t\t\t\t\tl7kqjn6sojwer8\r\n\t\t\t\t\t\t\tlj57btg685ygpc\r\n\t\t\t\t\t\t\tlpzjtjelclgl6i\r\n\t\t\t\t\t\t\tlxe9unjypqx3nv\r\n\t\t\t\t\t\t\tm73r2mi4lob9xw\r\n\t\t\t\t\t\t\tm8p57oigzcnqo2\r\n\t\t\t\t\t\t\tmdh1h41mexzomw\r\n\t\t\t\t\t\t\tmecnqf3kyu06u3\r\n\t\t\t\t\t\t\tmwe3c1yyguf6do\r\n\t\t\t\t\t\t\tmyu4snr4xvt1cd\r\n\t\t\t\t\t\t\tnkubak8neh8lxg\r\n\t\t\t\t\t\t\tnv16kus9s1i7jw\r\n\t\t\t\t\t\t\tnxpqp8npujp81l\r\n\t\t\t\t\t\t\tokskjtg8wjbdn2\r\n\t\t\t\t\t\t\too5mvfj1mncehu\r\n\t\t\t\t\t\t\totkov1onjwbkp6\r\n\t\t\t\t\t\t\tovtq9q4e7niklc\r\n\t\t\t\t\t\t\tp5cajs5oi6fxug\r\n\t\t\t\t\t\t\tp74ugd9tpv58dd\r\n\t\t\t\t\t\t\tp93ugq4paitut2\r\n\t\t\t\t\t\t\tq07ye4t7zb5167\r\n\t\t\t\t\t\t\tqhf63vhut0jmlq\r\n\t\t\t\t\t\t\tqppisu8kzhbx4h\r\n\t\t\t\t\t\t\tqsbagpzx5n3had\r\n\t\t\t\t\t\t\tqzmc9jlitadw9n\r\n\t\t\t\t\t\t\tr5p81zl79lm3im\r\n\t\t\t\t\t\t\trpjvzrp4lmnmqk\r\n\t\t\t\t\t\t\trwt6eyjur55a7s\r\n\t\t\t\t\t\t\trxehlmdjf06rdd\r\n\t\t\t\t\t\t\trylen6op5mlazt\r\n\t\t\t\t\t\t\ts9dfebevq7nlqf\r\n\t\t\t\t\t\t\tsjmhmb13iiqshh\r\n\t\t\t\t\t\t\tsn9jyejl8cc5w0\r\n\t\t\t\t\t\t\tt6f2yn6koymdjc\r\n\t\t\t\t\t\t\tt88aneeywiu1xb\r\n\t\t\t\t\t\t\ttp075mpgk0p3uw\r\n\t\t\t\t\t\t\ttta31tflyngnop\r\n\t\t\t\t\t\t\tu4uawlvyninw9s\r\n\t\t\t\t\t\t\tubq2x8n517eyjd\r\n\t\t\t\t\t\t\tuif3se4v865eiz\r\n\t\t\t\t\t\t\tuuop2wf1hsozif\r\n\t\t\t\t\t\t\tuz5zgy39kwcx9i\r\n\t\t\t\t\t\t\tvay3sc0vjcc3uj\r\n\t\t\t\t\t\t\tw6emo08ynz5mc3\r\n\t\t\t\t\t\t\twcur7g95ku6i24\r\n\t\t\t\t\t\t\twe7r5z4nbw4fi2\r\n\t\t\t\t\t\t\twfc4fx30vcfnuy\r\n\t\t\t\t\t\t\twgyhiy9pbpzfd0\r\n\t\t\t\t\t\t\twwjgnmsw8xe4qq\r\n\t\t\t\t\t\t\twz2j5qaaq88mz6\r\n\t\t\t\t\t\t\tx3cas9mcdefx2q\r\n\t\t\t\t\t\t\txectbbofw3r7ul\r\n\t\t\t\t\t\t\txfk53quxto2mth\r\n\t\t\t\t\t\t\txmehotkrlibgn0\r\n\t\t\t\t\t\t\txnmhj61esjblx2\r\n\t\t\t\t\t\t\txq6og1snefryuj\r\n\t\t\t\t\t\t\txvvj00504dpa6p\r\n\t\t\t\t\t\t\txyso3v0zs48u4u\r\n\t\t\t\t\t\t\ty59be6xj7k29cy\r\n\t\t\t\t\t\t\tyak1f9g4lk6o87\r\n\t\t\t\t\t\t\tyr1fo17am6roof\r\nRemote
+          Server: 10.62.31.134\nRunning: Storage API Call: PUT 10.62.31.134:8080/lvm/Datastore/onapp-rcvtkr2mv4rsj1/VDisk/mht1n97lszqp2e
           \"{\\\"state\\\":3}\"\n{\"result\"=>\"SUCCESS\"}\nRemote Server: 10.62.31.134\nRunning:
-          Storage API Call: PUT 10.62.31.134:8080/lvm/Datastore/onapp-rcvtkr2mv4rsj1/VDisk/wwf9da74mlv91u
+          Storage API Call: PUT 10.62.31.134:8080/lvm/Datastore/onapp-rcvtkr2mv4rsj1/VDisk/jlperdkk9cuv43
           \"{\\\"state\\\":3}\"\n{\"result\"=>\"SUCCESS\"}\nRemote Server: 10.62.31.134\nRemote
           Server: 10.62.31.134\nRunning: create_domain_xml\nOptions: \"<?xml version=\\\"1.0\\\"
-          encoding=\\\"UTF-8\\\"?>\\n<domain type=\\\"kvm\\\">\\n  <name>pyppv3ny98q34c</name>\\n
-          \ <description>test</description>\\n  <memory>262144</memory>\\n  <currentMemory>262144</currentMemory>\\n
-          \ <vcpu current=\\\"1\\\">24</vcpu>\\n  <cputune>\\n    <shares>1</shares>\\n
-          \ </cputune>\\n  <features>\\n    <pae/>\\n    <acpi/>\\n    <apic/>\\n
-          \ </features>\\n  <os>\\n    <type arch=\\\"x86_64\\\" machine=\\\"pc\\\">hvm</type>\\n
-          \   <boot dev=\\\"fd\\\"/>\\n    <boot dev=\\\"hd\\\"/>\\n  </os>\\n  <devices>\\n
-          \   <emulator>/usr/libexec/qemu-kvm</emulator>\\n    <disk type=\\\"file\\\"
-          device=\\\"floppy\\\">\\n      <source file=\\\"/onapp/tools/grub.img\\\"/>\\n
+          encoding=\\\"UTF-8\\\"?>\\n<domain type=\\\"kvm\\\">\\n  <name>j0rpbflqzhj7hn</name>\\n
+          \ <description>Rspec+Test+User%27s+Server+1</description>\\n  <memory>524288</memory>\\n
+          \ <currentMemory>524288</currentMemory>\\n  <vcpu current=\\\"1\\\">24</vcpu>\\n
+          \ <cputune>\\n    <shares>100</shares>\\n  </cputune>\\n  <features>\\n
+          \   <pae/>\\n    <acpi/>\\n    <apic/>\\n  </features>\\n  <os>\\n    <type
+          arch=\\\"x86_64\\\" machine=\\\"pc\\\">hvm</type>\\n    <boot dev=\\\"fd\\\"/>\\n
+          \   <boot dev=\\\"hd\\\"/>\\n  </os>\\n  <devices>\\n    <emulator>/usr/libexec/qemu-kvm</emulator>\\n
+          \   <disk type=\\\"file\\\" device=\\\"floppy\\\">\\n      <source file=\\\"/onapp/tools/grub.img\\\"/>\\n
           \     <target dev=\\\"fda\\\"/>\\n      <readonly/>\\n    </disk>\\n    <disk
-          type=\\\"block\\\" device=\\\"disk\\\">\\n      <source dev=\\\"/dev/onapp-rcvtkr2mv4rsj1/rjkdyuhr1c90a3\\\"/>\\n
-          \     <target dev=\\\"vda\\\" bus=\\\"virtio\\\"/>\\n      <driver type=\\\"raw\\\"
-          name=\\\"qemu\\\" cache=\\\"none\\\"/>\\n    </disk>\\n    <disk type=\\\"block\\\"
-          device=\\\"disk\\\">\\n      <source dev=\\\"/dev/onapp-rcvtkr2mv4rsj1/wwf9da74mlv91u\\\"/>\\n
-          \     <target dev=\\\"vdb\\\" bus=\\\"virtio\\\"/>\\n      <driver type=\\\"raw\\\"
-          name=\\\"qemu\\\" cache=\\\"none\\\"/>\\n    </disk>\\n    <interface type=\\\"bridge\\\">\\n
-          \     <source bridge=\\\"q4p7l49kv0jaxp\\\"/>\\n      <mac address=\\\"00:16:3e:6b:a4:42\\\"/>\\n
-          \     <ip address=\\\"69.168.236.46\\\"/>\\n      <target dev=\\\"wh781s95u141ym\\\"/>\\n
-          \     <alias name=\\\"nic-wh781s95u141ym\\\"/>\\n      <model type=\\\"virtio\\\"/>\\n
-          \   </interface>\\n    <graphics type=\\\"vnc\\\" listen=\\\"0.0.0.0\\\"
-          passwd=\\\"J=.+qGc8c%_e\\\"/>\\n    <input type=\\\"tablet\\\" bus=\\\"usb\\\"/>\\n
-          \ </devices>\\n</domain>\\n\"\nRemote Server: 10.62.31.134\nRunning: iptables
-          -N wh781s95u141ym\n\nRunning: iptables -A FORWARD -m physdev --physdev-is-bridged
-          --physdev-in 'wh781s95u141ym' --physdev-out 'eth5' -s '69.168.236.46' -j
+          type=\\\"block\\\" device=\\\"disk\\\">\\n      <source dev=\\\"/dev/onapp-rcvtkr2mv4rsj1/mht1n97lszqp2e\\\"/>\\n
+          \     <target dev=\\\"vda\\\" bus=\\\"ide\\\"/>\\n      <driver type=\\\"raw\\\"
+          name=\\\"qemu\\\" cache=\\\"default\\\"/>\\n    </disk>\\n    <disk type=\\\"block\\\"
+          device=\\\"disk\\\">\\n      <source dev=\\\"/dev/onapp-rcvtkr2mv4rsj1/jlperdkk9cuv43\\\"/>\\n
+          \     <target dev=\\\"vdb\\\" bus=\\\"ide\\\"/>\\n      <driver type=\\\"raw\\\"
+          name=\\\"qemu\\\" cache=\\\"default\\\"/>\\n    </disk>\\n    <interface
+          type=\\\"bridge\\\">\\n      <source bridge=\\\"q4p7l49kv0jaxp\\\"/>\\n
+          \     <mac address=\\\"00:16:3e:f7:3f:e3\\\"/>\\n      <ip address=\\\"69.168.236.123\\\"/>\\n
+          \     <target dev=\\\"rmg5588w1k6jvi\\\"/>\\n      <alias name=\\\"nic-rmg5588w1k6jvi\\\"/>\\n
+          \     <model type=\\\"e1000\\\"/>\\n    </interface>\\n    <graphics type=\\\"vnc\\\"
+          listen=\\\"0.0.0.0\\\" passwd=\\\"1-oS)Bm5_dkL\\\"/>\\n    <input type=\\\"tablet\\\"
+          bus=\\\"usb\\\"/>\\n  </devices>\\n</domain>\\n\"\nRemote Server: 10.62.31.134\nRunning:
+          iptables -N rmg5588w1k6jvi\n\nRunning: iptables -A FORWARD -m physdev --physdev-is-bridged
+          --physdev-in 'rmg5588w1k6jvi' --physdev-out 'eth5' -s '69.168.236.123' -j
           ACCEPT\n\nRunning: iptables -A FORWARD -m physdev --physdev-is-bridged --physdev-out
-          'wh781s95u141ym' -d '69.168.236.46' -j wh781s95u141ym\n\nRunning: arptables
+          'rmg5588w1k6jvi' -d '69.168.236.123' -j rmg5588w1k6jvi\n\nRunning: arptables
           -V\narptables v0.0.8\r\nRunning: arptables -A FORWARD --arpop 2 --in-interface
-          'wh781s95u141ym' --source '69.168.236.46' -j ACCEPT\n\nRunning: tc qdisc
-          add dev wh781s95u141ym root tbf rate 1mbit latency 50ms burst 1mb mtu 33000\n\nRunning:
-          iptables -A FORWARD -t mangle -m physdev --physdev-is-bridged --physdev-in
-          'wh781s95u141ym' -j MARK --set-mark 218\n\nRunning: tc qdisc  add dev eth5
-          root handle 1 htb\nRTNETLINK answers: File exists\r\nRunning: tc class  add
-          dev eth5 parent 1: classid 1:218 htb rate 1Mbit ceil 1Mbit burst 1mb cburst
-          1mb mtu 33000\n\nRunning: tc filter add dev eth5 protocol ip parent 1:0
-          prio 1 handle 218 fw flowid 1:218\n\nRemote Server: 10.62.31.134\nRunning:
-          iptables -F wh781s95u141ym\n\nRunning: ip6tables -F wh781s95u141ym\nip6tables:
-          No chain/target/match by that name.\r\nRunning: ip6tables -N wh781s95u141ym\n\nRunning:
-          iptables -A wh781s95u141ym -m state --state RELATED,ESTABLISHED -j ACCEPT\n\nRunning:
-          ip6tables -A wh781s95u141ym -m state --state RELATED,ESTABLISHED -j ACCEPT\n\nRunning:
-          iptables -A wh781s95u141ym -j ACCEPT\n\nRunning: ip6tables -A wh781s95u141ym
-          -j ACCEPT\n"
-        params: {}
-        parent_id: 157
+          'rmg5588w1k6jvi' --source '69.168.236.123' -j ACCEPT\n\nRemote Server: 10.62.31.134\nRunning:
+          tc qdisc add dev rmg5588w1k6jvi root tbf rate 1mbit latency 50ms burst 1mb
+          mtu 33000\n\nRunning: ip6tables -A FORWARD -t mangle -m physdev --physdev-in
+          'rmg5588w1k6jvi' -j MARK --set-mark 720\n\nRunning: iptables -A FORWARD
+          -t mangle -m physdev --physdev-in 'rmg5588w1k6jvi' -j MARK --set-mark 720\n\nRunning:
+          tc qdisc add dev eth5 root handle 1 htb\nRTNETLINK answers: File exists\r\nRunning:
+          tc class add dev eth5 parent 1: classid 1:720 htb rate 1Mbit ceil 1Mbit
+          burst 1mb cburst 1mb mtu 33000\n\nRunning: tc filter add dev eth5 protocol
+          ip parent 1:0 prio 1 handle 720 fw flowid 1:720\n\nRemote Server: 10.62.31.134\nRunning:
+          iptables -F rmg5588w1k6jvi\n\nRunning: ip6tables -F rmg5588w1k6jvi\nip6tables:
+          No chain/target/match by that name.\r\nRunning: ip6tables -N rmg5588w1k6jvi\n\nRunning:
+          iptables -A rmg5588w1k6jvi -m state --state RELATED,ESTABLISHED -j ACCEPT\n\nRunning:
+          ip6tables -A rmg5588w1k6jvi -m state --state RELATED,ESTABLISHED -j ACCEPT\n\nRunning:
+          iptables -A rmg5588w1k6jvi -j ACCEPT\n\nRunning: ip6tables -A rmg5588w1k6jvi
+          -j ACCEPT\n\n"
+        params:
+          skip_notification: true
+          initiator_id: 2
+        parent_id: 490
         parent_type: VirtualMachine
-        pid: 30700
+        pid: 23933
         priority: 10
-        start_after: '2015-02-19T14:57:13Z'
-        started_at: '2015-02-19T15:00:35Z'
+        start_after: '2015-10-19T13:34:36Z'
+        started_at: '2015-10-19T13:34:06Z'
         status: complete
-        updated_at: '2015-02-19T15:00:42Z'
+        updated_at: '2015-10-19T13:34:16Z'
         user_id: 2
-      identifier: instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE
-    instance_id: instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE
-    sent_timestamp: 1424358042
-    actor: trader
+      identifier: instance:vm:onapp-Nf_RiW2bKzMHnDTejEdpYan23QQ
+    instance_id: instance:vm:onapp-Nf_RiW2bKzMHnDTejEdpYan23QQ
+    sent_timestamp: 1445261658
     object_class: Federation::Trader::VirtualMachine
-    object_id: 3
-  :parent_id: 3
-  :parent_type: VirtualMachine
-  :pid: 15197
-  :priority: 10
-  :start_after: '2015-02-19T08:03:43-07:00'
-  :started_at: '2015-02-19T08:03:44-07:00'
-  :status: complete
-  :updated_at: '2015-02-19T08:03:44-07:00'
-  :user_id: 1
+    object_id: 106
+  parent_id: 106
+  parent_type: VirtualMachine
+  pid: 18788
+  priority: 10
+  start_after: '2015-10-19T13:34:18+00:00'
+  started_at: '2015-10-19T13:34:21+00:00'
+  status: complete
+  updated_at: '2015-10-19T13:34:22+00:00'
+  user_id: 361
 sub_elements:
-  :params: !ruby/object:RecursiveOpenStruct
+  params: !ruby/object:RecursiveOpenStruct
     recurse_over_arrays: true
-    table:
-      :resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
-      :event_type: updated.transaction.connect
-      :event_data: *1
-      :instance_id: instance:vm:onapp-X8gtL4R5gn9RqsBPtzsFz9HCwaE
-      :sent_timestamp: 1424358042
-      :actor: trader
-      :object_class: Federation::Trader::VirtualMachine
-      :object_id: 3
+    deep_dup: !ruby/object:RecursiveOpenStruct::DeepDup
+      recurse_over_arrays: true
+    table: *1
     sub_elements: {}

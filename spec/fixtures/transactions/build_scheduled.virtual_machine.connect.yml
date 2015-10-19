@@ -1,116 +1,125 @@
 --- !ruby/object:RecursiveOpenStruct
 recurse_over_arrays: true
+deep_dup: !ruby/object:RecursiveOpenStruct::DeepDup
+  recurse_over_arrays: true
 table:
-  :action: receive_notification_from_market
-  :actor: trader
-  :allowed_cancel: true
-  :associated_object_id: 1
-  :associated_object_type: VirtualMachine
-  :created_at: '2015-02-18T09:49:33-07:00'
-  :dependent_transaction_id: 
-  :id: 30
-  :identifier: a3u2f93t2dvpao
-  :log_output: System Error ('Permission denied - /onapp/interface/log/market/resources/production_resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg.log')
-  :params:
+  action: receive_notification_from_market
+  actor: trader
+  allowed_cancel: true
+  associated_object_id: 105
+  associated_object_type: VirtualMachine
+  created_at: '2015-10-19T13:24:51+00:00'
+  dependent_transaction_id: 
+  id: 43610
+  identifier: vb4ajxov46f8rl
+  params: &1
     resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
     event_type: build_scheduled.virtual_machine.connect
-    event_data: &1
+    event_data:
       virtual_machine:
         add_to_marketplace: 
-        admin_note: Scott Test VM, created in federation
-        allow_resize_without_reboot: false
-        allowed_hot_migrate: true
+        admin_note: Rspec Test User's Server 1, created in federation
+        allowed_hot_migrate: false
         allowed_swap: true
         booted: false
         built: false
-        cpu_shares: 1
+        cores_per_socket: 0
+        cpu_shares: 100
         cpu_sockets: 
         cpu_threads: 
-        cpu_units: 10
-        cpus: 2
-        created_at: '2015-02-18T16:46:52Z'
+        cpu_units: 1000
+        cpus: 1
+        created_at: '2015-10-19T13:24:48Z'
         customer_network_id: 
         deleted_at: 
+        disaster_recovery_active: false
+        disaster_recovery_shadow_keys: 
         edge_server_type: 
         enable_autoscale: 
         enable_monitis: 
         firewall_notrack: false
-        hostname: scott.test
+        hostname: rspec-test-user-s-server-1
+        hot_add_cpu: 
+        hot_add_memory: 
         hypervisor_id: 1
-        id: 154
-        identifier: instance:vm:onapp-sMykhhJSTNxLsQFinsXl-NRCvyo
+        id: 489
+        identifier: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
         initial_root_password_encrypted: false
-        label: Scott Test VM
+        instance_type_id: 
+        iso_id: 
+        label: Rspec Test User's Server 1
         local_remote_access_ip_address: 10.62.31.134
         local_remote_access_port: 
         locked: true
-        memory: 1024
+        memory: 512
         min_disk_size: 5
         note: 
         operating_system: linux
-        operating_system_distro: rhel
+        operating_system_distro: ubuntu
         preferred_hvs: 
         recovery_mode: 
-        remote_access_password: N4do.Q/ca@rE
+        remote_access_password: i<Z?sq1o07)q
         service_password: 
+        shadow: false
         state: building
         storage_server_type: 
         strict_virtual_machine_id: 
         suspended: false
-        template_id: 2
-        template_label: CentOS 6.5 x64
-        updated_at: '2015-02-18T16:46:53Z'
+        template_id: 22
+        template_label: Debian 6.0 x64 LAMP
+        time_zone: 
+        updated_at: '2015-10-19T13:24:51Z'
         user_id: 2
         vip: 
         xen_id: 
         ip_addresses:
         - ip_address:
-            address: 69.168.236.45
+            address: 69.168.236.125
             broadcast: 69.168.236.255
-            created_at: '2014-08-20T08:57:02Z'
+            created_at: '2014-08-20T08:57:03Z'
             customer_network_id: 
             disallowed_primary: false
             gateway: 69.168.236.1
             hypervisor_id: 
-            id: 45
+            id: 125
             ip_address_pool_id: 
             network_address: 69.168.236.0
             network_id: 1
             pxe: false
-            updated_at: '2015-02-18T16:46:53Z'
+            updated_at: '2015-10-19T13:24:48Z'
             user_id: 
             free: false
             netmask: 255.255.255.0
         monthly_bandwidth_used: '0'
-        total_disk_size: 22
-        price_per_hour: 0.0
-        price_per_hour_powered_off: 0.0
+        total_disk_size: 20
+        price_per_hour: '0.01806768'
+        price_per_hour_powered_off: '0.013778'
         support_incremental_backups: false
-        cpu_priority: 1
+        cpu_priority: 100
         disks:
         - add_to_freebsd_fstab: 
           add_to_linux_fstab: 
           built: false
           burst_bw: 1000
           burst_iops: 15000
-          created_at: '2015-02-18T16:46:52Z'
+          created_at: '2015-10-19T13:24:48Z'
           data_store_id: 1
-          disk_size: 20
+          disk_size: 19
           disk_vm_number: 0
           file_system: 
-          id: 306
-          identifier: vx445jbtk5yr8c
+          id: 946
+          identifier: oomqd4l471kfcs
           iqn: 
           is_swap: false
-          label: Disk#306
-          locked: false
+          label: Disk#946
+          locked: true
           max_bw: 1000
           max_iops: 15000
           min_iops: 100
           mount_point: 
           primary: true
-          updated_at: '2015-02-18T16:46:52Z'
-          virtual_machine_id: instance:vm:onapp-sMykhhJSTNxLsQFinsXl-NRCvyo
+          updated_at: '2015-10-19T13:24:51Z'
+          virtual_machine_id: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
           volume_id: 
           has_autobackups: false
         - add_to_freebsd_fstab: 
@@ -118,224 +127,268 @@ table:
           built: false
           burst_bw: 1000
           burst_iops: 15000
-          created_at: '2015-02-18T16:46:52Z'
+          created_at: '2015-10-19T13:24:48Z'
           data_store_id: 1
-          disk_size: 2
+          disk_size: 1
           disk_vm_number: 1
           file_system: 
-          id: 307
-          identifier: mpy3ge9mgmupot
+          id: 947
+          identifier: ho8tlek13zu0o2
           iqn: 
           is_swap: true
-          label: Disk#307
+          label: Disk#947
           locked: false
           max_bw: 1000
           max_iops: 15000
           min_iops: 100
           mount_point: 
           primary: false
-          updated_at: '2015-02-18T16:46:52Z'
-          virtual_machine_id: instance:vm:onapp-sMykhhJSTNxLsQFinsXl-NRCvyo
+          updated_at: '2015-10-19T13:24:48Z'
+          virtual_machine_id: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
           volume_id: 
           has_autobackups: false
         ip_address_joins:
-        - created_at: '2015-02-18T16:46:53Z'
-          id: 154
-          ip_address_id: 45
-          network_interface_id: 154
-          updated_at: '2015-02-18T16:46:53Z'
+        - created_at: '2015-10-19T13:24:48Z'
+          id: 673
+          ip_address_id: 125
+          network_interface_id: 489
+          updated_at: '2015-10-19T13:24:48Z'
           ip_address:
-            address: 69.168.236.45
+            address: 69.168.236.125
             broadcast: 69.168.236.255
-            created_at: '2014-08-20T08:57:02Z'
+            created_at: '2014-08-20T08:57:03Z'
             customer_network_id: 
             disallowed_primary: false
             gateway: 69.168.236.1
             hypervisor_id: 
-            id: 45
+            id: 125
             ip_address_pool_id: 
             network_address: 69.168.236.0
             network_id: 1
             pxe: false
-            updated_at: '2015-02-18T16:46:53Z'
+            updated_at: '2015-10-19T13:24:48Z'
             user_id: 
             free: false
             netmask: 255.255.255.0
         network_interfaces:
-        - created_at: '2015-02-18T16:46:52Z'
+        - created_at: '2015-10-19T13:24:48Z'
           default_firewall_rule: ACCEPT
-          id: 154
-          identifier: ijubc33a2nv7j8
+          id: 489
+          identifier: svh5r1doddg7tk
           label: eth0
-          mac_address: 00:16:3e:e1:b9:95
+          mac_address: 00:16:3e:41:4c:04
           network_join_id: 1
           primary: true
-          rate_limit: 0
-          updated_at: '2015-02-18T16:46:52Z'
+          rate_limit: 1
+          updated_at: '2015-10-19T13:24:48Z'
           usage: 
           usage_last_reset_at: 
           usage_month_rolled_at: 
-          virtual_machine_id: instance:vm:onapp-sMykhhJSTNxLsQFinsXl-NRCvyo
+          virtual_machine_id: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
         associated_transactions:
-        - action: build_disk
+        - action: save_vm_billing_stats
           actor: 
           allowed_cancel: true
-          associated_object_id: 154
+          associated_object_id: 489
           associated_object_type: VirtualMachine
-          created_at: '2015-02-18T16:46:53Z'
+          created_at: '2015-10-19T13:24:48Z'
           dependent_transaction_id: 
-          id: 103772
-          identifier: vx445jbtk5yr8c
-          log_output: 'Can''t run: Virtual Server has running transactions'
+          id: 459043
+          identifier: t7ccskgjlft9g5
+          log_output: 
           params:
-            required_format: true
-            type_of_format: ''
-          parent_id: 306
-          parent_type: Disk
-          pid: 30700
-          priority: 10
-          start_after: '2015-02-18T16:46:53Z'
-          started_at: '2015-02-18T16:46:53Z'
+            initiator_id: 2
+          parent_id: 489
+          parent_type: VirtualMachine
+          pid: 
+          priority: 1
+          start_after: '2015-10-19T13:29:48Z'
+          started_at: 
           status: pending
-          updated_at: '2015-02-18T16:46:53Z'
+          updated_at: '2015-10-19T13:24:48Z'
           user_id: 2
         - action: build_disk
           actor: 
           allowed_cancel: true
-          associated_object_id: 154
+          associated_object_id: 489
           associated_object_type: VirtualMachine
-          created_at: '2015-02-18T16:46:53Z'
-          dependent_transaction_id: 103772
-          id: 103773
-          identifier: mpy3ge9mgmupot
+          created_at: '2015-10-19T13:24:48Z'
+          dependent_transaction_id: 
+          id: 459044
+          identifier: oomqd4l471kfcs
+          log_output: |
+            Remote Server: 10.62.31.134
+          params:
+            required_format: true
+            skip_notification: true
+            initiator_id: 2
+          parent_id: 946
+          parent_type: Disk
+          pid: 23933
+          priority: 10
+          start_after: '2015-10-19T13:24:48Z'
+          started_at: '2015-10-19T13:24:51Z'
+          status: running
+          updated_at: '2015-10-19T13:24:51Z'
+          user_id: 2
+        - action: build_disk
+          actor: 
+          allowed_cancel: true
+          associated_object_id: 489
+          associated_object_type: VirtualMachine
+          created_at: '2015-10-19T13:24:48Z'
+          dependent_transaction_id: 459044
+          id: 459045
+          identifier: ho8tlek13zu0o2
           log_output: 
           params:
             required_format: true
-            type_of_format: ''
-          parent_id: 307
+            skip_notification: true
+            initiator_id: 2
+          parent_id: 947
           parent_type: Disk
           pid: 
           priority: 10
-          start_after: '2015-02-18T16:46:53Z'
+          start_after: '2015-10-19T13:24:48Z'
           started_at: 
           status: pending
-          updated_at: '2015-02-18T16:46:53Z'
+          updated_at: '2015-10-19T13:24:48Z'
           user_id: 2
         - action: provisioning
           actor: 
           allowed_cancel: true
-          associated_object_id: 154
+          associated_object_id: 489
           associated_object_type: VirtualMachine
-          created_at: '2015-02-18T16:46:53Z'
-          dependent_transaction_id: 103773
-          id: 103774
-          identifier: vx445jbtk5yr8c
+          created_at: '2015-10-19T13:24:48Z'
+          dependent_transaction_id: 459045
+          id: 459046
+          identifier: oomqd4l471kfcs
           log_output: 
           params:
             new_operating_system: linux
-          parent_id: 306
+            skip_notification: true
+            initiator_id: 2
+          parent_id: 946
           parent_type: Disk
           pid: 
           priority: 10
-          start_after: '2015-02-18T16:46:53Z'
+          start_after: '2015-10-19T13:24:48Z'
           started_at: 
           status: pending
-          updated_at: '2015-02-18T16:46:53Z'
+          updated_at: '2015-10-19T13:24:48Z'
           user_id: 2
         - action: configure_operating_system
           actor: 
           allowed_cancel: true
-          associated_object_id: 154
+          associated_object_id: 489
           associated_object_type: VirtualMachine
-          created_at: '2015-02-18T16:46:53Z'
-          dependent_transaction_id: 103774
-          id: 103775
-          identifier: g9d2ys7sh7jyp7
+          created_at: '2015-10-19T13:24:48Z'
+          dependent_transaction_id: 459046
+          id: 459047
+          identifier: t7ccskgjlft9g5
           log_output: 
           params:
             licensing_type: ''
-            licensing_info: 
             password: |
-              UYeYcK021wo90KqUnnRN9A==
-            encryption_key: 
-          parent_id: 154
+              Pz0WKVlP0TzJDSrwPBOesg==
+            skip_notification: true
+            initiator_id: 2
+          parent_id: 489
           parent_type: VirtualMachine
           pid: 
           priority: 10
-          start_after: '2015-02-18T16:46:53Z'
+          start_after: '2015-10-19T13:24:48Z'
           started_at: 
           status: pending
-          updated_at: '2015-02-18T16:46:53Z'
+          updated_at: '2015-10-19T13:24:48Z'
           user_id: 2
         - action: startup_virtual_machine
           actor: 
           allowed_cancel: true
-          associated_object_id: 154
+          associated_object_id: 489
           associated_object_type: VirtualMachine
-          created_at: '2015-02-18T16:46:53Z'
-          dependent_transaction_id: 103775
-          id: 103776
-          identifier: g9d2ys7sh7jyp7
+          created_at: '2015-10-19T13:24:48Z'
+          dependent_transaction_id: 459047
+          id: 459048
+          identifier: t7ccskgjlft9g5
           log_output: 
-          params: {}
-          parent_id: 154
+          params:
+            skip_notification: true
+            initiator_id: 2
+          parent_id: 489
           parent_type: VirtualMachine
           pid: 
           priority: 10
-          start_after: '2015-02-18T16:46:53Z'
+          start_after: '2015-10-19T13:24:48Z'
           started_at: 
           status: pending
-          updated_at: '2015-02-18T16:46:53Z'
+          updated_at: '2015-10-19T13:24:48Z'
           user_id: 2
         - action: send_notification_to_market
           actor: supplier
           allowed_cancel: true
-          associated_object_id: 154
+          associated_object_id: 489
           associated_object_type: VirtualMachine
-          created_at: '2015-02-18T16:46:53Z'
+          created_at: '2015-10-19T13:24:48Z'
           dependent_transaction_id: 
-          id: 103777
-          identifier: g9d2ys7sh7jyp7
+          id: 459049
+          identifier: t7ccskgjlft9g5
           log_output: 
           params:
-            actor: supplier
             event_type: build_scheduled.virtual_machine.connect
-            virtual_machine_id: instance:vm:onapp-sMykhhJSTNxLsQFinsXl-NRCvyo
-            object_id: 154
-          parent_id: 154
+            object_id: 489
+            virtual_machine_id: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
+            initiator_id: 2
+          parent_id: 489
           parent_type: VirtualMachine
-          pid: 30700
+          pid: 23933
           priority: 10
-          start_after: '2015-02-18T16:46:53Z'
-          started_at: '2015-02-18T16:46:53Z'
+          start_after: '2015-10-19T13:24:48Z'
+          started_at: '2015-10-19T13:24:51Z'
           status: running
-          updated_at: '2015-02-18T16:46:53Z'
+          updated_at: '2015-10-19T13:24:51Z'
           user_id: 2
-      virtual_machine_id: instance:vm:onapp-sMykhhJSTNxLsQFinsXl-NRCvyo
-    instance_id: instance:vm:onapp-sMykhhJSTNxLsQFinsXl-NRCvyo
-    sent_timestamp: 1424278014
-    actor: trader
+        - action: send_notification_to_market
+          actor: supplier
+          allowed_cancel: true
+          associated_object_id: 489
+          associated_object_type: VirtualMachine
+          created_at: '2015-10-19T13:24:51Z'
+          dependent_transaction_id: 459049
+          id: 459050
+          identifier: t7ccskgjlft9g5
+          log_output: 
+          params:
+            event_type: updated.disk.connect
+            object_id: 946
+            virtual_machine_id: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
+          parent_id: 489
+          parent_type: VirtualMachine
+          pid: 
+          priority: 10
+          start_after: '2015-10-19T13:24:51Z'
+          started_at: 
+          status: pending
+          updated_at: '2015-10-19T13:24:51Z'
+          user_id: 2
+      virtual_machine_id: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
+    instance_id: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
+    sent_timestamp: 1445261091
     object_class: Federation::Trader::VirtualMachine
-    object_id: 1
-  :parent_id: 1
-  :parent_type: VirtualMachine
-  :pid: 15197
-  :priority: 10
-  :start_after: '2015-02-18T09:49:33-07:00'
-  :started_at: '2015-02-18T09:49:33-07:00'
-  :status: failed
-  :updated_at: '2015-02-18T09:49:33-07:00'
-  :user_id: 1
+    object_id: 105
+  parent_id: 105
+  parent_type: VirtualMachine
+  pid: 18788
+  priority: 10
+  start_after: '2015-10-19T13:24:51+00:00'
+  started_at: '2015-10-19T13:24:56+00:00'
+  status: complete
+  updated_at: '2015-10-19T13:24:57+00:00'
+  user_id: 360
 sub_elements:
-  :params: !ruby/object:RecursiveOpenStruct
+  params: !ruby/object:RecursiveOpenStruct
     recurse_over_arrays: true
-    table:
-      :resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
-      :event_type: build_scheduled.virtual_machine.connect
-      :event_data: *1
-      :instance_id: instance:vm:onapp-sMykhhJSTNxLsQFinsXl-NRCvyo
-      :sent_timestamp: 1424278014
-      :actor: trader
-      :object_class: Federation::Trader::VirtualMachine
-      :object_id: 1
+    deep_dup: !ruby/object:RecursiveOpenStruct::DeepDup
+      recurse_over_arrays: true
+    table: *1
     sub_elements: {}

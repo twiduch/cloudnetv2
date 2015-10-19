@@ -31,18 +31,19 @@ describe Transactions::ConsumerMethods do
   def transaction_fixture
     path = transaction_fixture_path
     return false unless File.exist? path
-    RecursiveOpenStruct.new YAML.load File.read path
+    YAML.load(File.read(path))['table']
   end
 
   def load_or_create_transaction_fixture
     VCR.turned_off do
-      WebMock.allow_net_connect!
       @transaction = transaction_fixture
+      # If we don't already have a cassette of this transaction query the OnApp CP to find one
       unless @transaction
+        WebMock.allow_net_connect!
         search_for_transaction_type
+        WebMock.disable_net_connect!
         @transaction = transaction_fixture
       end
-      WebMock.disable_net_connect!
     end
   end
 
@@ -59,18 +60,18 @@ describe Transactions::ConsumerMethods do
     # Now we can fetch an example fixture for that transaction
     load_or_create_transaction_fixture
     # Just assume that we already have the resource in our DB
-    @server = Fabricate :server, _id: @transaction.identifier
+    @server = Fabricate :server, onapp_identifier: @transaction['identifier']
   end
 
   it 'should consume <updated.transaction.connect>' do
     consume
-    persisted = Transaction.find_by(identifier: @transaction.identifier)
-    expect(persisted.details).to eq @transaction.params['event_data']['transaction']['action']
+    persisted = Transaction.find_by(identifier: @transaction['identifier'])
+    expect(persisted.details).to eq @transaction['params']['event_data']['transaction']['action']
   end
 
   it 'should consume <updated_state.virtual_machine.connect>' do
     consume
-    expect(@server.built).to eq @transaction.params['event_data']['virtual_machine']['built']
+    expect(@server.built).to eq @transaction['params']['event_data']['virtual_machine']['built']
   end
 
   it 'should consume <build_scheduled.virtual_machine.connect>' do
@@ -80,7 +81,7 @@ describe Transactions::ConsumerMethods do
 
   it 'should consume <generated.statistics.connect>' do
     consume
-    persisted = Transaction.find_by(identifier: @transaction.identifier)
+    persisted = Transaction.find_by(identifier: @transaction['identifier'])
     json = JSON.parse persisted.details
     expect(json.keys).to eq %w(disk_hourly_stats net_hourly_stats cpu_hourly_stats)
   end

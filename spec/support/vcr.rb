@@ -77,6 +77,6 @@ VCR.configure do |c|
     record: :once,
     erb: :true,
     allow_playback_repeats: true,
-    match_requests_on: [:method, :path]
+    match_requests_on: [:method, :path, :query]
   }
 end

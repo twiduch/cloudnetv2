@@ -16,7 +16,7 @@ module Transactions
 
     # Convert something like 'updated.transaction.connect' to 'updated__transaction'
     def self.event_to_method(transaction)
-      raw = transaction.params['event_type']
+      raw = transaction['params']['event_type']
       {
         raw: raw,
         method: raw.gsub('.connect', '').gsub('.', '__')
@@ -24,15 +24,18 @@ module Transactions
     end
 
     def resource_present_in_cloudnet?
-      case @transaction.parent_type
+      case @transaction['parent_type']
       when 'VirtualMachine'
-        @server = Server.find(@transaction.identifier)
+        @server = Server.find_by onapp_identifier: @transaction['identifier']
       end
     rescue Mongoid::Errors::DocumentNotFound
       false
     end
 
     def consume(transaction)
+      # TODO: Don't coerce. There is annoying difference between Blanket's OpenStruct and the handcranked OpenStruct's
+      # made here. Solution: stop using Blanket gem
+      transaction = transaction.to_hash unless transaction.is_a? Hash
       @transaction = transaction
       event = self.class.event_to_method(@transaction)
       return unless resource_present_in_cloudnet?
@@ -41,7 +44,7 @@ module Transactions
 
     def call_event_as_method(event)
       if known_transaction? event[:method]
-        @debug = [event[:raw], @transaction.identifier, @transaction.status]
+        @debug = [event[:raw], @transaction['identifier'], @transaction['status']]
         send event[:method]
         # The consumer methods can add to @debug
         logger.debug @debug
