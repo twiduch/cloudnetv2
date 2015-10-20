@@ -1,6 +1,5 @@
 require 'bcrypt'
 require 'app/models/user/user_creation'
-require 'app/models/user/resource_creation'
 
 # A cloud.net user. Should map and sync to an Onapp user
 class User
@@ -10,7 +9,6 @@ class User
   include ModelWorkerSugar
   include OnappAPI
   include UserCreation
-  include ResourceCreation
 
   has_many :servers
 

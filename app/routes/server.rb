@@ -20,7 +20,7 @@ module Routes
         optional :disk_size, type: Integer, desc: 'Size of primary disk in GBs'
       end
       post do
-        server = current_user.create_server params
+        server = Server.new(user: current_user).provision params
         present server, with: ServerRepresenter
       end
     end

@@ -1,3 +1,5 @@
+require 'app/models/server/interactions'
+
 # This is what it's all about. Machines in the cloud!
 # A server on cloud.net should be exactly synced to a server on the Onapp API
 class Server
@@ -6,6 +8,7 @@ class Server
   include Mongoid::Paranoia
   include ModelWorkerSugar
   include OnappAPI
+  include Interactions
 
   belongs_to :user
   belongs_to :template

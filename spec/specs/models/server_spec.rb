@@ -18,7 +18,7 @@ describe Server do
     end
 
     it 'should create an onapp server along with a local cloud.net server', :vcr do
-      @server = @user.create_server
+      @server = Server.new(user: @user).provision
       expect(@server.onapp_identifier).to be nil
       expect(@server.state).to be :building
       @server.reload
