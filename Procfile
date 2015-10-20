@@ -1,3 +1,4 @@
+api: true # Fake: remove at some point
 web: bundle exec puma -t 5:5 -p ${PORT:-9292} -e ${RACK_ENV:-development}
 transaction_daemon: bundle exec rake transactions_sync
 frontend: ruby -rwebrick -e'WEBrick::HTTPServer.new(:Port => ENV["PORT"], :DocumentRoot => "#{Dir.pwd}/frontend/build").start'
