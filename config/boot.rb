@@ -20,8 +20,10 @@ I18n.enforce_available_locales = false
 
 require_relative './settings'
 
-unless File.exist? Cloudnet.root + '.env'
-  fail 'Preventing boot because of missing .env file'
+unless Cloudnet.environment == 'production'
+  unless File.exist? Cloudnet.root + '.env'
+    fail 'Preventing boot because of missing .env file'
+  end
 end
 
 Mongoid.load!(Cloudnet.root + '/config/mongoid.yml')
