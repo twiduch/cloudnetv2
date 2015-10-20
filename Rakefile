@@ -11,7 +11,7 @@ end
 namespace :assets do
   desc 'Create the frontend HTML, CSS, JS and images'
   task :precompile do |_t, _args|
-    p `cd frontend && npm install && ./node_modules/.bin/gulp production`
+    p `cd frontend && ../node_modules/.bin/gulp production`
   end
 end
 
