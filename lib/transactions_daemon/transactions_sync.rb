@@ -24,7 +24,7 @@ module Transactions
     STANDARD_CONSUMPTION = 100
 
     def self.run
-      TransactionsSync.new.run
+      Transactions::Sync.new.run
     end
 
     def initialize
