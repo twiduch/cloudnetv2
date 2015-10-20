@@ -49,7 +49,7 @@ module Transactions
         # The consumer methods can add to @debug
         logger.debug @debug
       else
-        logger.warning "Unknown transaction type: #{event[:raw]}"
+        logger.warn "Unknown transaction type: #{event[:raw]}"
       end
     end
   end
