@@ -3,10 +3,9 @@ default_hosts: &default_host
     - localhost:27017
 
 production:
-  uri: <%= ENV['MONGODB_URI'] %>
   sessions:
     default:
-      database: cloudnet_api
+      uri: <%= ENV['MONGODB_URI'] %>
 
 development:
   sessions:
