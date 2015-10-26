@@ -6,7 +6,7 @@ http_interactions:
       extract_domain ENV["ONAPP_URI"] %>/users/validate_login.json
     body:
       encoding: UTF-8
-      string: login=rspec-test-_9aadf6
+      string: login=rspec-test-_9c837d
     headers: {}
   response:
     status:
@@ -14,7 +14,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 19 Oct 2015 13:33:19 GMT
+      - Mon, 26 Oct 2015 17:17:30 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Ua-Compatible:
@@ -24,15 +24,15 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 8cef91a8800e7287ae5e07f61ebdab74
+      - c953336e01a43d9cba14bb03c8a1ce03
       X-Runtime:
-      - '0.087118'
+      - '0.216988'
       X-Rack-Cache:
       - invalidate, pass
       X-Powered-By:
       - Phusion Passenger 4.0.35
       Set-Cookie:
-      - _session_id=5af4dfe5a46da1ed51ce84ba819f86d8; path=/; HttpOnly
+      - _session_id=28bf58b75c25135d6dfddfd54ddaf7ef; path=/; HttpOnly
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Status:
@@ -47,14 +47,14 @@ http_interactions:
       encoding: UTF-8
       string: '{"valid":true,"message":"Username is available"}'
     http_version: 
-  recorded_at: Mon, 19 Oct 2015 13:33:09 GMT
+  recorded_at: Mon, 26 Oct 2015 17:17:16 GMT
 - request:
     method: post
     uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
       extract_domain ENV["ONAPP_URI"] %>/users.json
     body:
       encoding: UTF-8
-      string: user[login]=rspec-test-_9aadf6&user[email]=rspec-test-_9aadf6%40cloud.net&user[password]=%2AC%29Aeuc47zPNqw4L&user[role_ids][]=2
+      string: user[login]=rspec-test-_9c837d&user[email]=rspec-test-_9c837d%40cloud.net&user[password]=Ln%2AzYwnw%2AI5Lk8Ru&user[role_ids][]=2
     headers: {}
   response:
     status:
@@ -62,29 +62,29 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Mon, 19 Oct 2015 13:33:20 GMT
+      - Mon, 26 Oct 2015 17:17:32 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Etag:
-      - '"fbfdce697420331fe1031a1e2ccdf923"'
+      - '"84ca0201c6682fa05452e4d5243f52ee"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 72b324860b79d7c3d79658013158be16
+      - 81d855607cf5ab8d69dcebff2311cfc7
       X-Runtime:
-      - '0.456870'
+      - '1.074317'
       X-Rack-Cache:
       - invalidate, pass
       X-Powered-By:
       - Phusion Passenger 4.0.35
       Set-Cookie:
-      - _session_id=95f230b092f6379f101ce4bc3c5dc839; path=/; HttpOnly
+      - _session_id=cd3f7a7e6a8eef22f3e69e6b0ae7db09; path=/; HttpOnly
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Location:
-      - https://<%= extract_domain ENV["ONAPP_URI"] %>/users/361
+      - https://<%= extract_domain ENV["ONAPP_URI"] %>/users/403
       Status:
       - 201 Created
       Connection:
@@ -95,7 +95,7 @@ http_interactions:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"user":{"activated_at":"2015-10-19T13:33:20+00:00","avatar":null,"billing_plan_id":1,"cdn_account_status":"ACTIVE","cdn_status":"INACTIVE","created_at":"2015-10-19T13:33:20+00:00","deleted_at":null,"email":"rspec-test-_9aadf6@cloud.net","firewall_id":null,"first_name":"","group_id":null,"id":361,"identifier":"xj0iusehoybd53","image_template_group_id":null,"infoboxes":{"display_infoboxes":true,"hidden_infoboxes":[]},"last_name":"","locale":"en","login":"rspec-test-_9aadf6","password_changed_at":"2015-10-19T13:33:20+00:00","status":"active","supplied":false,"suspend_at":null,"system_theme":null,"time_zone":null,"total_amount":0.0,"updated_at":"2015-10-19T13:33:20+00:00","use_gravatar":null,"user_group_id":null,"outstanding_amount":"0.0","payment_amount":"0.0","roles":[{"role":{"created_at":"2015-03-12T13:24:37+00:00","id":2,"identifier":"user","label":"User","updated_at":"2015-03-12T13:24:37+00:00","permissions":[{"permission":{"created_at":"2015-03-12T13:24:37+00:00","id":7,"identifier":"activity_logs.read.own","label":"See
+      string: '{"user":{"activated_at":"2015-10-26T17:17:33+00:00","avatar":null,"billing_plan_id":1,"cdn_account_status":"ACTIVE","cdn_status":"INACTIVE","created_at":"2015-10-26T17:17:32+00:00","deleted_at":null,"email":"rspec-test-_9c837d@cloud.net","firewall_id":null,"first_name":"","group_id":null,"id":403,"identifier":"kj3bo1h06tn000","image_template_group_id":null,"infoboxes":{"display_infoboxes":true,"hidden_infoboxes":[]},"last_name":"","locale":"en","login":"rspec-test-_9c837d","password_changed_at":"2015-10-26T17:17:32+00:00","status":"active","supplied":false,"suspend_at":null,"system_theme":null,"time_zone":null,"total_amount":0.0,"updated_at":"2015-10-26T17:17:33+00:00","use_gravatar":null,"user_group_id":null,"outstanding_amount":"0.0","payment_amount":"0.0","roles":[{"role":{"created_at":"2015-03-12T13:24:37+00:00","id":2,"identifier":"user","label":"User","updated_at":"2015-03-12T13:24:37+00:00","permissions":[{"permission":{"created_at":"2015-03-12T13:24:37+00:00","id":7,"identifier":"activity_logs.read.own","label":"See
         details of own activity log","updated_at":"2015-03-12T13:24:37+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":32,"identifier":"backups.convert.own","label":"Convert
         own backup to template","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":34,"identifier":"backups.create.own","label":"Create
         an own backup","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":36,"identifier":"backups.delete.own","label":"Destroy
@@ -200,9 +200,9 @@ http_interactions:
         own CDN SSL Certificates","updated_at":"2015-06-24T14:37:54+00:00"}},{"permission":{"created_at":"2015-06-24T14:37:54+00:00","id":574,"identifier":"cdn_ssl_certificates.read.own","label":"See
         own CDN SSL Certificates","updated_at":"2015-06-24T14:37:54+00:00"}},{"permission":{"created_at":"2015-06-24T14:37:54+00:00","id":575,"identifier":"cdn_ssl_certificates.update.own","label":"Update
         own CDN SSL Certificates","updated_at":"2015-06-24T14:37:54+00:00"}},{"permission":{"created_at":"2015-09-10T18:45:32+00:00","id":636,"identifier":"virtual_machines.select_resources_manually_on_creation","label":"Select
-        resources manually on Virtual Server creation","updated_at":"2015-09-10T18:45:32+00:00"}}]}}],"used_cpus":0,"used_memory":0,"used_cpu_shares":0,"used_disk_size":0,"used_ip_addresses":[],"memory_available":118506,"disk_space_available":1347,"additional_fields":[]}}'
+        resources manually on Virtual Server creation","updated_at":"2015-09-10T18:45:32+00:00"}}]}}],"used_cpus":0,"used_memory":0,"used_cpu_shares":0,"used_disk_size":0,"used_ip_addresses":[],"memory_available":94077,"disk_space_available":1515,"additional_fields":[]}}'
     http_version: 
-  recorded_at: Mon, 19 Oct 2015 13:33:10 GMT
+  recorded_at: Mon, 26 Oct 2015 17:17:19 GMT
 - request:
     method: get
     uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
@@ -217,7 +217,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 19 Oct 2015 13:33:21 GMT
+      - Mon, 26 Oct 2015 17:17:39 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Ua-Compatible:
@@ -227,15 +227,15 @@ http_interactions:
       Cache-Control:
       - must-revalidate, private, max-age=0
       X-Request-Id:
-      - a60ac47552ab3bc3eb0e1d36dbbc0b8a
+      - 13067e67a0be2e5cbca7c32d1b29c424
       X-Runtime:
-      - '0.387290'
+      - '0.392041'
       X-Rack-Cache:
       - miss
       X-Powered-By:
       - Phusion Passenger 4.0.35
       Set-Cookie:
-      - _session_id=96aaf131ce9765178cd46b7e699f0bfb; path=/; HttpOnly
+      - _session_id=9b5ef336ec50fdd438eb2476f1aba743; path=/; HttpOnly
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Status:
@@ -312,10 +312,10 @@ http_interactions:
         Balancer Virtual Appliance","created_at":"2015-03-12T14:26:02+00:00","updated_at":"2015-09-12T22:13:21+00:00","version":"1.9","file_name":"centos-5.3-lbva_6.11-x64-1.9.tar.gz","operating_system":"linux","operating_system_distro":"lbva","allowed_swap":true,"state":"active","checksum":"3a5bc442a326a7d575a724b6ca93e83e","allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":762648,"allowed_hot_migrate":true,"operating_system_arch":"x64","operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm","min_memory_size":512,"disk_target_device":"---\nxen:
         sda\nkvm: hd\n","cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":null,"manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}}]}]'
     http_version: 
-  recorded_at: Mon, 19 Oct 2015 13:33:11 GMT
+  recorded_at: Mon, 26 Oct 2015 17:17:26 GMT
 - request:
     method: post
-    uri: https://rspec-test-_9aadf6:%2AC%29Aeuc47zPNqw4L@<%= extract_domain ENV["ONAPP_URI"]
+    uri: https://rspec-test-_9c837d:Ln%2AzYwnw%2AI5Lk8Ru@<%= extract_domain ENV["ONAPP_URI"]
       %>/virtual_machines.json?virtual_machine%5Bcpu_shares%5D=100&virtual_machine%5Bcpus%5D=1&virtual_machine%5Bhostname%5D=rspec-test-user-s-server-1&virtual_machine%5Bhypervisor_group_id%5D=7&virtual_machine%5Blabel%5D=Rspec%20Test%20User%27s%20Server%201&virtual_machine%5Bmemory%5D=512.0&virtual_machine%5Bnote%5D=Created%20with%20Cloud.net&virtual_machine%5Bprimary_disk_size%5D=19.0&virtual_machine%5Brequired_ip_address_assignment%5D=1&virtual_machine%5Brequired_virtual_machine_build%5D=1&virtual_machine%5Brequired_virtual_machine_startup%5D=1&virtual_machine%5Bswap_disk_size%5D=1.0&virtual_machine%5Btemplate_id%5D=29
     body:
       encoding: UTF-8
@@ -327,29 +327,29 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Mon, 19 Oct 2015 13:33:22 GMT
+      - Mon, 26 Oct 2015 17:17:40 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Etag:
-      - '"1c465c6ca7d7655a09789e40802a1ff4"'
+      - '"18cf7289e75fd7605d53c9618c32d690"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 20f1d066e32dbdf29c0d8479ff8eca67
+      - eb1e89d818b2a0b581de54da16b3d442
       X-Runtime:
-      - '2.735444'
+      - '3.651458'
       X-Rack-Cache:
       - invalidate, pass
       X-Powered-By:
       - Phusion Passenger 4.0.35
       Set-Cookie:
-      - _session_id=af9d733459518ca164bbdb3315b9506a; path=/; HttpOnly
+      - _session_id=01f1dbbc01f3829c7523ad4fbd79c42c; path=/; HttpOnly
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Location:
-      - https://<%= extract_domain ENV["ONAPP_URI"] %>/virtual_machines/pns3me7sp7lyy6
+      - https://<%= extract_domain ENV["ONAPP_URI"] %>/virtual_machines/mtcpy07758diww
       Status:
       - 201 Created
       Connection:
@@ -361,62 +361,16 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"virtual_machine":{"add_to_marketplace":null,"<%= ENV["ONAPP_USER"]
-        %>_note":null,"allowed_hot_migrate":false,"allowed_swap":true,"booted":false,"built":false,"cores_per_socket":0,"cpu_shares":100,"cpu_sockets":null,"cpu_threads":null,"cpu_units":null,"cpus":1,"created_at":"2015-10-19T13:33:25+00:00","customer_network_id":null,"deleted_at":null,"edge_server_type":null,"enable_autoscale":false,"enable_monitis":false,"firewall_notrack":false,"hostname":"rspec-test-user-s-server-1","hot_add_cpu":null,"hot_add_memory":null,"hypervisor_id":2,"id":106,"identifier":"pns3me7sp7lyy6","initial_root_password_encrypted":false,"instance_type_id":null,"iso_id":null,"label":"Rspec
+        %>_note":null,"allowed_hot_migrate":false,"allowed_swap":true,"booted":false,"built":false,"cores_per_socket":0,"cpu_shares":100,"cpu_sockets":null,"cpu_threads":null,"cpu_units":null,"cpus":1,"created_at":"2015-10-26T17:17:44+00:00","customer_network_id":null,"deleted_at":null,"edge_server_type":null,"enable_autoscale":false,"enable_monitis":false,"firewall_notrack":false,"hostname":"rspec-test-user-s-server-1","hot_add_cpu":null,"hot_add_memory":null,"hypervisor_id":2,"id":114,"identifier":"mtcpy07758diww","initial_root_password_encrypted":false,"instance_type_id":null,"iso_id":null,"label":"Rspec
         Test User''s Server 1","local_remote_access_ip_address":null,"local_remote_access_port":null,"locked":false,"memory":512,"min_disk_size":5,"note":"Created
         with Cloud.net","operating_system":"linux","operating_system_distro":"ubuntu","preferred_hvs":[],"recovery_mode":null,"remote_access_password":null,"service_password":null,"state":"new","storage_server_type":null,"strict_virtual_machine_id":null,"suspended":false,"template_id":29,"template_label":"Debian
-        6.0 x64 LAMP","time_zone":null,"updated_at":"2015-10-19T13:33:25+00:00","user_id":361,"vip":null,"xen_id":null,"ip_addresses":[],"monthly_bandwidth_used":"0","total_disk_size":0,"price_per_hour":"0.0","price_per_hour_powered_off":"0.0","support_incremental_backups":true,"cpu_priority":100}}'
+        6.0 x64 LAMP","time_zone":null,"updated_at":"2015-10-26T17:17:44+00:00","user_id":403,"vip":null,"xen_id":null,"ip_addresses":[],"monthly_bandwidth_used":"0","total_disk_size":0,"price_per_hour":"0.0","price_per_hour_powered_off":"0.0","support_incremental_backups":true,"cpu_priority":100}}'
     http_version: 
-  recorded_at: Mon, 19 Oct 2015 13:33:15 GMT
+  recorded_at: Mon, 26 Oct 2015 17:17:30 GMT
 - request:
     method: delete
-    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
-      extract_domain ENV["ONAPP_URI"] %>/users/361.json
-    body:
-      encoding: UTF-8
-      string: force=1
-    headers: {}
-  response:
-    status:
-      code: 204
-      message: No Content
-    headers:
-      Date:
-      - Mon, 19 Oct 2015 13:33:25 GMT
-      Server:
-      - Apache/2.2.15 (CentOS)
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Cache-Control:
-      - no-cache
-      X-Request-Id:
-      - 8feedd9e02824372964c38124e3d2856
-      X-Runtime:
-      - '0.186954'
-      X-Rack-Cache:
-      - invalidate, pass
-      X-Powered-By:
-      - Phusion Passenger 4.0.35
-      Set-Cookie:
-      - _session_id=985b6878f4f5d4c09d441545f084eb5c; path=/; HttpOnly
-      Strict-Transport-Security:
-      - max-age=63072000; includeSubDomains
-      Status:
-      - 204 No Content
-      Content-Length:
-      - '0'
-      Connection:
-      - close
-      Content-Type:
-      - text/plain; charset=UTF-8
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Mon, 19 Oct 2015 13:33:15 GMT
-- request:
-    method: delete
-    uri: https://rspec-test-_9aadf6:%2AC%29Aeuc47zPNqw4L@<%= extract_domain ENV["ONAPP_URI"]
-      %>/virtual_machines/pns3me7sp7lyy6.json
+    uri: https://rspec-test-_9c837d:Ln%2AzYwnw%2AI5Lk8Ru@<%= extract_domain ENV["ONAPP_URI"]
+      %>/virtual_machines/mtcpy07758diww.json
     body:
       encoding: US-ASCII
       string: ''
@@ -427,7 +381,7 @@ http_interactions:
       message: No Content
     headers:
       Date:
-      - Mon, 19 Oct 2015 13:33:26 GMT
+      - Mon, 26 Oct 2015 17:17:45 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Ua-Compatible:
@@ -435,15 +389,15 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - e35b37d81f4e4068b299d6d7af2dc00b
+      - 814934a8c10f59d181daf6947e4027b8
       X-Runtime:
-      - '0.111666'
+      - '0.234840'
       X-Rack-Cache:
       - invalidate, pass
       X-Powered-By:
       - Phusion Passenger 4.0.35
       Set-Cookie:
-      - _session_id=78cfc839092f2e38c23a13aca80675a4; path=/; HttpOnly
+      - _session_id=37deb5d64d5c03ee105146e5fd14f8dd; path=/; HttpOnly
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Status:
@@ -458,5 +412,51 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 19 Oct 2015 13:33:16 GMT
+  recorded_at: Mon, 26 Oct 2015 17:17:31 GMT
+- request:
+    method: delete
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/users/403.json
+    body:
+      encoding: UTF-8
+      string: force=1
+    headers: {}
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Mon, 26 Oct 2015 17:17:45 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - cfdde684dbb2c6ff38ba30c32a4cc8f4
+      X-Runtime:
+      - '0.322249'
+      X-Rack-Cache:
+      - invalidate, pass
+      X-Powered-By:
+      - Phusion Passenger 4.0.35
+      Set-Cookie:
+      - _session_id=f31a8ccecc2c43dce367432290444c81; path=/; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Status:
+      - 204 No Content
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Content-Type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 26 Oct 2015 17:17:32 GMT
 recorded_with: VCR 2.9.3

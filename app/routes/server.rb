@@ -23,6 +23,22 @@ module Routes
         server = Server.new(user: current_user).provision params
         present server, with: ServerRepresenter
       end
+
+      params do
+        requires :id, type: String, desc: 'Server ID'
+      end
+      route_param :id do
+        desc 'Destroy a server'
+        delete do
+          Server.find(params[:id]).deprovision
+          { message: "Server #{params[:id]} has been scheduled for destruction" }
+        end
+
+        desc 'Show information about a server'
+        get do
+          present Server.find params[:id], with: ServerRepresenter
+        end
+      end
     end
   end
 end

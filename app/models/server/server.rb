@@ -82,4 +82,11 @@ class Server
     self.onapp_identifier = response.identifier
     save!
   end
+
+  def destroy_onapp_server
+    # Destroy the OnApp server
+    onapp.delete
+    # Soft delete the cloud.net server
+    delete
+  end
 end

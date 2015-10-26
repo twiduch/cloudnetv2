@@ -1,4 +1,5 @@
 # End-user CRUD methods
+# Basically just makes the API route methods very small
 module Interactions
   def provision(specs = {})
     specs = new_server_defaults specs.to_hash.symbolize_keys # to_hash() is to coerce Rack::Test params away from Hashie
@@ -6,6 +7,10 @@ module Interactions
     update_attributes! specs
     worker.create_onapp_server
     self
+  end
+
+  def deprovision
+    worker.destroy_onapp_server
   end
 
   private

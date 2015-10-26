@@ -32,5 +32,16 @@ describe API do
         'Server', response['id'], 'create_onapp_server'
       ]
     end
+
+    it 'should delete a server' do
+      server_id = server.id.to_s
+      delete "/servers/#{server_id}"
+      response = JSON.parse(last_response.body)
+      expect(response['message']).to eq "Server #{server_id} has been scheduled for destruction"
+      job = ModelWorkerSugar::ModelWorker.jobs.first
+      expect(job['args']).to eq [
+        'Server', server_id, 'destroy_onapp_server'
+      ]
+    end
   end
 end
