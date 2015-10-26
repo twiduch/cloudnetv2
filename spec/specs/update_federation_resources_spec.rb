@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe UpdateFederationResources, :vcr do
-  xit 'should fetch the template store' do
-    subject.run
+  it 'should fetch the template store' do
+    expect { subject.run }.to change { Template.count }
   end
 end
