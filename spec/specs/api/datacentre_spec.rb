@@ -18,7 +18,7 @@ describe API do
 
     it 'should return all the datacentres' do
       get '/datacentres'
-      response = JSON.parse(last_response.body)['datacentres']
+      response = JSON.parse(last_response.body)
       expect(response.count).to eq 1
       expect(response.first['label']).to eq Datacentre.first.label
       datacentre = response.first

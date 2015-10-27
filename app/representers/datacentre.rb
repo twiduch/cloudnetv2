@@ -1,5 +1,3 @@
-require_relative 'base'
-
 # Serialise datacentre objects
 module DatacentreRepresenter
   include BaseRepresenter
@@ -8,11 +6,13 @@ module DatacentreRepresenter
   property :created_at
   property :updated_at
   property :label
+  property :coords
   collection :templates, extend: TemplateRepresenter
 end
 
-# For collections
+# For representing more than one at a time
 module DatacentresRepresenter
   include BaseRepresenter
-  collection :to_a, extend: DatacentreRepresenter, as: :datacentres, embedded: true
+  include Representable::JSON::Collection
+  items extend: DatacentreRepresenter
 end

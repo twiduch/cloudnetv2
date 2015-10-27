@@ -1,2 +1,5 @@
+AllCops:
+  Exclude:
+    - 'node_modules/**/*'
 Metrics/LineLength:
   Max: 120
