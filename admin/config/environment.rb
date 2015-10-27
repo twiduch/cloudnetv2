@@ -12,8 +12,7 @@ require 'activeadmin'
 Kaminari::Hooks.init
 
 # Cloud.net boot
-require_relative '../../config/settings'
-Cloudnet.init
+require_relative '../../config/boot'
 
 # Initialize the Rails application.
 Rails.application.initialize!

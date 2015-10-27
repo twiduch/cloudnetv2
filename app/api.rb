@@ -1,3 +1,5 @@
+require 'grape'
+require 'grape-swagger'
 require 'app/routes/auth'
 require 'app/routes/datacentre'
 require 'app/routes/server'

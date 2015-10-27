@@ -7,7 +7,6 @@ require 'rack/test'
 require 'webmock/rspec'
 require 'sidekiq/testing'
 
-
 Cloudnet.recursive_require 'spec/support'
 
 Mail.defaults do

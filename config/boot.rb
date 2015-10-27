@@ -8,13 +8,6 @@ require 'bundler/setup'
 require 'sidekiq/api'
 require 'mongoid'
 require 'mongoid-paranoia'
-require 'grape'
-require 'grape-roar'
-require 'grape-swagger'
-require 'roar/representer'
-require 'roar/coercion'
-require 'roar/json'
-require 'roar/json/hal'
 
 I18n.enforce_available_locales = false
 
