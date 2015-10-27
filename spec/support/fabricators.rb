@@ -9,7 +9,7 @@ Fabricator :user do
 end
 
 Fabricator :datacentre do
-  id '123'
+  id 123
   label 'Cloud.net Budget US Dallas Zone'
   coords [32.7767, 96.797]
 end

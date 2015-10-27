@@ -1,9 +1,6 @@
 # Serialise server objects
 module ServerRepresenter
-  include Roar::JSON
-  include Roar::Hypermedia
-  include Roar::Coercion
-  include Grape::Roar::Representer
+  include BaseRepresenter
 
   property :id, type: String
   property :created_at

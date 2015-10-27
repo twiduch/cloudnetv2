@@ -2,6 +2,8 @@
 # Can only be updated by UpdateFederationResources
 class Template
   include Mongoid::Document
+  include Mongoid::Timestamps
+  include Mongoid::Paranoia
 
   belongs_to :datacentre
   has_many :servers

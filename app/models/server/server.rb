@@ -55,6 +55,7 @@ class Server
     template.os == 'windows' ? 0 : (memory / 1024) * 2
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def prepare_onapp_params
     params = {
       label: name,
