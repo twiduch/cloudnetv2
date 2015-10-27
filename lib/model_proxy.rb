@@ -34,7 +34,8 @@ module ModelWorkerSugar
       if @instance.persisted?
         # When the instance already exists in the DB all we need to do to reference it is point
         # to its ID and the worker can load it itself.
-        identifier = @instance.id.to_s
+        identifier = @instance.id
+        identifier = identifier.to_s if identifier.is_a? BSON::ObjectId
       else
         # If the the instance hasn't yet been persisted to the DB then the worker will not be
         # able to load the instances attributes from the DB. In which we just serialise them as a
@@ -43,7 +44,10 @@ module ModelWorkerSugar
       end
 
       ModelWorker.perform_async @instance.class, identifier, method, *args, &block
+      log_number_of_running_worker_processes
+    end
 
+    def log_number_of_running_worker_processes
       return if Cloudnet.environment == 'test'
       ps = Sidekiq::ProcessSet.new
       logger.warn 'Job queued without any active Sidekiq processes running' if ps.size == 0

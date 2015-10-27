@@ -15,7 +15,7 @@ Fabricator :datacentre do
 end
 
 Fabricator :template do
-  id '123'
+  id 123
   datacentre
   label 'Arch Linux 2012.08 x86'
   os 'linux'

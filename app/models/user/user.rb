@@ -22,7 +22,8 @@ class User
   }
 
   # Override Mongoid's IDs and use Onapp's unique ID
-  field :_id, overwrite: true
+  field :_id, type: Integer, overwrite: true
+  alias_attribute :onapp_identifier, :_id
 
   field :email
   field :full_name

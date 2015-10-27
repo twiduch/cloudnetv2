@@ -8,6 +8,7 @@ class Datacentre
 
   # Override Mongoid's IDs and use Onapp's unique hypervisor_group_id
   field :_id, type: Integer, overwrite: true
+  alias_attribute :onapp_identifier, :_id
 
   field :label
 

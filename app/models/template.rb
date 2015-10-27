@@ -9,7 +9,8 @@ class Template
   has_many :servers
 
   # Override Mongoid's IDs and use Onapp's unique ID
-  field :_id, type: String, overwrite: true
+  field :_id, type: Integer, overwrite: true
+  alias_attribute :onapp_identifier, :_id
 
   # Eg; 'Arch Linux 2012.08 x86'
   field :label

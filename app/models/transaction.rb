@@ -5,7 +5,8 @@ class Transaction
   include Mongoid::Timestamps
 
   # Override Mongoid's IDs and use Onapp's unique ID
-  field :_id, overwrite: true
+  field :_id, type: String, overwrite: true
+  alias_attribute :onapp_identifier, :_id
 
   # The cloud.net ID of the resource
   field :identifier

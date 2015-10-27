@@ -14,9 +14,9 @@ class Server
   belongs_to :template
 
   # We can't assign this value to Mongoid's ID because that would mean that the API would not be able to
-  # instantaneously respond (it would have to wait fopr the CP to return a response). This way our API can respond
+  # instantaneously respond (it would have to wait for the CP to return a response). This way our API can respond
   # with our own ID with which a user can then track the progress of the server.
-  field :onapp_identifier
+  field :onapp_identifier, type: String
 
   # Human name for server
   field :name
