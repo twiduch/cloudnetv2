@@ -1,394 +1,384 @@
---- !ruby/object:RecursiveOpenStruct
-recurse_over_arrays: true
-deep_dup: !ruby/object:RecursiveOpenStruct::DeepDup
-  recurse_over_arrays: true
-table:
-  action: receive_notification_from_market
-  actor: trader
-  allowed_cancel: true
-  associated_object_id: 105
-  associated_object_type: VirtualMachine
-  created_at: '2015-10-19T13:24:51+00:00'
-  dependent_transaction_id: 
-  id: 43610
-  identifier: vb4ajxov46f8rl
-  params: &1
-    resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
-    event_type: build_scheduled.virtual_machine.connect
-    event_data:
-      virtual_machine:
-        add_to_marketplace: 
-        admin_note: Rspec Test User's Server 1, created in federation
-        allowed_hot_migrate: false
-        allowed_swap: true
-        booted: false
+---
+action: receive_notification_from_market
+actor: trader
+allowed_cancel: true
+associated_object_id: 117
+associated_object_type: VirtualMachine
+created_at: '2015-10-28T10:37:06+00:00'
+dependent_transaction_id: 
+id: 49130
+identifier: nze53psplguzvg
+params:
+  resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
+  event_type: build_scheduled.virtual_machine.connect
+  event_data:
+    virtual_machine:
+      add_to_marketplace: 
+      admin_note: Bowmore, created in federation
+      allowed_hot_migrate: true
+      allowed_swap: true
+      booted: false
+      built: false
+      cores_per_socket: 0
+      cpu_shares: 100
+      cpu_sockets: 
+      cpu_threads: 
+      cpu_units: 1000
+      cpus: 1
+      created_at: '2015-10-28T10:37:03Z'
+      customer_network_id: 
+      deleted_at: 
+      disaster_recovery_active: false
+      disaster_recovery_shadow_keys: 
+      edge_server_type: 
+      enable_autoscale: 
+      enable_monitis: 
+      firewall_notrack: false
+      hostname: bowmore
+      hot_add_cpu: 
+      hot_add_memory: 
+      hypervisor_id: 1
+      id: 519
+      identifier: instance:vm:onapp-lme7hEX-91hpcC1XIMa1xqNi0Sc
+      initial_root_password_encrypted: false
+      instance_type_id: 
+      iso_id: 
+      label: Bowmore
+      local_remote_access_ip_address: 10.62.31.134
+      local_remote_access_port: 
+      locked: true
+      memory: 512
+      min_disk_size: 5
+      note: 
+      operating_system: linux
+      operating_system_distro: ubuntu
+      preferred_hvs: 
+      recovery_mode: 
+      remote_access_password: Xl/pA|VZws~2
+      service_password: 
+      shadow: false
+      state: building
+      storage_server_type: 
+      strict_virtual_machine_id: 
+      suspended: false
+      template_id: 8
+      template_label: Ubuntu 14.04 x64
+      time_zone: 
+      updated_at: '2015-10-28T10:37:05Z'
+      user_id: 2
+      vip: 
+      xen_id: 
+      ip_addresses:
+      - ip_address:
+          address: 69.168.236.74
+          broadcast: 69.168.236.255
+          created_at: '2014-08-20T08:57:02Z'
+          customer_network_id: 
+          disallowed_primary: false
+          gateway: 69.168.236.1
+          hypervisor_id: 
+          id: 74
+          ip_address_pool_id: 
+          network_address: 69.168.236.0
+          network_id: 1
+          pxe: false
+          updated_at: '2015-10-28T10:37:03Z'
+          user_id: 
+          free: false
+          netmask: 255.255.255.0
+      monthly_bandwidth_used: '0'
+      total_disk_size: 20
+      price_per_hour: '0.01806768'
+      price_per_hour_powered_off: '0.013778'
+      support_incremental_backups: false
+      cpu_priority: 100
+      disks:
+      - add_to_freebsd_fstab: 
+        add_to_linux_fstab: 
         built: false
-        cores_per_socket: 0
-        cpu_shares: 100
-        cpu_sockets: 
-        cpu_threads: 
-        cpu_units: 1000
-        cpus: 1
-        created_at: '2015-10-19T13:24:48Z'
-        customer_network_id: 
-        deleted_at: 
-        disaster_recovery_active: false
-        disaster_recovery_shadow_keys: 
-        edge_server_type: 
-        enable_autoscale: 
-        enable_monitis: 
-        firewall_notrack: false
-        hostname: rspec-test-user-s-server-1
-        hot_add_cpu: 
-        hot_add_memory: 
-        hypervisor_id: 1
-        id: 489
-        identifier: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
-        initial_root_password_encrypted: false
-        instance_type_id: 
-        iso_id: 
-        label: Rspec Test User's Server 1
-        local_remote_access_ip_address: 10.62.31.134
-        local_remote_access_port: 
+        burst_bw: 1000
+        burst_iops: 15000
+        created_at: '2015-10-28T10:37:03Z'
+        data_store_id: 1
+        disk_size: 19
+        disk_vm_number: 0
+        file_system: 
+        id: 1006
+        identifier: yqfeavka05g0t5
+        iqn: 
+        is_swap: false
+        label: Disk#1006
         locked: true
-        memory: 512
-        min_disk_size: 5
-        note: 
-        operating_system: linux
-        operating_system_distro: ubuntu
-        preferred_hvs: 
-        recovery_mode: 
-        remote_access_password: i<Z?sq1o07)q
-        service_password: 
-        shadow: false
-        state: building
-        storage_server_type: 
-        strict_virtual_machine_id: 
-        suspended: false
-        template_id: 22
-        template_label: Debian 6.0 x64 LAMP
-        time_zone: 
-        updated_at: '2015-10-19T13:24:51Z'
+        max_bw: 1000
+        max_iops: 15000
+        min_iops: 100
+        mount_point: 
+        primary: true
+        updated_at: '2015-10-28T10:37:05Z'
+        virtual_machine_id: instance:vm:onapp-lme7hEX-91hpcC1XIMa1xqNi0Sc
+        volume_id: 
+        has_autobackups: false
+      - add_to_freebsd_fstab: 
+        add_to_linux_fstab: true
+        built: false
+        burst_bw: 1000
+        burst_iops: 15000
+        created_at: '2015-10-28T10:37:03Z'
+        data_store_id: 1
+        disk_size: 1
+        disk_vm_number: 1
+        file_system: 
+        id: 1007
+        identifier: p1fqli6332sc35
+        iqn: 
+        is_swap: true
+        label: Disk#1007
+        locked: false
+        max_bw: 1000
+        max_iops: 15000
+        min_iops: 100
+        mount_point: 
+        primary: false
+        updated_at: '2015-10-28T10:37:03Z'
+        virtual_machine_id: instance:vm:onapp-lme7hEX-91hpcC1XIMa1xqNi0Sc
+        volume_id: 
+        has_autobackups: false
+      ip_address_joins:
+      - created_at: '2015-10-28T10:37:04Z'
+        id: 706
+        ip_address_id: 74
+        network_interface_id: 519
+        updated_at: '2015-10-28T10:37:04Z'
+        ip_address:
+          address: 69.168.236.74
+          broadcast: 69.168.236.255
+          created_at: '2014-08-20T08:57:02Z'
+          customer_network_id: 
+          disallowed_primary: false
+          gateway: 69.168.236.1
+          hypervisor_id: 
+          id: 74
+          ip_address_pool_id: 
+          network_address: 69.168.236.0
+          network_id: 1
+          pxe: false
+          updated_at: '2015-10-28T10:37:03Z'
+          user_id: 
+          free: false
+          netmask: 255.255.255.0
+      network_interfaces:
+      - created_at: '2015-10-28T10:37:03Z'
+        default_firewall_rule: ACCEPT
+        id: 519
+        identifier: dmtpmwb5um66da
+        label: eth0
+        mac_address: 00:16:3e:ce:cd:59
+        network_join_id: 1
+        primary: true
+        rate_limit: 1
+        updated_at: '2015-10-28T10:37:03Z'
+        usage: 
+        usage_last_reset_at: 
+        usage_month_rolled_at: 
+        virtual_machine_id: instance:vm:onapp-lme7hEX-91hpcC1XIMa1xqNi0Sc
+      associated_transactions:
+      - action: save_vm_billing_stats
+        actor: 
+        allowed_cancel: true
+        associated_object_id: 519
+        associated_object_type: VirtualMachine
+        created_at: '2015-10-28T10:37:04Z'
+        dependent_transaction_id: 
+        id: 489701
+        identifier: xy7wl8tvwk85vz
+        log_output: 
+        params:
+          initiator_id: 2
+        parent_id: 519
+        parent_type: VirtualMachine
+        pid: 
+        priority: 1
+        start_after: '2015-10-28T10:42:04Z'
+        started_at: 
+        status: pending
+        updated_at: '2015-10-28T10:37:04Z'
         user_id: 2
-        vip: 
-        xen_id: 
-        ip_addresses:
-        - ip_address:
-            address: 69.168.236.125
-            broadcast: 69.168.236.255
-            created_at: '2014-08-20T08:57:03Z'
-            customer_network_id: 
-            disallowed_primary: false
-            gateway: 69.168.236.1
-            hypervisor_id: 
-            id: 125
-            ip_address_pool_id: 
-            network_address: 69.168.236.0
-            network_id: 1
-            pxe: false
-            updated_at: '2015-10-19T13:24:48Z'
-            user_id: 
-            free: false
-            netmask: 255.255.255.0
-        monthly_bandwidth_used: '0'
-        total_disk_size: 20
-        price_per_hour: '0.01806768'
-        price_per_hour_powered_off: '0.013778'
-        support_incremental_backups: false
-        cpu_priority: 100
-        disks:
-        - add_to_freebsd_fstab: 
-          add_to_linux_fstab: 
-          built: false
-          burst_bw: 1000
-          burst_iops: 15000
-          created_at: '2015-10-19T13:24:48Z'
-          data_store_id: 1
-          disk_size: 19
-          disk_vm_number: 0
-          file_system: 
-          id: 946
-          identifier: oomqd4l471kfcs
-          iqn: 
-          is_swap: false
-          label: Disk#946
-          locked: true
-          max_bw: 1000
-          max_iops: 15000
-          min_iops: 100
-          mount_point: 
-          primary: true
-          updated_at: '2015-10-19T13:24:51Z'
-          virtual_machine_id: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
-          volume_id: 
-          has_autobackups: false
-        - add_to_freebsd_fstab: 
-          add_to_linux_fstab: true
-          built: false
-          burst_bw: 1000
-          burst_iops: 15000
-          created_at: '2015-10-19T13:24:48Z'
-          data_store_id: 1
-          disk_size: 1
-          disk_vm_number: 1
-          file_system: 
-          id: 947
-          identifier: ho8tlek13zu0o2
-          iqn: 
-          is_swap: true
-          label: Disk#947
-          locked: false
-          max_bw: 1000
-          max_iops: 15000
-          min_iops: 100
-          mount_point: 
-          primary: false
-          updated_at: '2015-10-19T13:24:48Z'
-          virtual_machine_id: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
-          volume_id: 
-          has_autobackups: false
-        ip_address_joins:
-        - created_at: '2015-10-19T13:24:48Z'
-          id: 673
-          ip_address_id: 125
-          network_interface_id: 489
-          updated_at: '2015-10-19T13:24:48Z'
-          ip_address:
-            address: 69.168.236.125
-            broadcast: 69.168.236.255
-            created_at: '2014-08-20T08:57:03Z'
-            customer_network_id: 
-            disallowed_primary: false
-            gateway: 69.168.236.1
-            hypervisor_id: 
-            id: 125
-            ip_address_pool_id: 
-            network_address: 69.168.236.0
-            network_id: 1
-            pxe: false
-            updated_at: '2015-10-19T13:24:48Z'
-            user_id: 
-            free: false
-            netmask: 255.255.255.0
-        network_interfaces:
-        - created_at: '2015-10-19T13:24:48Z'
-          default_firewall_rule: ACCEPT
-          id: 489
-          identifier: svh5r1doddg7tk
-          label: eth0
-          mac_address: 00:16:3e:41:4c:04
-          network_join_id: 1
-          primary: true
-          rate_limit: 1
-          updated_at: '2015-10-19T13:24:48Z'
-          usage: 
-          usage_last_reset_at: 
-          usage_month_rolled_at: 
-          virtual_machine_id: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
-        associated_transactions:
-        - action: save_vm_billing_stats
-          actor: 
-          allowed_cancel: true
-          associated_object_id: 489
-          associated_object_type: VirtualMachine
-          created_at: '2015-10-19T13:24:48Z'
-          dependent_transaction_id: 
-          id: 459043
-          identifier: t7ccskgjlft9g5
-          log_output: 
-          params:
-            initiator_id: 2
-          parent_id: 489
-          parent_type: VirtualMachine
-          pid: 
-          priority: 1
-          start_after: '2015-10-19T13:29:48Z'
-          started_at: 
-          status: pending
-          updated_at: '2015-10-19T13:24:48Z'
-          user_id: 2
-        - action: build_disk
-          actor: 
-          allowed_cancel: true
-          associated_object_id: 489
-          associated_object_type: VirtualMachine
-          created_at: '2015-10-19T13:24:48Z'
-          dependent_transaction_id: 
-          id: 459044
-          identifier: oomqd4l471kfcs
-          log_output: |
-            Remote Server: 10.62.31.134
-          params:
-            required_format: true
-            skip_notification: true
-            initiator_id: 2
-          parent_id: 946
-          parent_type: Disk
-          pid: 23933
-          priority: 10
-          start_after: '2015-10-19T13:24:48Z'
-          started_at: '2015-10-19T13:24:51Z'
-          status: running
-          updated_at: '2015-10-19T13:24:51Z'
-          user_id: 2
-        - action: build_disk
-          actor: 
-          allowed_cancel: true
-          associated_object_id: 489
-          associated_object_type: VirtualMachine
-          created_at: '2015-10-19T13:24:48Z'
-          dependent_transaction_id: 459044
-          id: 459045
-          identifier: ho8tlek13zu0o2
-          log_output: 
-          params:
-            required_format: true
-            skip_notification: true
-            initiator_id: 2
-          parent_id: 947
-          parent_type: Disk
-          pid: 
-          priority: 10
-          start_after: '2015-10-19T13:24:48Z'
-          started_at: 
-          status: pending
-          updated_at: '2015-10-19T13:24:48Z'
-          user_id: 2
-        - action: provisioning
-          actor: 
-          allowed_cancel: true
-          associated_object_id: 489
-          associated_object_type: VirtualMachine
-          created_at: '2015-10-19T13:24:48Z'
-          dependent_transaction_id: 459045
-          id: 459046
-          identifier: oomqd4l471kfcs
-          log_output: 
-          params:
-            new_operating_system: linux
-            skip_notification: true
-            initiator_id: 2
-          parent_id: 946
-          parent_type: Disk
-          pid: 
-          priority: 10
-          start_after: '2015-10-19T13:24:48Z'
-          started_at: 
-          status: pending
-          updated_at: '2015-10-19T13:24:48Z'
-          user_id: 2
-        - action: configure_operating_system
-          actor: 
-          allowed_cancel: true
-          associated_object_id: 489
-          associated_object_type: VirtualMachine
-          created_at: '2015-10-19T13:24:48Z'
-          dependent_transaction_id: 459046
-          id: 459047
-          identifier: t7ccskgjlft9g5
-          log_output: 
-          params:
-            licensing_type: ''
-            password: |
-              Pz0WKVlP0TzJDSrwPBOesg==
-            skip_notification: true
-            initiator_id: 2
-          parent_id: 489
-          parent_type: VirtualMachine
-          pid: 
-          priority: 10
-          start_after: '2015-10-19T13:24:48Z'
-          started_at: 
-          status: pending
-          updated_at: '2015-10-19T13:24:48Z'
-          user_id: 2
-        - action: startup_virtual_machine
-          actor: 
-          allowed_cancel: true
-          associated_object_id: 489
-          associated_object_type: VirtualMachine
-          created_at: '2015-10-19T13:24:48Z'
-          dependent_transaction_id: 459047
-          id: 459048
-          identifier: t7ccskgjlft9g5
-          log_output: 
-          params:
-            skip_notification: true
-            initiator_id: 2
-          parent_id: 489
-          parent_type: VirtualMachine
-          pid: 
-          priority: 10
-          start_after: '2015-10-19T13:24:48Z'
-          started_at: 
-          status: pending
-          updated_at: '2015-10-19T13:24:48Z'
-          user_id: 2
-        - action: send_notification_to_market
-          actor: supplier
-          allowed_cancel: true
-          associated_object_id: 489
-          associated_object_type: VirtualMachine
-          created_at: '2015-10-19T13:24:48Z'
-          dependent_transaction_id: 
-          id: 459049
-          identifier: t7ccskgjlft9g5
-          log_output: 
-          params:
-            event_type: build_scheduled.virtual_machine.connect
-            object_id: 489
-            virtual_machine_id: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
-            initiator_id: 2
-          parent_id: 489
-          parent_type: VirtualMachine
-          pid: 23933
-          priority: 10
-          start_after: '2015-10-19T13:24:48Z'
-          started_at: '2015-10-19T13:24:51Z'
-          status: running
-          updated_at: '2015-10-19T13:24:51Z'
-          user_id: 2
-        - action: send_notification_to_market
-          actor: supplier
-          allowed_cancel: true
-          associated_object_id: 489
-          associated_object_type: VirtualMachine
-          created_at: '2015-10-19T13:24:51Z'
-          dependent_transaction_id: 459049
-          id: 459050
-          identifier: t7ccskgjlft9g5
-          log_output: 
-          params:
-            event_type: updated.disk.connect
-            object_id: 946
-            virtual_machine_id: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
-          parent_id: 489
-          parent_type: VirtualMachine
-          pid: 
-          priority: 10
-          start_after: '2015-10-19T13:24:51Z'
-          started_at: 
-          status: pending
-          updated_at: '2015-10-19T13:24:51Z'
-          user_id: 2
-      virtual_machine_id: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
-    instance_id: instance:vm:onapp-8L8FCBZn6LLsmT-IuPAVQN1xQVw
-    sent_timestamp: 1445261091
-    object_class: Federation::Trader::VirtualMachine
-    object_id: 105
-  parent_id: 105
-  parent_type: VirtualMachine
-  pid: 18788
-  priority: 10
-  start_after: '2015-10-19T13:24:51+00:00'
-  started_at: '2015-10-19T13:24:56+00:00'
-  status: complete
-  updated_at: '2015-10-19T13:24:57+00:00'
-  user_id: 360
-sub_elements:
-  params: !ruby/object:RecursiveOpenStruct
-    recurse_over_arrays: true
-    deep_dup: !ruby/object:RecursiveOpenStruct::DeepDup
-      recurse_over_arrays: true
-    table: *1
-    sub_elements: {}
+      - action: build_disk
+        actor: 
+        allowed_cancel: true
+        associated_object_id: 519
+        associated_object_type: VirtualMachine
+        created_at: '2015-10-28T10:37:05Z'
+        dependent_transaction_id: 
+        id: 489807
+        identifier: yqfeavka05g0t5
+        log_output: |
+          Remote Server: 10.62.31.134
+        params:
+          required_format: true
+          skip_notification: true
+          initiator_id: 2
+        parent_id: 1006
+        parent_type: Disk
+        pid: 1382
+        priority: 10
+        start_after: '2015-10-28T10:37:05Z'
+        started_at: '2015-10-28T10:37:05Z'
+        status: running
+        updated_at: '2015-10-28T10:37:05Z'
+        user_id: 2
+      - action: build_disk
+        actor: 
+        allowed_cancel: true
+        associated_object_id: 519
+        associated_object_type: VirtualMachine
+        created_at: '2015-10-28T10:37:05Z'
+        dependent_transaction_id: 489807
+        id: 489808
+        identifier: p1fqli6332sc35
+        log_output: 
+        params:
+          required_format: true
+          skip_notification: true
+          initiator_id: 2
+        parent_id: 1007
+        parent_type: Disk
+        pid: 
+        priority: 10
+        start_after: '2015-10-28T10:37:05Z'
+        started_at: 
+        status: pending
+        updated_at: '2015-10-28T10:37:05Z'
+        user_id: 2
+      - action: provisioning
+        actor: 
+        allowed_cancel: true
+        associated_object_id: 519
+        associated_object_type: VirtualMachine
+        created_at: '2015-10-28T10:37:05Z'
+        dependent_transaction_id: 489808
+        id: 489809
+        identifier: yqfeavka05g0t5
+        log_output: 
+        params:
+          new_operating_system: linux
+          skip_notification: true
+          initiator_id: 2
+        parent_id: 1006
+        parent_type: Disk
+        pid: 
+        priority: 10
+        start_after: '2015-10-28T10:37:05Z'
+        started_at: 
+        status: pending
+        updated_at: '2015-10-28T10:37:05Z'
+        user_id: 2
+      - action: configure_operating_system
+        actor: 
+        allowed_cancel: true
+        associated_object_id: 519
+        associated_object_type: VirtualMachine
+        created_at: '2015-10-28T10:37:05Z'
+        dependent_transaction_id: 489809
+        id: 489810
+        identifier: xy7wl8tvwk85vz
+        log_output: 
+        params:
+          licensing_type: ''
+          password: |
+            3+7x3kX91QrTaQb5dgo1UA==
+          skip_notification: true
+          initiator_id: 2
+        parent_id: 519
+        parent_type: VirtualMachine
+        pid: 
+        priority: 10
+        start_after: '2015-10-28T10:37:05Z'
+        started_at: 
+        status: pending
+        updated_at: '2015-10-28T10:37:05Z'
+        user_id: 2
+      - action: startup_virtual_machine
+        actor: 
+        allowed_cancel: true
+        associated_object_id: 519
+        associated_object_type: VirtualMachine
+        created_at: '2015-10-28T10:37:05Z'
+        dependent_transaction_id: 489810
+        id: 489811
+        identifier: xy7wl8tvwk85vz
+        log_output: 
+        params:
+          skip_notification: true
+          initiator_id: 2
+        parent_id: 519
+        parent_type: VirtualMachine
+        pid: 
+        priority: 10
+        start_after: '2015-10-28T10:37:05Z'
+        started_at: 
+        status: pending
+        updated_at: '2015-10-28T10:37:05Z'
+        user_id: 2
+      - action: send_notification_to_market
+        actor: supplier
+        allowed_cancel: true
+        associated_object_id: 519
+        associated_object_type: VirtualMachine
+        created_at: '2015-10-28T10:37:05Z'
+        dependent_transaction_id: 
+        id: 489812
+        identifier: xy7wl8tvwk85vz
+        log_output: 
+        params:
+          event_type: build_scheduled.virtual_machine.connect
+          object_id: 519
+          virtual_machine_id: instance:vm:onapp-lme7hEX-91hpcC1XIMa1xqNi0Sc
+          initiator_id: 2
+        parent_id: 519
+        parent_type: VirtualMachine
+        pid: 1382
+        priority: 10
+        start_after: '2015-10-28T10:37:05Z'
+        started_at: '2015-10-28T10:37:05Z'
+        status: running
+        updated_at: '2015-10-28T10:37:05Z'
+        user_id: 2
+      - action: send_notification_to_market
+        actor: supplier
+        allowed_cancel: true
+        associated_object_id: 519
+        associated_object_type: VirtualMachine
+        created_at: '2015-10-28T10:37:05Z'
+        dependent_transaction_id: 489812
+        id: 489813
+        identifier: xy7wl8tvwk85vz
+        log_output: 
+        params:
+          event_type: updated.disk.connect
+          object_id: 1006
+          virtual_machine_id: instance:vm:onapp-lme7hEX-91hpcC1XIMa1xqNi0Sc
+        parent_id: 519
+        parent_type: VirtualMachine
+        pid: 
+        priority: 10
+        start_after: '2015-10-28T10:37:05Z'
+        started_at: 
+        status: pending
+        updated_at: '2015-10-28T10:37:05Z'
+        user_id: 2
+    virtual_machine_id: instance:vm:onapp-lme7hEX-91hpcC1XIMa1xqNi0Sc
+  instance_id: instance:vm:onapp-lme7hEX-91hpcC1XIMa1xqNi0Sc
+  sent_timestamp: 1446028626
+  object_class: Federation::Trader::VirtualMachine
+  object_id: 117
+  initiator_id: 318
+parent_id: 117
+parent_type: VirtualMachine
+pid: 18788
+priority: 10
+start_after: '2015-10-28T10:37:06+00:00'
+started_at: '2015-10-28T10:37:08+00:00'
+status: complete
+updated_at: '2015-10-28T10:37:09+00:00'
+user_id: 396

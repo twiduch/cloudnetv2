@@ -28,7 +28,6 @@ module Transactions
     end
 
     def initialize
-      @api = OnappAPI.admin_connection
       @consumer = Consumer.new
       @stasis = false
     end
@@ -108,10 +107,10 @@ module Transactions
     end
 
     def fetch_page(page = 1, per_page = STANDARD_CONSUMPTION)
-      @batch = @api.transactions.get(params: { per_page: per_page, page: page })
+      params = { per_page: per_page, page: page }
+      @batch = OnappAPI.admin :get, '/transactions', params
       fail 'No transactions found!' if @batch.length == 0
-      # TODO: Stop coercing to a hash once we've stopped using Blanket and it's annoying RecursiveOpenStruct
-      @batch.map! { |t| t.transaction.to_hash }
+      @batch.map! { |t| t['transaction'] }
       # Reversing means that we always consume the oldest first
       @batch.reverse!
       # Are there new transactions to be consumed?

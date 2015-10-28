@@ -12,8 +12,7 @@ describe Server do
     end
 
     after :each do
-      api = OnappAPI.admin_connection
-      api.delete "users/#{@user.id}", body: { force: 1 }
+      OnappAPI.admin :delete, "users/#{@user.id}", body: { force: 1 }
     end
 
     it 'should create and destroy an onapp server along with a local cloud.net server', :vcr do

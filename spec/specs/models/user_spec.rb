@@ -10,8 +10,7 @@ describe User do
     end
 
     after do
-      api = OnappAPI.admin_connection
-      api.delete "users/#{@user.id}", body: { force: 1 }
+      OnappAPI.admin :delete, "users/#{@user.id}", body: { force: 1 }
     end
 
     it 'should create an onapp user along with a local cloud.net user', :vcr do

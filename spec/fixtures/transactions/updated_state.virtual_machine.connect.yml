@@ -1,43 +1,33 @@
---- !ruby/object:RecursiveOpenStruct
-recurse_over_arrays: true
-deep_dup: !ruby/object:RecursiveOpenStruct::DeepDup
-  recurse_over_arrays: true
-table:
-  action: receive_notification_from_market
-  actor: trader
-  allowed_cancel: true
-  associated_object_id: 106
-  associated_object_type: VirtualMachine
-  created_at: '2015-10-19T13:35:07+00:00'
-  dependent_transaction_id: 
-  id: 43688
-  identifier: pns3me7sp7lyy6
-  params: &1
-    resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
-    event_type: updated_state.virtual_machine.connect
-    event_data:
-      virtual_machine:
-        built: true
-        booted: false
-        recovery_mode: 
-        identifier: instance:vm:onapp-Nf_RiW2bKzMHnDTejEdpYan23QQ
-    instance_id: instance:vm:onapp-Nf_RiW2bKzMHnDTejEdpYan23QQ
-    sent_timestamp: 1445261706
-    object_class: Federation::Trader::VirtualMachine
-    object_id: 106
-  parent_id: 106
-  parent_type: VirtualMachine
-  pid: 18788
-  priority: 10
-  start_after: '2015-10-19T13:35:07+00:00'
-  started_at: '2015-10-19T13:35:11+00:00'
-  status: complete
-  updated_at: '2015-10-19T13:35:11+00:00'
-  user_id: 361
-sub_elements:
-  params: !ruby/object:RecursiveOpenStruct
-    recurse_over_arrays: true
-    deep_dup: !ruby/object:RecursiveOpenStruct::DeepDup
-      recurse_over_arrays: true
-    table: *1
-    sub_elements: {}
+---
+action: receive_notification_from_market
+actor: trader
+allowed_cancel: true
+associated_object_id: 116
+associated_object_type: VirtualMachine
+created_at: '2015-10-28T12:34:54+00:00'
+dependent_transaction_id: 
+id: 49277
+identifier: fev2tgpyjy8d0w
+params:
+  resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
+  event_type: updated_state.virtual_machine.connect
+  event_data:
+    virtual_machine:
+      built: true
+      booted: true
+      recovery_mode: 
+      identifier: instance:vm:onapp-50MArvOyWkC6CN9Wdf2LTL2R10E
+  instance_id: instance:vm:onapp-50MArvOyWkC6CN9Wdf2LTL2R10E
+  sent_timestamp: 1446035694
+  object_class: Federation::Trader::VirtualMachine
+  object_id: 116
+  initiator_id: 318
+parent_id: 116
+parent_type: VirtualMachine
+pid: 18788
+priority: 10
+start_after: '2015-10-28T12:34:54+00:00'
+started_at: '2015-10-28T12:34:59+00:00'
+status: complete
+updated_at: '2015-10-28T12:34:59+00:00'
+user_id: 318

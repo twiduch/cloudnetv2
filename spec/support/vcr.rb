@@ -34,7 +34,7 @@ rescue
 end
 
 VCR.configure do |c|
-  c.hook_into :webmock
+  c.hook_into :faraday
   c.cassette_library_dir = 'spec/fixtures/cassettes'
   c.configure_rspec_metadata!
 
@@ -58,11 +58,12 @@ VCR.configure do |c|
   # When recording a new cassette, we have the opportunity to query the live Onapp API to find out
   # what version it is. So raise an error if there is a version mismatch.
   c.before_http_request(:recordable?) do
-    onapp_api_version = OnappAPI.admin_connection.get(
-      :version,
+    onapp_api_version = OnappAPI.admin(
+      :get,
+      '/version',
       # Add a signature to be super specific that it is *only* this request we want VCR to ignore
-      params: { vcr_ignore: true }
-    ).version
+      vcr_ignore: true
+    )['version']
     if onapp_api_version != Cloudnet::ONAPP_API_VERSION
       fail '`Cloudnet::ONAPP_API_VERSION` must match live Onapp API version being tested.'
     end

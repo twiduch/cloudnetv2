@@ -79,14 +79,14 @@ class Server
   end
 
   def create_onapp_server
-    response = onapp.post(params: { virtual_machine: prepare_onapp_params }).virtual_machine
-    self.onapp_identifier = response.identifier
+    response = onapp.api(:post, virtual_machine: prepare_onapp_params)['virtual_machine']
+    self.onapp_identifier = response['identifier']
     save!
   end
 
   def destroy_onapp_server
     # Destroy the OnApp server
-    onapp.delete
+    onapp.api :delete
     # Soft delete the cloud.net server
     delete
   end

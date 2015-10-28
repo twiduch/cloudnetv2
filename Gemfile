@@ -26,8 +26,10 @@ gem 'grape-swagger'
 # Worker jobs
 gem 'sidekiq'
 
-# General purpose API wrapper. Used to communicate with Onapp API
-gem 'blanket_wrapper', require: 'blanket'
+# General purpose HTTP client. Used to communicate with Onapp API
+gem 'faraday'
+
+# For sending email
 gem 'mail'
 
 # Only used for Active Admin
@@ -40,6 +42,7 @@ gem 'activeadmin', github: 'Zhomart/active_admin', branch: 'mongoid-old', requir
 gem 'pry'
 gem 'pry-byebug'
 
+# CLI tasks
 gem 'rake'
 
 group :development do

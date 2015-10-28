@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Transactions::ConsumerMethods do
   def search_for_transaction_type
-    @api = OnappAPI.admin_connection
     page = 1
     matches = []
     loop do
@@ -14,9 +13,10 @@ describe Transactions::ConsumerMethods do
   end
 
   def find_match(page)
-    batch = @api.transactions.get(params: { per_page: 100, page: page })
-    batch.map!(&:transaction)
-    batch.select { |t| t.params.event_type == @type }
+    params = { per_page: 100, page: page }
+    batch = OnappAPI.admin :get, '/transactions', params
+    batch.map! { |b| b['transaction'] }
+    batch.select { |t| t['params']['event_type'] == @type }
   end
 
   def transaction_to_fixture(transaction)
@@ -31,7 +31,7 @@ describe Transactions::ConsumerMethods do
   def transaction_fixture
     path = transaction_fixture_path
     return false unless File.exist? path
-    YAML.load(File.read(path))['table']
+    YAML.load(File.read(path))
   end
 
   def load_or_create_transaction_fixture

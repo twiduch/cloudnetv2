@@ -18,7 +18,7 @@ describe OnappAPI do
   it 'should make a user-based request when called from a resource instance' do
     server = Fabricate :server
     stub_request(:post, /virtual_machines/)
-    server.onapp.post
+    server.onapp.api :post
     regex = Regexp.new(
       "https://#{CGI.escape(server.user.onapp_username)}:.*@#{@host}/virtual_machines.json"
     )
@@ -29,8 +29,7 @@ describe OnappAPI do
 
   it 'should make an admin request' do
     stub_request(:post, /users/)
-    api = OnappAPI.admin_connection
-    api.users.post
+    OnappAPI.admin :post, '/users'
     regex = Regexp.new(
       "https://#{ENV['ONAPP_USER']}:.*@#{@host}/users.json"
     )

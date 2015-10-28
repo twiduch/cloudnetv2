@@ -11,13 +11,9 @@ class UpdateFederationResources
     new.run
   end
 
-  def initialize
-    @api = OnappAPI.admin_connection
-  end
-
   def run
     logger.info 'Running update to get meta data from datacentres'
-    @store = @api.template_store.get
+    @store = OnappAPI.admin :get, '/template_store'
     loop_through_datacentres
   end
 

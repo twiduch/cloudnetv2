@@ -1,64 +1,51 @@
---- !ruby/object:RecursiveOpenStruct
-recurse_over_arrays: true
-deep_dup: !ruby/object:RecursiveOpenStruct::DeepDup
-  recurse_over_arrays: true
-table:
-  action: receive_notification_from_market
-  actor: trader
-  allowed_cancel: true
-  associated_object_id: 106
-  associated_object_type: VirtualMachine
-  created_at: '2015-10-19T13:33:36+00:00'
-  dependent_transaction_id: 
-  id: 43670
-  identifier: pns3me7sp7lyy6
-  params: &1
-    resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
-    event_type: created.transaction.connect
-    event_data:
-      transaction:
-        action: destroy_virtual_machine
-        actor: 
-        allowed_cancel: true
-        associated_object_id: 490
-        associated_object_type: VirtualMachine
-        created_at: '2015-10-19T13:33:34Z'
-        dependent_transaction_id: 
-        id: 459335
-        identifier: j0rpbflqzhj7hn
-        log_output: 
-        params:
-          remote_ip: 89.238.158.158
-          destroy_msg: Destroy from API request
-          skip_notification: true
-          initiator_id: 2
-        parent_id: 490
-        parent_type: VirtualMachine
-        pid: 
-        priority: 10
-        start_after: '2015-10-19T13:34:04Z'
-        started_at: 
-        status: pending
-        updated_at: '2015-10-19T13:33:34Z'
-        user_id: 2
-      identifier: instance:vm:onapp-Nf_RiW2bKzMHnDTejEdpYan23QQ
-    instance_id: instance:vm:onapp-Nf_RiW2bKzMHnDTejEdpYan23QQ
-    sent_timestamp: 1445261616
-    object_class: Federation::Trader::VirtualMachine
-    object_id: 106
-  parent_id: 106
-  parent_type: VirtualMachine
-  pid: 18788
-  priority: 10
-  start_after: '2015-10-19T13:33:36+00:00'
-  started_at: '2015-10-19T13:33:41+00:00'
-  status: complete
-  updated_at: '2015-10-19T13:33:41+00:00'
-  user_id: 361
-sub_elements:
-  params: !ruby/object:RecursiveOpenStruct
-    recurse_over_arrays: true
-    deep_dup: !ruby/object:RecursiveOpenStruct::DeepDup
-      recurse_over_arrays: true
-    table: *1
-    sub_elements: {}
+---
+action: receive_notification_from_market
+actor: trader
+allowed_cancel: true
+associated_object_id: 117
+associated_object_type: VirtualMachine
+created_at: '2015-10-28T15:16:25+00:00'
+dependent_transaction_id: 
+id: 49356
+identifier: nze53psplguzvg
+params:
+  resource_id: resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg
+  event_type: created.transaction.connect
+  event_data:
+    transaction:
+      action: destroy_backup
+      actor: 
+      allowed_cancel: true
+      associated_object_id: 519
+      associated_object_type: VirtualMachine
+      created_at: '2015-10-28T15:16:23Z'
+      dependent_transaction_id: 
+      id: 490481
+      identifier: cr264v26hk71o2
+      log_output: |
+        Remote Server: 10.62.31.134
+      params:
+        initiator_id: 2
+      parent_id: 61
+      parent_type: Backup
+      pid: 1382
+      priority: 10
+      start_after: '2015-10-28T15:16:23Z'
+      started_at: '2015-10-28T15:16:24Z'
+      status: running
+      updated_at: '2015-10-28T15:16:24Z'
+      user_id: 2
+    identifier: instance:vm:onapp-lme7hEX-91hpcC1XIMa1xqNi0Sc
+  instance_id: instance:vm:onapp-lme7hEX-91hpcC1XIMa1xqNi0Sc
+  sent_timestamp: 1446045385
+  object_class: Federation::Trader::VirtualMachine
+  object_id: 117
+parent_id: 117
+parent_type: VirtualMachine
+pid: 18788
+priority: 10
+start_after: '2015-10-28T15:16:25+00:00'
+started_at: '2015-10-28T15:16:27+00:00'
+status: complete
+updated_at: '2015-10-28T15:16:27+00:00'
+user_id: 396

@@ -14,7 +14,6 @@ module UserCreation
   # The only thing we retain from the response is the OnApp ID for future auditing/debugging etc.
   # Future interaction with the API occurs through their own unique API key.
   def create_onapp_user_and_save
-    @api = OnappAPI.admin_connection
     create_onapp_user
     generate_token_for :confirmation_token
     generate_token_for :cloudnet_api_key
@@ -24,9 +23,9 @@ module UserCreation
 
   def create_onapp_user
     credentials = generate_onapp_user_credentials
-    onapp_user = @api.post(:users, body: credentials).user
+    onapp_user = OnappAPI.admin(:post, '/users', body: credentials)['user']
     update_attributes!(
-      id: onapp_user.id,
+      id: onapp_user['id'],
       onapp_password: credentials[:user][:password],
       onapp_username: credentials[:user][:login],
       status: :pending
@@ -50,8 +49,8 @@ module UserCreation
       cut_name = full_name.tr(' ', '-').downcase.tr('^a-z\-', '')[0..USERNAME_SIZE]
       username = "#{cut_name}_#{SecureRandom.hex(3)}"
       # Check in case this username already exists on OnApp
-      response = @api.post 'users/validate_login', body: { login: username }
-      return username if response.valid
+      response = OnappAPI.admin :post, '/users/validate_login', body: { login: username }
+      return username if response['valid']
     end
   end
 

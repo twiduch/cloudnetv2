@@ -86,7 +86,7 @@ module Cloudnet
       # Version mismatch is checked differently during testing.
       return if Cloudnet.environment == 'test' || ENV['SKIP_ONAPP_API_CHECK']
       Cloudnet.logger.info 'Checking OnApp version...'
-      onapp_api_version = OnappAPI.admin_connection.get(:version).version
+      onapp_api_version = OnappAPI.admin(:get, '/version')['version']
       return if onapp_api_version == Cloudnet::ONAPP_API_VERSION
       Cloudnet.logger.warn "OnApp API version (#{onapp_api_version}) differs from version that " \
                            "cloud.net is tested against (#{Cloudnet::ONAPP_API_VERSION})"
