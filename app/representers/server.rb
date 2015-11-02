@@ -1,3 +1,5 @@
+require_relative 'base'
+
 # Serialise server objects
 module ServerRepresenter
   include BaseRepresenter

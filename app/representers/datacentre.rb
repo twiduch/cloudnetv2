@@ -1,3 +1,5 @@
+require_relative 'base'
+
 # Serialise datacentre objects
 module DatacentreRepresenter
   include BaseRepresenter

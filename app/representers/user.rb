@@ -1,3 +1,5 @@
+require_relative 'base'
+
 # Serialise user objects
 module UserRepresenter
   include BaseRepresenter

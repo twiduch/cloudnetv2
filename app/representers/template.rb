@@ -1,3 +1,5 @@
+require_relative 'base'
+
 # Serialise template objects
 module TemplateRepresenter
   include BaseRepresenter
