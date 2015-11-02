@@ -2,7 +2,7 @@
 module ServerRepresenter
   include BaseRepresenter
 
-  property :onapp_identifier, as: :id, type: String
+  property :id, type: String
   property :created_at
   property :updated_at
   property :name

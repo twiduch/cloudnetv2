@@ -96,7 +96,7 @@ describe API do
 
         expect(last_response.status).to eq 200
         response = JSON.parse(last_response.body)
-        expect(response['token']).to eq user.login_token
+        expect(response['login_token']).to eq user.login_token
       end
 
       it 'should return a new login token replacing the an old token' do
@@ -111,7 +111,7 @@ describe API do
 
         expect(last_response.status).to eq 200
         response = JSON.parse(last_response.body)
-        expect(response['token']).to eq user.login_token
+        expect(response['login_token']).to eq user.login_token
         expect(user.login_token).not_to eq old_token
       end
 

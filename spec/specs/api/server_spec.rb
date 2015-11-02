@@ -28,6 +28,7 @@ describe API do
       expect(response['cpus']).to eq 1
       expect(response['memory']).to eq 512
       job = ModelWorkerSugar::ModelWorker.jobs.first
+      puts response
       expect(job['args']).to eq [
         'Server', response['id'], 'create_onapp_server'
       ]
