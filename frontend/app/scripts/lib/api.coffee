@@ -6,7 +6,7 @@ Logger = require 'lib/logger'
 # Note that all responses return JS promises.
 class API
   @base = if document.location.hostname != 'localhost'
-    "http://api.#{document.location.hostname}"
+    "http://#{document.location.hostname}".replace 'www.', 'api.'
   else
     'http://localhost:9393'
 
