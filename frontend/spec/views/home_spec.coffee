@@ -15,5 +15,5 @@ describe 'Front page', ->
           }]
         }]
       }
-      expect($('h1').text()).to.eq 'Cloud.net Budget UK London Zone (1,2)'
+      expect($('ul li:eq(1)').text()).to.eq '1 templates'
       done()

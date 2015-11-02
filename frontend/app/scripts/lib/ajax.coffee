@@ -1,13 +1,15 @@
 m = require 'mithril'
+NProgress = require 'nprogress'
 Logger = require 'lib/logger'
 
 class AJAX
   constructor: ->
     @token = m.prop(localStorage.token)
-    @message = m.prop('Loading...')
+    @message = m.prop('Connecting to API...')
+    @ajaxLoader()
 
   success: (result) ->
-    @message 'Connected'
+    @message 'API Connected'
     Logger.info 'AJAX success', result
     result
 
@@ -47,5 +49,28 @@ class AJAX
       oldConfig xhr
 
     @ajax options
+
+  # Monkey-patch m.request to display loader when necessary
+  ajaxLoader: ->
+    global.originalRequest = m.request
+    global.pendingAJAXRequests = 0
+
+    m.request = =>
+      @onAJAXStarted() if pendingAJAXRequests == 0
+      pendingAJAXRequests += 1
+
+      promise = originalRequest.apply(null, arguments)
+      decrement = =>
+        pendingAJAXRequests -= 1
+        @onAJAXFinished() if pendingAJAXRequests == 0
+      promise.then(decrement, decrement)
+
+      promise
+
+  onAJAXStarted: ->
+    NProgress.start()
+
+  onAJAXFinished: ->
+    NProgress.done()
 
 module.exports = AJAX

@@ -53,6 +53,7 @@ route = (name) ->
   view = name
   withLayout(controllers[controller], views[view])
 
+# Check if user is logged in
 api.verifyToken()
 
 # Kind of a hacky way to provide the ability of programatically loading a route during testing

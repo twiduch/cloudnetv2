@@ -17,13 +17,12 @@ class API
     @get('/auth/token', params).then @setUser.bind(this)
 
   setUser: (result) ->
-    if result.token
-      localStorage.token = result.token
-      @ajax.token result.token
-      m.route '/dashboard'
-      Logger.info "Login success. Token: #{result.token}"
-    if result.user
-      @currentUser result.user
+    return false unless result.login_token
+    @currentUser result
+    localStorage.token = result.login_token
+    @ajax.token result.login_token
+    Logger.info "Login success. Token: #{result.login_token}"
+    m.route '/dashboard' unless @fromVerification
 
   logout: =>
     @ajax.token false
@@ -33,6 +32,7 @@ class API
 
   verifyToken: ->
     if localStorage.token
+      @fromVerification = true
       @get('/auth/verify').then @setUser.bind(this)
 
   get: (path, params) ->

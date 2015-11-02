@@ -16,6 +16,7 @@ mochaJsdom({
 before ->
   # scrollTo isn't implemented by jsdom for some reason?
   window.scrollTo = ->
+    true
   global.$ = require('jquery')
   # NB: mithril *must* be required *after* jsdom initialisation (which happens in before())
   m = require 'mithril'

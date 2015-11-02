@@ -9,8 +9,8 @@ var concat = require('gulp-concat');
 
 gulp.task('sass', function () {
   return gulp.src(config.src)
-    .pipe(sourcemaps.init())
     .pipe(sass(config.settings))
+    .pipe(sourcemaps.init())
     .on('error', handleErrors)
     .pipe(sourcemaps.write())
     .pipe(autoprefixer({ browsers: ['last 2 version'] }))

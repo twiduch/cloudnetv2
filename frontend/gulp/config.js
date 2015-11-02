@@ -16,7 +16,11 @@ module.exports = {
     dest: dest,
     settings: {
       indentedSyntax: true, // Enable .sass syntax!
-      imagePath: 'images' // Used by the image-url helper
+      imagePath: 'images', // Used by the image-url helper
+      includePaths: [
+        '../node_modules/zurb-foundation-5/scss/',
+        '../node_modules/nprogress/'
+      ]
     }
   },
   images: {

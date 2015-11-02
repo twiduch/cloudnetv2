@@ -42,7 +42,13 @@ describe 'Auth views', ->
         $('.login-form').submit()
         dom.xhrResponseFor '/auth/token', {
           json: {
-            token: 'token123'
+            login_token: 'token123'
+          }
+        }
+
+        dom.xhrResponseFor '/servers', {
+          json: {
+            login_token: 'token123'
           }
         }
         expect(localStorage.token).to.eq 'token123'

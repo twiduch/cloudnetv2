@@ -26,7 +26,7 @@ module Routes
       end
       put :confirm do
         if User.confirm_from_token params[:token], params[:password]
-          { message: 'You are now confirmed. Acces your key from `auth/api_key`' }
+          { message: 'You are now confirmed. Access your key from `auth/api_key`' }
         else
           error! 'Confirmation failed', 400
         end
@@ -39,18 +39,17 @@ module Routes
       end
       get :token do
         user = User.find_by email: params[:email]
-        return error!('User is not active', 403) unless user.status == :active
-        return error!('Invalid password', 403) unless user.password == params[:password]
-        {
-          token: user.generate_new_login_token,
-          user: user
-        }
+        error!('User is not active', 403) unless user.status == :active
+        error!('Invalid password', 403) unless user.password == params[:password]
+        user.generate_new_login_token
+        user.reload
+        present user, with: UserRepresenter
       end
 
       desc 'Verify an existing user based on their token or API key'
       get :verify do
         authenticate!
-        { user: current_user }
+        present current_user, with: UserRepresenter
       end
     end
   end

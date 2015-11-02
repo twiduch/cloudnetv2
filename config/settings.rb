@@ -83,6 +83,7 @@ module Cloudnet
 
     # Check for API version mismatch.
     def check_version
+      return if ENV['DISABLE_HTTP_CHECKS'] == 'true'
       # Version mismatch is checked differently during testing.
       return if Cloudnet.environment == 'test' || ENV['SKIP_ONAPP_API_CHECK']
       Cloudnet.logger.info 'Checking OnApp version...'

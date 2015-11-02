@@ -13,7 +13,8 @@ module.exports = (controller) ->
           label: 'Full name:',
           setter: controller.user.fullName,
           attributes: {
-            required: true
+            required: true,
+            type: 'text'
           }
         },
         {

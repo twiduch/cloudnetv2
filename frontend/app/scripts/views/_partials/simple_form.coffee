@@ -1,49 +1,58 @@
 # A simple form partial
-
 helpers = require 'lib/helpers'
 m = require 'mithril'
 
-module.exports = (controller, formSettings) ->
-  # Set defaults
-  defaults = {
-    submitText: 'Submit',
-    submittingText: 'Submitting...'
-  }
-  formSettings = helpers.extend defaults, formSettings
+class SimpleForm
+  # controller: Mithril controller
+  # formSettings: Hash, see examples, eg; login form
+  constructor: (controller, formSettings) ->
+    defaults = {
+      submitText: 'Submit',
+      submittingText: 'Submitting...'
+    }
+    @formSettings = helpers.extend defaults, formSettings
+    @controller = controller
 
-  [
-    m "form.#{formSettings.class}", {
-      onsubmit: (e) ->
-        e.preventDefault()
-        controller.form.feedback ''
-        controller.form.submissionInProgress true
-        # It's assumed that formSettings.submit involves AJAX. In which case redraw is blocked
-        # until completion, so force a redraw now.
-        m.redraw()
-        formSettings.submit.bind(controller)(e).then ->
-          controller.form.submissionInProgress false
-    },
+  formWrapper: ->
+    m '.small-4.small-centered.columns',
+      m "form.#{@formSettings.class}", { onsubmit: @onsubmit(@controller, @formSettings) }, @formBody()
+      m 'p.form-feedback', @controller.form.feedback() if @controller.form.feedback()
 
-    # The actual form
-    unless controller.form.successfullySubmitted()
+  formBody: ->
+    return if @controller.form.successfullySubmitted()
+    [
+      @formInputs()
+      if @controller.form.submissionInProgress()
+        # To prevent accidental resubmission during submission
+        m 'span.form-submitting', @formSettings.submittingText
+      else
+        m 'input[type=submit].button', { value: @formSettings.submitText }
+    ]
+
+  formInputs: ->
+    @formSettings.inputs.map (input) ->
+      className = "#{input.label.toLowerCase().replace(/\W/g, '')}-input"
       [
-        formSettings.inputs.map (input) ->
-          className = "#{input.label.toLowerCase().replace(/\W/g, '')}-input"
-          [
-            m 'label', input.label
+        m '.row.collapse.prefix-radius',
+          m '.small-3.columns',
+            m 'span.prefix', input.label
+          m '.small-9.columns',
             m "input.#{className}", helpers.extend {
               oninput: m.withAttr('value', input.setter),
             }, input?.attributes
-          ]
-        if controller.form.submissionInProgress()
-          # To prevent accidental resubmission during submission
-          m 'span.form-submitting', formSettings.submittingText
-        else
-          m 'input[type=submit]', { value: formSettings.submitText }
       ]
 
-    # Feedback of success or validation errors
-    if controller.form.feedback()
-      m 'p.form-feedback', controller.form.feedback()
+  onsubmit: ->
+    (event) =>
+      event.preventDefault()
+      @controller.form.feedback ''
+      @controller.form.submissionInProgress true
+      # It's assumed that @formSettings.submit involves AJAX. In which case redraw is blocked
+      # until completion, so force a redraw now.
+      m.redraw()
+      @formSettings.submit.bind(@controller)(event).then =>
+        @controller.form.submissionInProgress false
 
-  ]
+module.exports = (controller, formSettings) ->
+  form = new SimpleForm(controller, formSettings)
+  form.formWrapper()

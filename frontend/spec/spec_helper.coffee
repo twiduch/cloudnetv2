@@ -11,9 +11,10 @@ global.expect = require('chai').expect
 # Sinon is used for spies, mocks, fake HTTP requests, etc
 # Stub XMLHttpRequest until jsdom creates the window object in before hooks
 global.XMLHttpRequest = ->
+  true
 global.sinon = require('sinon')
-# Sinon has an annoying issue where XHR errors are raised after everything finishes, you have to manually set this flag to get
-# hard errors raised immediately. Follow: https://github.com/sinonjs/sinon/issues/172
+# Sinon has an annoying issue where XHR errors are raised after everything finishes, you have to manually set this flag
+# to get hard errors raised immediately. Follow: https://github.com/sinonjs/sinon/issues/172
 sinon.logError.useImmediateExceptions = true
 
 beforeEach ->
