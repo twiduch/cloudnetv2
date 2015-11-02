@@ -3,7 +3,7 @@ module.exports = (controller) ->
   m 'header.row', [
     m 'span.small-6.columns',
       m "a[href='/'].logo", { config: m.route }, [
-        m 'img', { src: '/images/cloudnet_big.png' }
+        m 'img', { src: '/assets/images/cloudnet_big.png' }
         m '.span.cloudnet', 'cloud.net'
       ]
     m 'span.account-menu.small-6.columns',

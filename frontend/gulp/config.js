@@ -13,7 +13,7 @@ module.exports = {
   },
   sass: {
     src: src + "/styles/*.{sass,scss}",
-    dest: dest,
+    dest: dest + '/assets',
     settings: {
       indentedSyntax: true, // Enable .sass syntax!
       imagePath: 'images', // Used by the image-url helper
@@ -25,7 +25,7 @@ module.exports = {
   },
   images: {
     src: src + "/images/**",
-    dest: dest + "/images"
+    dest: dest  + '/assets/images'
   },
   markup: {
     src: src + "/index.html",
@@ -36,7 +36,7 @@ module.exports = {
     // bundle config in the list below
     bundleConfigs: [{
       entries: src + '/scripts/main.coffee',
-      dest: dest,
+      dest: dest + '/assets',
       outputName: 'main.js',
       // Additional file extentions to make optional
       extensions: ['.coffee'],
