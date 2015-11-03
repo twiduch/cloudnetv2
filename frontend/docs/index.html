@@ -22,6 +22,22 @@
   <script src='dist/lib/marked.js' type='text/javascript'></script>
   <script src='dist/lib/swagger-oauth.js' type='text/javascript'></script>
 
+  <style media="screen">
+    .swagger-section #header {
+      background-color: #fff;
+    }
+    .swagger-section #header a#logo {
+      color: #3EB0D5;
+      background: transparent url(https://cloud.net/assets/cloudnet.png) no-repeat left;
+      padding-left: 50px;
+    }
+    .swagger-section #header form#api_selector .input a#explore {
+      background-color: #3EB0D5;
+    }
+    .swagger-section #header form#api_selector .input a:hover#explore {
+      background-color: #3EB0D5;
+    }
+  </style>
   <!-- Some basic translations -->
   <!-- <script src='dist/lang/translator.js' type='text/javascript'></script> -->
   <!-- <script src='dist/lang/ru.js' type='text/javascript'></script> -->
@@ -114,11 +130,10 @@
 <body class="swagger-section">
 <div id='header'>
   <div class="swagger-ui-wrap">
-    <a id="logo" href="http://swagger.io">swagger</a>
+    <a id="logo" href="http://cloud.net">cloud.net API documentation</a>
     <form id='api_selector'>
-      <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
       <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
-      <div class='input'><a id="explore" href="#" data-sw-translate>Explore</a></div>
+      <div class='input'><a id="explore" href="#" data-sw-translate>Submit</a></div>
     </form>
   </div>
 </div>

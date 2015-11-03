@@ -7,7 +7,6 @@ require 'app/routes/server'
 # Base Grape class
 class API < Grape::API
   version :v1, using: :accept_version_header
-  # format :json
   default_format :json
   formatter :json, Grape::Formatter::Roar
 
@@ -26,7 +25,7 @@ class API < Grape::API
 
   rescue_from Mongoid::Errors::DocumentNotFound do |e|
     Cloudnet.logger.info e
-    error!({ message: { error: 'Resource not found' } }, 404)
+    error!({ message: { error: e.message } }, 404)
   end
 
   rescue_from Grape::Exceptions::ValidationErrors do |e|
@@ -68,5 +67,8 @@ class API < Grape::API
   mount Routes::Servers
   mount Routes::Auth
 
-  add_swagger_documentation
+  add_swagger_documentation(
+    hide_documentation_path: true,
+    hide_format: true
+  )
 end

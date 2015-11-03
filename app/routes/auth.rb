@@ -26,13 +26,19 @@ module Routes
       end
       put :confirm do
         if User.confirm_from_token params[:token], params[:password]
-          { message: 'You are now confirmed. Access your key from `auth/api_key`' }
+          { message: 'You are now confirmed. Access your key from your dashboard' }
         else
           error! 'Confirmation failed', 400
         end
       end
 
-      desc 'Get a short-lived login token for use with the HTML frontend'
+      desc(
+        'Get a short-lived login token for use with the HTML frontend',
+        http_codes: [
+          [200],
+          [403, 'User invalid or forbidden']
+        ]
+      )
       params do
         requires :email, regexp: /.+@.+/, allow_blank: false
         requires :password, allow_blank: false
