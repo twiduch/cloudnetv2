@@ -33,7 +33,7 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        if(document.location.hostname.indexOf('localhost')){
+        if(document.location.hostname.indexOf('localhost') >= 0){
           url = 'http://api.localhost:9393';
         } else {
           url = "http://#{document.location.hostname}".replace('docs.', 'api.');
