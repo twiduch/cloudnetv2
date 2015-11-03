@@ -36,7 +36,8 @@
         if(document.location.hostname.indexOf('localhost') >= 0){
           url = 'http://api.localhost:9393';
         } else {
-          url = "http://#{document.location.hostname}".replace('docs.', 'api.');
+          hostname = document.location.hostname.replace('docs.', 'api.');
+          url = 'http://' + hostname;
         }
         url = url + '/swagger_doc';
       }
