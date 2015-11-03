@@ -7,7 +7,8 @@ require 'app/routes/server'
 # Base Grape class
 class API < Grape::API
   version :v1, using: :accept_version_header
-  format :json
+  # format :json
+  default_format :json
   formatter :json, Grape::Formatter::Roar
 
   logger Cloudnet.logger

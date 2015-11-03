@@ -33,7 +33,12 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        url = "http://localhost:9393/swagger_doc";
+        if(document.location.hostname.indexOf('localhost')){
+          url = 'http://api.localhost:9393';
+        } else {
+          url = "http://#{document.location.hostname}".replace('docs.', 'api.');
+        }
+        url = url + '/swagger_doc';
       }
 
       // Pre load translate...
@@ -76,8 +81,12 @@
       function addApiKeyAuthorization(){
         var key = encodeURIComponent($('#input_apiKey')[0].value);
         if(key && key.trim() != "") {
-            var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("api_key", key, "query");
-            window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
+            // var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("api_key", key, "query");
+            swaggerUi.api.clientAuthorizations.add(
+              "key",
+              new SwaggerClient.ApiKeyAuthorization("Authorization", 'APIKEY ' + key, "header")
+            );
+            // window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
             log("added key " + key);
         }
       }

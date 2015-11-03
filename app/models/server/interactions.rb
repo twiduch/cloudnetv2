@@ -3,6 +3,7 @@
 module Interactions
   def provision(specs = {})
     specs = new_server_defaults specs.to_hash.symbolize_keys # to_hash() is to coerce Rack::Test params away from Hashie
+    specs.delete :format
     specs[:template] = Template.find specs[:template].to_s unless specs[:template].is_a? Template
     update_attributes! specs
     worker.create_onapp_server

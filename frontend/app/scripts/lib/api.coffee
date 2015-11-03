@@ -5,10 +5,10 @@ Logger = require 'lib/logger'
 # Communicate with the cloud.net API.
 # Note that all responses return JS promises.
 class API
-  @base = if document.location.hostname != 'localhost'
-    "http://#{document.location.hostname}".replace 'www.', 'api.'
+  @base = if document.location.hostname.indexOf 'localhost'
+    'http://api.localhost:9393'
   else
-    'http://localhost:9393'
+    "http://#{document.location.hostname}".replace 'www.', 'api.'
 
   constructor: ->
     @ajax = new AJAX

@@ -9,47 +9,34 @@ use Rack::Cors do
   end
 end
 
-use Rack::Static, urls: ['/assets'], root: 'frontend/build'
-
-module Rack
-  # Route to a rackup depending on subdomain
-  class Subdomain
-    def initialize(routes = [])
-      @routes = routes
-      yield self if block_given?
-    end
-
-    def map(subdomain)
-      @routes << { subdomain: subdomain, application: yield }
-    end
-
-    def call(env)
-      @routes.each do |route|
-        match = env['HTTP_HOST'].match(route[:subdomain])
-        return route[:application].call(env) if match
-      end
-      API.call(env)
-    end
-  end
+map "http://api.#{ENV['CLOUDNET_DOMAIN']}/" do
+  run API
 end
 
-app = Rack::Subdomain.new do |domain|
-  domain.map 'www' do
-    lambda do |_env|
-      [
-        200,
-        {
-          'Content-Type'  => 'text/html',
-          'Cache-Control' => 'public, max-age=86400'
-        },
-        File.open('frontend/build/index.html', File::RDONLY)
-      ]
-    end
-  end
-
-  domain.map 'api' do
-    API
-  end
+map "http://www.#{ENV['CLOUDNET_DOMAIN']}/" do
+  use Rack::Static, urls: ['/assets'], root: 'frontend/build'
+  run lambda { |_env|
+    [
+      200,
+      {
+        'Content-Type'  => 'text/html',
+        'Cache-Control' => 'public, max-age=86400'
+      },
+      File.open('frontend/build/index.html', File::RDONLY)
+    ]
+  }
 end
 
-run app
+map "http://docs.#{ENV['CLOUDNET_DOMAIN']}/" do
+  use Rack::Static, urls: ['/dist'], root: 'frontend/docs'
+  run lambda { |_env|
+    [
+      200,
+      {
+        'Content-Type'  => 'text/html',
+        'Cache-Control' => 'public, max-age=86400'
+      },
+      File.open('frontend/docs/index.html', File::RDONLY)
+    ]
+  }
+end
