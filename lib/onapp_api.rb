@@ -63,13 +63,16 @@ module OnappAPI
     def make_request(connection, method, path, params)
       connection.send(method) do |request|
         request.url path
-        if params
-          if params.key? :body
-            request.body = JSON.generate params
-          else
-            request.params = params
-          end
-        end
+        add_params request, params if params
+      end
+    end
+
+    def add_params(request, params)
+      if params[:body]
+        request.headers['Content-Type'] = 'application/json'
+        request.body = JSON.generate params[:body]
+      else
+        request.params = params
       end
     end
 

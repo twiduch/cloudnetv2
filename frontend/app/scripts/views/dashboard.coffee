@@ -12,6 +12,11 @@ servers = (controller) ->
           m 'li', "OS: #{server.template.label}"
           m 'li', "State: #{server.state}"
           m 'li', "IP: #{server.ip_address}"
+          m 'li', 'Activity'
+          m 'ul',
+            server.transactions.map (transaction) ->
+              created_at = new Date(transaction.date)
+              m 'li', "#{created_at.toDateString()} @ #{created_at.toTimeString()}: #{transaction.details}"
 
 module.exports = (controller) ->
   user = controller.currentUser()

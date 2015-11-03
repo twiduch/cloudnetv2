@@ -27,4 +27,12 @@ Fabricator :server do
   template
   name 'Testing server'
   hostname 'testing-server'
+  onapp_identifier 'abcdefg'
+end
+
+Fabricator :transaction do
+  resource :server
+  identifier 'abcdefg'
+  type :event
+  details 'building'
 end

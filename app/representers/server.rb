@@ -15,6 +15,10 @@ module ServerRepresenter
   property :disk_size
   property :state
   property :template, extend: TemplateRepresenter
+  collection :transactions do
+    property :created_at, as: :date
+    property :details
+  end
 end
 
 # For representing more than one at a time

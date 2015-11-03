@@ -90,4 +90,9 @@ class Server
     # Soft delete the cloud.net server
     delete
   end
+
+  # Acrchive of build, reboot, disk build, activity
+  def transactions
+    Transaction.where(resource: :server, identifier: onapp_identifier)
+  end
 end

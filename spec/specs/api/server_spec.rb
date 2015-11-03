@@ -13,12 +13,14 @@ describe API do
     before :each do
       Sidekiq::Testing.fake!
       header 'Authorization', "APIKEY #{server.user.cloudnet_api_key}"
+      Fabricate :transaction
     end
 
     it "should return the user's servers" do
       get '/servers'
       response = JSON.parse(last_response.body)
       expect(response.first['hostname']).to eq server.hostname
+      expect(response.first['transactions'][0]['details']).to eq 'building'
     end
 
     it 'should create a server' do
@@ -28,7 +30,6 @@ describe API do
       expect(response['cpus']).to eq 1
       expect(response['memory']).to eq 512
       job = ModelWorkerSugar::ModelWorker.jobs.first
-      puts response
       expect(job['args']).to eq [
         'Server', response['id'], 'create_onapp_server'
       ]

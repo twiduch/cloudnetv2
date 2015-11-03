@@ -77,6 +77,7 @@ describe Transactions::ConsumerMethods do
   it 'should consume <build_scheduled.virtual_machine.connect>' do
     consume
     expect(@server.state).to eq :building
+    expect(@server.ip_address).not_to be_empty
   end
 
   it 'should consume <generated.statistics.connect>' do

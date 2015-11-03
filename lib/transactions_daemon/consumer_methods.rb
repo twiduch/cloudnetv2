@@ -20,9 +20,12 @@ module Transactions
 
     # A build is scheduled but hasn't started yet
     def build_scheduled__virtual_machine
+      vm = @transaction['params']['event_data']['virtual_machine']
       @server.state = :building
       @server.built = false
       @server.locked = true
+      # Is this the best place to get the IP address?
+      @server.ip_address = vm['ip_addresses'][0]['ip_address']['address'] if vm['ip_addresses'].count
       @server.save!
     end
 
