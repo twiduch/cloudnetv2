@@ -65,7 +65,7 @@ module Cloudnet
 
     # The base domain for the HTTP frontend
     def hostname
-      ENV['DOMAIN'] || 'localhost'
+      ENV['CLOUDNET_DOMAIN'] || 'localhost'
     end
 
     def logger

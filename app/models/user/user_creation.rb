@@ -80,7 +80,7 @@ module UserCreation
   # Unique link which a user receives in their email and clicking it confirms their account
   def confirmation_url
     fail 'User already confirmed.' if status == :active
-    "#{Cloudnet.hostname}/auth/confirm?token=#{confirmation_token}"
+    "http://www.#{Cloudnet.hostname}/auth/confirm?token=#{confirmation_token}"
   end
 
   class_methods do
