@@ -16,7 +16,7 @@ describe OnappAPI do
   end
 
   it 'should make a user-based request when called from a resource instance' do
-    server = Fabricate :server
+    server = Fabricate :server, onapp_identifier: nil
     stub_request(:post, /virtual_machines/)
     server.onapp.api :post
     regex = Regexp.new(
