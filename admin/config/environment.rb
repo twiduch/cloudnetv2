@@ -1,12 +1,11 @@
 # Load the Rails application.
 require File.expand_path('../application', __FILE__)
 
-# Requiring these are disabled in the Gemfile, because the Gemfile is primarily for the
-# Grape API.
+# Manually load gems to avoid unnecessary load times for the Grape API
 require 'devise'
 require 'activeadmin'
 
-# This needs to be called in otrder to provide the page() method to Mongoid models.
+# This needs to be called in order to provide the page() method to Mongoid models.
 # I don't know why it isn't automaticalliy called. Maybe because of not loading all of rails
 # in `application.rb`?
 Kaminari::Hooks.init
@@ -16,3 +15,8 @@ require_relative '../../config/boot'
 
 # Initialize the Rails application.
 Rails.application.initialize!
+
+if AdminUser.count == 0
+  admin = AdminUser.create! email: 'admin@cloud.net', password: 'CHANGEME!'
+  p "Admin user creeated: user: #{admin.email}, pass: #{admin.password}"
+end

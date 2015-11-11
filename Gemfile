@@ -32,11 +32,15 @@ gem 'faraday'
 # For sending email
 gem 'mail'
 
+# HACK: Devise and Active Admin seem to need to be required here when run from rake. Whereas when run from config.ru
+# they can be loaded later.
+# Either way, the point is that we're trying to require as little as possible to save on boot up times.
+require_for_asset_compilation = ENV['ASSET_COMPILATION'] == 'true'
 # Only used for Active Admin
 gem 'rails', require: false
-gem 'devise', require: false
+gem 'devise', require: require_for_asset_compilation
 # Watch https://github.com/activeadmin/activeadmin/issues/2714
-gem 'activeadmin', github: 'Zhomart/active_admin', branch: 'mongoid-old', require: false
+gem 'activeadmin', github: 'Zhomart/active_admin', branch: 'mongoid-old', require: require_for_asset_compilation
 
 # Fancy console
 gem 'pry'
