@@ -8,6 +8,8 @@ require 'bundler/setup'
 require 'sidekiq/api'
 require 'mongoid'
 require 'mongoid-paranoia'
+require 'grape'
+require 'grape-swagger'
 
 I18n.enforce_available_locales = false
 

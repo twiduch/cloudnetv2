@@ -11,8 +11,14 @@ end
 namespace :assets do
   desc 'Create the frontend HTML, CSS, JS and images'
   task :precompile do |_t, _args|
-    p `ASSET_COMILATION=true cd admin && bundle exec rake assets:precompile`
-    p `cd frontend && ../node_modules/.bin/gulp production`
+    # Compile admin assets
+    system 'export ASSET_COMPILATION=true; export PATH=/tmp/build/bin:$PATH; cd admin; rake assets:precompile 2>&1'
+    # Compile frontend assets
+    system 'cd frontend && ../node_modules/.bin/gulp production'
+  end
+
+  desc 'Noop'
+  task :clean do |_t, _args|
   end
 end
 
