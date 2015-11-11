@@ -10,6 +10,7 @@ require 'mongoid'
 require 'mongoid-paranoia'
 require 'grape'
 require 'grape-swagger'
+require 'grape-roar'
 
 I18n.enforce_available_locales = false
 

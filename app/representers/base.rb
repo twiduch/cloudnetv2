@@ -1,4 +1,3 @@
-require 'grape-roar'
 require 'roar/representer'
 require 'roar/coercion'
 require 'roar/json'
