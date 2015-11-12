@@ -61,6 +61,7 @@ module OnappAPI
     private
 
     def make_request(connection, method, path, params)
+      Cloudnet.logger.debug "OnApp API request: #{method.upcase} #{path} #{params}"
       connection.send(method) do |request|
         request.url path
         add_params request, params if params
