@@ -19,6 +19,7 @@ module.exports = {
       imagePath: 'images', // Used by the image-url helper
       includePaths: [
         '../node_modules/zurb-foundation-5/scss/',
+        '../node_modules/zurb-foundation-5/scss/foundation/components',
         '../node_modules/nprogress/'
       ]
     }
