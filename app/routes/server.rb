@@ -8,7 +8,7 @@ module Routes
 
       desc 'List all servers'
       get do
-        present current_user.servers, with: ServersRepresenter
+        present current_user.servers.to_a, with: ServersRepresenter
       end
 
       desc 'Create a server'

@@ -1,4 +1,4 @@
-ruby '2.2.2'
+ruby '2.2.3'
 source 'https://rubygems.org'
 
 # Load ENV from .env file
@@ -17,7 +17,7 @@ gem 'bcrypt' # Requirement of Mongoid, but why?
 gem 'symmetric-encryption'
 
 # API
-gem 'grape', github: 'intridea/grape'
+gem 'grape'
 # For presenting lovely serialised API responses of objects
 gem 'grape-roar'
 # Auto-generate API documentation
@@ -53,7 +53,7 @@ group :development do
   gem 'guard'
   gem 'guard-bundler'
   gem 'guard-puma'
-  gem 'rb-inotify', require: false
+  gem 'rb-inotify'
 end
 
 group :test do

@@ -23,5 +23,7 @@ unless Cloudnet.environment == 'production'
 end
 
 Mongoid.load!(Cloudnet.root + '/config/mongoid.yml')
+Mongoid.logger.level = Logger::INFO
+Mongo::Logger.logger.level = Logger::INFO
 
 Cloudnet.init
