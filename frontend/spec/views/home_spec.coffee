@@ -15,5 +15,5 @@ describe 'Front page', ->
           }]
         }]
       }
-      expect($('ul li:eq(1)').text()).to.eq '1 templates'
+      expect($('.content').text()).to.contain '1 Federation datacentres'
       done()

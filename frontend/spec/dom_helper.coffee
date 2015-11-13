@@ -21,6 +21,12 @@ before ->
   # NB: mithril *must* be required *after* jsdom initialisation (which happens in before())
   m = require 'mithril'
 
+  # HACK for jsdom's lack of insertAdjacentHTML. Watch https://github.com/tmpvar/jsdom/issues/1219
+  window.HTMLElement.prototype.insertAdjacentHTML = (thing, data) ->
+    # noop for now
+    return true
+
+
 beforeEach ->
   global.localStorage = {}
 

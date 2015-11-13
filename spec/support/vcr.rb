@@ -4,6 +4,7 @@ require 'vcr'
 # cassettes
 def sensitive_strings
   contents = File.read "#{Cloudnet.root}/.env"
+  contents = contents.lines.delete_if { |l| l.start_with? '#' }
   words = contents.split(/\s+/)
   words = filter_env_keys words
   # Turn the key/value pairs into an actual hash

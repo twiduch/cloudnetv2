@@ -2,5 +2,6 @@
 
 require ::File.expand_path('../config/environment', __FILE__)
 
-use Rack::Static, urls: ['/assets'], root: 'admin/public'
+# Manually point to the unconvential compiled assets path in non-dev envs
+use Rack::Static, urls: ['/assets'], root: 'admin/public' unless ENV['RACK_ENV'] == 'development'
 run Rails.application

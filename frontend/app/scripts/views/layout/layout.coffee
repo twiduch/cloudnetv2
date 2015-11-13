@@ -8,5 +8,5 @@ module.exports = (content) ->
       header(controller)
       m '.content.row', content(controller)
       m 'footer.row',
-        m '.small-12.columns', '© 2015'
+        m '.small-12.columns', 'Copyright ©2015 cloud.net'
     ]
