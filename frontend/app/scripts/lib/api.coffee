@@ -25,7 +25,7 @@ class API
     localStorage.token = result.login_token
     @ajax.token result.login_token
     Logger.info "Login success. Token: #{result.login_token}"
-    m.route '/dashboard' unless @fromVerification
+    true
 
   logout: =>
     @ajax.token false

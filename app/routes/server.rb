@@ -36,7 +36,7 @@ module Routes
 
         desc 'Show information about a server'
         get do
-          present Server.find params[:id], with: ServerRepresenter
+          present Server.find(params[:id]), with: ServerRepresenter
         end
       end
     end

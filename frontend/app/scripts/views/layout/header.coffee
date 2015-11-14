@@ -9,14 +9,13 @@ module.exports = (controller) ->
     m 'span.account-menu.small-6.columns',
       if controller.currentUser()
         [
-          m 'span.logged-in-user', [
-            'Logged in as '
-            m "a[href='/dashboard']", { config: m.route }, controller.currentUser().full_name
-          ]
-          m 'span', ' | '
-          m "a[href='javascript:;']", {
-            onclick: controller.api.logout
-          }, 'Logout'
+          m 'span.logged-in-user',
+            m 'p', "Logged in as #{controller.currentUser().full_name}"
+            m "a[href='/dashboard']", { config: m.route }, 'Dashboard'
+            m 'span', ' | '
+            m "a[href='javascript:;']", {
+              onclick: controller.api.logout
+            }, 'Logout'
         ]
       else
         [

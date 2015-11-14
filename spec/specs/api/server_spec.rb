@@ -23,6 +23,12 @@ describe API do
       expect(response.first['transactions'][0]['details']).to eq 'building'
     end
 
+    it 'should return info about a single server' do
+      get "/servers/#{server.id}"
+      response = JSON.parse(last_response.body)
+      expect(response['hostname']).to eq server.hostname
+    end
+
     it 'should create a server' do
       post '/servers', template: Template.first.id
       response = JSON.parse(last_response.body)

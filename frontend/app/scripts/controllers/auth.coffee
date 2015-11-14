@@ -56,6 +56,7 @@ class AuthController extends ApplicationController
           @form.feedback 'There was a problem logging in'
         else
           @form.successfullySubmitted true
+          m.route '/dashboard' unless @fromVerification
     )
 
 module.exports = AuthController

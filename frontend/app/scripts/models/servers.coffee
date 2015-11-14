@@ -9,5 +9,8 @@ class Servers
         if mappable then response else []
     )
 
+  @get: (id) ->
+    api.get("/servers/#{id}")
+
 
 module.exports = Servers

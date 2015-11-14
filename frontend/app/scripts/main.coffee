@@ -63,6 +63,7 @@ m.route.mode = 'pathname'
 m.route(document.body, defaultRoute, {
   '/': route('front'),
   '/dashboard': route('dashboard'),
+  '/servers/:id': route('servers'),
   '/auth/register': route('auth/register'),
   '/auth/login': route('auth/login'),
   '/auth/confirm': route('auth/confirm')
