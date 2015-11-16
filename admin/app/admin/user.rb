@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :email, :full_name
+  permit_params :email, :full_name, :status
 
   index do
     selectable_column
@@ -17,5 +17,14 @@ ActiveAdmin.register User do
     def find_resource
       User.find params[:id].to_i
     end
+  end
+
+  form do |f|
+    f.inputs do
+      f.input :full_name
+      f.input :email
+      f.input :status, as: :select, collection: [:active, :pending, :suspended]
+    end
+    actions
   end
 end

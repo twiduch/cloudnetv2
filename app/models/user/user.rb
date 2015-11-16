@@ -28,7 +28,6 @@ class User
   field :email
   field :full_name
   field :onapp_username
-  field :admin, type: Boolean, default: false
   field :status, type: Symbol, default: :pending
   field :resource_limits, default: DEFAULT_LIMITS
 
