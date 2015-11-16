@@ -4,7 +4,7 @@ require 'app/routes/server'
 
 # Base Grape class
 class API < Grape::API
-  version :v1, using: :accept_version_header
+  version :v2, using: :accept_version_header
   default_format :json
   formatter :json, Grape::Formatter::Roar
 
@@ -22,7 +22,7 @@ class API < Grape::API
   end
 
   rescue_from Mongoid::Errors::DocumentNotFound do |e|
-    Cloudnet.logger.info e
+    Cloudnet.logger.error e
     error!({ message: { error: e.message } }, 404)
   end
 
@@ -33,6 +33,7 @@ class API < Grape::API
 
   helpers do
     def current_user
+      error!('Please provide an Authorization header', 401) unless headers.key? 'Authorization'
       @current_user ||= User.authourize(headers['Authorization'])
     rescue Mongoid::Errors::DocumentNotFound
       error!('401 Unauthorized', 401)

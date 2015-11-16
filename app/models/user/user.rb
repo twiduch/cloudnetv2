@@ -95,13 +95,12 @@ class User
     def authourize(auth_header)
       type = auth_header.split[0].strip
       credential = auth_header.split[1].strip
-      case type
-      when 'TOKEN'
+      if type == 'TOKEN'
         User.find_by encrypted_login_token: SymmetricEncryption.encrypt(credential)
-      when 'APIKEY'
+      elsif type == 'APIKEY'
         User.find_by encrypted_cloudnet_api_key: SymmetricEncryption.encrypt(credential)
       else
-        false
+        fail 'Invlaid Authorization header'
       end
     end
   end
