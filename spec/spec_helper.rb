@@ -1,5 +1,10 @@
 ENV['RACK_ENV'] = 'test'
 
+ENV['ONAPP_URI'] = 'https://localhost'
+ENV['ONAPP_USER'] = 'test'
+ENV['ONAPP_PASS'] = 'test'
+ENV['ONAPP_CLOUDNET_ROLE'] = '2'
+
 require File.expand_path('../../config/boot', __FILE__)
 
 Bundler.require :test
