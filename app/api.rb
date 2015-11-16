@@ -1,3 +1,4 @@
+
 require 'app/routes/auth'
 require 'app/routes/datacentre'
 require 'app/routes/server'
@@ -6,6 +7,7 @@ require 'app/routes/server'
 class API < Grape::API
   version :v2, using: :accept_version_header
   default_format :json
+  format :json
   formatter :json, Grape::Formatter::Roar
 
   logger Cloudnet.logger

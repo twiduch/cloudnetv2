@@ -2,7 +2,7 @@ module Routes
   # /users
   class Auth < Grape::API
     resource :auth do
-      desc 'Register a new user'
+      desc 'Register a new user', hidden: true
       params do
         requires :full_name, allow_blank: false
         requires :email, regexp: /.+@.+/, allow_blank: false
@@ -15,7 +15,7 @@ module Routes
         { message: 'Thank you for registering. You will be emailed shortly.' }
       end
 
-      desc 'Confirm a user with the token received through registration'
+      desc 'Confirm a user with the token received through registration', hidden: true
       params do
         requires :token, allow_blank: false
         requires(
@@ -34,6 +34,7 @@ module Routes
 
       desc(
         'Get a short-lived login token for use with the HTML frontend',
+        hidden: true,
         http_codes: [
           [200],
           [403, 'User invalid or forbidden']
@@ -52,7 +53,7 @@ module Routes
         present user, with: UserRepresenter
       end
 
-      desc 'Verify an existing user based on their token or API key'
+      desc 'Verify an existing user based on their token or API key', hidden: true
       get :verify do
         authenticate!
         present current_user, with: UserRepresenter

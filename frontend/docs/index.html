@@ -37,6 +37,20 @@
     .swagger-section #header form#api_selector .input a:hover#explore {
       background-color: #3EB0D5;
     }
+    .auth-details div {
+      margin-bottom: 1em;
+      line-height: 2em;
+    }
+    .auth-details pre {
+      display: inline-block;
+    }
+    .auth-details form input {
+      font-size: 1.3em;
+      padding: .25em;
+    }
+    .api-key-added {
+      color: #aaa;
+    }
   </style>
   <!-- Some basic translations -->
   <!-- <script src='dist/lang/translator.js' type='text/javascript'></script> -->
@@ -52,9 +66,14 @@
         if(document.location.hostname.indexOf('localhost') >= 0){
           url = 'http://api.localhost:9393';
         } else {
-          hostname = document.location.hostname.replace('docs.', 'api.');
+          var hostname = document.location.hostname.replace('docs.', 'api.');
           url = 'http://' + hostname;
         }
+        var website = 'http://' + document.location.hostname.replace('docs.', 'www.');
+        $('.api_endpoint').text(url);
+        $('.api_endpoint').attr('href', url);
+        $('.website').text(website);
+        $('.website').attr('href', website);
         url = url + '/swagger_doc';
       }
 
@@ -90,7 +109,7 @@
         onFailure: function(data) {
           log("Unable to Load SwaggerUI");
         },
-        docExpansion: "none",
+        docExpansion: "list",
         apisSorter: "alpha",
         showRequestHeaders: false
       });
@@ -105,6 +124,7 @@
           );
             // window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
           log("added key " + key);
+          $('.api-key-added').text('("' + key + '" added to documentation examples)')
         }
       }
 
@@ -125,14 +145,27 @@
 <div id='header'>
   <div class="swagger-ui-wrap">
     <a id="logo" href="http://cloud.net">cloud.net API documentation</a>
-    <form id='api_selector'>
-      <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
-      <div class='input'><a id="explore" href="#" data-sw-translate>Submit</a></div>
-    </form>
   </div>
 </div>
 
 <div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
+<div class="swagger-ui-wrap auth-details">
+  <div>
+    <strong>API Endpoint: </strong> <a href="" class="api_endpoint"></a>
+  </div>
+  <div>
+    Get your API key from <a href="" class="website"></a>. The key should be added as a header to all API requests
+    using the following format: <pre>Authorization: APIKEY yourAPIKey</pre>
+  </div>
+  <div>
+    For the purposes of interacting with the methods in this documentation you can add your key to all demo requests:
+    <form id='api_selector'>
+      <input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/>
+      <a id="explore" href="#" data-sw-translate>Submit</a>
+      <span class="api-key-added"></span>
+    </form>
+  </div>
+</div>
 <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
 </body>
 </html>
