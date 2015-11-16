@@ -3,6 +3,7 @@ require 'vcr'
 # Use the .env file to compile the list of sensitive data that should not be recorded in
 # cassettes
 def sensitive_strings
+  return {} unless File.exist? "#{Cloudnet.root}/.env"
   contents = File.read "#{Cloudnet.root}/.env"
   contents = contents.lines.delete_if { |l| l.start_with? '#' }
   words = contents.split(/\s+/)
