@@ -2,9 +2,10 @@ m = require 'mithril'
 ApplicationController = require 'controllers/application'
 Datacentres = require 'models/datacentres'
 
-class FrontController extends ApplicationController
+class HomeController extends ApplicationController
   constructor: ->
     super
-    @datacentres = Datacentres.all()
+    @apiStatus = @api.get('/')
 
-module.exports = FrontController
+
+module.exports = HomeController

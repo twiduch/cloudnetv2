@@ -28,6 +28,7 @@ before ->
 
 
 beforeEach ->
+  window.document.location.hostname = 'http://localhost'
   global.localStorage = {}
 
   # Manually manipulatable AJAX responses

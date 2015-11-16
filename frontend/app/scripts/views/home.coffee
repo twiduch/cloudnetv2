@@ -1,8 +1,8 @@
 m = require 'mithril'
 
 module.exports = (controller) ->
-  if controller.datacentres()
-    datacentre_count = controller.datacentres().length
+  if controller.apiStatus()
+    datacentre_count = controller.apiStatus().status.datacentres
   else
     datacentre_count = '<unknown>'
 
@@ -27,6 +27,7 @@ module.exports = (controller) ->
     m 'code.small-12.medium-6.columns',
       m 'div', '$ curl -X POST -d "template=123" "http://api.cloud.net/servers"'
       m 'p'
+      # m.trust disables escaping of HTML
       m 'div', m.trust '
         { <br />
         &nbsp;&nbsp;"id": "564513b66266380008000000", <br />

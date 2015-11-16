@@ -51,10 +51,11 @@ class API < Grape::API
     {
       'Cloudnet API' => Cloudnet::VERSION,
       status: {
-        worker: { processes: Sidekiq::ProcessSet.new.size },
+        datacentres: Datacentre.count,
         transactions_daemon: {
           time_since_last_sync: Cloudnet.time_since_last_transactions_sync
-        }
+        },
+        worker: { processes: Sidekiq::ProcessSet.new.size }
       }
     }
   end

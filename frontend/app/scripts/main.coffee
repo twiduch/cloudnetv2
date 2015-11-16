@@ -61,7 +61,7 @@ defaultRoute = global.windowPath || '/'
 
 m.route.mode = 'pathname'
 m.route(document.body, defaultRoute, {
-  '/': route('front'),
+  '/': route('home'),
   '/dashboard': route('dashboard'),
   '/servers/:id': route('servers'),
   '/auth/register': route('auth/register'),

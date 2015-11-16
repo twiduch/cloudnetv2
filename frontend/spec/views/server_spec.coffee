@@ -1,6 +1,6 @@
 dom = require 'dom_helper'
 
-describe 'Front page', ->
+describe 'Server pages', ->
   it 'should render a server page', (done) ->
     dom.load '/servers/123', ->
       dom.xhrResponseFor '/servers/123', {
