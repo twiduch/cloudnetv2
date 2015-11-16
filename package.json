@@ -4,6 +4,7 @@
   "repository": "https://github.com/OnApp/cloudnetv2",
   "scripts": {
     "test": "NODE_PATH=./frontend/app/scripts/:./frontend/spec ./node_modules/.bin/mocha --opts frontend/spec/mocha.opts $(find frontend/spec -name '*_spec.coffee')",
+    "lint": "./node_modules/.bin/coffeelint .",
     "watch": "./node_modules/.bin/gulp --gulpfile frontend/gulpfile.js"
   },
   "browserify": {
