@@ -16,7 +16,7 @@ I18n.enforce_available_locales = false
 
 require_relative './settings'
 
-unless Cloudnet.environment == 'production'
+unless Cloudnet.environment == 'production' || ENV['CONTINUOUS_INTEGRATION'] == 'true'
   unless File.exist? Cloudnet.root + '.env'
     fail 'Preventing boot because of missing .env file'
   end
