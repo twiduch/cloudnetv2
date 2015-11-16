@@ -1,5 +1,4 @@
 m = require 'mithril'
-jsdom = require 'jsdom'
 header = require 'views/layout/header'
 
 module.exports = (content) ->

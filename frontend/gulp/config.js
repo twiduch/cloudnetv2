@@ -1,5 +1,6 @@
 var src = './app';
 var dest = "./build";
+var assets = dest + "/assets";
 var historyApiFallback = require('connect-history-api-fallback');
 
 module.exports = {
@@ -13,7 +14,7 @@ module.exports = {
   },
   sass: {
     src: src + "/styles/*.{sass,scss}",
-    dest: dest + '/assets',
+    dest: assets,
     settings: {
       indentedSyntax: true, // Enable .sass syntax!
       imagePath: 'images', // Used by the image-url helper
@@ -26,7 +27,7 @@ module.exports = {
   },
   images: {
     src: src + "/images/**",
-    dest: dest  + '/assets/images'
+    dest: assets  + '/images'
   },
   markup: {
     src: src + "/index.html",
@@ -37,18 +38,20 @@ module.exports = {
     // bundle config in the list below
     bundleConfigs: [{
       entries: src + '/scripts/main.coffee',
-      dest: dest + '/assets',
+      dest: assets,
       outputName: 'main.js',
       // Additional file extentions to make optional
       extensions: ['.coffee'],
       // list of modules to make require-able externally
       require: [],
+      // list of modules to exclude from bundled output
+      external: ['coffee-script/register', 'require-dir'],
       paths: [src + '/scripts']
     }]
   },
   production: {
-    cssSrc: dest + '/*.css',
-    jsSrc: dest + '/*.js',
-    dest: dest
+    cssSrc: assets + '/*.css',
+    jsSrc: assets + '/*.js',
+    dest: assets
   }
 };
