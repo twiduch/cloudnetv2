@@ -3,12 +3,17 @@ rvm:
  - "2.2.3"
 
 env:
-  - TRAVIS_NODE_VERSION="4.2.2"
+  - TRAVIS_NODE_VERSION="5.0.0"
 
 install:
-  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
-  - npm/.bin/npm --version
-  - npm/.bin/npm install
+  - wget -P /tmp http://nodejs.org/dist/v$TRAVIS_NODE_VERSION/node-v$TRAVIS_NODE_VERSION-linux-x64.tar.xz
+  - mkdir ~/nodejs
+  - tar -C ~/nodejs --strip-components 1 -xf /tmp/node-v$TRAVIS_NODE_VERSION-linux-x64.tar.xz
+  - export PATH=~/nodejs/bin:$PATH
+  - which node
+  - node --version
+  - npm install
+  - bundle install --deployment --path=${BUNDLE_PATH:-vendor/bundle}
 
 script:
   - bundle exec rspec spec
