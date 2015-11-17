@@ -54,7 +54,7 @@ describe User do
       user.generate_token_for :confirmation_token
       Email.welcome(user).deliver!
       email = Mail::TestMailer.deliveries.first
-      expect(email.body.raw_source).to match(/#{user.confirmation_token}/)
+      expect(email.body.parts.first.body).to match(/#{user.confirmation_token}/)
     end
   end
 end

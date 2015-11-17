@@ -11,6 +11,6 @@ describe Email do
   it 'should create and populate HTML ERB templates' do
     Email.welcome(user).deliver!
     email = Mail::TestMailer.deliveries.first
-    expect(email.body.raw_source).to match(/Hello #{user.full_name}/)
+    expect(email.body.parts.first.body).to match(/Hello #{user.full_name}/)
   end
 end

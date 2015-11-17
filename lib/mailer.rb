@@ -13,7 +13,11 @@ class BuildEmail
       from 'noreply@cloud.net'
       # Call the original mailer method DSL commands after these commands to overwrite them
       mailer_method.bind(self).call(*args, &block)
-      body builder.html(mailer_method, binding)
+      context = binding
+      html_part do
+        content_type 'text/html; charset=UTF-8'
+        body builder.html(mailer_method, context)
+      end
     end
   end
 
