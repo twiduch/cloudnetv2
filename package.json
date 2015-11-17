@@ -2,7 +2,7 @@
   "name": "cloudnet",
   "description": "The Global Cloud Hosting Marketplace",
   "repository": "https://github.com/OnApp/cloudnetv2",
-  "engine": "node 4.2.2",
+  "engine": "node 5.0.0",
   "scripts": {
     "test": "NODE_PATH=./frontend/app/scripts/:./frontend/spec ./node_modules/.bin/mocha --opts frontend/spec/mocha.opts $(find frontend/spec -name '*_spec.coffee')",
     "lint": "./node_modules/.bin/coffeelint .",

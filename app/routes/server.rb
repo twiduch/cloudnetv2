@@ -13,7 +13,7 @@ module Routes
 
       desc 'Create a server'
       params do
-        requires :template, type: Integer, desc: "ID of template taken from 'GET /templates'"
+        requires :template, type: Integer, desc: "Template IDs available from 'GET /datacentres/:id'"
         optional :name, type: String, desc: 'Human-readable name for server'
         optional :hostname, type: String, desc: 'OS-compatible hostname'
         optional :memory, type: Integer, desc: 'Amount of memory in MBs'
