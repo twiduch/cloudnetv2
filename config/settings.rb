@@ -71,7 +71,7 @@ module Cloudnet
     def logger
       output = Cloudnet.environment == 'test' ? '/dev/null' : STDOUT
       @logger ||= ::Logger.new output
-      @logger.level = Logger::INFO if environment == 'production'
+      @logger.level = ::Logger::INFO if environment == 'production'
       @logger
     end
 
