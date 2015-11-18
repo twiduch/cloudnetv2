@@ -22,8 +22,9 @@ I18n.enforce_available_locales = false
 require_relative './settings'
 
 Raven.configure do |config|
-  config.dsn = ENV['SENTRY_DSN']
+  config.dsn = ENV['SENTRY_DSN_WITH_SECRET']
 end if Cloudnet.environment == 'production' || Cloudnet.environment == 'staging'
+
 unless Cloudnet.environment == 'production' || ENV['CONTINUOUS_INTEGRATION'] == 'true'
   unless File.exist? Cloudnet.root + '.env'
     fail 'Preventing boot because of missing .env file'

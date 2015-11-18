@@ -1,6 +1,9 @@
 require 'rack/cors'
 require_relative 'config/boot'
 
+use Raven::Rack
+NewRelic::Agent.manual_start
+
 # Cross Origin requests
 use Rack::Cors do
   allow do
