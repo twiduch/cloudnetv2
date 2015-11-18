@@ -2,6 +2,14 @@ var src = './app';
 var dest = "./build";
 var assets = dest + "/assets";
 var historyApiFallback = require('connect-history-api-fallback');
+var through = require('through2');
+
+var envVars = function (file) {
+    return through(function (buf, enc, next) {
+        this.push(buf.toString('utf8').replace(/SENTRY_DSN/g, process.env.SENTRY_DSN));
+        next();
+    });
+};
 
 module.exports = {
   browserSync: {
@@ -46,7 +54,8 @@ module.exports = {
       require: [],
       // list of modules to exclude from bundled output
       external: ['coffee-script/register', 'require-dir'],
-      paths: [src + '/scripts']
+      paths: [src + '/scripts'],
+      transform: [envVars]
     }]
   },
   production: {

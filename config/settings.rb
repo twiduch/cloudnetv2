@@ -71,6 +71,8 @@ module Cloudnet
     def logger
       output = Cloudnet.environment == 'test' ? '/dev/null' : STDOUT
       @logger ||= ::Logger.new output
+      @logger.level = Logger::INFO if environment == 'production'
+      @logger
     end
 
     # OnApp has various roles with differeing levels of permissions. Here we have the role ID

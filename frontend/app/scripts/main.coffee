@@ -1,12 +1,18 @@
+global.env ||= 'DEV' if document.location.hostname == 'localhost'
+
+unless global.env == 'DEV' || global.env == 'TEST'
+  # Report errors to app.getsentry.com
+  Raven = require 'raven-js'
+  # A browserify transform will add the DSN URI from the ENV
+  Raven.config('SENTRY_DSN').install()
+
 m = require 'mithril'
 layout = require 'views/layout/layout'
 
 Logger = require 'lib/logger'
-api = require 'lib/api'
-
-global.env ||= 'DEV' if document.location.hostname == 'localhost'
-
 Logger.level = Logger.DEBUG if global.env == 'DEV'
+
+api = require 'lib/api'
 
 
 # Convert something like { a: {b: 'value'}} to {'a/b': 'value'}

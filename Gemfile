@@ -4,6 +4,13 @@ source 'https://rubygems.org'
 # Load ENV from .env file
 gem 'dotenv'
 
+# Log errors to app.getsentry.com
+gem 'sentry-raven'
+
+# Application monitoring
+gem 'newrelic_rpm' # The actual NewRelic gem
+gem 'newrelic-grape' # Grape-specific implementation application traces
+
 # Allow cross-origin incoming HTTP requests
 gem 'rack-cors', require: 'rack/cors'
 # Web server
