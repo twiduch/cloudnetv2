@@ -69,10 +69,20 @@ module Cloudnet
     end
 
     def logger
-      output = Cloudnet.environment == 'test' ? '/dev/null' : STDOUT
-      @logger ||= ::Logger.new output
+      @logger ||= choose_logger
       @logger.level = ::Logger::INFO if environment == 'production'
       @logger
+    end
+
+    def choose_logger
+      case Cloudnet.environment
+      when 'test'
+        ::Logger.new '/dev/null'
+      when 'production', 'staging'
+        Logglier.new ENV['LOGGLY_URI'], threaded: true
+      else
+        ::Logger.new STDOUT
+      end
     end
 
     # OnApp has various roles with differeing levels of permissions. Here we have the role ID

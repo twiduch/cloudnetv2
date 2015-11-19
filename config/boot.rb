@@ -5,6 +5,7 @@ require 'rubygems'
 require 'bundler/setup'
 
 require 'sentry-raven'
+require 'logglier'
 
 ENV['NEW_RELIC_FRAMEWORK'] = 'ruby'
 require 'newrelic_rpm'
@@ -20,6 +21,8 @@ require 'grape-roar'
 I18n.enforce_available_locales = false
 
 require_relative './settings'
+
+Sidekiq::Logging.logger = Cloudnet.logger
 
 Raven.configure do |config|
   config.dsn = ENV['SENTRY_DSN_WITH_SECRET']

@@ -192,6 +192,8 @@ GEM
     listen (3.0.4)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
+    logglier (0.3.0)
+      multi_json (~> 1)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.9)
@@ -383,6 +385,7 @@ DEPENDENCIES
   guard
   guard-bundler
   guard-puma
+  logglier
   mail
   mongoid
   mongoid_paranoia

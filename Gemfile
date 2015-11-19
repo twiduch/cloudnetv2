@@ -6,6 +6,8 @@ gem 'dotenv'
 
 # Log errors to app.getsentry.com
 gem 'sentry-raven'
+# General logging to loggly.com
+gem 'logglier'
 
 # Application monitoring
 gem 'newrelic_rpm' # The actual NewRelic gem
