@@ -6,8 +6,8 @@ require 'bundler/setup'
 
 require 'sentry-raven'
 
+ENV['NEW_RELIC_FRAMEWORK'] = 'ruby'
 require 'newrelic_rpm'
-require 'newrelic-grape'
 
 # Manually require gems, rather than use `Bundler.require` to save startup time
 require 'sidekiq/api'

@@ -6,4 +6,5 @@ node_modules
 frontend/build
 frontend/npm-debug.js
 
+log
 tags
