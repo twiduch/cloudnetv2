@@ -20,7 +20,13 @@ module Cloudnet
     525, 528, 530, 532, 533, 537, 539, 541, 547, 550
   ]
 
+  # Keep track of the current user in order to record a paper trail of changes to critical data.
+  # Can be set when a user authenticates with the API. There are also users like :workerbot and :syncdaemon.
+  @current_user ||= :ruby
+
   class << self
+    attr_accessor :current_user
+
     def init
       # So you can just use `require 'project/file'`
       $LOAD_PATH.unshift(root)
@@ -42,11 +48,7 @@ module Cloudnet
     end
 
     def require_app(use_load: false)
-      [
-        'config/initialisers',
-        'lib',
-        'app'
-      ].each { |path| recursive_require path, use_load: use_load }
+      ['config/initialisers', 'lib', 'app'].each { |path| recursive_require path, use_load: use_load }
     end
 
     # Alias for ROOT_PATH

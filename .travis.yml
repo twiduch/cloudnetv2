@@ -10,6 +10,7 @@ env:
   - TRAVIS_NODE_VERSION="5.0.0"
 
 install:
+  # Install a newer version of node than Travis has, in order to run jsdom
   - wget -P /tmp http://nodejs.org/dist/v$TRAVIS_NODE_VERSION/node-v$TRAVIS_NODE_VERSION-linux-x64.tar.xz
   - mkdir ~/nodejs
   - tar -C ~/nodejs --strip-components 1 -xf /tmp/node-v$TRAVIS_NODE_VERSION-linux-x64.tar.xz
@@ -17,12 +18,19 @@ install:
   - which node
   - node --version
   - npm install
+  # Ruby dependencies as per usual
   - bundle install --deployment --path=${BUNDLE_PATH:-vendor/bundle}
 
 script:
+  # API tests
   - bundle exec rspec spec
+  # Admin tests
+  - pushd && cd admin && bundle exec rspec spec && popd
+  # Frontend tests
   - npm test
+  # Ruby linter
   - bundle exec rubocop
+  # Coffeescript linter
   - npm run lint
 
 addons:

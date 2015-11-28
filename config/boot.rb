@@ -10,10 +10,11 @@ require 'logglier'
 ENV['NEW_RELIC_FRAMEWORK'] = 'ruby'
 require 'newrelic_rpm'
 
-# Manually require gems, rather than use `Bundler.require` to save startup time
+# Manually require gems, rather than use `Bundler.require`, to save startup time
 require 'sidekiq/api'
 require 'mongoid'
 require 'mongoid-paranoia'
+require 'mongoid-history'
 require 'grape'
 require 'grape-swagger'
 require 'grape-roar'

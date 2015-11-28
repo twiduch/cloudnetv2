@@ -70,6 +70,7 @@ module ModelWorkerSugar
         # This is for existing model records in the DB
         instance = model.find identifier
       end
+      Cloudnet.current_user = :workerbot
       instance.send method, *args
     end
   end

@@ -6,6 +6,7 @@ class Server
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Paranoia
+  include Mongoid::History::Trackable
   include ModelWorkerSugar
   include OnappAPI
   include Interactions
@@ -49,6 +50,12 @@ class Server
       )
     end
   end
+
+  track_history(
+    track_create: true,
+    track_update: true,
+    track_destroy: true
+  )
 
   def required_swap
     # Use rule of thumb that *NIX needs twice as much swap as RAM

@@ -7,7 +7,9 @@ ActiveAdmin.register User do
     column :full_name
     column :email
     column :created_at
-    actions
+    actions defaults: true do |user|
+      link_to 'Activity', activity_user_path(user)
+    end
   end
 
   filter :email, as: :string
@@ -26,5 +28,10 @@ ActiveAdmin.register User do
       f.input :status, as: :select, collection: [:active, :pending, :suspended]
     end
     actions
+  end
+
+  member_action :activity, method: :get do
+    user_id = params[:id]
+    @activity = HistoryTracker.concerning_user user_id
   end
 end

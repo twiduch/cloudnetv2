@@ -24,6 +24,7 @@ module Transactions
     STANDARD_CONSUMPTION = 100
 
     def self.run
+      Cloudnet.current_user = :syncdaemon
       Transactions::Sync.new.run
     end
 
