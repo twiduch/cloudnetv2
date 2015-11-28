@@ -72,6 +72,7 @@ module ModelWorkerSugar
       end
       Cloudnet.current_user = :workerbot
       instance.send method, *args
+      Cloudnet.current_user = Cloudnet::DEFAULT_MODIFIER
     end
   end
 end

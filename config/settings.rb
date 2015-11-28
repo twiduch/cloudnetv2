@@ -22,7 +22,8 @@ module Cloudnet
 
   # Keep track of the current user in order to record a paper trail of changes to critical data.
   # Can be set when a user authenticates with the API. There are also users like :workerbot and :syncdaemon.
-  @current_user ||= :ruby
+  DEFAULT_MODIFIER = :ruby
+  @current_user ||= DEFAULT_MODIFIER
 
   class << self
     attr_accessor :current_user
