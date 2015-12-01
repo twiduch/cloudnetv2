@@ -9,13 +9,13 @@ Fabricator :user do
 end
 
 Fabricator :datacentre do
-  id 123
+  id { sequence(:id, 783) }
   label 'Cloud.net Budget US Dallas Zone'
   coords [32.7767, 96.797]
 end
 
 Fabricator :template do
-  id 123
+  id { sequence(:id, 123) }
   datacentre
   label 'Arch Linux 2012.08 x86'
   os 'linux'

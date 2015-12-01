@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/virtual_machines.json
+    body:
+      encoding: UTF-8
+      string: '{"virtual_machine":{"label":"build checker test-0","hypervisor_group_id":783,"hostname":"build-checker","memory":512.0,"cpus":1,"cpu_shares":100,"primary_disk_size":19.0,"swap_disk_size":1.0,"template_id":31,"required_virtual_machine_build":1,"required_virtual_machine_startup":1,"required_ip_address_assignment":1,"note":"cloud.net
+        test built"}}'
+    headers:
+      Authorization:
+      - Basic YWRtaW46TWFCKzNxbEl1TFF5dkdDazR3RUcz
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      date:
+      - Mon, 30 Nov 2015 19:05:52 GMT
+      server:
+      - Apache/2.2.15 (CentOS)
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      etag:
+      - '"0ee58aa2728ff981059cfb4a96d08546"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - e59c29da115034c34a4cae2dfc5ca7c6
+      x-runtime:
+      - '4.546781'
+      x-rack-cache:
+      - invalidate, pass
+      x-powered-by:
+      - Phusion Passenger 4.0.35
+      set-cookie:
+      - _session_id=2580951394a9277060bfe3caea0b2c1d; path=/; HttpOnly
+      strict-transport-security:
+      - max-age=63072000; includeSubDomains
+      location:
+      - https://sandbox.cloud.net/virtual_machines/fivnj9fcpqkrdv
+      status:
+      - 201 Created
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"virtual_machine":{"add_to_marketplace":null,"admin_note":null,"allowed_hot_migrate":false,"allowed_swap":true,"booted":false,"built":false,"cores_per_socket":0,"cpu_shares":100,"cpu_sockets":null,"cpu_threads":null,"cpu_units":null,"cpus":1,"created_at":"2015-11-30T19:05:55+00:00","customer_network_id":null,"deleted_at":null,"edge_server_type":null,"enable_autoscale":false,"enable_monitis":false,"firewall_notrack":false,"hostname":"build-checker","hot_add_cpu":null,"hot_add_memory":null,"hypervisor_id":2,"id":213,"identifier":"fivnj9fcpqkrdv","initial_root_password_encrypted":false,"instance_type_id":null,"iso_id":null,"label":"build
+        checker test-0","local_remote_access_ip_address":null,"local_remote_access_port":null,"locked":false,"memory":512,"min_disk_size":5,"note":"cloud.net
+        test built","operating_system":"linux","operating_system_distro":"ubuntu","preferred_hvs":[],"recovery_mode":null,"remote_access_password":null,"service_password":null,"state":"new","storage_server_type":null,"strict_virtual_machine_id":null,"suspended":false,"template_id":31,"template_label":"Ubuntu
+        14.04 x64","time_zone":null,"updated_at":"2015-11-30T19:05:55+00:00","user_id":1,"vip":null,"xen_id":null,"ip_addresses":[],"monthly_bandwidth_used":"0","total_disk_size":0,"price_per_hour":"0.0","price_per_hour_powered_off":"0.0","support_incremental_backups":true,"cpu_priority":100}}'
+    http_version: 
+  recorded_at: Mon, 30 Nov 2015 19:05:56 GMT
+recorded_with: VCR 3.0.0

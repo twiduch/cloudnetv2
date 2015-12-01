@@ -27,7 +27,7 @@ describe API do
     end
 
     it 'should return info about a particular datacentre' do
-      get '/datacentres/123'
+      get "/datacentres/#{Datacentre.first.id}"
       response = JSON.parse(last_response.body)
       expect(response['label']).to eq Datacentre.first.label
       expect(response['templates'].count).to eq 1

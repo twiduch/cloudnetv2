@@ -91,6 +91,15 @@ class Server
     delete
   end
 
+  # Save server with no user set if for test built
+  def save!
+    if user.nil? && hostname == BuildChecker::Builder::HOSTNAME
+      save(validate: false)
+    else
+      super
+    end
+  end
+
   # Acrchive of build, reboot, disk build, activity
   def transactions
     Transaction.where(resource: :server, identifier: onapp_identifier)

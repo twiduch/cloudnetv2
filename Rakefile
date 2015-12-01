@@ -75,6 +75,11 @@ task console: :boot do |_t, _args|
   Pry.start
 end
 
+desc 'Checking if VMs can be built in federated location'
+task build_checker: :boot do
+  BuildChecker::Orchestrator.run
+end
+
 desc 'Sync Onapp transactions to our DB'
 task transactions_sync: :boot do
   Transactions::Sync.run

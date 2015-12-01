@@ -1,4 +1,4 @@
-global.env ||= 'DEV' if document.location.hostname == 'localhost'
+global.env ||= 'DEV' if (document.location.hostname.indexOf("localhost") > -1)
 
 unless global.env == 'DEV' || global.env == 'TEST'
   # Report errors to app.getsentry.com

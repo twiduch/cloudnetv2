@@ -3,7 +3,10 @@ npm-debug.log
 coverage
 
 node_modules
+gems
+log
 frontend/build
 frontend/npm-debug.js
 
 tags
+.rbenv-gemsets

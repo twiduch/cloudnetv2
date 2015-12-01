@@ -52,6 +52,7 @@ gem 'activeadmin', github: 'Zhomart/active_admin', branch: 'mongoid-old', requir
 # Fancy console
 gem 'pry'
 gem 'pry-byebug'
+gem 'pry-doc'
 
 # CLI tasks
 gem 'rake'
