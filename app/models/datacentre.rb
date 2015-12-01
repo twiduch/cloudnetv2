@@ -3,6 +3,7 @@ class Datacentre
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Paranoia
+  include Mongoid::History::Trackable
 
   has_many :templates
 
@@ -14,4 +15,10 @@ class Datacentre
 
   # [lat, long] for the datacentre's position on the planet
   field :coords, type: Array
+
+  track_history(
+    track_create: true,
+    track_update: true,
+    track_destroy: true
+  )
 end

@@ -6,10 +6,11 @@ gem 'dotenv'
 
 # Log errors to app.getsentry.com
 gem 'sentry-raven'
+# General logging to loggly.com
+gem 'logglier'
 
 # Application monitoring
 gem 'newrelic_rpm' # The actual NewRelic gem
-gem 'newrelic-grape' # Grape-specific implementation application traces
 
 # Allow cross-origin incoming HTTP requests
 gem 'rack-cors', require: 'rack/cors'
@@ -20,7 +21,11 @@ gem 'puma'
 gem 'mongoid'
 # Soft delete records
 gem 'mongoid_paranoia'
-gem 'bcrypt' # Requirement of Mongoid, but why?
+# Retain a paper trail of activity on certain models; creation, deletion, updates and who did them.
+gem 'mongoid-history'
+# Requirement of Mongoid, but why?
+gem 'bcrypt'
+# Used for certain fields that cannot be hashed, eg; onapp user passwords
 gem 'symmetric-encryption'
 
 # API
@@ -38,16 +43,6 @@ gem 'faraday'
 
 # For sending email
 gem 'mail'
-
-# HACK: Devise and Active Admin seem to need to be required here when run from rake. Whereas when run from config.ru
-# they can be loaded later.
-# Either way, the point is that we're trying to require as little as possible to save on boot up times.
-require_for_asset_compilation = ENV['ASSET_COMPILATION'] == 'true'
-# Only used for Active Admin
-gem 'rails', require: false
-gem 'devise', require: require_for_asset_compilation
-# Watch https://github.com/activeadmin/activeadmin/issues/2714
-gem 'activeadmin', github: 'Zhomart/active_admin', branch: 'mongoid-old', require: require_for_asset_compilation
 
 # Fancy console
 gem 'pry'
@@ -74,3 +69,15 @@ group :test do
   gem 'rubocop'
   gem 'codeclimate-test-reporter', require: nil
 end
+
+# Rails-specific gems are only used for the admin app, so relegate them to the bottom of this Gemfile.
+# HACK: Devise and Active Admin seem to need to be required here when run from rake. Whereas when run from config.ru
+# they can be loaded later.
+# Either way, the point is that we're trying to require as little as possible to save on boot up times.
+require_for_asset_compilation = ENV['ASSET_COMPILATION'] == 'true'
+# Only used for Active Admin
+gem 'rails', require: false
+gem 'rspec-rails', require: false
+gem 'devise', require: require_for_asset_compilation
+# Watch https://github.com/activeadmin/activeadmin/issues/2714
+gem 'activeadmin', github: 'Zhomart/active_admin', branch: 'mongoid-old', require: require_for_asset_compilation

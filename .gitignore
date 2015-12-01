@@ -8,5 +8,6 @@ log
 frontend/build
 frontend/npm-debug.js
 
+log
 tags
 .rbenv-gemsets

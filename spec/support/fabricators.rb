@@ -8,6 +8,12 @@ Fabricator :user do
   cloudnet_api_key 'apikey264254'
 end
 
+Fabricator :admin_user do
+  id 1
+  email { sequence { |i| "admin#{i}@cloud.net" } }
+  password 'abcd1234'
+end
+
 Fabricator :datacentre do
   id { sequence(:id, 783) }
   label 'Cloud.net Budget US Dallas Zone'

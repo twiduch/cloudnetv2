@@ -18,5 +18,5 @@ Rails.application.initialize!
 
 if AdminUser.count == 0
   admin = AdminUser.create! email: 'admin@cloud.net', password: 'CHANGEME!'
-  p "Admin user creeated: user: #{admin.email}, pass: #{admin.password}"
+  Cloudnet.logger.info "Admin user creeated: user: #{admin.email}, pass: #{admin.password}"
 end

@@ -5,10 +5,10 @@ var historyApiFallback = require('connect-history-api-fallback');
 var through = require('through2');
 
 var envVars = function (file) {
-    return through(function (buf, enc, next) {
-        this.push(buf.toString('utf8').replace(/SENTRY_DSN/g, process.env.SENTRY_DSN));
-        next();
-    });
+  return through(function (buf, enc, next) {
+    this.push(buf.toString('utf8').replace(/SENTRY_DSN/g, process.env.SENTRY_DSN));
+    next();
+  });
 };
 
 module.exports = {

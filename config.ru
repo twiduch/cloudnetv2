@@ -1,6 +1,15 @@
 require 'rack/cors'
 require_relative 'config/boot'
 
+use Raven::Rack
+
+if ENV['RACK_ENV'] == 'development'
+  puts 'Loading NewRelic in developer mode ...'
+  require 'new_relic/rack/developer_mode'
+  use NewRelic::Rack::DeveloperMode
+end
+NewRelic::Agent.manual_start
+
 # Cross Origin requests
 use Rack::Cors do
   allow do

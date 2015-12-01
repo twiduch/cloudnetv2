@@ -20,7 +20,14 @@ module Cloudnet
     525, 528, 530, 532, 533, 537, 539, 541, 547, 550
   ]
 
+  # Keep track of the current user in order to record a paper trail of changes to critical data.
+  # Can be set when a user authenticates with the API. There are also users like :workerbot and :syncdaemon.
+  DEFAULT_MODIFIER = :ruby
+  @current_user ||= DEFAULT_MODIFIER
+
   class << self
+    attr_accessor :current_user
+
     def init
       # So you can just use `require 'project/file'`
       $LOAD_PATH.unshift(root)
@@ -42,11 +49,7 @@ module Cloudnet
     end
 
     def require_app(use_load: false)
-      [
-        'config/initialisers',
-        'lib',
-        'app'
-      ].each { |path| recursive_require path, use_load: use_load }
+      ['config/initialisers', 'lib', 'app'].each { |path| recursive_require path, use_load: use_load }
     end
 
     # Alias for ROOT_PATH
@@ -69,10 +72,20 @@ module Cloudnet
     end
 
     def logger
-      output = Cloudnet.environment == 'test' ? '/dev/null' : STDOUT
-      @logger ||= ::Logger.new output
+      @logger ||= choose_logger
       @logger.level = ::Logger::INFO if environment == 'production'
       @logger
+    end
+
+    def choose_logger
+      case Cloudnet.environment
+      when 'test'
+        ::Logger.new '/dev/null'
+      when 'production', 'staging'
+        Logglier.new ENV['LOGGLY_URI'], threaded: true
+      else
+        ::Logger.new STDOUT
+      end
     end
 
     # OnApp has various roles with differeing levels of permissions. Here we have the role ID

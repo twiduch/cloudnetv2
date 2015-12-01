@@ -6,6 +6,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Paranoia
+  include Mongoid::History::Trackable
   include ModelWorkerSugar
   include OnappAPI
   include UserCreation
@@ -45,6 +46,12 @@ class User
 
   validates_uniqueness_of [:id, :email]
   validates_presence_of [:email, :full_name]
+
+  track_history(
+    track_create: true,
+    track_update: true,
+    track_destroy: true
+  )
 
   # Fetch or return a Bcrypt instance of the hashed password.
   # NB: A BCrypt hash instance can be compared to a plain text string with `==`
