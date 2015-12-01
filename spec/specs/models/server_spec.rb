@@ -25,7 +25,7 @@ describe Server do
       expect(Server.count).to eq 0
     end
   end
-  
+
   it 'should create server with no user for test VM' do
     server = Fabricate.build(:server, user: nil)
     expect(server).not_to be_valid

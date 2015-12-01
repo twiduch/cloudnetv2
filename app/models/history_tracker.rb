@@ -14,7 +14,7 @@ class HistoryTracker
 
   before_save do
     self.scope_id = trackable.id.to_s
-    self.scope_owned_by_id = trackable.user.id if trackable.respond_to? :user
+    self.scope_owned_by_id = trackable.user.try(:id) if trackable.respond_to? :user
     self.modifier_tag = Cloudnet.current_user
 
     # Only set the modifier relationsip if the modifier is an actual cloud.net user. All other potential modifiers

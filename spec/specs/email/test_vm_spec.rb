@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Email do
-
   context 'test_vm_left' do
     it 'should send an email' do
       Email.test_vm_left.deliver!
@@ -14,7 +13,7 @@ describe Email do
       expect(email.body.parts.first.body).to match(/succesfully built, but I was not able to remove it/)
     end
   end
-  
+
   context 'test_vm_not_built' do
     it 'should send an email' do
       Email.test_vm_not_built.deliver!
