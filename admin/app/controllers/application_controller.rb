@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action do
-    # Cloudnet.current_user = "admin-#{current_admin_user.id}"
+    Cloudnet.current_user = "admin-#{current_admin_user.id}"
   end
 end
