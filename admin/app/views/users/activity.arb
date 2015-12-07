@@ -1,19 +1,15 @@
-def modifier(archive)
-  return unless archive.modifier_tag.start_with? 'admin'
-  id = archive.modifier_tag.split('-')[1]
-  AdminUser.find(id)
-end
-
 ul do
   assigns[:activity].each do |archive|
     li do
       span "#{archive.created_at}: "
-      admin = modifier(archive)
-      if admin
-        a admin.email, href: "/admin_users/#{admin.id}"
+      modifier = archive.modified_by
+      if modifier.is_a? AdminUser
+        a modifier.email, href: "/admin_users/#{modifier.id}"
         span ' '
-      else
+      elsif modifier.is_a? User
         span 'This user '
+      else
+        span "'#{modifier}'"
       end
       span "#{archive.action}d "
       if params[:controller] == "#{archive.scope}s"

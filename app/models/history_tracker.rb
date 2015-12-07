@@ -37,4 +37,16 @@ class HistoryTracker
       )
     end
   end
+
+  # All purpose method to return the modifier, whether that's a user, admin or bot.
+  # We can't use modifier() because that's already taken by HistoryTracker.
+  def modified_by
+    return modifier if modifier.is_a? User
+    if modifier_tag.to_s.start_with? 'admin'
+      id = modifier_tag.split('-')[1]
+      AdminUser.find(id)
+    else
+      modifier_tag
+    end
+  end
 end
