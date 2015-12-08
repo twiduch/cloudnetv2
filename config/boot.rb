@@ -21,7 +21,7 @@ require 'grape-roar'
 
 I18n.enforce_available_locales = false
 
-require_relative './settings'
+require_relative './setup/setup'
 
 Sidekiq::Logging.logger = Cloudnet.logger
 

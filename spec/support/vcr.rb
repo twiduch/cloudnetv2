@@ -66,7 +66,7 @@ VCR.configure do |c|
       # Add a signature to be super specific that it is *only* this request we want VCR to ignore
       vcr_ignore: true
     )['version']
-    if onapp_api_version != Cloudnet::ONAPP_API_VERSION
+    if onapp_api_version != Cloudnet::REQUIRED_ONAPP_API_VERSION
       fail '`Cloudnet::ONAPP_API_VERSION` must match live Onapp API version being tested.'
     end
   end

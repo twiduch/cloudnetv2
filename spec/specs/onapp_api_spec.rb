@@ -7,7 +7,7 @@ describe OnappAPI do
     # Annoying that VCR.turn_off! doesn't turn off this request from the config...
     stub_request(
       :get, /version.json/
-    ).to_return(status: 200, body: '{"version": "' + Cloudnet::ONAPP_API_VERSION + '"}')
+    ).to_return(status: 200, body: '{"version": "' + Cloudnet::REQUIRED_ONAPP_API_VERSION + '"}')
     @host = URI.parse(ENV['ONAPP_URI']).hostname
   end
 
