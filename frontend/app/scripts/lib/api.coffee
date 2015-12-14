@@ -8,7 +8,7 @@ class API
   @base = if document.location.hostname.indexOf('localhost') >= 0
     'http://api.localhost:9393'
   else
-    "http://#{document.location.hostname}".replace 'www.', 'api.'
+    "http://#{document.location.hostname}:#{document.location.port}".replace 'www.', 'api.'
 
   constructor: ->
     @ajax = new AJAX

@@ -1,4 +1,4 @@
-# The *only* reasons this file exists is to pass '/vendor' to the excludes array.
+# The *only* reasons this file exists is to pass custom paths to the excludes array.
 # And the only reason we need that is to stop coverage reporting failing on Travis.
 # So a bit of hack. Surely there is a smaller and simpler solution.
 
@@ -17,7 +17,7 @@ initAll = if (_ref = process.env.COFFEECOV_INIT_ALL) != null then _ref == 'true'
 coffeeCoverage.register({
   instrumentor: 'istanbul',
   basePath: process.cwd(),
-  exclude: ['/test', '/node_modules', '/.git', '/vendor'],
+  exclude: ['/frontend/spec', '/node_modules', '/.git', '/vendor', '/admin'],
   coverageVar: coverageVar,
   writeOnExit: writeOnExit,
   initAll: initAll

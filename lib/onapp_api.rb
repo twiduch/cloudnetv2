@@ -66,6 +66,8 @@ module OnappAPI
         request.url path
         add_params request, params if params
       end
+    rescue Faraday::ClientError => exception
+      raise exception, exception.response
     end
 
     def add_params(request, params)
@@ -80,6 +82,7 @@ module OnappAPI
     def get_connection(user)
       ssl_verify = Cloudnet.environment == 'production'
       Faraday.new(url: API_URI, ssl: { verify: ssl_verify }) do |faraday|
+        faraday.use Faraday::Response::RaiseError
         faraday.adapter Faraday.default_adapter
         faraday.basic_auth(*credentials(user))
       end

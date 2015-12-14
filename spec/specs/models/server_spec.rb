@@ -9,6 +9,9 @@ describe Server do
       @user = User.find_by user_details[:email]
 
       UpdateFederationResources.run
+
+      # Unless the password is the same every time then VCR can't match HTTP requests against a cassette
+      allow(System).to receive(:generate_onapp_password).and_return('ABC123abc!%$')
     end
 
     after :each do
