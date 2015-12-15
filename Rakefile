@@ -2,6 +2,10 @@ require 'rubygems'
 require 'bundler'
 require 'rake'
 
+# Push latest coverage test results to http://coveralls.io
+require 'coveralls/rake/task'
+Coveralls::RakeTask.new
+
 ENV['RACK_ENV'] ||= 'development'
 
 task :boot do

@@ -66,7 +66,7 @@ group :test do
   gem 'vcr'
   gem 'timecop'
   gem 'rubocop'
-  gem 'codeclimate-test-reporter', require: nil
+  gem 'coveralls', require: false
 end
 
 # Rails-specific gems are only used for the admin app, so relegate them to the bottom of this Gemfile.

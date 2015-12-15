@@ -1,8 +1,7 @@
 ![Cloud.net logo](https://jager.cloud.net/assets/cloudnet.png)
 
 [![Build Status](https://travis-ci.org/OnApp/cloudnetv2.svg)](https://travis-ci.org/OnApp/cloudnetv2)
-[![Test Coverage](https://codeclimate.com/github/OnApp/cloudnetv2/badges/coverage.svg)](https://codeclimate.com/github/OnApp/cloudnetv2/coverage)
-[![Code Climate](https://codeclimate.com/github/OnApp/cloudnetv2/badges/gpa.svg)](https://codeclimate.com/github/OnApp/cloudnetv2)
+[![Coverage Status](https://coveralls.io/repos/OnApp/cloudnetv2/badge.svg?branch=master&service=github)](https://coveralls.io/github/OnApp/cloudnetv2?branch=master)
 
 Cloud.net v2: API and Frontend
 ------------------------------
