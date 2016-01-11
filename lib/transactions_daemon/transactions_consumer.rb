@@ -33,9 +33,6 @@ module Transactions
     end
 
     def consume(transaction)
-      # TODO: Don't coerce. There is annoying difference between Blanket's OpenStruct and the handcranked OpenStruct's
-      # made here. Solution: stop using Blanket gem
-      transaction = transaction.to_hash unless transaction.is_a? Hash
       @transaction = transaction
       event = self.class.event_to_method(@transaction)
       return unless resource_present_in_cloudnet?
