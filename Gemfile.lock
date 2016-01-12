@@ -392,6 +392,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   bcrypt
+  celluloid
   codeclimate-test-reporter
   devise
   dotenv

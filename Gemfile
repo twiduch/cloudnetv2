@@ -38,6 +38,8 @@ gem 'grape-swagger'
 # Worker jobs
 gem 'sidekiq'
 
+# Concurency
+gem 'celluloid'
 # General purpose HTTP client. Used to communicate with Onapp API
 gem 'faraday'
 

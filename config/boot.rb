@@ -18,10 +18,12 @@ require 'mongoid-history'
 require 'grape'
 require 'grape-swagger'
 require 'grape-roar'
+require 'celluloid/current'
 
 I18n.enforce_available_locales = false
 
 require_relative './settings'
+require 'celluloid/debug' if Cloudnet.debug?
 
 Sidekiq::Logging.logger = Cloudnet.logger
 

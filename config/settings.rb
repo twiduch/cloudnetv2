@@ -49,9 +49,18 @@ module Cloudnet
     end
 
     def require_app(use_load: false)
-      ['config/initialisers', 'lib', 'app'].each { |path| recursive_require path, use_load: use_load }
+      require_order.each { |path| recursive_require path, use_load: use_load }
     end
 
+    def require_order
+      [ 'config/initialisers',
+        'lib/build_checker_daemon/data',
+        'lib/build_checker_daemon/builder',
+        'lib',
+        'app'
+      ]
+    end
+    
     # Alias for ROOT_PATH
     def root
       ROOT_PATH
