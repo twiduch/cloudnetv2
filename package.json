@@ -4,7 +4,7 @@
   "repository": "https://github.com/OnApp/cloudnetv2",
   "engine": "node 5.0.0",
   "scripts": {
-    "test": "NODE_PATH=./frontend/app/scripts/:./frontend/spec ./node_modules/.bin/mocha --opts frontend/spec/mocha.opts $(find frontend/spec -name '*_spec.coffee')",
+    "test": "./contrib/test-coffeescripts.sh",
     "lint": "./node_modules/.bin/coffeelint .",
     "production": "./node_modules/.bin/gulp production --gulpfile frontend/gulpfile.js",
     "watch": "./node_modules/.bin/gulp --gulpfile frontend/gulpfile.js"
@@ -26,7 +26,7 @@
     "browserify": "^12.0.1",
     "browserify-shim": "^3.8.6",
     "chai": "^3.0.0",
-    "codeclimate-test-reporter": "0.1.1",
+    "coffee-coverage": "^0.7.0",
     "coffee-script": "^1.9.2",
     "coffeeify": "~1.1.0",
     "coffeelint": "^1.10.1",

@@ -1,6 +1,7 @@
 require 'rack/cors'
 require_relative 'config/boot'
 
+use Rack::CommonLogger, Cloudnet.logger
 use Raven::Rack
 
 if ENV['RACK_ENV'] == 'development'

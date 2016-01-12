@@ -1,3 +1,5 @@
+require 'coverage_helper'
+
 # Turn the logger off in test envs
 Logger = require 'lib/logger'
 Logger.level = Logger.OFF

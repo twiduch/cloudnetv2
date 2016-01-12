@@ -21,4 +21,11 @@ class Datacentre
     track_update: true,
     track_destroy: true
   )
+
+  class << self
+    # Basically asking if UpdateFederationResources.run() has been run
+    def synchronised?
+      Datacentre.count > 0 && Template.count > 0
+    end
+  end
 end

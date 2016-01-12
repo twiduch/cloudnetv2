@@ -2,6 +2,10 @@ require 'rubygems'
 require 'bundler'
 require 'rake'
 
+# Push latest coverage test results to http://coveralls.io
+require 'coveralls/rake/task'
+Coveralls::RakeTask.new
+
 ENV['RACK_ENV'] ||= 'development'
 
 task :boot do
@@ -17,6 +21,7 @@ namespace :assets do
     system 'cd frontend && ../node_modules/.bin/gulp production'
   end
 
+  # Heroku buldpacks call this, so just noop it, unless you find yourself wanting to do something useful with it
   desc 'Noop'
   task :clean do |_t, _args|
   end
@@ -93,12 +98,6 @@ end
 desc 'Query the Federation for the latest available datacentres and templates'
 task update_federation_resources: :boot do
   UpdateFederationResources.run
-end
-
-desc 'Create the non-privelged OnApp user role that all cloud.net users use to interact with OnApp'
-task create_onapp_role: :boot do
-  role_id = User.create_onapp_role
-  puts "Role created. ID is #{role_id}, set this value to the ONAPP_ROLE key in .env"
 end
 
 desc 'Show the role IDs of the current OnApp user role'

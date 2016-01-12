@@ -7,6 +7,7 @@ class Template
 
   belongs_to :datacentre
   has_many :servers
+  has_one :test_result, class_name: 'BuildChecker::BuildCheckerData::TestResult'
 
   # Override Mongoid's IDs and use Onapp's unique ID
   field :_id, type: Integer, overwrite: true

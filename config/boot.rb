@@ -22,7 +22,7 @@ require 'celluloid/current'
 
 I18n.enforce_available_locales = false
 
-require_relative './settings'
+require_relative './setup/setup'
 require 'celluloid/debug' if Cloudnet.debug?
 
 Sidekiq::Logging.logger = Cloudnet.logger
