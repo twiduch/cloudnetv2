@@ -1,6 +1,6 @@
-require 'pry'
 module BuildChecker
   module Builder
+    # Worker for VM build and DB updates
     class BuilderWorker
       include Celluloid
       include Celluloid::Internals::Logger
@@ -23,25 +23,37 @@ module BuildChecker
 
       def log_result(result)
         if result.is_a? Server
-          build_data.update_attributes(
-            server: result,
-            state: :scheduled
-          )
-          debug "Moving to monitoring queue. Still running: #{queue.working_size}"
-          queue.monitoring_queue << build_data
+          move_to_monitoring_queue(result)
         else
-          error "Test VM for template #{template.id} raised ERROR"
-          build_data.update_attributes(
-            build_result: :failed,
-            state: :finished,
-            error: result,
-            build_ended: Time.now
-          )
-          queue.synchronize do
-            queue.working_size -= 1
-            debug "Removing running: #{queue.working_size}"
-            queue.new_build.signal
-          end
+          mark_error(result)
+          free_building_slot
+        end
+      end
+
+      def move_to_monitoring_queue(result)
+        build_data.update_attributes(
+          server: result,
+          state: :scheduled
+        )
+        debug "Moving to monitoring queue. Still running: #{queue.working_size}"
+        queue.monitoring_queue << build_data
+      end
+
+      def mark_error(result)
+        error "Test VM for template #{template.id} raised ERROR"
+        build_data.update_attributes(
+          build_result: :failed,
+          state: :finished,
+          error: result,
+          build_ended: Time.now
+        )
+      end
+
+      def free_building_slot
+        queue.synchronize do
+          queue.working_size -= 1
+          debug "Removing running: #{queue.working_size}"
+          queue.new_build.signal
         end
       end
     end

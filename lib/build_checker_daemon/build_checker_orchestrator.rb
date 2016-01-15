@@ -1,10 +1,11 @@
+# Builds test VMs using all accessible templates
 module BuildChecker
   CONCURRENT_BUILDS = 2
-  
+
   # Assumption: TIME_BETWEEN_TESTS > MAX_BUILD_TIME
-  TIME_BETWEEN_TESTS = 20.hours # Minimum time between tests for the same template
+  TIME_BETWEEN_TESTS = 14.days # Minimum time between tests for the same template
   MAX_BUILD_TIME = 1.hour # Build time of VM at OnApp
-  
+
   # Only ONE Orchestrator process must be running.
   class Orchestrator
     def self.run
@@ -22,7 +23,6 @@ module BuildChecker
       Cleaner::Scheduler.supervise args: [queue]
       ResultUpdater::Scheduler.supervise args: [queue]
       Builder::Scheduler.supervise args: [queue]
-      puts "----------------------------------------------"
     end
 
     def queue

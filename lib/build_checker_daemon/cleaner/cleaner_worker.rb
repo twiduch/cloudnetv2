@@ -1,7 +1,6 @@
 module BuildChecker
   module Cleaner
-    # TODO:
-    # Transaction daemon should update local server entry when OnApp VM destroyed
+    # TODO: Transaction daemon should update local server entry when OnApp VM destroyed
     # For now on we assume deleted just after succesful call to OnApp
     class CleanerWorker
       include Celluloid
@@ -19,15 +18,19 @@ module BuildChecker
           @build_data = queue.cleaning_queue.pop
 
           if build_data.server.present?
-            debug "Cleaning #{build_data.server.inspect}"
-            build_data.update_attribute(:state, :cleaning)
-            log_result Cleaner.destroy_test_vm(build_data.server)
+            clean_up_server
           else
             error "Server Lost #{build_data.inspect}"
-            finish_build(false, "Local server data lost. Possible zombie at OnApp")
+            finish_build(false, 'Local server data lost. Possible zombie at OnApp')
             clear_server_link
           end
         end
+      end
+
+      def clean_up_server
+        debug "Cleaning #{build_data.server.inspect}"
+        build_data.update_attribute(:state, :cleaning)
+        log_result Cleaner.destroy_test_vm(build_data.server)
       end
 
       def log_result(result)
@@ -37,7 +40,7 @@ module BuildChecker
           info "Test VM destroyed properly: #{result.onapp_identifier} "
         else
           finish_build(false, result)
-          error "Test VM #{build_data.server.inspect} raised ERROR when trying to delete in OnApp"
+          error 'Test VM #{build_data.server.inspect} raised ERROR when trying to delete in OnApp'
         end
       end
 

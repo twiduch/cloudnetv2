@@ -22,6 +22,7 @@ module BuildChecker
             start_monitoring
           else
             update_build(:failed, :finished, 'Local server data lost. Possible zombie at OnApp')
+            build_data.update_attribute(:server_id, nil)
           end
           reduce_working_queue
         end
@@ -39,17 +40,18 @@ module BuildChecker
         queue.cleaning_queue << build_data
       end
 
-      def update_build(res, state = :to_clean, error = nil)
+      def update_build(result, state = :to_clean, error = nil)
         build_data.update_attributes(
           build_ended: Time.now,
-          build_result: res,
+          build_result: result,
           state: state,
           error: error
         )
       end
 
       def reduce_working_queue
-        sleep 40 # Artificial time for destroy as we do not monitor destroys
+        # Artificial time for destroy as we do not monitor destroys
+        sleep 40 unless build_data.build_result == :failed
         queue.synchronize do
           queue.working_size -= 1
           debug "Finished monitoring. Queue running: #{queue.working_size}"

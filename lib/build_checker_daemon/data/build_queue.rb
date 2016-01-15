@@ -2,7 +2,7 @@ module BuildChecker
   module BuildCheckerData
     # Messaging queues between threads
     class BuildQueue
-      BATCH_SIZE = 100
+      BATCH_SIZE = 100 # TODO: preparation for notifier - if we decide to implement
       attr_accessor :working_size, :new_build, :batch_count,
                     :building_queue, :monitoring_queue, :cleaning_queue
       def initialize

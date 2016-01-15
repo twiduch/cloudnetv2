@@ -10,8 +10,7 @@ module BuildChecker
 
       def initialize(queue)
         @queue = queue
-        @templates_count = Template.count
-        BuilderWorker.pool(size: POOL_SIZE, args:[queue])
+        BuilderWorker.pool(size: POOL_SIZE, args: [queue])
         run
       end
 
@@ -20,10 +19,10 @@ module BuildChecker
         loop { schedule_build if empty_slot? }
       end
 
-      # Builds are scheduled in the same order. 
+      # Builds are scheduled in the same order.
       # Time to wait is longest for next_template_for_test
       def schedule_build
-        debug "scheduling new build"
+        debug 'scheduling new build'
         @template = next_template_for_test
         next_build if time_for_test?
       end
@@ -34,9 +33,9 @@ module BuildChecker
           queue.building_queue << build_data
           queue.inc_size
           debug "increasing builder #{queue.working_size}"
-        end 
+        end
       end
-      
+
       def prepare_build_data
         build_data = BuildResult.new(state: :scheduling, build_started: Time.now)
         template.test_result.build_results << build_data
@@ -44,11 +43,12 @@ module BuildChecker
       end
 
       def time_for_test?
-        last_build = template.test_result.build_results.
-                     order_by(build_started: 'desc').limit(1).first
+        last_build = template.test_result.build_results
+                     .order_by(build_started: 'desc').limit(1).first
         last_build ? wait_for_test(last_build) : true
       end
 
+      # FIXME: terminate line (54) for test run - only once per template
       def wait_for_test(build)
         passed = build.time_from_scheduled
         terminate if passed < TIME_BETWEEN_TESTS # TODO: remove !!
@@ -58,7 +58,7 @@ module BuildChecker
 
       def empty_slot?
         queue.synchronize do
-          queue.new_build.wait_until {queue.working_size < CONCURRENT_BUILDS}
+          queue.new_build.wait_until { queue.working_size < CONCURRENT_BUILDS }
           debug "Builders running: #{queue.working_size}"
         end
         true
@@ -75,7 +75,7 @@ module BuildChecker
         tmpl = Template.where(:id.gt => tested_template_id).order_by(id: 'asc').limit(1).first
         tmpl ? tmpl : initial_template
       end
-    
+
       def tested_template_id
         System.get(:template_tested_id)
       end
@@ -87,7 +87,7 @@ module BuildChecker
       # Only for boot phase
       def remove_scheduling_builds
         TestResult.where('build_results.state': :scheduling).each do |tr|
-          tr.build_results.where(state: :scheduling).delete_all 
+          tr.build_results.where(state: :scheduling).delete_all
         end
       end
     end

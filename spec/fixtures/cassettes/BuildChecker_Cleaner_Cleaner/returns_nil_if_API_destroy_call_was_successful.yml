@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
+      extract_domain ENV["ONAPP_URI"] %>/virtual_machines/abcdefg.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 204
+      message: 
+    headers:
+      date:
+      - Thu, 14 Jan 2016 14:31:20 GMT
+      server:
+      - Apache/2.2.15 (CentOS)
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      cache-control:
+      - no-cache
+      x-request-id:
+      - 77c7fa273b03d78675ee716765b37129
+      x-runtime:
+      - '0.097387'
+      x-rack-cache:
+      - invalidate, pass
+      x-powered-by:
+      - Phusion Passenger 4.0.35
+      set-cookie:
+      - _session_id=d73549a55a2477ccd1f896b815846631; path=/; HttpOnly
+      strict-transport-security:
+      - max-age=63072000; includeSubDomains
+      status:
+      - 204 No Content
+      content-length:
+      - '0'
+      connection:
+      - close
+      content-type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 14 Jan 2016 14:31:20 GMT
+recorded_with: VCR 3.0.0

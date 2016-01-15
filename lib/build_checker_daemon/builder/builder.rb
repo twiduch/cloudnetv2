@@ -1,4 +1,5 @@
 module BuildChecker
+  # Builds test VMs at OnApp
   module Builder
     HOSTNAME = 'build-checker'
     # Responsible for building test VM in Onapp and local DB
@@ -13,9 +14,9 @@ module BuildChecker
       def initialize(tmpl)
         @template = tmpl
       end
-    
+
       def build_test_vm
-        return ['No template'] if template.nil?
+        return ['No template'] unless template.is_a?(Template)
         return new_onapp_vm['errors'] if new_onapp_vm['errors'].present?
         save_local_vm
       end
