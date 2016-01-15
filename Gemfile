@@ -66,7 +66,11 @@ group :test do
   gem 'vcr'
   gem 'timecop'
   gem 'rubocop'
-  gem 'coveralls', require: false
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'net-ssh'
+  gem 'simplecov'
+  gem 'simplecov-lcov'
 end
 
 # Rails-specific gems are only used for the admin app, so relegate them to the bottom of this Gemfile.

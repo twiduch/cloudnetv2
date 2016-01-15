@@ -18,7 +18,7 @@ module.exports = (controller) ->
         'CPUs': server.cpus,
         'Disk': "#{server.disk_size}GB",
         'IP Address': server.ip_address,
-        'Root Password': server.root_password
+        'Root Password': server.initial_root_password
       }
 
     m 'h2', 'Usage'

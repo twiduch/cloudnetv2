@@ -19,7 +19,7 @@ class AJAX
       # @originalRoute = m.route()
       Logger.error 'Unauthorised AJAX request', result.message.error
       m.route '/login'
-    Logger.error 'AJAX error', result.message.error
+    Logger.error 'AJAX error', JSON.stringify result.message.error
     result
 
   # Central wrapper around Mithril's request method

@@ -34,6 +34,7 @@ module Transactions
     end
 
     def run
+      logger.info 'Starting Transactions Daemon'
       # This is a daemon, so loop forever
       loop { fetch_batch }
     end

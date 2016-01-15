@@ -24,7 +24,6 @@ module Transactions
       @server.state = :building
       @server.built = false
       @server.locked = true
-      @server.root_password = vm['remote_access_password']
       # Is this the best place to get the IP address?
       @server.ip_address = vm['ip_addresses'][0]['ip_address']['address']
       @server.save!

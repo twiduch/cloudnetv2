@@ -31,6 +31,7 @@
     "coffeeify": "~1.1.0",
     "coffeelint": "^1.10.1",
     "connect-history-api-fallback": "^1.1.0",
+    "coveralls": "^2.11.6",
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-changed": "^1.2.1",

@@ -1,5 +1,6 @@
+require_relative 'config/boot' unless ENV['RACK_ENV'] == 'test'
+
 require 'rack/cors'
-require_relative 'config/boot'
 
 use Rack::CommonLogger, Cloudnet.logger
 use Raven::Rack
