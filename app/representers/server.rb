@@ -14,7 +14,7 @@ module ServerRepresenter
   property :cpus
   property :disk_size
   property :state
-  property :root_password
+  property :initial_root_password
   property :ip_address
   property :template, extend: TemplateRepresenter
   collection :transactions do

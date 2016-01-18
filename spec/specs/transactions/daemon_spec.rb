@@ -16,6 +16,17 @@ describe Transactions do
     sleep 0.05
   end
 
+  def simulate_server_error
+    @tries += 1
+    # Only simulate a failure on the first calls. This means that subsequent calls will kick into action the default
+    # daemon mocking allowing it to reach stasis, break the loop and end the spec
+    if @tries < 3
+      fail Faraday::Error::ClientError.new 'Server Error', status: 500
+    else
+      false
+    end
+  end
+
   # Just to make sure we have already recorded all the HTTP requests we need. Otherwise certain
   # tests duplicate the recording of HTTP requests, because VCR doesn't replay a request until it
   # has been recorded.
@@ -26,7 +37,7 @@ describe Transactions do
     # Page size for normal queries
     @standard_consumption = 5
 
-    # Record some HTTP requests
+    # Record (or reuse) some HTTP requests
     syncer = Transactions::Sync.new
     VCR.use_cassette 'transactions_log' do
       syncer.fetch_page 1, @first_consumption
@@ -64,6 +75,7 @@ describe Transactions do
     @consumer = instance_double Transactions::Consumer
     allow(Transactions::Consumer).to receive(:new).and_return(@consumer)
     allow(@consumer).to receive(:consume)
+    @tries = 0
   end
 
   after :each do
@@ -102,6 +114,42 @@ describe Transactions do
     expect(@consumer).to receive(:consume).exactly(count).times
     System.set(:transactions_marker, transaction_in_deep_page['id'])
     microsleep until System.get(:transactions_marker) == newest_transaction['id']
+  end
+
+  it 'should respond to a 500 API response by finding the offending transaction' do
+    ENV['CLOUDNET_SUPPORT_EMAIL'] = 'test@test.com'
+
+    # The newest transaction is where we've gotten up to in the VCR cassette of real transactions
+    newest_transaction = @first_batch.last
+    newest_transaction_id = newest_transaction['id'].to_i
+    System.set(:transactions_marker, newest_transaction_id)
+    # When a batch fails ErroredTransactionManager will start incrementing looking for the culprit. For the sake of
+    # argument the next transaction ID doesn't cause a 500
+    next_transaction_id = newest_transaction_id + 1
+    # But the one after that *will* cause a 500
+    failing_transaction_id = newest_transaction_id + 2
+
+    # The daemon goes about its normal business consuming transactions, but finds a page of transactions with an error
+    # in it
+    params = {
+      per_page: @standard_consumption,
+      page: 1
+    }
+    original = OnappAPI.method(:admin)
+    allow(OnappAPI).to receive(:admin).with(:get, '/transactions', params) do |*args, &_block|
+      simulate_server_error || original.call(*args)
+    end
+    # So it then tries to look for the individual transaction causing the error. We simulate a non-erroring transaction
+    expect(OnappAPI).to receive(:admin).with(:get, "/transactions/#{next_transaction_id}")
+    # And then it finds the problematic transaction
+    allow(OnappAPI).to receive(:admin).with(:get, "/transactions/#{failing_transaction_id}") do
+      simulate_server_error || true
+    end
+
+    # And reports the problem to support
+    expect(Email).to receive(:transaction_error).with(failing_transaction_id).and_call_original
+
+    run_daemon
   end
 
   describe Transactions::Consumer do

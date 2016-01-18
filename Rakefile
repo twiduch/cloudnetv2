@@ -3,8 +3,10 @@ require 'bundler'
 require 'rake'
 
 # Push latest coverage test results to http://coveralls.io
-require 'coveralls/rake/task'
-Coveralls::RakeTask.new
+if ENV['RACK_ENV'] == 'test'
+  require 'coveralls/rake/task'
+  Coveralls::RakeTask.new
+end
 
 ENV['RACK_ENV'] ||= 'development'
 

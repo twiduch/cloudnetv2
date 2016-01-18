@@ -33,7 +33,9 @@ class Template
 
   class << self
     def find_an_ubuntu_template
-      Template.all.to_a.find { |t| t.os_distro =~ /ubuntu/ }
+      template = Template.all.to_a.find { |t| t.os_distro =~ /ubuntu/ && t.label =~ /14\.04/ }
+      fail "Couldn't find an Ubuntu 14.04 template" unless template.is_a? Template
+      template
     end
   end
 end

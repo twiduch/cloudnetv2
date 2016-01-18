@@ -16,11 +16,11 @@ describe BuildChecker::Builder::Builder do
     expect(object.build_test_vm).to eq ['No template']
   end
 
-  it 'should return error message if API create VM was unsuccessful', :vcr do
+  it 'returns error message if API create VM was unsuccessful', :vcr do
     expect(subject.build_test_vm).to be_a Hash
   end
 
-  it 'should create VM if API create call was successful', :vcr do
+  it 'creates VM if API create call was successful', :vcr do
     server = subject.build_test_vm
     expect(server).to be_a Server
     expect(server.onapp_identifier).to eq 'jydn7c3fl4reli'

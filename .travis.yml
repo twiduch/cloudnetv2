@@ -7,7 +7,23 @@ services:
   - redis-server
 
 env:
-  - TRAVIS_NODE_VERSION="5.0.0"
+  global:
+    - TRAVIS_NODE_VERSION="5.0.0"
+    - ONAPP_CLOUDNET_ROLE=2
+    # Encrypted ENV vars to connect to an OnApp CP to run integration tests
+    - secure: "cQ8NWWSfeP61bAePpI9X5ZnkANb4F8KH21/xPFVXmp5MuWT5RQJpGdJRzj4ZyogCKcIcUN17gpkRjcUKrFl8cFIMqOg6LvWpXXG8N/7QEJ3Fs88oOrmrparBkfydSohPY7jR7CdmA6G0/Of+O8+HO3pk7WEzCuuspduhtqTHpY0rOUIPxyNnJwcjENe7dTUwKiwIHkp2LZrTwzF0ZEMnQvVVerR4cld4rf5irSLnuGAnfpT729AAU17T0P7hz+1QEw0gT24E+lhkjGPIaS83QK+PQtRhHsRk+Xi2TsxCsRPXpGzj1mMa6ARG2Hmh/2Km6FGpg0n9koC9+eAvZKbLSBHAMspTWjehhrPP3vOpf6nWiXbHESG67i+BHmiAJ5II7BEknJi2VvooWHAbrzaUbCqvLPk2OrposAkpJgUTaLXVFxH3i8wqG/B41E0CCCMfWbLop1E1a0OLpfBEkr9YNUTUR89hgN9MosORWQv5peqkVOytfcdJo77BiMFtJnaOgtEdI7F9M5Sz0NHxuWaXj9+UiRLtuHwzuiuppuCSMssmNl91gHMD9Vd5ABl2GW9CNOnphUT2ijp01/OcEgqehE4I31bPT6hnzHviCJo42RARF8WD1y7M/dNc7qrwc4drEBIHby3RgM/j3UBwoa+Q7jLwHWdys/jeriTC8ko1+CI="
+    - secure: "YsIeV9a7d8Lj+YGqL5vBZ54YGYfXuLyJy0jIk8WL5th9P9tH27LEMjjDPt/yN18LR9lXmXwJqiLxla6AeKpSImDKChvs9I4b1r5GpCe3b4zoxsgcSJ4yXiFQXh5EkK52dFlJcuvzFzQEa8yWcANdJB67UgNcSAt67gUXVxwNIkv2wH2jY2jfjMuWiTaYTfbWRFpHqWy7++hW77GUnYFAF34bAnSgx6fB5sxEh4LOw0SR7+Ed54+HXBBt8oFLy9dO0rr1K/rBhCTG1FgvoYA+H3nvIIdKxsduLE4KJkFkoG9P8koiedRFFiZqP6I4/XbULgMBSieHI1mQTxUfRpaNQnJDbA/c8DnuaX1yHViYduMz6YnVK8oZ1GzkVFkU9dWZYVjBaBiSDEjj7AewZB6hwTRoQctRV/wYwkORI8wGL8n8eRXDNHE8Gb4kzzpdTqH13+a0W3MAlLajWb5r5R5D+ZlmQuMoRmTHPZtzMjb3WR02gSc/EwCllb7a4hZLG351WC0zTlCRqOl4XRThmo+mviURxV+z0/6xXd5yngpbFe0HXFQ15w51PdvfEXao5bAwa5+1Zf2QyB8kybz9Y9rPhrpEkcli3Up5SlVCpDLUSn2Wl0XG85skecPoF0xXdP2471M0QDDONAkqGJFnbuirzI0iIxCVzjmJqxKVbvb0Nlw="
+    - secure: "De2CuNyujjBoJiAUpHEg0danvgP9U50YuvCK5a3ipuZqRNBl6ohQJ4h/BOsIrEtZsFNPxFLW4JDYEHGrGb3nbXcdKiKF8KUuOzU6KAtVff3oTkLNsx4IYNhRccLbxGD6Lh8vTV4oHs30/b+LT7rrFzcFJNgCOfswiN6Gw8US0cPrOyo3ZHtj9Uz/iOEKFG9etAzyxtC94q6o5QGVrjgzjMvSynPTCMmQSHTDKukcSxqUB3R22DKp/9ZwLsvWbtgn0xNUAQlJA733adm00D3iie5Tr6d6ctmnByaBc+mG3ziKiDlgtrox6q4vQTt2ds3NJ98HAK58sZQRbGHLA1TmNCcyDjNUGvQw4P2XgVHGrJSMUUeUBBVJg46PCqh+bk5TgOZC9xLfo9yW2CdRY40lXBuMG6OZRLLyQ+9Uq54nj3vNuVlOTFYKSTxVJUxtBH/St4ZXTJ5pQjRPWzxSYOflr0U3vjppHOgnTJ4duefKko635ffQpaFVz7cUUfCnqtTPBjvGB45S83FvMGHLvJ/Q7ZOorTSFfCa2e21noIutLdLwf6z2abi1EC3mj2j2nh0HTftBXxX4VyLXjctHfNFg5ey2UvnvE98GVsD4o3lSvRN0MYOhwe4YsPbUqQi78WUctec1yDxUFPl+7s7Lha5J7jyt4M1VBJdLioPQ5R0y51o="
+
+
+
+before_install:
+  # Make sure we're using phantomjs v2 and not the v1.9.8 that is currently default on Travis
+  - mkdir travis-phantomjs
+  - wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2 -O $PWD/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
+  - tar -xvf $PWD/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2 -C $PWD/travis-phantomjs
+  - export PATH=$PWD/travis-phantomjs:$PATH
+  - phantomjs --version
 
 install:
   # Install a newer version of node than Travis has, in order to run jsdom
@@ -23,7 +39,7 @@ install:
 
 script:
   # API tests
-  - bundle exec rspec spec
+  - bundle exec rspec spec/specs
   # Admin tests
   - cd admin && bundle exec rspec spec && cd ..
   # Frontend tests
@@ -32,7 +48,9 @@ script:
   - bundle exec rubocop
   # Coffeescript linter
   - npm run lint
+  # End to end integration tests. But skip if this is a Pull Request from an external fork
+  - if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then bundle exec rspec spec/integration; fi
 
 after_script:
-  # Update http://coveralls.io with the test coverage of both ruby and coffeescripts
-  - bundle exec rake coveralls:push
+  # Update http://coveralls.io with the test coverage of both ruby and coffeescript code
+  - cat ./coverage/ruby/lcov/cloudnetv2.lcov ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js

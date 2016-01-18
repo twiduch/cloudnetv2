@@ -5,16 +5,17 @@ require 'vcr'
 def sensitive_strings
   return {} unless File.exist? "#{Cloudnet.root}/.env"
   contents = File.read "#{Cloudnet.root}/.env"
-  contents = contents.lines.delete_if { |l| l.start_with? '#' }
-  words = contents.split(/\s+/)
+  contents = contents.lines.delete_if { |line| line.start_with?('#') || line.blank? }
+  words = contents.map { |line| line.split(/\s+/).first }
   words = filter_env_keys words
   # Turn the key/value pairs into an actual hash
   Hash[words]
 end
 
 def filter_env_keys(words)
+  fail 'No sensitive credentials found in .env' if words.length == 0
   # Only interested in words with an '=' in them
-  words.reject! { |w| !w.include? '=' }
+  words.reject! { |w| !w.include?('=') }
   # Create a list of key/value pairs
   words.map! { |w| w.split('=') }
   # Ignore empty values and keys marked as safe
@@ -36,7 +37,7 @@ rescue
 end
 
 VCR.configure do |c|
-  c.hook_into :faraday
+  c.hook_into :webmock
   c.cassette_library_dir = 'spec/fixtures/cassettes'
   c.configure_rspec_metadata!
 
@@ -71,7 +72,7 @@ VCR.configure do |c|
     end
   end
 
-  # Prevent the above HTTP request to check the OnApp API version from generating a useless cassette
+  # Prevent the above HTTP request (to check the OnApp API version) from generating a useless cassette
   c.ignore_request do |request|
     URI(request.uri).query == 'vcr_ignore=true'
   end

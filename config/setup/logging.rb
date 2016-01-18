@@ -43,7 +43,8 @@ module Logging
     def choose_logger
       case Cloudnet.environment
       when 'test'
-        ::Logger.new '/dev/null'
+        FileUtils.mkdir_p "#{Cloudnet.root}/log"
+        ::Logger.new File.new "#{Cloudnet.root}/log/tests.log", 'w'
       when 'production', 'staging'
         Logglier.new ENV['LOGGLY_URI'], threaded: true
       else

@@ -37,7 +37,7 @@ class Server
   field :bandwidth, type: Float, default: 0.0
 
   field :ip_address
-  field :root_password
+  field :initial_root_password
 
   validates_presence_of :user, :template, :name, :hostname
 
@@ -72,6 +72,7 @@ class Server
       cpus: cpus,
       cpu_shares: 100,
       primary_disk_size: disk_size - required_swap,
+      initial_root_password: initial_root_password,
       swap_disk_size: required_swap,
       template_id: template.id,
       required_virtual_machine_build: 1,
@@ -86,6 +87,7 @@ class Server
   end
 
   def create_onapp_server
+    self.initial_root_password = System.generate_onapp_password
     response = onapp.api(:post, virtual_machine: prepare_onapp_params)['virtual_machine']
     self.onapp_identifier = response['identifier']
     save!

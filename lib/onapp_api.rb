@@ -66,6 +66,8 @@ module OnappAPI
         request.url path
         add_params request, params if params
       end
+    rescue Faraday::ClientError => exception
+      raise exception, exception.response
     end
 
     def add_params(request, params)

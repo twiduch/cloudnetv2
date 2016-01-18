@@ -6,15 +6,23 @@ http_interactions:
       extract_domain ENV["ONAPP_URI"] %>/users/validate_login.json
     body:
       encoding: UTF-8
-      string: login=rspec-test-_9c837d
-    headers: {}
+      string: '{"login":"rspec-test-_5525c9"}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Mon, 26 Oct 2015 17:17:30 GMT
+      - Mon, 14 Dec 2015 14:27:23 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Ua-Compatible:
@@ -24,15 +32,15 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - c953336e01a43d9cba14bb03c8a1ce03
+      - 92c1d8217fadb3a61561f12178dba551
       X-Runtime:
-      - '0.216988'
+      - '1.150577'
       X-Rack-Cache:
       - invalidate, pass
       X-Powered-By:
       - Phusion Passenger 4.0.35
       Set-Cookie:
-      - _session_id=28bf58b75c25135d6dfddfd54ddaf7ef; path=/; HttpOnly
+      - _session_id=219b3c269a1df575e64e00f32c94ba07; path=/; HttpOnly
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Status:
@@ -47,44 +55,52 @@ http_interactions:
       encoding: UTF-8
       string: '{"valid":true,"message":"Username is available"}'
     http_version: 
-  recorded_at: Mon, 26 Oct 2015 17:17:16 GMT
+  recorded_at: Mon, 14 Dec 2015 14:26:50 GMT
 - request:
     method: post
     uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
       extract_domain ENV["ONAPP_URI"] %>/users.json
     body:
       encoding: UTF-8
-      string: user[login]=rspec-test-_9c837d&user[email]=rspec-test-_9c837d%40cloud.net&user[password]=Ln%2AzYwnw%2AI5Lk8Ru&user[role_ids][]=2
-    headers: {}
+      string: '{"user":{"login":"rspec-test-_5525c9","email":"rspec-test-_5525c9@cloud.net","password":"%GkO$!SU2w%OsqEx","role_ids":["2"]}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 201
       message: Created
     headers:
       Date:
-      - Mon, 26 Oct 2015 17:17:32 GMT
+      - Mon, 14 Dec 2015 14:27:25 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Etag:
-      - '"84ca0201c6682fa05452e4d5243f52ee"'
+      - '"1535926607f53e5d27e0d5d3254a4f67"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 81d855607cf5ab8d69dcebff2311cfc7
+      - 0730bfbd28faf9ff4d6e9f523f6d9fec
       X-Runtime:
-      - '1.074317'
+      - '3.920858'
       X-Rack-Cache:
       - invalidate, pass
       X-Powered-By:
       - Phusion Passenger 4.0.35
       Set-Cookie:
-      - _session_id=cd3f7a7e6a8eef22f3e69e6b0ae7db09; path=/; HttpOnly
+      - _session_id=bd09707ad4b676b20f3c5b1e850f3562; path=/; HttpOnly
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Location:
-      - https://<%= extract_domain ENV["ONAPP_URI"] %>/users/403
+      - https://<%= extract_domain ENV["ONAPP_URI"] %>/users/560
       Status:
       - 201 Created
       Connection:
@@ -95,7 +111,7 @@ http_interactions:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"user":{"activated_at":"2015-10-26T17:17:33+00:00","avatar":null,"billing_plan_id":1,"cdn_account_status":"ACTIVE","cdn_status":"INACTIVE","created_at":"2015-10-26T17:17:32+00:00","deleted_at":null,"email":"rspec-test-_9c837d@cloud.net","firewall_id":null,"first_name":"","group_id":null,"id":403,"identifier":"kj3bo1h06tn000","image_template_group_id":null,"infoboxes":{"display_infoboxes":true,"hidden_infoboxes":[]},"last_name":"","locale":"en","login":"rspec-test-_9c837d","password_changed_at":"2015-10-26T17:17:32+00:00","status":"active","supplied":false,"suspend_at":null,"system_theme":null,"time_zone":null,"total_amount":0.0,"updated_at":"2015-10-26T17:17:33+00:00","use_gravatar":null,"user_group_id":null,"outstanding_amount":"0.0","payment_amount":"0.0","roles":[{"role":{"created_at":"2015-03-12T13:24:37+00:00","id":2,"identifier":"user","label":"User","updated_at":"2015-03-12T13:24:37+00:00","permissions":[{"permission":{"created_at":"2015-03-12T13:24:37+00:00","id":7,"identifier":"activity_logs.read.own","label":"See
+      string: '{"user":{"activated_at":"2015-12-14T14:27:27+00:00","avatar":null,"billing_plan_id":1,"cdn_account_status":"ACTIVE","cdn_status":"INACTIVE","created_at":"2015-12-14T14:27:27+00:00","deleted_at":null,"email":"rspec-test-_5525c9@cloud.net","firewall_id":null,"first_name":"","group_id":null,"id":560,"identifier":"np3pq8sh3ywvcd","image_template_group_id":null,"infoboxes":{"display_infoboxes":true,"hidden_infoboxes":[]},"last_name":"","locale":"en","login":"rspec-test-_5525c9","password_changed_at":"2015-12-14T14:27:27+00:00","status":"active","supplied":false,"suspend_at":null,"system_theme":null,"time_zone":null,"total_amount":0.0,"updated_at":"2015-12-14T14:27:27+00:00","use_gravatar":null,"user_group_id":null,"outstanding_amount":"0.0","payment_amount":"0.0","roles":[{"role":{"created_at":"2015-03-12T13:24:37+00:00","id":2,"identifier":"user","label":"User","updated_at":"2015-11-04T12:41:26+00:00","permissions":[{"permission":{"created_at":"2015-03-12T13:24:37+00:00","id":7,"identifier":"activity_logs.read.own","label":"See
         details of own activity log","updated_at":"2015-03-12T13:24:37+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":32,"identifier":"backups.convert.own","label":"Convert
         own backup to template","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":34,"identifier":"backups.create.own","label":"Create
         an own backup","updated_at":"2015-03-12T13:24:38+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:38+00:00","id":36,"identifier":"backups.delete.own","label":"Destroy
@@ -189,8 +205,7 @@ http_interactions:
         publications for all virtual servers","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":528,"identifier":"virtual_machines.migrate.own","label":"Migrate
         own virtual machine","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":530,"identifier":"virtual_machines.power.own","label":"Any
         power action on own virtual machines","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":532,"identifier":"virtual_machines.read.own","label":"See
-        own virtual machines","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":533,"identifier":"virtual_machines.read_root_password","label":"Read
-        Virtual Machine''s root password","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":537,"identifier":"virtual_machines.rebuild_network.own","label":"Rebuild
+        own virtual machines","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":537,"identifier":"virtual_machines.rebuild_network.own","label":"Rebuild
         Network to own virtual machine","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":539,"identifier":"virtual_machines.recipe_manage.own","label":"Manage
         recipes joins for own virtual servers","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":541,"identifier":"virtual_machines.reset_root_password.own","label":"Reset
         root password to own virtual machine","updated_at":"2015-03-12T13:24:40+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":547,"identifier":"virtual_machines.update.own","label":"Update
@@ -200,9 +215,10 @@ http_interactions:
         own CDN SSL Certificates","updated_at":"2015-06-24T14:37:54+00:00"}},{"permission":{"created_at":"2015-06-24T14:37:54+00:00","id":574,"identifier":"cdn_ssl_certificates.read.own","label":"See
         own CDN SSL Certificates","updated_at":"2015-06-24T14:37:54+00:00"}},{"permission":{"created_at":"2015-06-24T14:37:54+00:00","id":575,"identifier":"cdn_ssl_certificates.update.own","label":"Update
         own CDN SSL Certificates","updated_at":"2015-06-24T14:37:54+00:00"}},{"permission":{"created_at":"2015-09-10T18:45:32+00:00","id":636,"identifier":"virtual_machines.select_resources_manually_on_creation","label":"Select
-        resources manually on Virtual Server creation","updated_at":"2015-09-10T18:45:32+00:00"}}]}}],"used_cpus":0,"used_memory":0,"used_cpu_shares":0,"used_disk_size":0,"used_ip_addresses":[],"memory_available":94077,"disk_space_available":1515,"additional_fields":[]}}'
+        resources manually on Virtual Server creation","updated_at":"2015-09-10T18:45:32+00:00"}},{"permission":{"created_at":"2015-03-12T13:24:40+00:00","id":534,"identifier":"virtual_machines.read_root_password.own","label":"Read
+        own Virtual Machine''s root password","updated_at":"2015-03-12T13:24:40+00:00"}}]}}],"used_cpus":0,"used_memory":0,"used_cpu_shares":0,"used_disk_size":0,"used_ip_addresses":[],"memory_available":79251,"disk_space_available":1330,"additional_fields":[]}}'
     http_version: 
-  recorded_at: Mon, 26 Oct 2015 17:17:19 GMT
+  recorded_at: Mon, 14 Dec 2015 14:26:55 GMT
 - request:
     method: get
     uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
@@ -210,32 +226,38 @@ http_interactions:
     body:
       encoding: US-ASCII
       string: ''
-    headers: {}
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Mon, 26 Oct 2015 17:17:39 GMT
+      - Mon, 14 Dec 2015 14:27:30 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Etag:
-      - '"8bddd14bb2206ca6397766848447322e"'
+      - '"0041236604a94397a24c55dfe89119ad"'
       Cache-Control:
       - must-revalidate, private, max-age=0
       X-Request-Id:
-      - 13067e67a0be2e5cbca7c32d1b29c424
+      - 8032e6d8627c1cce27d5668304954033
       X-Runtime:
-      - '0.392041'
+      - '1.579691'
       X-Rack-Cache:
       - miss
       X-Powered-By:
       - Phusion Passenger 4.0.35
       Set-Cookie:
-      - _session_id=9b5ef336ec50fdd438eb2476f1aba743; path=/; HttpOnly
+      - _session_id=998bcbe69b75c99a8143feb0a452f6ec; path=/; HttpOnly
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Status:
@@ -262,7 +284,7 @@ http_interactions:
         6.5 x64","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","version":"1.4","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:2","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":67,"template_id":30,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":30,"label":"CentOS
         6.5 x86","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.0","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:20","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":87,"template_id":51,"image_template_group_id":8,"price":"0.0","created_at":"2015-10-14T19:00:13+00:00","updated_at":"2015-10-14T19:00:13+00:00","image_template":{"id":51,"label":"CentOS
         6.7 x64 McMyAdmin2","created_at":"2015-10-14T19:00:12+00:00","updated_at":"2015-10-14T19:00:12+00:00","version":"1.0","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:69","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":86,"template_id":49,"image_template_group_id":8,"price":"0.0","created_at":"2015-09-09T19:00:08+00:00","updated_at":"2015-09-09T19:00:08+00:00","image_template":{"id":49,"label":"CentOS
-        6.7 x64 OnApp 4.1.0","created_at":"2015-09-09T19:00:08+00:00","updated_at":"2015-10-03T04:00:10+00:00","version":"1.2","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:63","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":63,"template_id":26,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":26,"label":"CentOS
+        6.7 x64 OnApp 4.1.0","created_at":"2015-09-09T19:00:08+00:00","updated_at":"2015-11-05T17:00:15+00:00","version":"1.3","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:63","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":63,"template_id":26,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":26,"label":"CentOS
         7.0 x64 ","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.6","file_name":null,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":384,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:17","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":66,"template_id":29,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":29,"label":"Debian
         6.0 x64 LAMP","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.7","file_name":null,"operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":false,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,remote","min_memory_size":128,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:22","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":77,"template_id":40,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","image_template":{"id":40,"label":"Debian
         7.0 x64","created_at":"2015-06-24T15:33:52+00:00","updated_at":"2015-06-24T15:33:52+00:00","version":"1.10","file_name":null,"operating_system":"linux","operating_system_distro":"ubuntu","allowed_swap":true,"state":"active","checksum":null,"allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":0,"allowed_hot_migrate":false,"operating_system_arch":null,"operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm,kvm_virtio,remote","min_memory_size":128,"disk_target_device":null,"cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":"template:vm:onapp-resource:compute:onapp-pJrxhNrW3xxVBcnfJyEv5AISjPg:3","manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}},{"id":55,"template_id":18,"image_template_group_id":8,"price":"0.0","created_at":"2015-06-24T15:33:51+00:00","updated_at":"2015-06-24T15:33:51+00:00","image_template":{"id":18,"label":"Debian
@@ -312,44 +334,52 @@ http_interactions:
         Balancer Virtual Appliance","created_at":"2015-03-12T14:26:02+00:00","updated_at":"2015-09-12T22:13:21+00:00","version":"1.9","file_name":"centos-5.3-lbva_6.11-x64-1.9.tar.gz","operating_system":"linux","operating_system_distro":"lbva","allowed_swap":true,"state":"active","checksum":"3a5bc442a326a7d575a724b6ca93e83e","allow_resize_without_reboot":true,"min_disk_size":5,"user_id":null,"template_size":762648,"allowed_hot_migrate":true,"operating_system_arch":"x64","operating_system_edition":null,"operating_system_tail":null,"parent_template_id":null,"virtualization":"xen,kvm","min_memory_size":512,"disk_target_device":"---\nxen:
         sda\nkvm: hd\n","cdn":false,"backup_server_id":null,"ext4":false,"smart_server":false,"baremetal_server":false,"initial_password":null,"initial_username":null,"remote_id":null,"manager_id":null,"resize_without_reboot_policy":{},"type":"ImageTemplate","application_server":false}}]}]'
     http_version: 
-  recorded_at: Mon, 26 Oct 2015 17:17:26 GMT
+  recorded_at: Mon, 14 Dec 2015 14:26:57 GMT
 - request:
     method: post
-    uri: https://rspec-test-_9c837d:Ln%2AzYwnw%2AI5Lk8Ru@<%= extract_domain ENV["ONAPP_URI"]
-      %>/virtual_machines.json?virtual_machine%5Bcpu_shares%5D=100&virtual_machine%5Bcpus%5D=1&virtual_machine%5Bhostname%5D=rspec-test-user-s-server-1&virtual_machine%5Bhypervisor_group_id%5D=7&virtual_machine%5Blabel%5D=Rspec%20Test%20User%27s%20Server%201&virtual_machine%5Bmemory%5D=512.0&virtual_machine%5Bnote%5D=Created%20with%20Cloud.net&virtual_machine%5Bprimary_disk_size%5D=19.0&virtual_machine%5Brequired_ip_address_assignment%5D=1&virtual_machine%5Brequired_virtual_machine_build%5D=1&virtual_machine%5Brequired_virtual_machine_startup%5D=1&virtual_machine%5Bswap_disk_size%5D=1.0&virtual_machine%5Btemplate_id%5D=29
+    uri: https://rspec-test-_5525c9:%25GkO%24%21SU2w%25OsqEx@<%= extract_domain ENV["ONAPP_URI"]
+      %>/virtual_machines.json?virtual_machine%5Bcpu_shares%5D=100&virtual_machine%5Bcpus%5D=1&virtual_machine%5Bhostname%5D=rspec-test-user-s-server-1&virtual_machine%5Bhypervisor_group_id%5D=7&virtual_machine%5Binitial_root_password%5D=ABC123abc!%25$&virtual_machine%5Blabel%5D=Rspec%20Test%20User%27s%20Server%201&virtual_machine%5Bmemory%5D=512.0&virtual_machine%5Bnote%5D=Created%20with%20Cloud.net&virtual_machine%5Bprimary_disk_size%5D=19.0&virtual_machine%5Brequired_ip_address_assignment%5D=1&virtual_machine%5Brequired_virtual_machine_build%5D=1&virtual_machine%5Brequired_virtual_machine_startup%5D=1&virtual_machine%5Bswap_disk_size%5D=1.0&virtual_machine%5Btemplate_id%5D=31
     body:
       encoding: UTF-8
       string: ''
-    headers: {}
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 201
       message: Created
     headers:
       Date:
-      - Mon, 26 Oct 2015 17:17:40 GMT
+      - Mon, 14 Dec 2015 14:27:33 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Etag:
-      - '"18cf7289e75fd7605d53c9618c32d690"'
+      - '"8409f53ce005ba37ebec3b5cdce2a0e8"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - eb1e89d818b2a0b581de54da16b3d442
+      - 76d2df54504d94b5ffcf87860100ba26
       X-Runtime:
-      - '3.651458'
+      - '4.479736'
       X-Rack-Cache:
       - invalidate, pass
       X-Powered-By:
       - Phusion Passenger 4.0.35
       Set-Cookie:
-      - _session_id=01f1dbbc01f3829c7523ad4fbd79c42c; path=/; HttpOnly
+      - _session_id=fdb8fad93259fb28746c9f7f38d75bfb; path=/; HttpOnly
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Location:
-      - https://<%= extract_domain ENV["ONAPP_URI"] %>/virtual_machines/mtcpy07758diww
+      - https://<%= extract_domain ENV["ONAPP_URI"] %>/virtual_machines/vdf9kraadsrk1b
       Status:
       - 201 Created
       Connection:
@@ -361,27 +391,33 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"virtual_machine":{"add_to_marketplace":null,"<%= ENV["ONAPP_USER"]
-        %>_note":null,"allowed_hot_migrate":false,"allowed_swap":true,"booted":false,"built":false,"cores_per_socket":0,"cpu_shares":100,"cpu_sockets":null,"cpu_threads":null,"cpu_units":null,"cpus":1,"created_at":"2015-10-26T17:17:44+00:00","customer_network_id":null,"deleted_at":null,"edge_server_type":null,"enable_autoscale":false,"enable_monitis":false,"firewall_notrack":false,"hostname":"rspec-test-user-s-server-1","hot_add_cpu":null,"hot_add_memory":null,"hypervisor_id":2,"id":114,"identifier":"mtcpy07758diww","initial_root_password_encrypted":false,"instance_type_id":null,"iso_id":null,"label":"Rspec
+        %>_note":null,"allowed_hot_migrate":false,"allowed_swap":true,"booted":false,"built":false,"cores_per_socket":0,"cpu_shares":100,"cpu_sockets":null,"cpu_threads":null,"cpu_units":null,"cpus":1,"created_at":"2015-12-14T14:27:37+00:00","customer_network_id":null,"deleted_at":null,"edge_server_type":null,"enable_autoscale":false,"enable_monitis":false,"firewall_notrack":false,"hostname":"rspec-test-user-s-server-1","hot_add_cpu":null,"hot_add_memory":null,"hypervisor_id":2,"id":331,"identifier":"vdf9kraadsrk1b","initial_root_password_encrypted":false,"instance_type_id":null,"iso_id":null,"label":"Rspec
         Test User''s Server 1","local_remote_access_ip_address":null,"local_remote_access_port":null,"locked":false,"memory":512,"min_disk_size":5,"note":"Created
-        with Cloud.net","operating_system":"linux","operating_system_distro":"ubuntu","preferred_hvs":[],"recovery_mode":null,"remote_access_password":null,"service_password":null,"state":"new","storage_server_type":null,"strict_virtual_machine_id":null,"suspended":false,"template_id":29,"template_label":"Debian
-        6.0 x64 LAMP","time_zone":null,"updated_at":"2015-10-26T17:17:44+00:00","user_id":403,"vip":null,"xen_id":null,"ip_addresses":[],"monthly_bandwidth_used":"0","total_disk_size":0,"price_per_hour":"0.0","price_per_hour_powered_off":"0.0","support_incremental_backups":true,"cpu_priority":100}}'
+        with Cloud.net","operating_system":"linux","operating_system_distro":"ubuntu","preferred_hvs":[],"recovery_mode":null,"remote_access_password":null,"service_password":null,"state":"new","storage_server_type":null,"strict_virtual_machine_id":null,"suspended":false,"template_id":31,"template_label":"Ubuntu
+        14.04 x64","time_zone":null,"updated_at":"2015-12-14T14:27:37+00:00","user_id":560,"vip":null,"xen_id":null,"ip_addresses":[],"monthly_bandwidth_used":"0","total_disk_size":0,"price_per_hour":"0.0","price_per_hour_powered_off":"0.0","support_incremental_backups":true,"cpu_priority":100}}'
     http_version: 
-  recorded_at: Mon, 26 Oct 2015 17:17:30 GMT
+  recorded_at: Mon, 14 Dec 2015 14:27:03 GMT
 - request:
     method: delete
-    uri: https://rspec-test-_9c837d:Ln%2AzYwnw%2AI5Lk8Ru@<%= extract_domain ENV["ONAPP_URI"]
-      %>/virtual_machines/mtcpy07758diww.json
+    uri: https://rspec-test-_5525c9:%25GkO%24%21SU2w%25OsqEx@<%= extract_domain ENV["ONAPP_URI"]
+      %>/virtual_machines/vdf9kraadsrk1b.json
     body:
       encoding: US-ASCII
       string: ''
-    headers: {}
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 204
       message: No Content
     headers:
       Date:
-      - Mon, 26 Oct 2015 17:17:45 GMT
+      - Mon, 14 Dec 2015 14:27:38 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Ua-Compatible:
@@ -389,15 +425,15 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 814934a8c10f59d181daf6947e4027b8
+      - df1fe2cf8d9ebfc975a039842aa35b00
       X-Runtime:
-      - '0.234840'
+      - '0.894684'
       X-Rack-Cache:
       - invalidate, pass
       X-Powered-By:
       - Phusion Passenger 4.0.35
       Set-Cookie:
-      - _session_id=37deb5d64d5c03ee105146e5fd14f8dd; path=/; HttpOnly
+      - _session_id=f467f3a4294b88b35ccedf4f2db54613; path=/; HttpOnly
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Status:
@@ -412,22 +448,30 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 26 Oct 2015 17:17:31 GMT
+  recorded_at: Mon, 14 Dec 2015 14:27:04 GMT
 - request:
     method: delete
     uri: https://<%= ENV["ONAPP_USER"] %>:<%= CGI.escape ENV["ONAPP_PASS"] %>@<%=
-      extract_domain ENV["ONAPP_URI"] %>/users/403.json
+      extract_domain ENV["ONAPP_URI"] %>/users/560.json
     body:
       encoding: UTF-8
-      string: force=1
-    headers: {}
+      string: '{"force":1}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 204
       message: No Content
     headers:
       Date:
-      - Mon, 26 Oct 2015 17:17:45 GMT
+      - Mon, 14 Dec 2015 14:27:40 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Ua-Compatible:
@@ -435,15 +479,15 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - cfdde684dbb2c6ff38ba30c32a4cc8f4
+      - d35ecadd15b1d7e4bca285a163264907
       X-Runtime:
-      - '0.322249'
+      - '1.999162'
       X-Rack-Cache:
       - invalidate, pass
       X-Powered-By:
       - Phusion Passenger 4.0.35
       Set-Cookie:
-      - _session_id=f31a8ccecc2c43dce367432290444c81; path=/; HttpOnly
+      - _session_id=bf8578e13147efda17ba1df4ae1bafdd; path=/; HttpOnly
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Status:
@@ -458,5 +502,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 26 Oct 2015 17:17:32 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Mon, 14 Dec 2015 14:27:07 GMT
+recorded_with: VCR 3.0.0

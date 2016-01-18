@@ -83,20 +83,6 @@ class User
       user.worker.create_onapp_user_and_save
     end
 
-    # Create the non-privileged OnApp user role that all cloud.net users use to interact with OnApp
-    # NB. This should only need to be done when setting up cloud.net for the first time.
-    def create_onapp_role
-      OnappAPI.admin_connection.post(
-        :roles,
-        body: {
-          role: {
-            label: 'user',
-            permission_ids: Cloudnet::ONAPP_USER_PERMISSIONS
-          }
-        }
-      ).role.id
-    end
-
     # Check the incoming API request headers for a valid authentication credential
     def authourize(auth_header)
       type = auth_header.split[0].strip
