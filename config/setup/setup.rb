@@ -48,7 +48,8 @@ module Cloudnet
     end
 
     def require_order
-      [ 'config/initialisers',
+      [
+        'config/initialisers',
         'lib/build_checker_daemon/data',
         'lib/build_checker_daemon/builder',
         'lib',

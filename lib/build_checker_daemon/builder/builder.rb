@@ -48,7 +48,8 @@ module BuildChecker
         {
           template: template,
           name: "test template_id #{template.id}",
-          hostname: HOSTNAME
+          hostname: HOSTNAME,
+          memory: 1024
         }
       end
 
